@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<title>GMLscripts.com :: polygon_to_triangles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js?v=20150118"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css?v=20150119"></link>
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css"></link>
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css?v=20150120"></link>
+<link rel="stylesheet" type="text/css" href="../contrast.css"></link>
+<link rel="icon" type="image/gif" href="../favicon.gif" />
+<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+</head>
+<body>
+<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<!-- Header -->
+<div id="header">
+    <img id="contrast" src="../images/30/_note.png" title="Invert" />
+    <div class="header-left"></div>
+    <div class="header-right">
+        <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
+        <a href="index.html" class="nav">Scripts</a><a href="../license.html" class="nav">License</a><a href="../#" class="nav">Forums</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a><a href="http://feeds.feedburner.com/gmljoint" class="nav">Subscribe</a>
+    </div>
+</div>
+
+<!-- Main column -->
+<div id="container">
+    <div id="content">
+        <!-- start roundcorners -->
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="inside">
+<h1>polygon_to_triangles</h1>
+<dl class="dictionary script">
+<dt><a href="polygon_to_triangles.html">polygon_to_triangles(polygon)</a></dt>
+<dd>Returns a list of triangles created from a given 2D polygon.</dd>
+</dl>
+<div class="codebox script">
+<pre><code class="prettyprint lang-gml">/// polygon_to_triangles(polygon)
+//
+//  Returns a list of triangles created from a given 2D polygon.
+//
+//      polygon     ds_list of an ordered series of coordinate 
+//                  pairs defining the shape of a polygon
+//
+//  The polygon vertices are given and returned in traditional
+//  counter-clockwise order. Polygons are closed figures with edges
+//  spanning consecutive vertices and from the last vertex to the
+//  first. Polygons must be simple, which means they cannot have 
+//  edges that cross one another. The number of triangles created
+//  is (n-2), where n is the number of vertices in the polygon.
+//
+//  eg. in:  square polygon = { 100,100,  100,200,  200,200,  200,100 }
+//
+//      out: two triangles = { 100,100,  100,200,  200,100,   
+//                             100,200,  200,200,  200,100 } 
+//
+//  Depends on lines_intersect() and point_in_triangle().
+//
+/// GMLscripts.com/license
+{
+    var polygon, polygonSize, triangles, points, polyX, polyY, good;
+    var i, j, n, p, A, B, C, x0, y0, x1, y1, x2, y2, x3, y3, x4, y4;
+    polygon = argument0;
+    polygonSize = ds_list_size(polygon) div 2;
+    triangles = ds_list_create();
+    points = ds_list_create();
+    polyX = ds_list_create();
+    polyY = ds_list_create();
+
+    i = 0;
+    repeat (polygonSize) 
+    {
+        ds_list_add(polyX, ds_list_find_value(polygon, i));
+        ds_list_add(polyY, ds_list_find_value(polygon, i+1));
+        i += 2;
+    }
+
+    // 1. For (n - 3) vertices
+    n = polygonSize;
+    for (n = polygonSize; n &gt; 3; n -= 1) 
+    {
+        //  a. Select first point (random)    
+        ds_list_clear(points);
+        for (p = 0; p &lt; n; p += 1) ds_list_add(points, p);
+        repeat (p) 
+        {
+            i = floor(random(ds_list_size(points)));
+            A = ds_list_find_value(points, i);
+            ds_list_delete(points, i);
+
+            //  b. Pick the next two points
+            B = (A + 1) mod n;
+            C = (A + 2) mod n;
+
+            //  c. Make a triangle with the selected points
+            x0 = ds_list_find_value(polyX, A);
+            y0 = ds_list_find_value(polyY, A);
+            x1 = ds_list_find_value(polyX, B);
+            y1 = ds_list_find_value(polyY, B);
+            x2 = ds_list_find_value(polyX, C);
+            y2 = ds_list_find_value(polyY, C);
+
+            //  d. If triangle is counter-clockwise...
+            if ((x1 - x0) * (y2 - y0) + (y0 - y1) * (x2 - x0) &lt; 0)
+            {
+                good = true;
+                //  ...and if triangle has no vertices within it...
+                for (i = 0; i &lt; n; i += 1) 
+                {
+                    if ((i != A) &amp;&amp; (i != B) &amp;&amp; (i != C)) 
+                    {
+                        x3 = ds_list_find_value(polyX, i);
+                        y3 = ds_list_find_value(polyY, i);
+                        if (point_in_triangle(x3, y3, x0, y0, x1, y1, x2, y2)) 
+                        { 
+                            good = false; 
+                            break; 
+                        }
+                        //  ...and if the new edge has no other edges crossing it...
+                        j = (i + 1) mod n;
+                        if ((j != A) &amp;&amp; (j != B) &amp;&amp; (j != C)) 
+                        {
+                            x4 = ds_list_find_value(polyX, j);
+                            y4 = ds_list_find_value(polyY, j);
+
+                            if (lines_intersect(x0, y0, x2, y2, x3, y3, x4, y4, true) != 0)
+                            { 
+                                good = false; 
+                                break; 
+                            }
+                        }
+                    }
+                }
+
+                //  e.  ...then add the triangle to list and remove the unshared vertex
+                if (good) 
+                {
+                    ds_list_add(triangles, x0);
+                    ds_list_add(triangles, y0);
+                    ds_list_add(triangles, x1);
+                    ds_list_add(triangles, y1);
+                    ds_list_add(triangles, x2);
+                    ds_list_add(triangles, y2);
+                    ds_list_delete(polyX, B);
+                    ds_list_delete(polyY, B);
+                    break;
+                }
+            }
+        }
+    }
+
+    //  2. There are only three vertices left, so add the final triangle to the list
+    ds_list_add(triangles, ds_list_find_value(polyX, 0));
+    ds_list_add(triangles, ds_list_find_value(polyY, 0));
+    ds_list_add(triangles, ds_list_find_value(polyX, 1));
+    ds_list_add(triangles, ds_list_find_value(polyY, 1));
+    ds_list_add(triangles, ds_list_find_value(polyX, 2));
+    ds_list_add(triangles, ds_list_find_value(polyY, 2));
+
+    //  3. Clean up
+    ds_list_destroy(polyX);
+    ds_list_destroy(polyY);
+    ds_list_destroy(points);
+
+    return triangles;
+}
+</code></pre>
+</div><div class="footnote">
+<p id="related">
+<a href="angle_difference.html">angle_difference</a>, <a href="is_clockwise.html">is_clockwise</a>, <a href="line_get_slope.html">line_get_slope</a>, <a href="lines_intersect.html">lines_intersect</a>, <a href="point_in_circle.html">point_in_circle</a>, <a href="point_in_polygon.html">point_in_polygon</a>, <a href="point_in_triangle.html">point_in_triangle</a>, <a href="point_line_distance.html">point_line_distance</a>, <a href="polygon_area.html">polygon_area</a>, <a href="polygon_centroid.html">polygon_centroid</a>, polygon_to_triangles
+</p>
+</div>
+<hr />
+<!-- DISQUS START -->
+<script type="text/javascript">
+	var disqus_developer = true; 
+</script>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    //
+    // var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    //
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://gmlscripts.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=gmlscripts">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<!-- DISQUS END -->
+            <p class="nobottomgap" style="font-size:1px;"></p>
+        </div>
+        <!-- finish roundcorners -->
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+    </div>
+</div>
+<!-- end of main column -->
+
+<!-- Secondary column -->
+<div id="sidebar">
+    <div class="menu">
+        <span class="menu-head">Scripts</span>
+        <ul class="accordion" id="Scripts">
+            <li id="computation" class="computation">
+                <a href="polygon_to_triangles.html#computation">Computation</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
+                    <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
+                    <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
+                    <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
+                    <li><a href="Computation/Geometry/index.html">Geometry</a></li>
+                    <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
+                    <li><a href="Computation/Probability/index.html">Probability</a></li>
+                    <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
+                    <li><a href="Computation/Strings/index.html">Strings</a></li>
+                </ul>
+            </li>
+            <li id="graphics" class="graphics">
+                <a href="polygon_to_triangles.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="polygon_to_triangles.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="polygon_to_triangles.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                </ul>
+            </li>
+            <li id="data_structures" class="data_structures">
+                <a href="polygon_to_triangles.html#data_structures">Data Structures</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
+                    <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
+                    <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
+                </ul>
+            </li>
+            <li id="files" class="files">
+                <a href="polygon_to_triangles.html#files">Files</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
+                </ul>
+            </li>
+            <li id="game_play" class="game_play">
+                <a href="polygon_to_triangles.html#game_play">Game Play</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
+                    <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
+                    <li><a href="Game_Play/Instances/index.html">Instances</a></li>
+                    <li><a href="Game_Play/Movement/index.html">Movement</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="menu-foot"></span>
+    </div>
+</div>
+<!-- end of secondary column -->
+
+<!-- Footer -->
+<div id="footer">
+    <div class="footer-left"></div>
+    <div class="footer-right"><a href="polygon_to_triangles.html#" id="xot"><img title="web by xot" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+</div>
+<script type="text/javascript">prettyPrint();</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript"><!--
+_uacct = "UA-103560-3";
+urchinTracker();
+// -->
+</script>
+<!-- DISQUS START -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/gmlscripts/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+<!-- DISQUS END -->
+</body>
+</html>

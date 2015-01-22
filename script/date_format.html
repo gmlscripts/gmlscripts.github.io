@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<title>GMLscripts.com :: date_format</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js?v=20150118"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css?v=20150119"></link>
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css"></link>
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css?v=20150120"></link>
+<link rel="stylesheet" type="text/css" href="../contrast.css"></link>
+<link rel="icon" type="image/gif" href="../favicon.gif" />
+<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+</head>
+<body>
+<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<!-- Header -->
+<div id="header">
+    <img id="contrast" src="../images/30/_note.png" title="Invert" />
+    <div class="header-left"></div>
+    <div class="header-right">
+        <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
+        <a href="index.html" class="nav">Scripts</a><a href="../license.html" class="nav">License</a><a href="../#" class="nav">Forums</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a><a href="http://feeds.feedburner.com/gmljoint" class="nav">Subscribe</a>
+    </div>
+</div>
+
+<!-- Main column -->
+<div id="container">
+    <div id="content">
+        <!-- start roundcorners -->
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="inside">
+<h1>date_format</h1>
+<dl class="dictionary script">
+<dt><a href="date_format.html">date_format(format [,datetime])</a></dt>
+<dd>Returns a string formatted according to the given format string using the given date-time value or current local time if no date-time is given.</dd>
+</dl>
+<div class="codebox script">
+<pre><code class="prettyprint lang-gml">/// date_format(format [,datetime])
+//
+//  Returns a string formatted according to the given format string using
+//  the given date-time value or current local time if no date-time is given.
+//
+//      format      string controlling date formatting, string
+//      datetime    date-time value, real (optional)
+//
+//  Day format characters:
+//      d - day of the month with leading zeros, 2 digits with leading zeros; 01 through 31
+//      D - day of the week, textual, 3 letters; Fri
+//      j - day of the month without leading zeros; 1 through 31
+//      l - day of the week, textual, long; Friday
+//      N - ISO 8601 day number of the week; 1 (Monday) through 7 (Sunday)
+//      S - English ordinal suffix, textual, 2 characters; st, nd, rd, th
+//      w - day of the week, numeric, 0 (Sunday) through 6 (Saturday)
+//      z - day of the year (starting from zero); 0 through 365
+//
+//  Week format characters:
+//      W - ISO 8601 week number of year, weeks starting on Monday; 42
+//
+//  Month format characters:
+//      F - month, textual, long; January
+//      m - month with leading zeros; 01 through 12
+//      M - month, textual, 3 letters; Jan
+//      n - month without leading zeros; 1 through 12
+//      t - number of days in the given month; 28 through 31
+//
+//  Year format characters:
+//      L - whether it is a leap year; 0 or 1
+//      o - ISO 8601 year, like Y unless ISO week belongs to prev or next year; 2008
+//      Y - year, 4 digits; 1999
+//      y - year, 2 digits; 99
+//
+//  Time format characters:
+//      a - lowercase Ante meridiem and Post meridiem; am or pm
+//      A - uppercase Ante meridiem and Post meridiem; AM or PM
+//      g - hour, 12-hour format without leading zeros; 1 through 12
+//      G - hour, 24-hour format without leading zeros; 0 through 23
+//      h - hour, 12-hour format; 01 through 12
+//      H - hour, 24-hour format; 00 through 23
+//      i - minutes, with leading zero; 00 through 59
+//      s - seconds, with leading zero; 00 through 59
+//
+//  Full Date/Time format characters:
+//      c - ISO 8601 extended format date; 2004-02-12T15:19:21
+//      r - RFC 2822 formatted data; Thu, 21 Dec 2000 16:01:07 -0000
+//      U - seconds since the Unix epoch
+//
+//      \ - following character should be returned literally, not interpreted
+//
+//  Examples:
+//      date_format("l jS of F Y h:i:s A") == "Sunday 4th of May 2008 05:45:34 PM"
+//      date_format('\I\t \i\s \t\h\e zS \d\a\y.') == "It is the 124th day."
+//
+/// GMLscripts.com/license
+{
+    var str,dat,out,day,month,year,week,weekday,second,minute,hour24,hour12,i,c;
+    str = argument0;
+    dat = argument1;
+    out = "";
+    if (dat == 0) dat = date_current_datetime();
+    day     = date_get_day(dat);
+    month   = date_get_month(dat);
+    year    = date_get_year(dat);
+    week    = date_get_week(dat);
+    weekday = date_get_weekday(dat);
+    second  = date_get_second(dat);
+    minute  = date_get_minute(dat);
+    hour24  = date_get_hour(dat);
+    hour12  = ((hour24+23) mod 12)+1;
+    for (i=1; i&lt;=string_length(str); i+=1) {
+        c = string_char_at(str,i);
+        switch (c) {
+        case "F":
+            switch (month) {
+            case 1:  out += "January";   break;
+            case 2:  out += "February";  break;
+            case 3:  out += "March";     break;
+            case 4:  out += "April";     break;
+            case 5:  out += "May";       break;
+            case 6:  out += "June";      break;
+            case 7:  out += "July";      break;
+            case 8:  out += "August";    break;
+            case 9:  out += "September"; break;
+            case 10: out += "October";   break;
+            case 11: out += "November";  break;
+            case 12: out += "December";  break;
+            }
+            break;
+        case "M":
+            switch (month) {
+            case 1:  out += "Jan"; break;
+            case 2:  out += "Feb"; break;
+            case 3:  out += "Mar"; break;
+            case 4:  out += "Apr"; break;
+            case 5:  out += "May"; break;
+            case 6:  out += "Jun"; break;
+            case 7:  out += "Jul"; break;
+            case 8:  out += "Aug"; break;
+            case 9:  out += "Sep"; break;
+            case 10: out += "Oct"; break;
+            case 11: out += "Nov"; break;
+            case 12: out += "Dec"; break;
+            }
+            break;
+        case "l":
+            switch (weekday) {
+            case 1: out += "Sunday";    break;
+            case 2: out += "Monday";    break;
+            case 3: out += "Tuesday";   break;
+            case 4: out += "Wednesday"; break;
+            case 5: out += "Thursday";  break;
+            case 6: out += "Friday";    break;
+            case 7: out += "Saturday";  break;
+            }
+            break;
+        case "D":
+            switch (weekday) {
+            case 1: out += "Sun"; break;
+            case 2: out += "Mon"; break;
+            case 3: out += "Tue"; break;
+            case 4: out += "Wed"; break;
+            case 5: out += "Thu"; break;
+            case 6: out += "Fri"; break;
+            case 7: out += "Sat"; break;
+            }
+            break;
+        case "S":
+            if (day &gt;= 10 &amp;&amp; day &lt;= 20) out += "th";
+            else if ((day mod 10) == 1) out += "st";
+            else if ((day mod 10) == 2) out += "nd";
+            else if ((day mod 10) == 3) out += "rd";
+            else                        out += "th";
+            break;
+        case "o":
+            if (month ==  1 &amp;&amp; day &lt;=  3 &amp;&amp; week != 1) { out += string(year-1); break; }
+            if (month == 12 &amp;&amp; day &gt;= 29 &amp;&amp; week == 1) { out += string(year+1); break; }
+        case "Y": out += string(year); break;
+        case "y": out += string_copy(string(year),3,2); break;
+        case "m": if (month &lt; 10) out += "0";
+        case "n": out += string(month); break;
+        case "d": if (day &lt; 10) out += "0";
+        case "j": out += string(day); break;
+        case "H": if (hour24 &lt; 10) out += "0";
+        case "G": out += string(hour24); break;
+        case "h": if (hour12 &lt; 10) out += "0";
+        case "g": out += string(hour12); break;
+        case "i": if (minute &lt; 10) out += "0"; out += string(minute); break;
+        case "s": if (second &lt; 10) out += "0"; out += string(second); break;
+        case "a": if (hour24 &lt; 12) out += "am" else out += "pm"; break;
+        case "A": if (hour24 &lt; 12) out += "AM" else out += "PM"; break;
+        case "U": out += string(round(date_second_span(dat,25569))); break;
+        case "z": out += string(date_get_day_of_year(dat)-1); break;
+        case "t": out += string(date_days_in_month(month)); break;
+        case "L": out += string(date_leap_year(dat)); break;
+        case "w": out += string(weekday-1); break;
+        case "N": out += string(((weekday+5) mod 7)+1); break;
+        case "W": out += string(week); break;
+        case "c": out += date_format("o-m-dTH:i:s",dat); break;
+        case "r": out += date_format("D, j M Y H:i:s -0000",dat); break;
+        case "\": i += 1; c = string_char_at(str,i);
+        default:  out += c; break;
+        }
+    }
+    return out;
+}
+</code></pre>
+</div><div class="footnote">
+<p id="related">
+date_format, <a href="date_get_easter.html">date_get_easter</a>, <a href="time_string.html">time_string</a>
+</p>
+</div>
+<hr />
+<!-- DISQUS START -->
+<script type="text/javascript">
+	var disqus_developer = true; 
+</script>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    //
+    // var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    //
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://gmlscripts.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=gmlscripts">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<!-- DISQUS END -->
+            <p class="nobottomgap" style="font-size:1px;"></p>
+        </div>
+        <!-- finish roundcorners -->
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+    </div>
+</div>
+<!-- end of main column -->
+
+<!-- Secondary column -->
+<div id="sidebar">
+    <div class="menu">
+        <span class="menu-head">Scripts</span>
+        <ul class="accordion" id="Scripts">
+            <li id="computation" class="computation">
+                <a href="date_format.html#computation">Computation</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
+                    <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
+                    <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
+                    <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
+                    <li><a href="Computation/Geometry/index.html">Geometry</a></li>
+                    <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
+                    <li><a href="Computation/Probability/index.html">Probability</a></li>
+                    <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
+                    <li><a href="Computation/Strings/index.html">Strings</a></li>
+                </ul>
+            </li>
+            <li id="graphics" class="graphics">
+                <a href="date_format.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="date_format.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="date_format.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                </ul>
+            </li>
+            <li id="data_structures" class="data_structures">
+                <a href="date_format.html#data_structures">Data Structures</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
+                    <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
+                    <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
+                </ul>
+            </li>
+            <li id="files" class="files">
+                <a href="date_format.html#files">Files</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
+                </ul>
+            </li>
+            <li id="game_play" class="game_play">
+                <a href="date_format.html#game_play">Game Play</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
+                    <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
+                    <li><a href="Game_Play/Instances/index.html">Instances</a></li>
+                    <li><a href="Game_Play/Movement/index.html">Movement</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="menu-foot"></span>
+    </div>
+</div>
+<!-- end of secondary column -->
+
+<!-- Footer -->
+<div id="footer">
+    <div class="footer-left"></div>
+    <div class="footer-right"><a href="date_format.html#" id="xot"><img title="web by xot" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+</div>
+<script type="text/javascript">prettyPrint();</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript"><!--
+_uacct = "UA-103560-3";
+urchinTracker();
+// -->
+</script>
+<!-- DISQUS START -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/gmlscripts/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+<!-- DISQUS END -->
+</body>
+</html>

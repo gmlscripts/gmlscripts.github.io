@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<title>GMLscripts.com :: ds_map_mirror</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js?v=20150118"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css?v=20150119"></link>
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css"></link>
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css?v=20150120"></link>
+<link rel="stylesheet" type="text/css" href="../contrast.css"></link>
+<link rel="icon" type="image/gif" href="../favicon.gif" />
+<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+</head>
+<body>
+<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<!-- Header -->
+<div id="header">
+    <img id="contrast" src="../images/30/_note.png" title="Invert" />
+    <div class="header-left"></div>
+    <div class="header-right">
+        <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
+        <a href="index.html" class="nav">Scripts</a><a href="../license.html" class="nav">License</a><a href="../#" class="nav">Forums</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a><a href="http://feeds.feedburner.com/gmljoint" class="nav">Subscribe</a>
+    </div>
+</div>
+
+<!-- Main column -->
+<div id="container">
+    <div id="content">
+        <!-- start roundcorners -->
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="inside">
+<h1>ds_map_mirror</h1>
+<dl class="dictionary script">
+<dt><a href="ds_map_mirror.html">ds_map_mirror(id)</a></dt>
+<dd>Exchanges map keys with map values.</dd>
+</dl>
+<div class="codebox script">
+<pre><code class="prettyprint lang-gml">/// ds_map_mirror(id)
+//
+//  Exchanges map keys with map values.
+//
+//      id          map data structure, real
+//
+/// GMLscripts.com/license
+{
+    var dsid,temp,key,val;
+    dsid = argument0;
+    temp = ds_map_create();
+    key = ds_map_find_first(dsid);
+    val = ds_map_find_value(dsid,key);
+    ds_map_add(temp,val,key);
+    repeat (ds_map_size(dsid)-1) {
+        key = ds_map_find_next(dsid,key);
+        val = ds_map_find_value(dsid,key);
+        ds_map_add(temp,val,key);    
+    }
+    ds_map_copy(dsid,temp);
+    ds_map_destroy(temp);
+    return 0;
+}
+</code></pre>
+</div><div class="footnote">
+<p id="related">
+<a href="ds_map_load.html">ds_map_load</a>, ds_map_mirror, <a href="ds_map_save.html">ds_map_save</a>
+</p>
+</div>
+<hr />
+<!-- DISQUS START -->
+<script type="text/javascript">
+	var disqus_developer = true; 
+</script>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    //
+    // var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    //
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://gmlscripts.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=gmlscripts">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<!-- DISQUS END -->
+            <p class="nobottomgap" style="font-size:1px;"></p>
+        </div>
+        <!-- finish roundcorners -->
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+    </div>
+</div>
+<!-- end of main column -->
+
+<!-- Secondary column -->
+<div id="sidebar">
+    <div class="menu">
+        <span class="menu-head">Scripts</span>
+        <ul class="accordion" id="Scripts">
+            <li id="computation" class="computation">
+                <a href="ds_map_mirror.html#computation">Computation</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
+                    <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
+                    <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
+                    <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
+                    <li><a href="Computation/Geometry/index.html">Geometry</a></li>
+                    <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
+                    <li><a href="Computation/Probability/index.html">Probability</a></li>
+                    <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
+                    <li><a href="Computation/Strings/index.html">Strings</a></li>
+                </ul>
+            </li>
+            <li id="graphics" class="graphics">
+                <a href="ds_map_mirror.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="ds_map_mirror.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="ds_map_mirror.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                </ul>
+            </li>
+            <li id="data_structures" class="data_structures">
+                <a href="ds_map_mirror.html#data_structures">Data Structures</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
+                    <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
+                    <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
+                </ul>
+            </li>
+            <li id="files" class="files">
+                <a href="ds_map_mirror.html#files">Files</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
+                </ul>
+            </li>
+            <li id="game_play" class="game_play">
+                <a href="ds_map_mirror.html#game_play">Game Play</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
+                    <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
+                    <li><a href="Game_Play/Instances/index.html">Instances</a></li>
+                    <li><a href="Game_Play/Movement/index.html">Movement</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="menu-foot"></span>
+    </div>
+</div>
+<!-- end of secondary column -->
+
+<!-- Footer -->
+<div id="footer">
+    <div class="footer-left"></div>
+    <div class="footer-right"><a href="ds_map_mirror.html#" id="xot"><img title="web by xot" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+</div>
+<script type="text/javascript">prettyPrint();</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript"><!--
+_uacct = "UA-103560-3";
+urchinTracker();
+// -->
+</script>
+<!-- DISQUS START -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/gmlscripts/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+<!-- DISQUS END -->
+</body>
+</html>

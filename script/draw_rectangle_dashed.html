@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<title>GMLscripts.com :: draw_rectangle_dashed</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js?v=20150118"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css?v=20150119"></link>
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css"></link>
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css?v=20150120"></link>
+<link rel="stylesheet" type="text/css" href="../contrast.css"></link>
+<link rel="icon" type="image/gif" href="../favicon.gif" />
+<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+</head>
+<body>
+<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<!-- Header -->
+<div id="header">
+    <img id="contrast" src="../images/30/_note.png" title="Invert" />
+    <div class="header-left"></div>
+    <div class="header-right">
+        <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
+        <a href="index.html" class="nav">Scripts</a><a href="../license.html" class="nav">License</a><a href="../#" class="nav">Forums</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a><a href="http://feeds.feedburner.com/gmljoint" class="nav">Subscribe</a>
+    </div>
+</div>
+
+<!-- Main column -->
+<div id="container">
+    <div id="content">
+        <!-- start roundcorners -->
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="inside">
+<h1>draw_rectangle_dashed</h1>
+<dl class="dictionary script">
+<dt><a href="draw_rectangle_dashed.html">draw_rectangle_dashed(x1,y1,x2,y2,size)</a></dt>
+<dd>Draws a rectangle made of dashes of a given size.</dd>
+</dl>
+<div class="codebox script">
+<pre><code class="prettyprint lang-gml">/// draw_rectangle_dashed(x1,y1,x2,y2,size)
+//
+//  Draws a rectangle made of dashes of a given size.
+//  If no size is given, single pixel dots are used.
+//  Creates a sprite, 2x2 pixels in size, and a pair
+//  of global variables the first it is called.
+//
+//      x1,y1       1st corner of the rectangle, real
+//      x2,y2       2nd corner of the rectangle, real
+//      size        length of the dashes in pixels, real (optional)   
+//
+/// GMLscripts.com/license
+{
+    // initialize the script on the first call
+    if (!variable_global_exists("_DRAW_RECT_DASH_SPR")) {
+        var i,j,k,l;
+        i = draw_getpixel(0,0);
+        j = draw_getpixel(1,0);
+        k = draw_getpixel(0,1);
+        l = draw_getpixel(1,1);
+        draw_point_color(0,0,c_white);
+        draw_point_color(1,0,c_black);
+        draw_point_color(0,1,c_black);
+        draw_point_color(1,1,c_white);
+        global._DRAW_RECT_DASH_SPR = sprite_create_from_screen(0,0,2,2,0,1,0,0,0,0);
+        global._DRAW_RECT_DASH_TEX = sprite_get_texture(global._DRAW_RECT_DASH_SPR,0);
+        draw_point_color(0,0,i);
+        draw_point_color(1,0,j);
+        draw_point_color(0,1,k);
+        draw_point_color(1,1,l);
+    }
+
+    // main script begin
+    var x1,y1,x2,y2,u1,v1,u2,v2,color,alpha;
+    x1 = min(argument0,argument2);
+    y1 = min(argument1,argument3);
+    x2 = max(argument0,argument2);
+    y2 = max(argument1,argument3);
+
+    // scale and center texture UV coordinates
+    argument4 = max(1,argument4);
+    u2 = (x2-x1)/(2*argument4);
+    v2 = (y2-y1)/(2*argument4);
+    u1 = 0.25  - (u2 mod 2) / 2;
+    v1 = 0.25  - (v2 mod 2) / 2;
+    u2 += u1;
+    v2 += v1;
+
+    // draw textured rectangle using the default color and alpha
+    color = draw_get_color();
+    alpha = draw_get_alpha();
+    texture_set_repeat(1);    
+    draw_primitive_begin_texture(pr_linestrip, global._DRAW_RECT_DASH_TEX);
+    draw_vertex_texture_color(x1, y1, u1, v1, color, alpha);
+    draw_vertex_texture_color(x2, y1, u2, v1, color, alpha);
+    draw_vertex_texture_color(x2, y2, u2, v2, color, alpha);
+    draw_vertex_texture_color(x1, y2, u1, v2, color, alpha);
+    draw_vertex_texture_color(x1, y1, u1, v1, color, alpha);
+    draw_primitive_end(); 
+    return 0;
+}
+</code></pre>
+</div><div class="footnote">
+<p id="related">
+<a href="draw_arc.html">draw_arc</a>, <a href="draw_chord.html">draw_chord</a>, <a href="draw_crosshair.html">draw_crosshair</a>, <a href="draw_crosshair_ext.html">draw_crosshair_ext</a>, <a href="draw_crosshair_width.html">draw_crosshair_width</a>, <a href="draw_crosshair_width_ext.html">draw_crosshair_width_ext</a>, <a href="draw_curve.html">draw_curve</a>, <a href="draw_pie.html">draw_pie</a>, draw_rectangle_dashed, <a href="draw_rectangle_dashed_color.html">draw_rectangle_dashed_color</a>, <a href="draw_rectangle_inverted.html">draw_rectangle_inverted</a>, <a href="draw_roundrect_ext.html">draw_roundrect_ext</a>
+</p>
+</div>
+<hr />
+<!-- DISQUS START -->
+<script type="text/javascript">
+	var disqus_developer = true; 
+</script>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    //
+    // var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    //
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://gmlscripts.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=gmlscripts">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<!-- DISQUS END -->
+            <p class="nobottomgap" style="font-size:1px;"></p>
+        </div>
+        <!-- finish roundcorners -->
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+    </div>
+</div>
+<!-- end of main column -->
+
+<!-- Secondary column -->
+<div id="sidebar">
+    <div class="menu">
+        <span class="menu-head">Scripts</span>
+        <ul class="accordion" id="Scripts">
+            <li id="computation" class="computation">
+                <a href="draw_rectangle_dashed.html#computation">Computation</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
+                    <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
+                    <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
+                    <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
+                    <li><a href="Computation/Geometry/index.html">Geometry</a></li>
+                    <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
+                    <li><a href="Computation/Probability/index.html">Probability</a></li>
+                    <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
+                    <li><a href="Computation/Strings/index.html">Strings</a></li>
+                </ul>
+            </li>
+            <li id="graphics" class="graphics">
+                <a href="draw_rectangle_dashed.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="draw_rectangle_dashed.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="draw_rectangle_dashed.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                </ul>
+            </li>
+            <li id="data_structures" class="data_structures">
+                <a href="draw_rectangle_dashed.html#data_structures">Data Structures</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
+                    <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
+                    <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
+                </ul>
+            </li>
+            <li id="files" class="files">
+                <a href="draw_rectangle_dashed.html#files">Files</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
+                </ul>
+            </li>
+            <li id="game_play" class="game_play">
+                <a href="draw_rectangle_dashed.html#game_play">Game Play</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
+                    <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
+                    <li><a href="Game_Play/Instances/index.html">Instances</a></li>
+                    <li><a href="Game_Play/Movement/index.html">Movement</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="menu-foot"></span>
+    </div>
+</div>
+<!-- end of secondary column -->
+
+<!-- Footer -->
+<div id="footer">
+    <div class="footer-left"></div>
+    <div class="footer-right"><a href="draw_rectangle_dashed.html#" id="xot"><img title="web by xot" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+</div>
+<script type="text/javascript">prettyPrint();</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript"><!--
+_uacct = "UA-103560-3";
+urchinTracker();
+// -->
+</script>
+<!-- DISQUS START -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/gmlscripts/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+<!-- DISQUS END -->
+</body>
+</html>

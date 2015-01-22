@@ -1,0 +1,29 @@
+#contrast {
+    float:right;
+    margin:4px 4px;
+    opacity:0.5;
+}
+html.filter {
+    -webkit-filter: invert(1.0);
+    filter: invert(1.0);
+}
+.filter img {
+    -webkit-filter: invert(1.0);
+    filter: invert(1.0);
+}
+.filter iframe {
+    -webkit-filter: invert(1.0);
+    filter: invert(1.0);
+}
+.filter #disqus_thread {
+    -webkit-filter: invert(1.0);
+    filter: invert(1.0);
+}
+.filter #home {
+    -webkit-filter: invert(1.0);
+    filter: invert(1.0);
+}
+.filter #xot {
+    -webkit-filter: invert(1.0);
+    filter: invert(1.0);
+}
