@@ -24,9 +24,7 @@
 .pun .codebox pre code {
 	display: inline-block;
 	padding: 0.75em;
-	font-family: "Courier New", Courier, monospace;
-	font-size: 14px;
-	line-height: normal;
+	font-family: 'DejaVu Sans Mono', consolas, monaco, monospace;
 	tab-size: 4;
 	}
 	
@@ -39,7 +37,7 @@
 	
 .codebox pre.vscroll,
 .pun .codebox pre.vscroll {
-	/* height:auto; */ 
+	height:auto;
 	}
 	
 div[class*="codebox"] pre code,

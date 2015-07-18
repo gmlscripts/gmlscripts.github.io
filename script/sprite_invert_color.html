@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>GMLscripts.com :: sprite_invert_color</title>
+<link rel="icon" type="image/gif" href="../favicon.gif" />
+<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
+</head>
+<body >
+<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<!-- Header -->
+<div id="header">
+    <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
+    <div class="header-left"></div>
+    <div class="header-right">
+        <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
+        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+    </div>
+</div>
+
+<!-- Main column -->
+<div id="container">
+    <div id="content">
+        <!-- start roundcorners -->
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="inside">
+<h1>sprite_invert_color</h1>
+<p><img class="float-right" src="../images/sprite_invert_color.gif" alt="sprite_invert_color()" title="sprite_invert_color()" \/></p>
+<p>This script will permanently change the colors of a sprite resource to
+inverted colors, eg. black to white, yellow to blue, etc. It is a can be
+a slow process, especially for large sprites or sprites with many frames.</p>
+<p>For scripts which can draw sprites inverted in real-time, see
+<a href="draw_sprite_inverted.html">draw_sprite_inverted()</a> and <a href="draw_sprite_inverted_ext.html">draw_sprite_inverted_ext()</a>.</p>
+<dl class="dictionary script">
+<dt><a href="sprite_invert_color.html">sprite_invert_color(sprite)</a></dt>
+<dd>Inverts the colors of a given sprite.</dd>
+</dl>
+<div class="codebox script">
+<pre><code class="prettyprint lang-gml">/// sprite_invert_color(sprite)
+//
+//  Inverts the colors of a given sprite. No new sprites are 
+//  created, the given sprite is change. Returns (-1) on error.
+//
+//      sprite      sprite to change
+//
+/// GMLscripts.com
+{
+    var sprite,w,h,n,xo,yo,surf,a,i,newsprite,alphasprite;
+    sprite = argument0;
+
+    w  = sprite_get_width(sprite);
+    h  = sprite_get_height(sprite);
+    n  = sprite_get_number(sprite);
+    xo = sprite_get_xoffset(sprite);
+    yo = sprite_get_yoffset(sprite);
+
+    surf = surface_create(w,h);
+    if (surf &lt; 0) return -1;
+    surface_set_target(surf);
+    a = draw_get_alpha();
+    draw_set_alpha(1);
+    for (i=0; i&lt;n; i+=1) {
+        draw_clear_alpha(c_white,1);
+        draw_set_blend_mode_ext(bm_zero,bm_inv_src_color);
+        draw_sprite(sprite,i,xo,yo);
+        draw_set_blend_mode(bm_add);
+        draw_rectangle_color(0,0,w,h,c_black,c_black,c_black,c_black,false);
+        if (i == 0) {
+            newsprite = sprite_create_from_surface(surf,0,0,w,h,false,false,xo,yo);
+            if (newsprite &lt; 0) {
+                surface_free(surf);
+                return -1;
+            }
+        }else{
+            sprite_add_from_surface(newsprite,surf,0,0,w,h,false,false);
+        }
+        draw_clear_alpha(c_white,1);
+        draw_set_blend_mode_ext(bm_zero,bm_src_alpha);
+        draw_sprite(sprite,i,xo,yo);
+        if (i == 0) {
+            alphasprite = sprite_create_from_surface(surf,0,0,w,h,false,false,xo,yo);
+            if (alphasprite &lt; 0) {
+                sprite_delete(newsprite);
+                surface_free(surf)
+                return -1;
+            }
+        }else{
+            sprite_add_from_surface(alphasprite,surf,0,0,w,h,false,false);
+        }
+        draw_set_blend_mode(bm_normal);
+    }
+    draw_set_alpha(a);
+    surface_reset_target();
+    sprite_assign(sprite,newsprite);
+    sprite_set_alpha_from_sprite(sprite,alphasprite);
+    sprite_delete(newsprite);
+    sprite_delete(alphasprite);
+    surface_free(surf);
+    return 0;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="sprite_desaturate.html">sprite_desaturate</a>, <a href="sprite_edit_begin.html">sprite_edit_begin</a>, <strong>sprite_invert_color</strong>, <a href="sprite_replace_color.html">sprite_replace_color</a>, <a href="sprite_replace_color_blend.html">sprite_replace_color_blend</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Resources/Sprites/sprite_invert_color.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Resources/Sprites/sprite_invert_color.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Resources/Sprites/sprite_invert_color.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Resources/Sprites/sprite_invert_color.gml" target="_blank">Raw</a>
+</p>
+
+<!--
+
+sprite_invert_color
+===================
+
+![right](/images/sprite_invert_color.gif "sprite_invert_color()")
+
+This script will permanently change the colors of a sprite resource to 
+inverted colors, eg. black to white, yellow to blue, etc. It is a can be 
+a slow process, especially for large sprites or sprites with many frames.
+
+For scripts which can draw sprites inverted in real-time, see 
+[draw_sprite_inverted()] and [draw_sprite_inverted_ext()].
+
+sprite_invert_color(sprite)
+:   Inverts the colors of a given sprite.
+
+````````````````````````````````````````````````````````````````````````````
+/// sprite_invert_color(sprite)
+//
+//  Inverts the colors of a given sprite. No new sprites are 
+//  created, the given sprite is change. Returns (-1) on error.
+//
+//      sprite      sprite to change
+//
+/// GMLscripts.com
+{
+    var sprite,w,h,n,xo,yo,surf,a,i,newsprite,alphasprite;
+    sprite = argument0;
+
+    w  = sprite_get_width(sprite);
+    h  = sprite_get_height(sprite);
+    n  = sprite_get_number(sprite);
+    xo = sprite_get_xoffset(sprite);
+    yo = sprite_get_yoffset(sprite);
+    
+    surf = surface_create(w,h);
+    if (surf < 0) return -1;
+    surface_set_target(surf);
+    a = draw_get_alpha();
+    draw_set_alpha(1);
+    for (i=0; i<n; i+=1) {
+        draw_clear_alpha(c_white,1);
+        draw_set_blend_mode_ext(bm_zero,bm_inv_src_color);
+        draw_sprite(sprite,i,xo,yo);
+        draw_set_blend_mode(bm_add);
+        draw_rectangle_color(0,0,w,h,c_black,c_black,c_black,c_black,false);
+        if (i == 0) {
+            newsprite = sprite_create_from_surface(surf,0,0,w,h,false,false,xo,yo);
+            if (newsprite < 0) {
+                surface_free(surf);
+                return -1;
+            }
+        }else{
+            sprite_add_from_surface(newsprite,surf,0,0,w,h,false,false);
+        }
+        draw_clear_alpha(c_white,1);
+        draw_set_blend_mode_ext(bm_zero,bm_src_alpha);
+        draw_sprite(sprite,i,xo,yo);
+        if (i == 0) {
+            alphasprite = sprite_create_from_surface(surf,0,0,w,h,false,false,xo,yo);
+            if (alphasprite < 0) {
+                sprite_delete(newsprite);
+                surface_free(surf)
+                return -1;
+            }
+        }else{
+            sprite_add_from_surface(alphasprite,surf,0,0,w,h,false,false);
+        }
+        draw_set_blend_mode(bm_normal);
+    }
+    draw_set_alpha(a);
+    surface_reset_target();
+    sprite_assign(sprite,newsprite);
+    sprite_set_alpha_from_sprite(sprite,alphasprite);
+    sprite_delete(newsprite);
+    sprite_delete(alphasprite);
+    surface_free(surf);
+    return 0;
+}
+
+````````````````````````````````````````````````````````````````````````````
+
+contributors: xot
+
+[draw_sprite_inverted()]: /script/draw_sprite_inverted
+[draw_sprite_inverted_ext()]: /script/draw_sprite_inverted_ext
+
+
+-->
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
+    var disqus_identifier = '/script/sprite_invert_color';
+    var disqus_url = ''+disqus_identifier;
+    
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+            <p class="nobottomgap" style="font-size:1px;"></p>
+        </div>
+        <!-- finish roundcorners -->
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+    </div>
+</div>
+<!-- end of main column -->
+
+<!-- Secondary column -->
+<div id="sidebar">
+    <div class="menu">
+        <span class="menu-head">Scripts</span>
+        <ul class="accordion" id="Scripts">
+            <li id="computation" class="computation">
+                <a href="sprite_invert_color.html#computation">Computation</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
+                    <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
+                    <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
+                    <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Data_Hashing/index.html">Data Hashing</a></li>
+                    <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
+                    <li><a href="Computation/Geometry/index.html">Geometry</a></li>
+                    <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
+                    <li><a href="Computation/Probability/index.html">Probability</a></li>
+                    <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
+                    <li><a href="Computation/Strings/index.html">Strings</a></li>
+                </ul>
+            </li>
+            <li id="data_structures" class="data_structures">
+                <a href="sprite_invert_color.html#data_structures">Data Structures</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Arrays/index.html">Arrays</a></li>
+                    <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
+                    <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
+                    <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
+                </ul>
+            </li>
+            <li id="files" class="files">
+                <a href="sprite_invert_color.html#files">Files</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
+                </ul>
+            </li>
+            <li id="game_play" class="game_play">
+                <a href="sprite_invert_color.html#game_play">Game Play</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
+                    <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
+                    <li><a href="Game_Play/Instances/index.html">Instances</a></li>
+                    <li><a href="Game_Play/Movement/index.html">Movement</a></li>
+                </ul>
+            </li>
+            <li id="graphics" class="graphics">
+                <a href="sprite_invert_color.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="sprite_invert_color.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="sprite_invert_color.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                    <li><a href="Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="menu-foot"></span>
+    </div>
+</div>
+<!-- end of secondary column -->
+
+<!-- Footer -->
+<div id="footer">
+    <div class="footer-left"></div>
+    <div class="footer-right"><a href="sprite_invert_color.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+</div>
+<script type="text/javascript">prettyPrint();</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript"><!--
+_uacct = "UA-103560-3";
+urchinTracker();
+// -->
+</script>
+<!-- DISQUS START -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/gmlscripts/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+<!-- DISQUS END -->
+</body>
+</html>

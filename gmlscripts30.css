@@ -21,7 +21,7 @@ noscript div {
 
 a img { border:none; }
 
-a:link    { font-weight: bold; color: #FC7C13; text-decoration:none;   }
+a:link    { font-weight: bold; color: #FC7C13; text-decoration:none;      } /* 252,124,19 */
 a:active  { font-weight: bold; color: #FFCC33; text-decoration:underline; }
 a:visited { font-weight: bold; color: #FC7C13; text-decoration:none;      }
 a:hover   { font-weight: bold; color: #FFCC33; text-decoration:underline; }
@@ -30,7 +30,9 @@ a:hover   { font-weight: bold; color: #FFCC33; text-decoration:underline; }
 p {
     line-height:1.5em;
 }
-
+li p {
+    margin:0;
+}
 h1 {
     background:transparent;
     color:#EEE;
@@ -58,14 +60,15 @@ hr {
     background-color:#EE6622;
 }
 
-blockquote {
+.inside blockquote {
     margin-left:0px;
-    font-style:italic;
-    border-left:8px solid #555;
-    padding-left:12px;
+    font-size:0.95em;
+    padding-left:24px;
+    background-image:url(/images/30/bg_quote.png);
+    background-repeat:repeat-y;
 }
 
-blockquote blockquote {
+.inside blockquote blockquote {
     border-left:none;
 }
 
@@ -76,7 +79,7 @@ blockquote blockquote {
 
 .blogdate {
     color: #000000; 
-    background: transparent url(/images/30/bg_blogdate.gif) no-repeat top left;
+    background:#F80 url(/images/30/bg_blogdate.gif) no-repeat top left;
     text-align:center;
     vertical-align:middle;
     width:192px;
@@ -88,16 +91,17 @@ blockquote blockquote {
     padding-top:0px;
     float: right;
     display:block;
+    border-radius:10px;
 }
 
 .float-left {
     float: left;
-    margin: 0 16px 16px 0;
+    margin: 3px 16px 3px 0px;
 }
 
 .float-right {
     float: right;
-    margin: 0 0 16px 16px;
+    margin: 3px 0px 3px 16px;
 }
 
 .dictionary {
@@ -115,6 +119,11 @@ blockquote blockquote {
     border-bottom:1px #102026 solid;
 	border-radius:5px;
 }
+dl.dictionary.recent::before {
+    content: url(/images/30/_recent.png);
+    float: right;
+    margin-left: 2px;
+}
 
 dl.script {
 	border-radius:5px 5px 0 0;
@@ -129,8 +138,8 @@ div.script {
 .dictionary a:visited { font-weight: bold; color: #DDDDDD; text-decoration:none;      }
 .dictionary a:hover   { font-weight: bold; color: #EEEEEE; text-decoration:underline; }
 
-dt { display:inline-block; font-weight:bold; }
-dd { display:inline; margin-left:1em; }
+.dictionary dt { display:inline-block; font-weight:bold; }
+.dictionary dd { display:inline; margin-left:1em; }
 
 .example {
 	width:90%;
@@ -174,6 +183,7 @@ dd { display:inline; margin-left:1em; }
 .demo iframe {
     margin-top:4px;
     border:1px solid #555;
+    display:block;
 }
 
 p.note {
@@ -194,6 +204,13 @@ p.note::before {
     top:3px;
     padding-right:6px;
 }
+p.note::after {
+  content: '';
+  display: table;
+}
+p.note::after {
+  clear: both;
+}
 
 p.warning {
     font-style:italic;
@@ -213,21 +230,66 @@ p.warning::before {
     top:3px;
     padding-right:6px;
 }
+p.warning::after {
+  content: '';
+  display: table;
+}
+p.warning::after {
+  clear: both;
+}
+
+#ajax {
+    padding:100px;
+    text-align:center;
+}
 
 .footnote {
     font-size: 11px;
     line-height:normal;
 }
 
-#related,#history,#contributors,#lastmodified,#thanks { text-align:left; }
-#related { font-weight:bold; }
+#contributors,
+#related,
+#history,
+#github,
+#lastmodified,
+#thanks { text-align:left; font-size:0.8em; }
+
+#contributors::before {
+    content:url(/images/30/_contributors.png);
+    position:relative;
+    top:3px;
+    padding-right:6px;
+}
+#related::before {
+    content:url(/images/30/_related.png);
+    position:relative;
+    top:3px;
+    padding-right:6px;
+}
+#history::before {
+    content:url(/images/30/_history.png);
+    position:relative;
+    top:3px;
+    padding-right:6px;
+}
+#github::before {
+    content:url(/images/30/_github.png);
+    position:relative;
+    top:3px;
+    padding-right:6px;
+}
 #related      img { padding-right:0.5em; vertical-align:middle; }
 #history      img { padding-right:0.5em; vertical-align:middle; }
+#github      img { padding-right:0.5em; vertical-align:middle; }
 #contributors img { padding-right:0.5em; vertical-align:middle; }
 #lastmodified img { padding-right:0.5em; vertical-align:middle; }
 #thanks       img { padding-right:0.5em; vertical-align:middle; }
 
 
+.mathjax {
+    display:none;
+}
 
 /* BBCode/FluxBB integration */
 span.bbs {
@@ -296,7 +358,7 @@ span.bbu {
 	background-image: url(/images/30/inside.gif);
 	background-repeat: repeat-x;
 	background-position: top left;
-    color: #CCC;
+    color: #BBB;
     padding-left: 15px;
     padding-right:15px;
 	line-height: 1.5em;
@@ -348,16 +410,28 @@ a.nav:hover {
 }
 
 a.throb {
-    -webkit-animation: navthrobber 1s linear 1s infinite alternate; /* Chrome, Safari, Opera */
-    animation: navthrobber 1s linear 1s infinite alternate;
+    -webkit-animation: navthrobber0 1s linear 0s infinite alternate;
+    animation: navthrobber0 1s linear 0s infinite alternate;
 }
-@-webkit-keyframes navthrobber { /* Chrome, Safari, Opera */
+@-webkit-keyframes navthrobber0 {
     from { color: #FC7C13; }
     to   { color: #FFCC33; }
 }
-@keyframes navthrobber {
+@keyframes navthrobber0 {
     from { color: #FC7C13; }
     to   { color: #FFCC33; }
+}
+a.throb:hover {
+    -webkit-animation: navthrobber1 1s linear 0s infinite alternate;
+    animation: navthrobber1 1s linear 0s infinite alternate;
+}
+@-webkit-keyframes navthrobber1 {
+    from { color: #000000; }
+    to   { color: #D92C00; }
+}
+@keyframes navthrobber1 {
+    from { color: #000000; }
+    to   { color: #D92C00; }
 }
 
 

@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: draw_background_tiled_area_ext</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript" src="../cookie.js"></script>
-<script type="text/javascript" src="../accordionmenu.js"></script>
-<script type="text/javascript" src="../contrast.js"></script>
-<script type="text/javascript" src="../prettify/prettify.js"></script>
-<script type="text/javascript" src="../prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="../prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="../accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="../gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="../contrast.css"></link>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="../images/30/_note.png" title="Invert" />
+    <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../license.html" class="nav">License</a><a href="../#" class="nav">Forums</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -38,12 +41,15 @@
         <div class="top-right"></div>
         <div class="inside">
 <h1>draw_background_tiled_area_ext</h1>
+<p>Draws a repeated background image, tiled to fill a given region and with
+a given offset. </p>
+<div class="codebox demo"><span>Mouse over to move origin offset.<iframe frameborder="0" scrolling="no" width="512" height="192" src="https://dl.dropboxusercontent.com/u/32623406/gmlscripts.com/demos/draw_background_tiled_area_ext/index.html"></iframe><a href="https://dl.dropboxusercontent.com/u/32623406/gmlscripts.com/demos/draw_background_tiled_area_ext/draw_background_tiled_area_ext.gmz">Download</a></span></div>
 <dl class="dictionary script">
-<dt><a href="draw_background_tiled_area_ext.html">draw_background_tiled_area_ext(background,x,y,x1,y2,x2,y2)</a></dt>
+<dt><a href="draw_background_tiled_area_ext.html">draw_background_tiled_area_ext(background,x,y,x1,y2,x2,y2,color,alpha)</a></dt>
 <dd>Draws a repeated background image, tiled to fill a given region and with a given offset.</dd>
 </dl>
 <div class="codebox script">
-<pre><code class="prettyprint lang-gml">/// draw_background_tiled_area_ext(background,x,y,x1,y2,x2,y2)
+<pre><code class="prettyprint lang-gml">/// draw_background_tiled_area_ext(background,x,y,x1,y2,x2,y2,color,alpha)
 //
 //  Draws a repeated background image, tiled to fill a given region and with
 //  a given offset. 
@@ -91,35 +97,115 @@
             if(y2 &lt;= j+bh) height = ((bh)-(j+bh-y2)+1)-top;
             else height = bh-top;
 
-            draw_background_part_ext(bg,left,top,width,height,X,Y,1,1,argument8,argument9);
+            draw_background_part_ext(bg,left,top,width,height,X,Y,1,1,argument7,argument8);
         }
         j = jj;
     }
+    return 0;
 }
 </code></pre>
-</div><div class="footnote">
-<p id="related">
-<a href="draw_background_tiled_area.html">draw_background_tiled_area</a>, draw_background_tiled_area_ext
-</p>
 </div>
+<p id="contributors">
+Contributors: EyeGuy, rinkuhero
+</p>
+<p id="related">
+Related: <a href="draw_background_tiled_area.html">draw_background_tiled_area</a>, <strong>draw_background_tiled_area_ext</strong>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Backgrounds/draw_background_tiled_area_ext.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Backgrounds/draw_background_tiled_area_ext.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Backgrounds/draw_background_tiled_area_ext.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Backgrounds/draw_background_tiled_area_ext.gml" target="_blank">Raw</a>
+</p>
+
+<!--
+
+draw_background_tiled_area_ext
+==============================
+
+Draws a repeated background image, tiled to fill a given region and with
+a given offset. 
+
+demo: draw_background_tiled_area_ext 512 192
+Mouse over to move origin offset.
+
+draw_background_tiled_area_ext(background,x,y,x1,y2,x2,y2,color,alpha)
+:   Draws a repeated background image, tiled to fill a given region and with a given offset.
+
+````````````````````````````````````````````````````````````````````````````
+/// draw_background_tiled_area_ext(background,x,y,x1,y2,x2,y2,color,alpha)
+//
+//  Draws a repeated background image, tiled to fill a given region and with
+//  a given offset. 
+//
+//      background  background to be drawn
+//      x,y         origin offset, real
+//      x1,y1       top-left corner of tiled area, real
+//      x2,y2       bottom-right corner of tiled area, real
+//      color       color blending, real
+//      alpha       alpha blending, real
+//
+/// GMLscripts.com/license
+{
+    var bg,xx,yy,x1,y1,x2,y2;
+    bg = argument0;
+    xx = argument1;
+    yy = argument2;
+    x1 = argument3;
+    y1 = argument4;
+    x2 = argument5;
+    y2 = argument6;
+    
+    var bw,bh,i,j,jj,left,top,width,height,X,Y;
+    bw = background_get_width(bg);
+    bh = background_get_height(bg);
+    
+    i = x1-((x1 mod bw) - (xx mod bw)) - bw*((x1 mod bw)<(xx mod bw));
+    j = y1-((y1 mod bh) - (yy mod bh)) - bh*((y1 mod bh)<(yy mod bh)); 
+    jj = j;
+    
+    for(i=i; i<=x2; i+=bw) {
+        for(j=j; j<=y2; j+=bh) {
+        
+            if(i <= x1) left = x1-i;
+            else left = 0;
+            X = i+left;
+            
+            if(j <= y1) top = y1-j;
+            else top = 0;
+            Y = j+top;
+            
+            if(x2 <= i+bw) width = ((bw)-(i+bw-x2)+1)-left;
+            else width = bw-left;
+            
+            if(y2 <= j+bh) height = ((bh)-(j+bh-y2)+1)-top;
+            else height = bh-top;
+            
+            draw_background_part_ext(bg,left,top,width,height,X,Y,1,1,argument7,argument8);
+        }
+        j = jj;
+    }
+    return 0;
+}
+
+````````````````````````````````````````````````````````````````````````````
+
+contributors: EyeGuy, rinkuhero
+
+
+-->
 <hr />
 <!-- DISQUS START -->
-<script type="text/javascript">
-	var disqus_developer = true; 
-</script>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    //
-    // var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
-    //
-  (function() {
-   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-   dsq.src = 'http://gmlscripts.disqus.com/embed.js';
-   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+    var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
+    var disqus_identifier = '/script/draw_background_tiled_area_ext';
+    var disqus_url = ''+disqus_identifier;
+    
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=gmlscripts">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
             <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
@@ -142,6 +228,7 @@
                     <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
                     <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
                     <li><a href="Computation/Geometry/index.html">Geometry</a></li>
                     <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -150,34 +237,10 @@
                     <li><a href="Computation/Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="draw_background_tiled_area_ext.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Graphics/3D/index.html">3D</a></li>
-                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="Graphics/Color/index.html">Color</a></li>
-                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="draw_background_tiled_area_ext.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="draw_background_tiled_area_ext.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="draw_background_tiled_area_ext.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
@@ -198,6 +261,33 @@
                     <li><a href="Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="draw_background_tiled_area_ext.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="draw_background_tiled_area_ext.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="draw_background_tiled_area_ext.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                    <li><a href="Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -207,7 +297,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="draw_background_tiled_area_ext.html#" id="xot"><img title="web by xot" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="draw_background_tiled_area_ext.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

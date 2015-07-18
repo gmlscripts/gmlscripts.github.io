@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: instance_find_enemy</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript" src="../cookie.js"></script>
-<script type="text/javascript" src="../accordionmenu.js"></script>
-<script type="text/javascript" src="../contrast.js"></script>
-<script type="text/javascript" src="../prettify/prettify.js"></script>
-<script type="text/javascript" src="../prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="../prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="../accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="../gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="../contrast.css"></link>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="../images/30/_note.png" title="Invert" />
+    <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../license.html" class="nav">License</a><a href="../#" class="nav">Forums</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -66,29 +69,70 @@
     return selected;
 }
 </code></pre>
-</div><div class="footnote">
-<p id="related">
-<a href="deceleration_distance.html">deceleration_distance</a>, <a href="instance_closest_approach.html">instance_closest_approach</a>, instance_find_enemy, <a href="instance_find_friend.html">instance_find_friend</a>, <a href="instance_find_team.html">instance_find_team</a>, <a href="instance_nth_farthest.html">instance_nth_farthest</a>, <a href="instance_nth_nearest.html">instance_nth_nearest</a>
-</p>
 </div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="deceleration_distance.html">deceleration_distance</a>, <a href="instance_closest_approach.html">instance_closest_approach</a>, <strong>instance_find_enemy</strong>, <a href="instance_find_friend.html">instance_find_friend</a>, <a href="instance_find_team.html">instance_find_team</a>, <a href="instance_nearest_notme.html">instance_nearest_notme</a>, <a href="instance_nth_farthest.html">instance_nth_farthest</a>, <a href="instance_nth_nearest.html">instance_nth_nearest</a>, <a href="instance_singleton.html">instance_singleton</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Instances/instance_find_enemy.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Instances/instance_find_enemy.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Instances/instance_find_enemy.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Instances/instance_find_enemy.gml" target="_blank">Raw</a>
+</p>
+
+<!--
+
+instance_find_enemy
+===================
+
+instance_find_enemy(object)
+:   Returns the nearest instance of an object whose local variable "team" has a different value than the calling instance, or noone if no instance is found.
+
+````````````````````````````````````````````````````````````````````````````
+/// instance_find_enemy(object)
+//
+//  Returns the nearest instance of an object whose local
+//  variable "team" has a different value than the calling
+//  instance, or noone if no instance is found.
+//
+//      object      object to look for (or all), real
+//
+/// GMLscripts.com/license
+{
+    var ds,selected;
+    ds = ds_priority_create();
+    ds_priority_add(ds,noone,100000000);
+    with (argument0) {
+        if (team != other.team) {
+            ds_priority_add(ds,id,point_distance(x,y,other.x,other.y));
+        }
+    }
+    selected = ds_priority_find_min(ds);
+    ds_priority_destroy(ds);
+    return selected;
+}
+
+````````````````````````````````````````````````````````````````````````````
+
+contributors: xot
+
+
+-->
 <hr />
 <!-- DISQUS START -->
-<script type="text/javascript">
-	var disqus_developer = true; 
-</script>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    //
-    // var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
-    //
-  (function() {
-   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-   dsq.src = 'http://gmlscripts.disqus.com/embed.js';
-   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+    var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
+    var disqus_identifier = '/script/instance_find_enemy';
+    var disqus_url = ''+disqus_identifier;
+    
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=gmlscripts">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
             <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
@@ -111,6 +155,7 @@
                     <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
                     <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
                     <li><a href="Computation/Geometry/index.html">Geometry</a></li>
                     <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -119,34 +164,10 @@
                     <li><a href="Computation/Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="instance_find_enemy.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Graphics/3D/index.html">3D</a></li>
-                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="Graphics/Color/index.html">Color</a></li>
-                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="instance_find_enemy.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="instance_find_enemy.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="instance_find_enemy.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
@@ -167,6 +188,33 @@
                     <li><a href="Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="instance_find_enemy.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="instance_find_enemy.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="instance_find_enemy.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                    <li><a href="Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -176,7 +224,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="instance_find_enemy.html#" id="xot"><img title="web by xot" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="instance_find_enemy.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

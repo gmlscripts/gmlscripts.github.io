@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: Computation :: Geometry</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="../../../jquery.min.js"></script>
-<script type="text/javascript" src="../../../cookie.js"></script>
-<script type="text/javascript" src="../../../accordionmenu.js"></script>
-<script type="text/javascript" src="../../../contrast.js"></script>
-<script type="text/javascript" src="../../../prettify/prettify.js"></script>
-<script type="text/javascript" src="../../../prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="../../../contrast.css"></link>
 <link rel="icon" type="image/gif" href="../../../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../../../jquery.min.js"></script>
+<script type="text/javascript" src="../../../prettify/prettify.js"></script>
+<script type="text/javascript" src="../../../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../../../cookie.js"></script>
+<script type="text/javascript" src="../../../contrast.js"></script>
+<script type="text/javascript" src="../../../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../../../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="../../../images/30/_note.png" title="Invert" />
+    <img id="contrast" src="../../../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../../../index.html" id="home"><img src="../../../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="../../index.html" class="nav">Scripts</a><a href="../../../license.html" class="nav">License</a><a href="../../../#" class="nav">Forums</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="../../index.html" class="nav">Scripts</a><a href="../../../#" class="nav">Forums</a><a href="../../../license.html" class="nav">License</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="../../../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -38,9 +41,9 @@
         <div class="top-right"></div>
         <div class="inside">
 <h1>Computation :: Geometry</h1>
-<dl class="dictionary">
-<dt><a href="../../angle_difference.html">angle_difference(angle1, angle2)</a></dt>
-<dd>Returns the relative angle [-180..180] between the given angles.</dd>
+<dl class="dictionary recent">
+<dt><a href="../../cone_volume.html">cone_volume(radius,height)</a></dt>
+<dd>Returns the volume of a cone of a given radius and height.</dd>
 </dl>
 <dl class="dictionary">
 <dt><a href="../../is_clockwise.html">is_clockwise(x1,y1,x2,y2,x3,y3)</a></dt>
@@ -81,7 +84,63 @@
 <dl class="dictionary">
 <dt><a href="../../polygon_to_triangles.html">polygon_to_triangles(polygon)</a></dt>
 <dd>Returns a list of triangles created from a given 2D polygon.</dd>
-</dl>            <p class="nobottomgap" style="font-size:1px;"></p>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="../../sphere_volume.html">sphere_volume(radius)</a></dt>
+<dd>Returns the volume of a sphere of a given radius.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="../../triangle_side_area.html">triangle_side_area(side1,side2,side3)</a></dt>
+<dd>Returns the area of triangle given the length of three sides.</dd>
+</dl>
+<!--
+
+Computation :: Geometry
+=======================
+
+cone_volume(radius,height)
+:   Returns the volume of a cone of a given radius and height.
+
+is_clockwise(x1,y1,x2,y2,x3,y3)
+:   Returns true if the given points are in clockwise order, false otherwise.
+
+line_get_slope(x1,y1,x2,y2)
+:   Returns the slope of the given line.
+
+lines_intersect(x1,y1,x2,y2,x3,y3,x4,y4,segment)
+:   Returns a vector multiplier (t) for an intersection on the first line.
+
+point_in_circle(px,py,cx,cy,rad)
+:   Returns true if the given test point is within the given circle, false otherwise.
+
+point_in_polygon(x,y,polygon)
+:   Returns true if the given test point is inside the given 2D polygon, false otherwise.
+
+point_in_triangle(px,py,x1,y1,x2,y2,x3,y3)
+:   Returns true if the given test point is within the given triangle, falso otherwise.
+
+point_line_distance(px,py,x1,y1,x2,y2,segment)
+:   Returns the distance from the given point to the given line.
+
+polygon_area(polygon)
+:   Returns the internal area of the given polygon.
+
+polygon_centroid(polygon)
+:   Returns the centroid of a given 2D polygon as a ds_list containing a coordiate pair.
+
+polygon_to_triangles(polygon)
+:   Returns a list of triangles created from a given 2D polygon.
+
+sphere_volume(radius)
+:   Returns the volume of a sphere of a given radius.
+
+triangle_side_area(side1,side2,side3)
+:   Returns the area of triangle given the length of three sides.
+
+
+
+-->
+            <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
         <!-- finish roundcorners -->
         <div class="bottom-left"></div>
@@ -102,6 +161,7 @@
                     <li><a href="../Bitwise/index.html">Bitwise</a></li>
                     <li><a href="../Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="../Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="../Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="../Date-Time/index.html">Date-Time</a></li>
                     <li><a href="index.html">Geometry</a></li>
                     <li><a href="../Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -110,34 +170,10 @@
                     <li><a href="../Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="index.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Graphics/3D/index.html">3D</a></li>
-                    <li><a href="../../Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="../../Graphics/Color/index.html">Color</a></li>
-                    <li><a href="../../Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="../../Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="../../Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="../../Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="index.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="index.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="index.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="../../Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="../../Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="../../Data_Structures/Maps/index.html">Maps</a></li>
@@ -158,6 +194,33 @@
                     <li><a href="../../Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="index.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Graphics/3D/index.html">3D</a></li>
+                    <li><a href="../../Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="../../Graphics/Color/index.html">Color</a></li>
+                    <li><a href="../../Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="../../Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="../../Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="../../Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="../../Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="index.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="index.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Resources/Management/index.html">Management</a></li>
+                    <li><a href="../../Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -167,7 +230,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" alt="X" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

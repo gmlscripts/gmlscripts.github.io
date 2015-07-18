@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
-<script type="text/javascript" src="accordionmenu.js"></script>
-<script type="text/javascript" src="contrast.js"></script>
-<script type="text/javascript" src="prettify/prettify.js"></script>
-<script type="text/javascript" src="prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="contrast.css"></link>
 <link rel="icon" type="image/gif" href="favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="prettify/prettify.js"></script>
+<script type="text/javascript" src="prettify/lang-gml.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript" src="contrast.js"></script>
+<script type="text/javascript" src="accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="contrast.css" />
+<link rel="stylesheet" type="text/css" href="accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="images/30/_note.png" title="Invert" />
+    <img id="contrast" src="images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="index.html" id="home"><img src="images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="script/index.html" class="nav">Scripts</a><a href="license.html" class="nav">License</a><a href="#" class="nav">Forums</a><a href="search.html" class="nav">Search</a><a href="#" class="nav">Submit</a><a href="paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="script/index.html" class="nav">Scripts</a><a href="#" class="nav">Forums</a><a href="license.html" class="nav">License</a><a href="search.html" class="nav">Search</a><a href="#" class="nav">Submit</a><a href="paypal.html" class="nav">Donate</a><a href="#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -46,12 +49,102 @@ is never required but is always appreciated.</p>
 by a GameMaker user just like you. If you have a useful script, or have
 improved an existing one, please consider <a href="#">donating</a> it.</p>
 <hr />
-<p><div class="blog"><h2><span class="blogdate">January 1, 2015</span><span><a href="http://beta.gmlscripts.local/forums/viewtopic.php?id=1988&amp;action=new" title="GMLscripts.com 3.0">GMLscripts.com 3.0</a></span></h2><p><span class="postimg" style="float:right;clear:right;margin-left:1em"><img src="images/blogicon-20150101.gif" alt="blogicon-20150101.gif" /></span>Happy New Year!</p><p>It&#039;s a new year and that means I&#039;m currently rolling out the new iteration of GMLscripts.com. This has been a long time coming, and I&#039;ve broken many promises along the way, but it&#039;s finally here.</p><p>There are a number of changes to talk about.</p><p>Obviously, the skin has changed. When I say this is a long time coming, I&#039;m not kidding. This visual design was created over two years ago. I was never very satisfied with it but it is functional. You may need to clear your browser cache or refresh with Shift-F5 in order to see things properly. This look may not be entirely new to you if you&#039;ve ever seen the static version of the site. That&#039;s the site I&#039;ve redirected to a few times when I&#039;ve had hosting issues.</p><p>More important than the look is the content. All of the scripts have been updated for GameMaker: Studio. The old scripts are no longer accessible. An informal Twitter poll of GMLscripts.com users agreed universally there was little point in supporting old versions of GameMaker. That certainly makes things a lot simpler to maintain. However, it&#039;s not all rainbows. There are a few scripts which still need to be tested and fixed. There are some that are completely absent. There are some which have been deprecated. I&#039;ll be ironing out these wrinkles over the next several days.</p><p>The back-end of the site has been completely overhauled. This is the main reason the update has taken so long. I tried a lot of complicated approaches that I didn&#039;t really like. I spent a lot of time and energy on systems that were inferior and redundant. In the end, the new system is similar to the old system but is simpler, more streamlined, more standardized, and more richly featured.</p><p>The forum has also received an update which will require a good deal of manual tweaking. The many modifications to the forum have not carried over to the new version. Posts that used these features will be fixed.</p><p>As this is a beta release, bugs and other problems are expected and will be dealt with as they are discovered.</p><p style="text-align:right; font-size:10px; clear:both;"><em>Posted by xot at 11:42 PM</em> - <a href="http://beta.gmlscripts.local/forums/viewtopic.php?id=1988&amp;action=new">Comments: 0</a></p></div><hr /></p>
-<p><span style="text-align:center; display:block;"><a href="news.html">Read More News</a></span></p><hr />
+<div class="blog"><h2><span class="blogdate">July 1, 2015</span><span><a href="/forums/viewtopic.php?id=2030&amp;action=new" title="Monthly Update for July">Monthly Update for July</a></span></h2><p>Somewhat slow month here in contrast with a lot going on in the corporeal realm. Abnormal is the new normal.</p><p>No changes to the site itself except one very minor cosmetic tweak. I&#039;d hoped to implement a new caching system this past month but I didn&#039;t have the time.</p><p>However, some lovely people donated some new scripts, including a handful from RaniSputnik via our second Git pull request. Thanks to him, veteran iFredQC, and newcomer GameGoblin. Additional thanks to Threef who submitted some scripts currently <a href="/forums/viewtopic.php?id=2026" rel="nofollow">under review</a>.</p><ul><li><p><a href="/script/ds_map_clone" rel="nofollow">ds_map_clone</a> — Clones a map simply to a new copy and returns the created map.</p></li><li><p><a href="/script/ds_map_deep_clone" rel="nofollow">ds_map_deep_clone</a> — Clones a map deeply to a new copy, cloning any nested maps and lists, and returning the created root map.</p></li><li><p><a href="/script/ds_map_default_value" rel="nofollow">ds_map_default_value</a> — Returns the value of a key from a given map, inserting a default value into the map if the key does not yet exist.</p></li><li><p><a href="/script/instance_nearest_notme" rel="nofollow">instance_nearest_notme</a> — Returns the nearest instance to a given point, disregarding the calling instance.</p></li><li><p><a href="/script/instance_singleton" rel="nofollow">instance_singleton</a> — Returns a single instance of the given object, creating one if no instance exists.</p></li><li><p><a href="/script/cone_volume" rel="nofollow">cone_volume</a> — Returns the volume of a cone of a given radius and height.</p></li><li><p><a href="/script/sphere_volume" rel="nofollow">sphere_volume</a> — Returns the volume of a sphere of a given radius.</p></li><li><p><a href="/script/triangle_side_area" rel="nofollow">triangle_side_area</a> — Returns the area of triangle given the length of three sides.</p></li></ul><p><span class="bbu">Stats from June</span></p><p>Website: 1 commit, 1 file changed, 1 insertion(+), 1 deletion(-)</p><p>Scripts: 17 commits, 17 files changed, 238 insertions(+)</p><p style="text-align:right; font-size:10px; clear:both;"><em>Posted by xot at 01:00 AM</em> - <a href="/forums/viewtopic.php?id=2030&amp;action=new">Comments: 1</a></p></div>
+<p><span style="text-align:center; display:block;"><a href="news.html">Read More News</a></span></p>
+<hr />
+<h2>Recent Changes</h2>
+<dl class="dictionary recent">
+<dt><a href="script/cone_volume.html">cone_volume(radius,height)</a></dt>
+<dd>Returns the volume of a cone of a given radius and height.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/ds_map_deep_clone.html">ds_map_deep_clone(map)</a></dt>
+<dd>Clones a map deeply to a new copy, cloning any nested maps and lists, and returning the created root map.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/ds_map_clone.html">ds_map_clone(map)</a></dt>
+<dd>Clones a map simply to a new copy and returns the created map.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/triangle_side_area.html">triangle_side_area(side1,side2,side3)</a></dt>
+<dd>Returns the area of triangle given the length of three sides.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/instance_nearest_notme.html">instance_nearest_notme(x,y,obj)</a></dt>
+<dd>Returns the nearest instance to a given point, disregarding the calling instance.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/sphere_volume.html">sphere_volume(radius)</a></dt>
+<dd>Returns the volume of a sphere of a given radius.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/instance_singleton.html">instance_singleton(object)</a></dt>
+<dd>Returns a single instance of the given object, creating one if no instance exists.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/ds_map_default_value.html">ds_map_default_value(map,key,val)</a></dt>
+<dd>Returns the value of a key from a given map, inserting a default value into the map if the key does not yet exist.</dd>
+</dl>
+<!--
+
+Welcome
+=======
+
+The mission of [GMLscripts.com](/) is to provide the highest quality 
+[GameMaker: Studio][yoyo] scripts available. These GML scripts are 
+[completely free](/license) for use in your GameMaker projects. Credit 
+is never required but is always appreciated.
+
+This is a collaboration. Every script on this website has been donated 
+by a GameMaker user just like you. If you have a useful script, or have 
+improved an existing one, please consider [donating](/submit) it.
+
+[yoyo]: http://www.yoyogames.com/studio "YoYo Games"
+
+------------------------------------------------------------------------
+
+latestnews:
+
+<span style="text-align:center; display:block;">[Read More News](/news)</span>
+
+------------------------------------------------------------------------
+
+Recent Changes
+--------------
+
+cone_volume(radius,height)
+:   Returns the volume of a cone of a given radius and height.
+
+ds_map_deep_clone(map)
+:   Clones a map deeply to a new copy, cloning any nested maps and lists, and returning the created root map.
+
+ds_map_clone(map)
+:   Clones a map simply to a new copy and returns the created map.
+
+triangle_side_area(side1,side2,side3)
+:   Returns the area of triangle given the length of three sides.
+
+instance_nearest_notme(x,y,obj)
+:   Returns the nearest instance to a given point, disregarding the calling instance.
+
+sphere_volume(radius)
+:   Returns the volume of a sphere of a given radius.
+
+instance_singleton(object)
+:   Returns a single instance of the given object, creating one if no instance exists.
+
+ds_map_default_value(map,key,val)
+:   Returns the value of a key from a given map, inserting a default value into the map if the key does not yet exist.
+
+
+
+
+-->
+<hr />
 <!-- DISQUS START -->
 <div id="recentcomments" class="dsq-widget">
-    <h2 class="dsq-widget-title">Recent Comments</h2>
-    <script type="text/javascript" src="http://disqus.com/forums/gmlscripts/recent_comments_widget.js?num_items=5&amp;hide_avatars=0&amp;avatar_size=24&amp;excerpt_length=200"></script>
+<h2 class="dsq-widget-title">Recent Comments</h2>
+<script type="text/javascript" src="http://gmlscripts.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=0&amp;avatar_size=24&amp;excerpt_length=200"></script>
 </div>
 <a href="http://disqus.com/">Powered by Disqus</a>
 <!-- DISQUS END -->
@@ -76,6 +169,7 @@ improved an existing one, please consider <a href="#">donating</a> it.</p>
                     <li><a href="script/Computation/Bitwise/index.html">Bitwise</a></li>
                     <li><a href="script/Computation/Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="script/Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="script/Computation/Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="script/Computation/Date-Time/index.html">Date-Time</a></li>
                     <li><a href="script/Computation/Geometry/index.html">Geometry</a></li>
                     <li><a href="script/Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -84,34 +178,10 @@ improved an existing one, please consider <a href="#">donating</a> it.</p>
                     <li><a href="script/Computation/Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="index.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="script/Graphics/3D/index.html">3D</a></li>
-                    <li><a href="script/Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="script/Graphics/Color/index.html">Color</a></li>
-                    <li><a href="script/Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="script/Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="script/Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="script/Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="index.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="script/Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="script/Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="index.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="script/Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="index.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="script/Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="script/Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="script/Data_Structures/Maps/index.html">Maps</a></li>
@@ -132,6 +202,33 @@ improved an existing one, please consider <a href="#">donating</a> it.</p>
                     <li><a href="script/Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="index.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Graphics/3D/index.html">3D</a></li>
+                    <li><a href="script/Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="script/Graphics/Color/index.html">Color</a></li>
+                    <li><a href="script/Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="script/Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="script/Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="script/Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="script/Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="index.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="script/Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="index.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Resources/Management/index.html">Management</a></li>
+                    <li><a href="script/Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -141,7 +238,7 @@ improved an existing one, please consider <a href="#">donating</a> it.</p>
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" src="images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" alt="X" src="images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

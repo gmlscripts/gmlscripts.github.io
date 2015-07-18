@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: roll_dice</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript" src="../cookie.js"></script>
-<script type="text/javascript" src="../accordionmenu.js"></script>
-<script type="text/javascript" src="../contrast.js"></script>
-<script type="text/javascript" src="../prettify/prettify.js"></script>
-<script type="text/javascript" src="../prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="../prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="../accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="../gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="../contrast.css"></link>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="../images/30/_note.png" title="Invert" />
+    <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../license.html" class="nav">License</a><a href="../#" class="nav">Forums</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -40,49 +43,82 @@
 <h1>roll_dice</h1>
 <dl class="dictionary script">
 <dt><a href="roll_dice.html">roll_dice(num,sides)</a></dt>
-<dd>Returns the sum of a number of die rolls using dice with a given number of sides. eg. roll_dice(3,6) == (4 + 2 + 5) == 11</dd>
+<dd>Returns the sum of a number of die rolls using dice with a given number of sides.</dd>
 </dl>
 <div class="codebox script">
 <pre><code class="prettyprint lang-gml">/// roll_dice(num,sides)
 //
-//  Returns the sum of a number of die rolls 
-//  using dice with a given number of sides.
-//  eg. roll_dice(3,6) == (4 + 2 + 5) == 11
+//  Returns the sum of a number of die rolls using dice with a given
+//  number of sides. For example, roll_dice(3,6) will produce a range
+//  of values from 3 to 18 with a mean value of 10.5.
 //
-//      num         number of dice to roll, real
-//      sides       number of sides on each die, real
+//      num         number of dice to roll, integer
+//      sides       number of sides on each die, integer
 //
 /// GMLscripts.com/license
 {
-    var sum;
-    sum = 0;
+    var sum = 0;
     repeat (argument0) sum += floor(random(argument1))+1;
     return sum;
 }
 </code></pre>
-</div><div class="footnote">
-<p id="related">
-<a href="combination.html">combination</a>, <a href="erf.html">erf</a>, <a href="exp_dist.html">exp_dist</a>, <a href="factorial.html">factorial</a>, <a href="gauss.html">gauss</a>, <a href="permutation.html">permutation</a>, roll_dice
-</p>
 </div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="combination.html">combination</a>, <a href="erf.html">erf</a>, <a href="exp_dist.html">exp_dist</a>, <a href="factorial.html">factorial</a>, <a href="gauss.html">gauss</a>, <a href="permutation.html">permutation</a>, <strong>roll_dice</strong>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Probability/roll_dice.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Probability/roll_dice.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Probability/roll_dice.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Probability/roll_dice.gml" target="_blank">Raw</a>
+</p>
+
+<!--
+
+roll_dice
+=========
+
+roll_dice(num,sides)
+:   Returns the sum of a number of die rolls using dice with a given number of sides.
+
+````````````````````````````````````````````````````````````````````````````
+/// roll_dice(num,sides)
+//
+//  Returns the sum of a number of die rolls using dice with a given
+//  number of sides. For example, roll_dice(3,6) will produce a range
+//  of values from 3 to 18 with a mean value of 10.5.
+//
+//      num         number of dice to roll, integer
+//      sides       number of sides on each die, integer
+//
+/// GMLscripts.com/license
+{
+    var sum = 0;
+    repeat (argument0) sum += floor(random(argument1))+1;
+    return sum;
+}
+
+````````````````````````````````````````````````````````````````````````````
+
+contributors: xot
+
+
+-->
 <hr />
 <!-- DISQUS START -->
-<script type="text/javascript">
-	var disqus_developer = true; 
-</script>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    //
-    // var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
-    //
-  (function() {
-   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-   dsq.src = 'http://gmlscripts.disqus.com/embed.js';
-   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+    var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
+    var disqus_identifier = '/script/roll_dice';
+    var disqus_url = ''+disqus_identifier;
+    
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=gmlscripts">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
             <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
@@ -105,6 +141,7 @@
                     <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
                     <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
                     <li><a href="Computation/Geometry/index.html">Geometry</a></li>
                     <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -113,34 +150,10 @@
                     <li><a href="Computation/Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="roll_dice.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Graphics/3D/index.html">3D</a></li>
-                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="Graphics/Color/index.html">Color</a></li>
-                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="roll_dice.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="roll_dice.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="roll_dice.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
@@ -161,6 +174,33 @@
                     <li><a href="Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="roll_dice.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="roll_dice.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="roll_dice.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                    <li><a href="Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -170,7 +210,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="roll_dice.html#" id="xot"><img title="web by xot" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="roll_dice.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>GMLscripts.com :: crc16</title>
+<link rel="icon" type="image/gif" href="../favicon.gif" />
+<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../prettify/prettify.js"></script>
+<script type="text/javascript" src="../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../cookie.js"></script>
+<script type="text/javascript" src="../contrast.js"></script>
+<script type="text/javascript" src="../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
+</head>
+<body >
+<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<!-- Header -->
+<div id="header">
+    <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
+    <div class="header-left"></div>
+    <div class="header-right">
+        <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
+        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+    </div>
+</div>
+
+<!-- Main column -->
+<div id="container">
+    <div id="content">
+        <!-- start roundcorners -->
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="inside">
+<h1>crc16</h1>
+<p>Performs a cyclic redundancy check on a string.</p>
+<p><a href="http://en.wikipedia.org/wiki/Cyclic_redundancy_check">Wikipedia</a>:</p>
+<blockquote>
+<p>A cyclic redundancy check (CRC) is a type of function that takes as input
+a data stream of any length, and produces as output a value of a certain
+space, commonly a 32-bit integer. The term CRC is often used to denote
+either the function or the function's output. A CRC can be used as a
+checksum to detect alteration of data during transmission or storage.
+CRCs are popular because they are simple to implement in binary hardware,
+are easy to analyze mathematically, and are particularly good at detecting
+common errors caused by noise in transmission channels. The CRC was
+invented by W. Wesley Peterson, and published in his 1961 paper.</p>
+</blockquote>
+<div class="codebox example">
+<pre><code class="prettyprint lang-gml">crc16();                    //  initialize
+text = "Hello World";
+hash = crc16(text);         //  hash == 0x4D25
+hash = crc16(text,true);    //  hash == 0xB126</code></pre>
+</div>
+<p class="note"><span>NOTE:</span> This uses the common 16-bit CRC16-CCITT algorithm (with two modes
+of operation) used in X.25, V.41, CDMA, Bluetooth, XMODEM, PPP, IrDA,
+BACnet, and other protocols.</p>
+<p class="note"><span>NOTE:</span> This script requires initialization to use. To ready the script
+for use it must first be called without any arguments. This only needs
+to be done once.</p>
+<dl class="dictionary script">
+<dt><a href="crc16.html">crc16(str [,mode])</a></dt>
+<dd>Returns a CRC16-CCITT hash value for a given string.</dd>
+</dl>
+<div class="codebox script">
+<pre><code class="prettyprint lang-gml">/// crc16(str [,mode])
+//
+//  Returns a CRC16-CCITT hash value for a given string.
+//
+//  This script requires initialization to use. To ready the 
+//  script for use it must first be called without any arguments. 
+//  This only needs to be done once.
+//
+//      str     data to hash with CRC16-CCITT, string
+//      mode    set to TRUE for pedantic "good" mode, boolean (optional)
+//
+//  Notes:
+//      For speed, this creates a lookup table in the form of a global array
+//      called _CRC16tab[]. It features two modes of operation. The "bad" mode
+//      is the common implementation found most places. The "good" mode is an
+//      implementation that is closer to the actual CRC16-CCITT specification.
+//
+/// GMLscripts.com/license
+{
+    if (argument_count == 0) {
+        // Initialize lookup table.
+        var tab;
+        tab  = "00000041290825812387165162064524774289033303237161412904541949548536775780661935";
+        tab += "04657005281291508786211731704429431253023768933560459474181854205500766246358334";
+        tab += "09314133790105605121258302989517572216374234646411340883815358862629275060454669";
+        tab += "13907098420564901584304232635822165181004693942874386813461663455593905519751132";
+        tab += "18628227572675830887021120624110242143715166055789597906391935144392734327447403";
+        tab += "23285191563141527286067690264014899107705631752188644476031839801356724793143802";
+        tab += "27814318791968423749112981536303168072336084664911527165678144330483953620040265";
+        tab += "32407283422427720212158911182607761036966543961374573095324448923448584079336728";
+        tab += "37256331934551441451535164945361774577110422400161124820841920484164212874224679";
+        tab += "33721377844197946042499815404458239623020068904752089471301016949210122520729270";
+        tab += "46570424433831234185628305870354572504451353809411052800115329798256712154017413";
+        tab += "42971470983471338840592316335850973551000993914066016810580826199303261794122068";
+        tab += "55628515656375859695393683530547498434352259618533307262666306336022731446610403";
+        tab += "52093561566022364286358333989643963480261906123124271913125402801068641093114994";
+        tab += "64814606875668452557485544442740424362973178227655236521952515522113950739203265";
+        tab += "61215653425308557212449554908236825409522818332310200532418011923160500379307920";
+        for (var i=0; i&lt;256; i++) {
+            global._CRC16tab[i] = real(string_copy(tab, i*5+1, 5));
+        }
+        return 0;
+    }
+
+    var str,crc,len,pos,byte;
+    str = argument[0];
+    crc = $FFFF;
+    if (argument_count == 2 &amp;&amp; argument[1]) crc = $1D0F;
+    len = string_length(str);
+    pos = 1;
+    repeat(len) {
+        byte = ord(string_char_at(str, pos));
+        crc = ((crc&lt;&lt;8)^global._CRC16tab[((crc&gt;&gt;8)^byte)&amp;$FF])&amp;$FFFF;
+        pos += 1;
+    }
+    return crc;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <strong>crc16</strong>, <a href="md2.html">md2</a>, <a href="soundex.html">soundex</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Hashing/crc16.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Hashing/crc16.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Hashing/crc16.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Hashing/crc16.gml" target="_blank">Raw</a>
+</p>
+
+<!--
+
+crc16
+=====
+
+Performs a cyclic redundancy check on a string.
+
+[Wikipedia]:
+> A cyclic redundancy check (CRC) is a type of function that takes as input
+> a data stream of any length, and produces as output a value of a certain 
+> space, commonly a 32-bit integer. The term CRC is often used to denote 
+> either the function or the function's output. A CRC can be used as a 
+> checksum to detect alteration of data during transmission or storage. 
+> CRCs are popular because they are simple to implement in binary hardware, 
+> are easy to analyze mathematically, and are particularly good at detecting 
+> common errors caused by noise in transmission channels. The CRC was 
+> invented by W. Wesley Peterson, and published in his 1961 paper.
+
+[Wikipedia]: http://en.wikipedia.org/wiki/Cyclic_redundancy_check
+
+    crc16();                    //  initialize
+    text = "Hello World";
+    hash = crc16(text);         //  hash == 0x4D25
+    hash = crc16(text,true);    //  hash == 0xB126
+    
+Note: This uses the common 16-bit CRC16-CCITT algorithm (with two modes 
+of operation) used in X.25, V.41, CDMA, Bluetooth, XMODEM, PPP, IrDA, 
+BACnet, and other protocols.
+
+Note: This script requires initialization to use. To ready the script
+for use it must first be called without any arguments. This only needs
+to be done once.
+
+crc16(str [,mode])
+:   Returns a CRC16-CCITT hash value for a given string.
+
+````````````````````````````````````````````````````````````````````````````
+/// crc16(str [,mode])
+//
+//  Returns a CRC16-CCITT hash value for a given string.
+//
+//  This script requires initialization to use. To ready the 
+//  script for use it must first be called without any arguments. 
+//  This only needs to be done once.
+//
+//      str     data to hash with CRC16-CCITT, string
+//      mode    set to TRUE for pedantic "good" mode, boolean (optional)
+//
+//  Notes:
+//      For speed, this creates a lookup table in the form of a global array
+//      called _CRC16tab[]. It features two modes of operation. The "bad" mode
+//      is the common implementation found most places. The "good" mode is an
+//      implementation that is closer to the actual CRC16-CCITT specification.
+//
+/// GMLscripts.com/license
+{
+    if (argument_count == 0) {
+        // Initialize lookup table.
+        var tab;
+        tab  = "00000041290825812387165162064524774289033303237161412904541949548536775780661935";
+        tab += "04657005281291508786211731704429431253023768933560459474181854205500766246358334";
+        tab += "09314133790105605121258302989517572216374234646411340883815358862629275060454669";
+        tab += "13907098420564901584304232635822165181004693942874386813461663455593905519751132";
+        tab += "18628227572675830887021120624110242143715166055789597906391935144392734327447403";
+        tab += "23285191563141527286067690264014899107705631752188644476031839801356724793143802";
+        tab += "27814318791968423749112981536303168072336084664911527165678144330483953620040265";
+        tab += "32407283422427720212158911182607761036966543961374573095324448923448584079336728";
+        tab += "37256331934551441451535164945361774577110422400161124820841920484164212874224679";
+        tab += "33721377844197946042499815404458239623020068904752089471301016949210122520729270";
+        tab += "46570424433831234185628305870354572504451353809411052800115329798256712154017413";
+        tab += "42971470983471338840592316335850973551000993914066016810580826199303261794122068";
+        tab += "55628515656375859695393683530547498434352259618533307262666306336022731446610403";
+        tab += "52093561566022364286358333989643963480261906123124271913125402801068641093114994";
+        tab += "64814606875668452557485544442740424362973178227655236521952515522113950739203265";
+        tab += "61215653425308557212449554908236825409522818332310200532418011923160500379307920";
+        for (var i=0; i<256; i++) {
+            global._CRC16tab[i] = real(string_copy(tab, i*5+1, 5));
+        }
+        return 0;
+    }
+    
+    var str,crc,len,pos,byte;
+    str = argument[0];
+    crc = $FFFF;
+    if (argument_count == 2 && argument[1]) crc = $1D0F;
+    len = string_length(str);
+    pos = 1;
+    repeat(len) {
+        byte = ord(string_char_at(str, pos));
+        crc = ((crc<<8)^global._CRC16tab[((crc>>8)^byte)&$FF])&$FFFF;
+        pos += 1;
+    }
+    return crc;
+}
+
+````````````````````````````````````````````````````````````````````````````
+
+contributors: xot
+
+
+-->
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
+    var disqus_identifier = '/script/crc16';
+    var disqus_url = ''+disqus_identifier;
+    
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+            <p class="nobottomgap" style="font-size:1px;"></p>
+        </div>
+        <!-- finish roundcorners -->
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+    </div>
+</div>
+<!-- end of main column -->
+
+<!-- Secondary column -->
+<div id="sidebar">
+    <div class="menu">
+        <span class="menu-head">Scripts</span>
+        <ul class="accordion" id="Scripts">
+            <li id="computation" class="computation">
+                <a href="crc16.html#computation">Computation</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
+                    <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
+                    <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
+                    <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="Computation/Data_Hashing/index.html">Data Hashing</a></li>
+                    <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
+                    <li><a href="Computation/Geometry/index.html">Geometry</a></li>
+                    <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
+                    <li><a href="Computation/Probability/index.html">Probability</a></li>
+                    <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
+                    <li><a href="Computation/Strings/index.html">Strings</a></li>
+                </ul>
+            </li>
+            <li id="data_structures" class="data_structures">
+                <a href="crc16.html#data_structures">Data Structures</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Data_Structures/Arrays/index.html">Arrays</a></li>
+                    <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
+                    <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
+                    <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
+                </ul>
+            </li>
+            <li id="files" class="files">
+                <a href="crc16.html#files">Files</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
+                </ul>
+            </li>
+            <li id="game_play" class="game_play">
+                <a href="crc16.html#game_play">Game Play</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
+                    <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
+                    <li><a href="Game_Play/Instances/index.html">Instances</a></li>
+                    <li><a href="Game_Play/Movement/index.html">Movement</a></li>
+                </ul>
+            </li>
+            <li id="graphics" class="graphics">
+                <a href="crc16.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Graphics/3D/index.html">3D</a></li>
+                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="Graphics/Color/index.html">Color</a></li>
+                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="crc16.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="crc16.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Resources/Management/index.html">Management</a></li>
+                    <li><a href="Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="menu-foot"></span>
+    </div>
+</div>
+<!-- end of secondary column -->
+
+<!-- Footer -->
+<div id="footer">
+    <div class="footer-left"></div>
+    <div class="footer-right"><a href="crc16.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+</div>
+<script type="text/javascript">prettyPrint();</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript"><!--
+_uacct = "UA-103560-3";
+urchinTracker();
+// -->
+</script>
+<!-- DISQUS START -->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/gmlscripts/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+<!-- DISQUS END -->
+</body>
+</html>

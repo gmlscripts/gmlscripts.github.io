@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: Graphics :: Sprites</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="../../../jquery.min.js"></script>
-<script type="text/javascript" src="../../../cookie.js"></script>
-<script type="text/javascript" src="../../../accordionmenu.js"></script>
-<script type="text/javascript" src="../../../contrast.js"></script>
-<script type="text/javascript" src="../../../prettify/prettify.js"></script>
-<script type="text/javascript" src="../../../prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="../../../contrast.css"></link>
 <link rel="icon" type="image/gif" href="../../../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../../../jquery.min.js"></script>
+<script type="text/javascript" src="../../../prettify/prettify.js"></script>
+<script type="text/javascript" src="../../../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../../../cookie.js"></script>
+<script type="text/javascript" src="../../../contrast.js"></script>
+<script type="text/javascript" src="../../../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../../../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="../../../images/30/_note.png" title="Invert" />
+    <img id="contrast" src="../../../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../../../index.html" id="home"><img src="../../../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="../../index.html" class="nav">Scripts</a><a href="../../../license.html" class="nav">License</a><a href="../../../#" class="nav">Forums</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="../../index.html" class="nav">Scripts</a><a href="../../../#" class="nav">Forums</a><a href="../../../license.html" class="nav">License</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="../../../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -38,44 +41,116 @@
         <div class="top-right"></div>
         <div class="inside">
 <h1>Graphics :: Sprites</h1>
-<dl class="dictionary">
-<dt><a href="../../draw_self.html">draw_self()</a></dt>
-<dd>Draws the assigned sprite of the calling instance, using its subimage, position, scaling, rotation, and blending settings.</dd>
-</dl>
+<p>Here you will find scripts for drawing sprites in various ways.</p>
 <dl class="dictionary">
 <dt><a href="../../draw_sprite_flip_ext.html">draw_sprite_flip_ext(sprite,subimg,x,y,xscale,yscale,rot,color,alpha,fliph,flipv)</a></dt>
 <dd>Draws a sprite in the same manner as draw_sprite_ext() and can also flip the sprite horizontally and/or vertically.</dd>
+</dl>
+<dl class="dictionary">
+<dt><a href="../../draw_sprite_halfpixel.html">draw_sprite_halfpixel(sprite, subimg, x, y, xscale, yscale, rot, color, alpha)</a></dt>
+<dd>Draws a sprite transformed about the center of its origin pixel instead of the top-left corner.</dd>
 </dl>
 <dl class="dictionary">
 <dt><a href="../../draw_sprite_hud.html">draw_sprite_hud(sprite,subimg,x,y,xscale,yscale,rot,color,alpha)</a></dt>
 <dd>Draws a sprite at a position relative to the top-left corner of the screen, regardless of the current view position or rotation.</dd>
 </dl>
 <dl class="dictionary">
-<dt><a href="../../draw_sprite_inverted.html">draw_sprite_inverted(sprite,subimg,x,y)</a></dt>
-<dd>Draws a sprite with colors inverted.</dd>
+<dt><a href="../../draw_sprite_inverted.html">draw_sprite_inverted(sprite,subimage,x,y)</a></dt>
+<dd>Draws a sprite with inverted colors.</dd>
+</dl>
+<dl class="dictionary">
+<dt><a href="../../draw_sprite_inverted_ext.html">draw_sprite_inverted_ext(sprite,subimage,x,y,xscale,yscale,rot,color,alpha)</a></dt>
+<dd>Draws a sprite with inverted colors.</dd>
 </dl>
 <dl class="dictionary">
 <dt><a href="../../draw_sprite_percent.html">draw_sprite_percent(sprite,percent,x,y,restrict)</a></dt>
 <dd>Draws a sprite using a percentage to select a subimage to draw, the first subimage at 0% and the last subimage at 100%.</dd>
 </dl>
 <dl class="dictionary">
+<dt><a href="../../draw_sprite_rectangle.html">draw_sprite_rectangle(sprite,subimg,x1,y1,x2,y2,left,top,right,bottom)</a></dt>
+<dd>Draws a rectangle using a sprite sliced into 9 sections.</dd>
+</dl>
+<dl class="dictionary">
+<dt><a href="../../draw_sprite_shear.html">draw_sprite_shear(sprite,subimg,x,y,xshear,yshear)</a></dt>
+<dd>Draws a given sprite sheared by a given amount.</dd>
+</dl>
+<dl class="dictionary">
 <dt><a href="../../draw_sprite_stretched_direction.html">draw_sprite_stretched_direction(sprite,subimg,x,y,scale,dir)</a></dt>
 <dd>Draws a sprite scaled along an arbitrary axis.</dd>
-<dd></dd>
-<dd></dd>
+</dl>
+<dl class="dictionary">
+<dt><a href="../../draw_sprite_tiled_area.html">draw_sprite_tiled_area(sprite,subimg,x,y,x1,y2,x2,y2)</a></dt>
+<dd>Draws a repeated sprite image, tiled to fill a given region and with a given offset.</dd>
+</dl>
+<dl class="dictionary">
+<dt><a href="../../draw_sprite_tiled_area_ext.html">draw_sprite_tiled_area_ext(sprite,subimg,x,y,x1,y2,x2,y2,color,alpha)</a></dt>
+<dd>Draws a repeated sprite image, tiled to fill a given region and with a given offset.</dd>
 </dl>
 <dl class="dictionary">
 <dt><a href="../../draw_sprite_wave.html">draw_sprite_wave(sprite,subimg,x,y,axis,wavelength,amplitude,phase)</a></dt>
 <dd>Draws a sprite with wave-like distortion.</dd>
 </dl>
 <dl class="dictionary">
-<dt><a href="../../draw_sprite_wave_ext.html">draw_sprite_wave_ext(sprite,subimg,x,y,axis,wavelength,amplitude,phase,xscale,yscale,blend,alpha)</a></dt>
+<dt><a href="../../draw_sprite_wave_ext.html">draw_sprite_wave_ext(sprite,subimg,x,y,axis,wavelength,amplitude,phase,xscale,yscale,color,alpha)</a></dt>
 <dd>Draws a sprite with wave-like distortion.</dd>
 </dl>
 <dl class="dictionary">
 <dt><a href="../../motion_blur.html">motion_blur(length,direction)</a></dt>
 <dd>Draws the assigned sprite of the calling instance, using its subimage, position, scaling, rotation, and blending settings, with a motion blur effect applied to it.</dd>
-</dl>            <p class="nobottomgap" style="font-size:1px;"></p>
+</dl>
+<!--
+
+Graphics :: Sprites
+===================
+
+Here you will find scripts for drawing sprites in various ways.
+
+draw_sprite_flip_ext(sprite,subimg,x,y,xscale,yscale,rot,color,alpha,fliph,flipv)
+:   Draws a sprite in the same manner as draw_sprite_ext() and can also flip the sprite horizontally and/or vertically.
+
+draw_sprite_halfpixel(sprite, subimg, x, y, xscale, yscale, rot, color, alpha)
+:   Draws a sprite transformed about the center of its origin pixel instead of the top-left corner.
+
+draw_sprite_hud(sprite,subimg,x,y,xscale,yscale,rot,color,alpha)
+:   Draws a sprite at a position relative to the top-left corner of the screen, regardless of the current view position or rotation.
+
+draw_sprite_inverted(sprite,subimage,x,y)
+:   Draws a sprite with inverted colors.
+
+draw_sprite_inverted_ext(sprite,subimage,x,y,xscale,yscale,rot,color,alpha)
+:   Draws a sprite with inverted colors.
+
+draw_sprite_percent(sprite,percent,x,y,restrict)
+:   Draws a sprite using a percentage to select a subimage to draw, the first subimage at 0% and the last subimage at 100%.
+
+draw_sprite_rectangle(sprite,subimg,x1,y1,x2,y2,left,top,right,bottom)
+:   Draws a rectangle using a sprite sliced into 9 sections.
+
+draw_sprite_shear(sprite,subimg,x,y,xshear,yshear)
+:   Draws a given sprite sheared by a given amount.
+
+draw_sprite_stretched_direction(sprite,subimg,x,y,scale,dir)
+:   Draws a sprite scaled along an arbitrary axis.
+
+draw_sprite_tiled_area(sprite,subimg,x,y,x1,y2,x2,y2)
+:   Draws a repeated sprite image, tiled to fill a given region and with a given offset.
+
+draw_sprite_tiled_area_ext(sprite,subimg,x,y,x1,y2,x2,y2,color,alpha)
+:   Draws a repeated sprite image, tiled to fill a given region and with a given offset.
+
+draw_sprite_wave(sprite,subimg,x,y,axis,wavelength,amplitude,phase)
+:   Draws a sprite with wave-like distortion.
+
+draw_sprite_wave_ext(sprite,subimg,x,y,axis,wavelength,amplitude,phase,xscale,yscale,color,alpha)
+:   Draws a sprite with wave-like distortion.
+
+motion_blur(length,direction)
+:   Draws the assigned sprite of the calling instance, using its subimage, position, scaling, rotation, and blending settings, with a motion blur effect applied to it.
+
+
+
+-->
+            <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
         <!-- finish roundcorners -->
         <div class="bottom-left"></div>
@@ -96,6 +171,7 @@
                     <li><a href="../../Computation/Bitwise/index.html">Bitwise</a></li>
                     <li><a href="../../Computation/Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="../../Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="../../Computation/Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="../../Computation/Date-Time/index.html">Date-Time</a></li>
                     <li><a href="../../Computation/Geometry/index.html">Geometry</a></li>
                     <li><a href="../../Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -104,34 +180,10 @@
                     <li><a href="../../Computation/Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="index.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../3D/index.html">3D</a></li>
-                    <li><a href="../Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="../Color/index.html">Color</a></li>
-                    <li><a href="../Drawing/index.html">Drawing</a></li>
-                    <li><a href="index.html">Sprites</a></li>
-                    <li><a href="../Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="../Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="index.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="index.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="index.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="../../Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="../../Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="../../Data_Structures/Maps/index.html">Maps</a></li>
@@ -152,6 +204,33 @@
                     <li><a href="../../Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="index.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../3D/index.html">3D</a></li>
+                    <li><a href="../Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="../Color/index.html">Color</a></li>
+                    <li><a href="../Drawing/index.html">Drawing</a></li>
+                    <li><a href="../Shaders/index.html">Shaders</a></li>
+                    <li><a href="index.html">Sprites</a></li>
+                    <li><a href="../Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="../Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="index.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="index.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Resources/Management/index.html">Management</a></li>
+                    <li><a href="../../Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -161,7 +240,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" alt="X" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

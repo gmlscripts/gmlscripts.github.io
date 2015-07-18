@@ -27,3 +27,12 @@ html.filter {
     -webkit-filter: invert(1.0);
     filter: invert(1.0);
 }
+
+.filter div#toolbar {
+    background-color:#111;
+}
+
+.filter textarea {
+    -webkit-filter: invert(1.0);
+    filter: invert(1.0);
+}

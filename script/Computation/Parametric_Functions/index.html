@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: Computation :: Parametric Functions</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="../../../jquery.min.js"></script>
-<script type="text/javascript" src="../../../cookie.js"></script>
-<script type="text/javascript" src="../../../accordionmenu.js"></script>
-<script type="text/javascript" src="../../../contrast.js"></script>
-<script type="text/javascript" src="../../../prettify/prettify.js"></script>
-<script type="text/javascript" src="../../../prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="../../../contrast.css"></link>
 <link rel="icon" type="image/gif" href="../../../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../../../jquery.min.js"></script>
+<script type="text/javascript" src="../../../prettify/prettify.js"></script>
+<script type="text/javascript" src="../../../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../../../cookie.js"></script>
+<script type="text/javascript" src="../../../contrast.js"></script>
+<script type="text/javascript" src="../../../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../../../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="../../../images/30/_note.png" title="Invert" />
+    <img id="contrast" src="../../../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../../../index.html" id="home"><img src="../../../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="../../index.html" class="nav">Scripts</a><a href="../../../license.html" class="nav">License</a><a href="../../../#" class="nav">Forums</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="../../index.html" class="nav">Scripts</a><a href="../../../#" class="nav">Forums</a><a href="../../../license.html" class="nav">License</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="../../../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -47,20 +50,12 @@
 <dd>Returns 0 when (x &lt;= a), 1 when (x &gt;= b), a linear transition from 0 to 1 when (a &lt; x &lt; b), or (-1) on error (a == b).</dd>
 </dl>
 <dl class="dictionary">
-<dt><a href="../../clamp.html">clamp(x,a,b)</a></dt>
-<dd>Returns a when (x &lt; a), b when (x &gt; b), x otherwise.</dd>
-</dl>
-<dl class="dictionary">
 <dt><a href="../../gain.html">gain(g,x)</a></dt>
 <dd>Returns the given value with a gain function applied to it.</dd>
 </dl>
 <dl class="dictionary">
 <dt><a href="../../gammacorrect.html">gammacorrect(gamma,x)</a>;</dt>
 <dd>Returns the given value with gamma correction applied to it.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="../../lerp.html">lerp(a,b,x)</a></dt>
-<dd>Returns a if x is 0, b if x is 1, for other values of x returns linear interpolation of a to b controlled by x.</dd>
 </dl>
 <dl class="dictionary">
 <dt><a href="../../pulse.html">pulse(a,b,x)</a></dt>
@@ -81,7 +76,43 @@
 <dl class="dictionary">
 <dt><a href="../../step.html">step(a,x)</a></dt>
 <dd>Returns 0 when (x &lt; a), 1 otherwise.</dd>
-</dl>            <p class="nobottomgap" style="font-size:1px;"></p>
+</dl>
+<!--
+
+Computation :: Parametric Functions
+===================================
+
+bias(b,x)
+:   Returns the given value with a bias function applied to it.
+
+boxstep(a,b,x)
+:   Returns 0 when (x <= a), 1 when (x >= b), a linear transition from 0 to 1 when (a < x < b), or (-1) on error (a == b).
+
+gain(g,x)
+:   Returns the given value with a gain function applied to it.
+
+gammacorrect(gamma,x);
+:   Returns the given value with gamma correction applied to it.
+
+pulse(a,b,x)
+:   Returns 1 when (a <= x <= b), 0 otherwise.
+
+smoothstep(a,b,x)
+:   Returns 0 when (x < a), 1 when (x >= b), a smooth transition from 0 to 1 otherwise, or (-1) on error (a == b).
+
+spline(t,knotlist)
+:   Returns the Catmull-Rom interpolation of the given knot values at the given parameter position.
+
+spline4(t,knot1,knot2,knot3,knot4)
+:   Returns the Catmull-Rom interpolation of the given knot values at the given parameter position.
+
+step(a,x)
+:   Returns 0 when (x < a), 1 otherwise.
+
+
+
+-->
+            <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
         <!-- finish roundcorners -->
         <div class="bottom-left"></div>
@@ -102,6 +133,7 @@
                     <li><a href="../Bitwise/index.html">Bitwise</a></li>
                     <li><a href="../Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="../Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="../Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="../Date-Time/index.html">Date-Time</a></li>
                     <li><a href="../Geometry/index.html">Geometry</a></li>
                     <li><a href="index.html">Parametric Functions</a></li>
@@ -110,34 +142,10 @@
                     <li><a href="../Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="index.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Graphics/3D/index.html">3D</a></li>
-                    <li><a href="../../Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="../../Graphics/Color/index.html">Color</a></li>
-                    <li><a href="../../Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="../../Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="../../Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="../../Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="index.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="index.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="index.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="../../Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="../../Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="../../Data_Structures/Maps/index.html">Maps</a></li>
@@ -158,6 +166,33 @@
                     <li><a href="../../Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="index.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Graphics/3D/index.html">3D</a></li>
+                    <li><a href="../../Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="../../Graphics/Color/index.html">Color</a></li>
+                    <li><a href="../../Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="../../Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="../../Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="../../Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="../../Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="index.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="index.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Resources/Management/index.html">Management</a></li>
+                    <li><a href="../../Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -167,7 +202,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" alt="X" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

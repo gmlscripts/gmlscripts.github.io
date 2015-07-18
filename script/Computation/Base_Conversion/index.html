@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: Computation :: Base Conversion</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="../../../jquery.min.js"></script>
-<script type="text/javascript" src="../../../cookie.js"></script>
-<script type="text/javascript" src="../../../accordionmenu.js"></script>
-<script type="text/javascript" src="../../../contrast.js"></script>
-<script type="text/javascript" src="../../../prettify/prettify.js"></script>
-<script type="text/javascript" src="../../../prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="../../../contrast.css"></link>
 <link rel="icon" type="image/gif" href="../../../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../../../jquery.min.js"></script>
+<script type="text/javascript" src="../../../prettify/prettify.js"></script>
+<script type="text/javascript" src="../../../prettify/lang-gml.js"></script>
+<script type="text/javascript" src="../../../cookie.js"></script>
+<script type="text/javascript" src="../../../contrast.js"></script>
+<script type="text/javascript" src="../../../accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="../../../contrast.css" />
+<link rel="stylesheet" type="text/css" href="../../../accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="../../../gmlscripts30.css" />
 </head>
-<body>
+<body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="../../../images/30/_note.png" title="Invert" />
+    <img id="contrast" src="../../../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../../../index.html" id="home"><img src="../../../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="../../index.html" class="nav">Scripts</a><a href="../../../license.html" class="nav">License</a><a href="../../../#" class="nav">Forums</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="../../index.html" class="nav">Scripts</a><a href="../../../#" class="nav">Forums</a><a href="../../../license.html" class="nav">License</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="../../../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -89,7 +92,55 @@
 <dl class="dictionary">
 <dt><a href="../../roman_to_dec.html">roman_to_dec(roman)</a></dt>
 <dd>Returns a decimal integer (real) representing the given Roman numeral string.</dd>
-</dl>            <p class="nobottomgap" style="font-size:1px;"></p>
+</dl>
+<!--
+
+Computation :: Base Conversion
+==============================
+
+base_convert(number,oldbase,newbase)
+:   Returns a string of digits representing the given number converted form one base to another.
+
+bin_to_dec(bin)
+:   Returns a non-negative integer (real) representing the given binary string.
+
+bin_to_fraction(bin)
+:   Returns a decimal fraction (real) representing the given binary string.
+
+bin_to_hex(bin)
+:   Returns a string of hexadecimal digits representing the given binary string.
+
+dec_to_bin(dec)
+:   Returns a string of binary digits (1 bit each) representing the given decimal integer.
+
+dec_to_hex(dec)
+:   Returns a string of hexadecimal digits (16 bits each) representing the given decimal integer.
+
+dec_to_oct(dec)
+:   Returns a string of octal digital (3 bits each) representing the given decimal integer.
+
+dec_to_roman(num)
+:   Returns a string of Roman numerals representing the given integer.
+
+fraction_to_bin(value,size)
+:   Returns a string of binary digits (1 bit each) representing the given decimal fraction.
+
+hex_to_bin(hex)
+:   Returns a string of binary digits (1 bit each) representing the given hexadecimal string.
+
+hex_to_dec(hex)
+:   Returns a decimal integer (real) representing the given hexadeciaml string.
+
+oct_to_dec(oct)
+:   Returns a decimal integer (real) representing the given octal string.
+
+roman_to_dec(roman)
+:   Returns a decimal integer (real) representing the given Roman numeral string.
+
+
+
+-->
+            <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
         <!-- finish roundcorners -->
         <div class="bottom-left"></div>
@@ -110,6 +161,7 @@
                     <li><a href="../Bitwise/index.html">Bitwise</a></li>
                     <li><a href="../Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="../Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="../Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="../Date-Time/index.html">Date-Time</a></li>
                     <li><a href="../Geometry/index.html">Geometry</a></li>
                     <li><a href="../Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -118,34 +170,10 @@
                     <li><a href="../Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="index.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Graphics/3D/index.html">3D</a></li>
-                    <li><a href="../../Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="../../Graphics/Color/index.html">Color</a></li>
-                    <li><a href="../../Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="../../Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="../../Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="../../Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="index.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="index.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="../../Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="index.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="../../Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="../../Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="../../Data_Structures/Maps/index.html">Maps</a></li>
@@ -166,6 +194,33 @@
                     <li><a href="../../Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="index.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Graphics/3D/index.html">3D</a></li>
+                    <li><a href="../../Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="../../Graphics/Color/index.html">Color</a></li>
+                    <li><a href="../../Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="../../Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="../../Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="../../Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="../../Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="index.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="../../Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="index.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="../../Resources/Management/index.html">Management</a></li>
+                    <li><a href="../../Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -175,7 +230,7 @@
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" alt="X" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

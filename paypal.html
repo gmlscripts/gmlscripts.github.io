@@ -1,32 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>GMLscripts.com :: Donate</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="cookie.js"></script>
-<script type="text/javascript" src="accordionmenu.js"></script>
-<script type="text/javascript" src="contrast.js"></script>
-<script type="text/javascript" src="prettify/prettify.js"></script>
-<script type="text/javascript" src="prettify/lang-gml.js?v=20150118"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});</script> <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="stylesheet" type="text/css" href="prettify/prettify.css?v=20150119"></link>
-<link rel="stylesheet" type="text/css" href="accordionmenu30.css"></link>
-<link rel="stylesheet" type="text/css" href="gmlscripts30.css?v=20150120"></link>
-<link rel="stylesheet" type="text/css" href="contrast.css"></link>
 <link rel="icon" type="image/gif" href="favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="http://beta.gmlscripts.local/forums/rss.xml" type="application/rss+xml" />
+<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="prettify/prettify.js"></script>
+<script type="text/javascript" src="prettify/lang-gml.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript" src="contrast.js"></script>
+<script type="text/javascript" src="accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="contrast.css" />
+<link rel="stylesheet" type="text/css" href="accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="gmlscripts30.css" />
 </head>
 <body>
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <!-- Header -->
 <div id="header">
-    <img id="contrast" src="images/30/_note.png" title="Invert" />
+    <img id="contrast" src="images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="index.html" id="home"><img src="images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="script/index.html" class="nav">Scripts</a><a href="license.html" class="nav">License</a><a href="#" class="nav">Forums</a><a href="search.html" class="nav">Search</a><a href="#" class="nav">Submit</a><a href="paypal.html" class="nav">Donate</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="script/index.html" class="nav">Scripts</a><a href="#" class="nav">Forums</a><a href="license.html" class="nav">License</a><a href="search.html" class="nav">Search</a><a href="#" class="nav">Submit</a><a href="paypal.html" class="nav">Donate</a><a href="#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -93,8 +96,8 @@ Donation amount ($1.00 minimum):
 <input type="hidden" name="currency_code" value="USD">
 <input type="hidden" name="shipping" value="0">
 <input type="hidden" name="tax" value="0">
-<input type="hidden" name="cancel_return" value="nopay.html">
-<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate" align="absmiddle"> 
+<input type="hidden" name="cancel_return" value="/nopay.html">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate" align="top"> 
 </form>            <p><small>
             GMLscripts.com is not a charity. Donations are not tax deductable.
             </small></p>
@@ -121,6 +124,7 @@ Donation amount ($1.00 minimum):
                     <li><a href="script/Computation/Bitwise/index.html">Bitwise</a></li>
                     <li><a href="script/Computation/Data_Encoding/index.html">Data Encoding</a></li>
                     <li><a href="script/Computation/Data_Encryption/index.html">Data Encryption</a></li>
+                    <li><a href="script/Computation/Data_Hashing/index.html">Data Hashing</a></li>
                     <li><a href="script/Computation/Date-Time/index.html">Date-Time</a></li>
                     <li><a href="script/Computation/Geometry/index.html">Geometry</a></li>
                     <li><a href="script/Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
@@ -129,34 +133,10 @@ Donation amount ($1.00 minimum):
                     <li><a href="script/Computation/Strings/index.html">Strings</a></li>
                 </ul>
             </li>
-            <li id="graphics" class="graphics">
-                <a href="paypal.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="script/Graphics/3D/index.html">3D</a></li>
-                    <li><a href="script/Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="script/Graphics/Color/index.html">Color</a></li>
-                    <li><a href="script/Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="script/Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="script/Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="script/Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="paypal.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="script/Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="script/Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="paypal.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="script/Resources/Management/index.html">Management</a></li>
-                </ul>
-            </li>
             <li id="data_structures" class="data_structures">
                 <a href="paypal.html#data_structures">Data Structures</a>
                 <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Data_Structures/Arrays/index.html">Arrays</a></li>
                     <li><a href="script/Data_Structures/Grids/index.html">Grids</a></li>
                     <li><a href="script/Data_Structures/Lists/index.html">Lists</a></li>
                     <li><a href="script/Data_Structures/Maps/index.html">Maps</a></li>
@@ -177,6 +157,33 @@ Donation amount ($1.00 minimum):
                     <li><a href="script/Game_Play/Movement/index.html">Movement</a></li>
                 </ul>
             </li>
+            <li id="graphics" class="graphics">
+                <a href="paypal.html#graphics">Graphics</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Graphics/3D/index.html">3D</a></li>
+                    <li><a href="script/Graphics/Backgrounds/index.html">Backgrounds</a></li>
+                    <li><a href="script/Graphics/Color/index.html">Color</a></li>
+                    <li><a href="script/Graphics/Drawing/index.html">Drawing</a></li>
+                    <li><a href="script/Graphics/Shaders/index.html">Shaders</a></li>
+                    <li><a href="script/Graphics/Sprites/index.html">Sprites</a></li>
+                    <li><a href="script/Graphics/Surfaces/index.html">Surfaces</a></li>
+                    <li><a href="script/Graphics/Text/index.html">Text</a></li>
+                </ul>
+            </li>
+            <li id="interaction" class="interaction">
+                <a href="paypal.html#interaction">Interaction</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Interaction/Gamepad/index.html">Gamepad</a></li>
+                    <li><a href="script/Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="resources" class="resources">
+                <a href="paypal.html#resources">Resources</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Resources/Management/index.html">Management</a></li>
+                    <li><a href="script/Resources/Sprites/index.html">Sprites</a></li>
+                </ul>
+            </li>
         </ul>
         <span class="menu-foot"></span>
     </div>
@@ -186,7 +193,7 @@ Donation amount ($1.00 minimum):
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="paypal.html#" id="xot"><img title="web by xot" src="images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="paypal.html#" id="xot"><img title="web by xot" alt="X" src="images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
