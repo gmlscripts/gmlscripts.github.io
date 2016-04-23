@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: draw_sprite_tiled_area_ext</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="draw_sprite_tiled_area_ext.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="draw_sprite_tiled_area_ext.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="draw_sprite_tiled_area_ext.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -117,92 +116,13 @@ Related: <a href="draw_sprite_flip_ext.html">draw_sprite_flip_ext</a>, <a href="
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_tiled_area_ext.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_tiled_area_ext.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_tiled_area_ext.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_tiled_area_ext.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-draw_sprite_tiled_area_ext
-==========================
-
-Draws a repeated background image, tiled to fill a given region and with
-a given offset. 
-
-demo: draw_sprite_tiled_area_ext 512 192
-Mouse over to move origin offset.
-
-draw_sprite_tiled_area_ext(sprite,subimg,x,y,x1,y2,x2,y2,color,alpha)
-:   Draws a repeated sprite image, tiled to fill a given region and with a given offset.
-
-````````````````````````````````````````````````````````````````````````````
-/// draw_sprite_tiled_area_ext(sprite,subimg,x,y,x1,y2,x2,y2,color,alpha)
-//
-//  Draws a repeated sprite image, tiled to fill a given region and with
-//  a given offset. 
-//
-//      sprite      sprite to draw, real
-//      subimg      sprite subimage to draw, real
-//      x,y         origin offset, real
-//      x1,y1       top-left corner of tiled area, real
-//      x2,y2       bottom-right corner of tiled area, real
-//      color       color blending, real
-//      alpha       alpha blending, real
-//
-/// GMLscripts.com/license
-{
-    var sprite,subimg,xx,yy,x1,y1,x2,y2;
-    sprite = argument0;
-    subimg = argument1;
-    xx = argument2;
-    yy = argument3;
-    x1 = argument4;
-    y1 = argument5;
-    x2 = argument6;
-    y2 = argument7;
-        
-    var sw,sh,i,j,jj,left,top,width,height,X,Y;
-    sw = sprite_get_width(sprite);
-    sh = sprite_get_height(sprite);
-    
-    i = x1 - ((x1 mod sw)-(xx mod sw)) - sw*((x1 mod sw)<(xx mod sw));
-    j = y1 - ((y1 mod sh)-(yy mod sh)) - sh*((y1 mod sh)<(yy mod sh)); 
-    jj = j;
-    
-    for(i=i; i<=x2; i+=sw) {
-        for(j=j ;j<=y2; j+=sh) {
-
-            if(i <= x1) left = x1-i;
-            else left = 0;
-            X = i+left;
-            
-            if(j <= y1)top = y1-j;
-            else top = 0;
-            Y = j+top;
-            
-            if(x2 <= i+sw) width = ((sw)-(i+sw-x2)+1)-left;
-            else width = sw-left;
-            
-            if(y2 <= j+sh) height = ((sh)-(j+sh-y2)+1)-top;
-            else height = sh-top;
-            
-            draw_sprite_part_ext(sprite,subimg,left,top,width,height,X,Y,1,1,argument8,argument9);
-        }
-        j = jj;
-    }
-    return 0;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: EyeGuy
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/draw_sprite_tiled_area_ext';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -302,7 +222,7 @@ contributors: EyeGuy
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="draw_sprite_tiled_area_ext.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="draw_sprite_tiled_area_ext.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: sprite_edit_begin</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="sprite_edit_begin.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="sprite_edit_begin.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="sprite_edit_begin.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -129,102 +128,13 @@ Related: <a href="sprite_desaturate.html">sprite_desaturate</a>, <strong>sprite_
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Resources/Sprites/sprite_edit_begin.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Resources/Sprites/sprite_edit_begin.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Resources/Sprites/sprite_edit_begin.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Resources/Sprites/sprite_edit_begin.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-sprite_edit_begin
-=================
-
-![sprite_edig_begin](/images/sprite_edit_begin.gif "sprite_edit_begin()")
-
-sprite_edit_begin(sprite)
-:   Edit a sprite dynamically using drawing commands.
-
-````````````````````````````````````````````````````````````````````````````
-/// sprite_edit_begin(sprite)
-//
-//  Edit a sprite dynamically using drawing commands. This script begins
-//  an editing session and returns a session ID. All further drawing 
-//  commands are directed to a surface holding a horizontal strip of frames
-//  from a given sprite. A call to script sprite_edit_end() ends editing.
-//
-//      sprite      sprite to edit, real
-//
-//  Note: Blending mode is reset to normal after calling this script.
-//
-/// GMLscripts.com/license
-{
-    var sprite,a,w,h,n,xoff,yoff,surface,i;
-    sprite = argument0;
-    a = draw_get_alpha();
-    w = sprite_get_width(sprite);
-    h = sprite_get_height(sprite);
-    n = sprite_get_number(sprite);
-    xoff = sprite_get_xoffset(sprite);
-    yoff = sprite_get_yoffset(sprite);
-    surface = surface_create(w*n,h);
-    surface_set_target(surface);
-    draw_clear_alpha(c_black,0);
-    draw_set_blend_mode_ext(bm_one,bm_zero);
-    draw_set_alpha(1);
-    for(i=0; i<n; i+=1) {
-        draw_sprite(sprite,i,i*w+xoff,yoff);
-    }
-    draw_set_blend_mode(bm_normal);
-    draw_set_alpha(a);
-    return (string(surface)+':'+string(sprite));
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-sprite_edit_end(session)
-:   Ends a sprite editing session started with sprite_edit_begin().
-
-````````````````````````````````````````````````````````````````````````````
-/// sprite_edit_end(session)
-//
-//  Ends a sprite editing session started with sprite_edit_begin().
-//  At the end of a session, the original sprite is replaced with
-//  a new version and the editing surface is freed.
-//
-//      session     editing session ID given by sprite_edit_begin(), real
-//
-/// GMLscripts.com/license
-{
-    var session,p,surface,sprite,w,h,n,prec,tran,smth,load,xoff,yoff,temp,i;
-    session = argument0        
-    p = string_pos(':',session);
-    surface = real(string_copy(session,1,p-1));
-    sprite = real(string_copy(session,p+1,10));
-    w = sprite_get_width(sprite);
-    h = sprite_get_height(sprite);
-    n = sprite_get_number(sprite);
-    xoff = sprite_get_xoffset(sprite);
-    yoff = sprite_get_yoffset(sprite);
-    temp = sprite_create_from_surface(surface,0,0,w,h,false,false,xoff,yoff);
-    for(i=1; i<n; i+=1) {
-        sprite_add_from_surface(temp,surface,w*i,0,w,h,false,false);
-    }
-    sprite_assign(sprite,temp);
-    sprite_delete(temp);
-    surface_reset_target();
-    surface_free(surface);
-    return 0;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: Leif902, xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/sprite_edit_begin';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -324,7 +234,7 @@ contributors: Leif902, xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="sprite_edit_begin.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="sprite_edit_begin.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

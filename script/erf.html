@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: erf</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="erf.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="erf.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="erf.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -42,7 +41,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
         <div class="top-right"></div>
         <div class="inside">
 <h1>erf</h1>
-<p><img class="float-right" src="../images/erf1.gif" alt="erf" title="erf" \/>
+<p><img class="float-right" src="../images/erf1.gif" alt="erf" title="erf" />
 The &quot;error function&quot; or cumulative distribution function is encountered
 in probability and can be used to compute the probability that a
 Gaussian random number falls within a given range. This algorithm was
@@ -114,90 +113,13 @@ Related: <a href="combination.html">combination</a>, <strong>erf</strong>, <a hr
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Probability/erf.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Probability/erf.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Probability/erf.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Probability/erf.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-erf
-===
-
-![right](/images/erf1.gif "erf")
-The "error function" or cumulative distribution function is encountered
-in probability and can be used to compute the probability that a
-Gaussian random number falls within a given range. This algorithm was
-taken from the article in the link given immediately below.
-
-<http://www4.ncsu.edu/unity/users/p/pfackler/www/ECG790C/accuratecumnorm.pdf>
-
-If the above link does not work, an alternate version of the same
-paper can be found below.
-
-<http://www.codeplanet.eu/files/download/accuratecumnorm.pdf>
-
-erf(x)
-:   Returns the value of erf(x), the "error function" or cumulative distribution function, which computes the probability that a Gaussian random number falls within a given range.
-
-````````````````````````````````````````````````````````````````````````````
-/// erf(x)
-//
-//  Returns the value of erf(x), the "error function" or cumulative
-//  distribution function, which computes the probability that a 
-//  Gaussian random number falls within a given range.
-//
-//      x           value, real
-//
-/// GMLscripts.com/license
-{
-    var xAbs, c, e, b;
-    xAbs = abs(argument0) * sqrt(2);
-    if (xAbs > 37)
-        c = 0;
-    else {
-        e = exp(-xAbs*xAbs / 2);
-        if (xAbs < 7.07106781186547) {
-            b = 0.0352624965998911 * xAbs + 0.700383064443688;
-            b = b * xAbs + 6.37396220353165;
-            b = b * xAbs + 33.912866078383;
-            b = b * xAbs + 112.079291497871;
-            b = b * xAbs + 221.213596169931;
-            b = b * xAbs + 220.206867912376;
-            c = e*b;
-            b = 0.0883883476483184 * xAbs + 1.75566716318264;
-            b = b * xAbs + 16.064177579207;
-            b = b * xAbs + 86.7807322029461;
-            b = b * xAbs + 296.564248779674;
-            b = b * xAbs + 637.333633378831;
-            b = b * xAbs + 793.826512519948;
-            b = b * xAbs + 440.413735824752;
-            c /= b;
-        }
-        else {
-            b = xAbs + 0.65;
-            b = xAbs + 4 / b;
-            b = xAbs + 3 / b;
-            b = xAbs + 2 / b;
-            b = xAbs + 1 / b;
-            c = e / b / 2.506628274631;
-        }
-    }
-    if (argument0 > 0)
-        return 1 - 2*c;
-    else
-        return 2*c - 1;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: Yourself, brac37
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/erf';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -297,7 +219,7 @@ contributors: Yourself, brac37
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="erf.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="erf.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

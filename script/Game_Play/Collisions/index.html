@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: Game Play :: Collisions</title>
 <link rel="icon" type="image/gif" href="../../../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../../../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../../../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../../../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../../../index.html" id="home"><img src="../../../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="../../index.html" class="nav">Scripts</a><a href="../../../#" class="nav">Forums</a><a href="../../../license.html" class="nav">License</a><a href="../../../search.html" class="nav">Search</a><a href="../../../#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="../../../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="../../index.html" class="nav">Scripts</a><a href="index.html#" class="nav">Forums</a><a href="../../../license.html" class="nav">License</a><a href="../../../search.html" class="nav">Search</a><a href="index.html#" class="nav">Submit</a><a href="../../../paypal.html" class="nav">Donate</a><a href="index.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -81,46 +80,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 <dl class="dictionary">
 <dt><a href="../../range_finder.html">range_finder(x,y,dir,range,object,prec,notme)</a></dt>
 <dd>Returns the exact distance to the nearest instance of an object in a given direction from a given point, or noone if no instance is found.</dd>
-</dl>
-<!--
-
-Game Play :: Collisions
-=======================
-
-collision_circle_list(x1,y1,radius,obj,prec,notme)
-:   Returns a list data structure populated with the ids of instances colliding with a given circle, or noone if no instances found.
-
-collision_ellipse_list(x1,y1,x2,y2,obj,prec,notme)
-:   Returns a list data structure populated with the ids of instances colliding with a given ellipse, or noone if no instances found.
-
-collision_line_first(x1,y1,x2,y2,object,prec,notme)
-:   Returns the instance id of an object colliding with a given line and closest to the first point, or noone if no instance found.
-
-collision_line_list(x1,y1,x2,y2,obj,prec,notme)
-:   Returns a list data structure populated with the ids of instances colliding with a given line, or noone if no instances found.
-
-collision_normal(x1,y1,obj [,rad [,res]])
-:   Returns a 2D "surface normal" (in degrees) at a given point on or near an instance detected within a circular test area.
-
-collision_point_list(x1,y1,obj,prec,notme)
-:   Returns a list data structure populated with the ids of instances colliding with a given point, or noone if no instances found.
-
-collision_rectangle_list(x1,y1,x2,y2,obj,prec,notme)
-:   Returns a list data structure populated with the ids of instances colliding with a given rectangle, or noone if no instances found.
-
-collision_triangle(x1,y1,x2,y2,x3,y3,object)
-:   Returns true if there is a collision between a given triangle and a given object, false otherwise.
-
-instance_place_list(x,y,obj)
-:   Returns a list data structure populated with the ids of instances which would collide with the current instance if it were placed at a given position, or noone if no instances found.
-
-range_finder(x,y,dir,range,object,prec,notme)
-:   Returns the exact distance to the nearest instance of an object in a given direction from a given point, or noone if no instance is found.
-
-
-
--->
-            <p class="nobottomgap" style="font-size:1px;"></p>
+</dl>            <p class="nobottomgap" style="font-size:1px;"></p>
         </div>
         <!-- finish roundcorners -->
         <div class="bottom-left"></div>
@@ -210,7 +170,7 @@ range_finder(x,y,dir,range,object,prec,notme)
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" alt="X" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="index.html#" id="xot"><img title="web by xot" alt="X" src="../../../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

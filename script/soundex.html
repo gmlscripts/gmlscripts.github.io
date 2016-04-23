@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: soundex</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="soundex.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="soundex.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="soundex.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -101,77 +100,13 @@ Related: <a href="crc16.html">crc16</a>, <a href="md2.html">md2</a>, <strong>sou
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Hashing/soundex.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Hashing/soundex.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Hashing/soundex.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Hashing/soundex.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-soundex
-=======
-
-[Wikipedia]:
-
-> Soundex is a phonetic algorithm for indexing names by sound, 
-> as pronounced in English. The goal is for names with the same 
-> pronunciation to be encoded to the same representation so that 
-> they can be matched despite minor differences in spelling.
-> Using this algorithm, both "Robert" and "Rupert" return the same 
-> string "R163" while "Rubin" yields "R150".
-
-A complete description of the soundex system can be found in the 
-[U.S. National Archives].
-
-[Wikipedia]: http://en.wikipedia.org/wiki/Soundex
-[U.S. National Archives]: http://www.archives.gov/research/census/soundex.html
-
-soundex(str)
-:   Returns the Soundex value of the given string.
-
-````````````````````````````````````````````````````````````````````````````
-/// soundex(str)
-//
-//  Returns the Soundex value of the given string.
-//  Soundex values are short strings of similar values
-//  for words which sound similar in spoken English.
-//  It was developed to help index related family names.
-//
-//      str         English word, string
-//
-/// GMLscripts.com/license
-{
-    var str = string_upper(string_letters(argument0));
-    var len = string_length(str);
-    if (len == 0) return "";
-    var tab = "0123012X02245501262301X202";
-    var out = string_char_at(str,1);
-    var lastc = out;
-    var lastv = string_char_at(tab,ord(out)-64);
-    for (var pos=2; pos<=len; pos++) {
-        var char = string_char_at(str,pos);
-        var val = string_char_at(tab,ord(char)-64);
-        if (char == lastc) continue;
-        if (val == "X") continue;
-        lastc = char;
-        if (val == lastv) continue;
-        lastv = val;
-        if (val == "0") continue;
-        out += val;
-    }
-    out = string_copy(out+"000",1,4);
-    return out;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/soundex';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -271,7 +206,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="soundex.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="soundex.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

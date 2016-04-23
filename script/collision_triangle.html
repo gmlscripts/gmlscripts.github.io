@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: collision_triangle</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="collision_triangle.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="collision_triangle.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="collision_triangle.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -184,160 +183,13 @@ Related: <a href="collision_circle_list.html">collision_circle_list</a>, <a href
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Collisions/collision_triangle.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Collisions/collision_triangle.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Collisions/collision_triangle.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Collisions/collision_triangle.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-collision_triangle
-==================
-
-Warning: Due to the obsolescence of `object_add()` and `object_add_event()`,
-some or all of the work done by the script `collision_triangle_init()` 
-will have to be done manually.
-
-This script works similarly to built-in `collision_*()` functions. It uses 
-a right-triangle-shaped sprite mask to detect collisions with pixel accuracy 
-(unlike other simpler and faster methods). Because any triangle can be split 
-into two right triangles, the script can manipulate this single collision mask 
-to fit any triangle using only scaling and rotation.
-
-![collision_triangle](/images/collision_triangle.gif "collision triangle")
-
-Note: This script will eventually be replaced with a version that works more 
-like the built-in `collision_*()` functions of GameMaker:Studio. It will return 
-an instance id rather than the true or false value it returns now.
-
-collision_triangle(x1,y1,x2,y2,x3,y3,object)
-:   Returns true if there is a collision between a given triangle and a given object, false otherwise.
-
-````````````````````````````````````````````````````````````````````````````
-/// collision_triangle(x1,y1,x2,y2,x3,y3,object)
-//
-//  Returns true if there is a collision between a given
-//  triangle and a given object, false otherwise.
-//
-//  NOTE: Initialize with collision_triangle_init() before first use.
-//
-//      x1,y1       first point of triangle (filled), real
-//      x2,y2       second point of triangle (filled), real
-//      x3,y3       third point of triangle (filled), real
-//      object      object or instance (or all), real
-//
-/// GMLscripts.com/license
-{
-   var x1,y1,x2,y2,x3,y3,object,xmin,xmax,ymin,ymax,d12,d13,d23,d14,d24,t,dx,dy,x4,y4;
-   x1 = argument0;
-   y1 = argument1;
-   x2 = argument2;
-   y2 = argument3;
-   x3 = argument4;
-   y3 = argument5;
-   object = argument6;
-   
-   // Bounding box check
-   xmin = min(x1,x2,x3);
-   xmax = max(x1,x2,x3);
-   ymin = min(y1,y2,y3);
-   ymax = max(y1,y2,y3);
-   if (not collision_rectangle(xmin,ymin,xmax,ymax,object,false,false)) return false;
-   
-   // Triangle perimeter check
-   if (collision_line(x1,y1,x2,y2,object,true,false)) return true;
-   if (collision_line(x1,y1,x3,y3,object,true,false)) return true;
-   if (collision_line(x2,y2,x3,y3,object,true,false)) return true;
-
-   // Find long side, make it (x1,y2) to (x2,y2)
-   d12 = point_distance(x1,y1,x2,y2);
-   d13 = point_distance(x1,y1,x3,y3);
-   d23 = point_distance(x2,y2,x3,y3);
-   switch (max(d12,d13,d23)) {
-       case d13:
-           t = x2; x2 = x3; x3 = t;
-           t = y2; y2 = y3; y3 = t;
-           d12 = d13;
-           break;
-       case d23:
-           t = x1; x1 = x3; x3 = t;
-           t = y1; y1 = y3; y3 = t;
-           d12 = d23;
-           break;
-   }
-   
-   // From (x3,y3), find nearest point on long side (x4,y4).
-   dx = x2 - x1;
-   dy = y2 - y1;
-   if ((dx == 0) && (dy == 0)) {
-       x4 = x1;
-       y4 = y1;
-   }else{
-       t = ((x3 - x1) * dx + (y3 - y1) * dy) / (d12 * d12);
-       x4 = x1 + t * dx;
-       y4 = y1 + t * dy;
-   }
-   
-   // A line constructed from (x3,y3) to (x4,y4) divides
-   // the original triangle into two right triangles.
-   // Fit the collision mask into these triangles.
-   d14 = point_distance(x1,y1,x4,y4);
-   d24 = d12 - d14;
-   with (global.objCollisionTriangle) {
-       image_angle  = point_direction(x1,y1,x4,y4);
-       image_xscale = d14 / size;
-       image_yscale = point_distance(x3,y3,x4,y4) / size;
-       if ((x1 > x4) xor (y3 < y4)) image_yscale *= -1;
-       if (place_meeting(x4,y4,object)) return true;
-       image_xscale = -d24 / size;
-       if (place_meeting(x4,y4,object)) return true;
-   }
-   return false;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-collision_triangle_init(size)
-:   Required to initialize collision_triangle() before first use.
-
-````````````````````````````````````````````````````````````````````````````
-/// collision_triangle_init(size)
-//
-//  Required to initialize collision_triangle() before first use. Creates
-//  an object, sprite, and global variable __objCollisionTriangle. A large
-//  test triangle improves accuracy at the expense of memory usage.
-//
-//      size        size of test triangle in pixels, real
-//
-/// GMLscripts.com/license
-{
-    if (not variable_global_exists("objCollisionTriangle")) {
-        var color,object,size;
-        size = argument0;
-        object = object_add();
-        object_set_persistent(object,true);
-        object_event_add(object,ev_create,0,"size = "+string(size));
-        global.objCollisionTriangle = instance_create(0,0,object);
-        draw_clear_alpha(c_black,1);
-        color = draw_get_color();
-        draw_set_color(c_white);
-        draw_triangle(size,size,size,0,0,0,false);
-        draw_set_color(color);
-        global.objCollisionTriangle.sprite_index = 
-        sprite_create_from_screen(0,0,size,size,true,true,false,true,size,0);
-        global.objCollisionTriangle.visible = false;
-    }
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/collision_triangle';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -437,7 +289,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="collision_triangle.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="collision_triangle.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: collision_normal</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="collision_normal.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="collision_normal.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="collision_normal.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -42,6 +41,15 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
         <div class="top-right"></div>
         <div class="inside">
 <h1>collision_normal</h1>
+<p><img class="float-right" src="../images/collision_normal.png" alt="collision_normal() sampler" title="collision_normal() sampler" /></p>
+<p>The purpose of this script is to determine what direction the sprite of
+an instance is facing at a particular point on or near the sprite,
+ie. a 2D analogue of a surface normal. It does this by sampling an area
+around a given point. As each point is sampled, if there is no collision,
+a vector is generated from the center of the sample area to the sampled
+point. These vectors are summed to produce an overall directional vector
+pointing away from any detected surface within the sampled area.</p>
+<div class="codebox demo"><span>Move cursor near surfaces to see surface normal. Click to create bouncing ball.<iframe frameborder="0" scrolling="no" width="512" height="256" src="https://dl.dropboxusercontent.com/u/32623406/gmlscripts.com/demos/collision_normal/index.html"></iframe><a href="https://dl.dropboxusercontent.com/u/32623406/gmlscripts.com/demos/collision_normal/collision_normal.gmz">Download</a></span></div>
 <dl class="dictionary script">
 <dt><a href="collision_normal.html">collision_normal(x1,y1,obj [,rad [,res]])</a></dt>
 <dd>Returns a 2D &quot;surface normal&quot; (in degrees) at a given point on or near an instance detected within a circular test area.</dd>
@@ -52,6 +60,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 //  Returns a 2D "surface normal" (in degrees) at a given point 
 //  on or near an instance detected within a circular test area.
 //  Makes approximately pi*(rad*rad)/(res*res) collision calls.
+//  If no collision is found, (-1) is returned.
 //
 //      x1,y1       point on the surface, real
 //      obj         object or instance (or all), real
@@ -60,29 +69,30 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 //
 /// GMLscripts.com/license
 {
-    var xx,yy,obj,rad,nx,ny,i,j;
-    xx  = argument0;
-    yy  = argument1;
-    obj = argument2;
-    rad = argument3;
-    res = argument4;
+    var xx  = argument[0];
+    var yy  = argument[1];
+    var obj = argument[2];
+    var rad = 4;
+    var res = 1;
+    if (argument_count &gt; 3) rad = argument[3];
+    if (argument_count &gt; 4) res = argument[4];
     if (rad &lt;= 0) rad = 4;
     if (res &lt;= 0) res = 1;
-    nx = 0;
-    ny = 0;
-    if (collision_circle(xx,yy,rad,obj,true,true)) {
-        for (j=res; j&lt;=rad; j+=res) {
-            for (i=0; i&lt;rad; i+=res) {
-                if (point_distance(0,0,i,j) &lt;= rad) {
-                    if (!collision_point(xx+i,yy+j,obj,true,true)) { nx += i; ny += j; }
-                    if (!collision_point(xx+j,yy-i,obj,true,true)) { nx += j; ny -= i; }
-                    if (!collision_point(xx-i,yy-j,obj,true,true)) { nx -= i; ny -= j; }
-                    if (!collision_point(xx-j,yy+i,obj,true,true)) { nx -= j; ny += i; }
+    var nx = 0;
+    var ny = 0;
+    if (collision_circle(xx, yy, rad, obj, true, true)) {
+        for (var j=res; j&lt;=rad; j+=res) {
+            for (var i=0; i&lt;rad; i+=res) {
+                if (point_distance(0, 0, i, j) &lt;= rad) {
+                    if (!collision_point(xx+i, yy+j, obj, true, true)) { nx += i; ny += j; }
+                    if (!collision_point(xx+j, yy-i, obj, true, true)) { nx += j; ny -= i; }
+                    if (!collision_point(xx-i, yy-j, obj, true, true)) { nx -= i; ny -= j; }
+                    if (!collision_point(xx-j, yy+i, obj, true, true)) { nx -= j; ny += i; }
                 }
             }
         }
         if (nx == 0 &amp;&amp; ny == 0) return (-1);
-        return point_direction(0,0,nx,ny);
+        return point_direction(0, 0, nx, ny);
     }else{
         return (-1);
     }
@@ -90,7 +100,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </code></pre>
 </div>
 <p id="contributors">
-Contributors: xot
+Contributors: xot, strawbryjam
 </p>
 <p id="related">
 Related: <a href="collision_circle_list.html">collision_circle_list</a>, <a href="collision_ellipse_list.html">collision_ellipse_list</a>, <a href="collision_line_first.html">collision_line_first</a>, <a href="collision_line_list.html">collision_line_list</a>, <strong>collision_normal</strong>, <a href="collision_point_list.html">collision_point_list</a>, <a href="collision_rectangle_list.html">collision_rectangle_list</a>, <a href="collision_triangle.html">collision_triangle</a>, <a href="instance_place_list.html">instance_place_list</a>, <a href="range_finder.html">range_finder</a>
@@ -98,70 +108,13 @@ Related: <a href="collision_circle_list.html">collision_circle_list</a>, <a href
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Collisions/collision_normal.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Collisions/collision_normal.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Collisions/collision_normal.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Collisions/collision_normal.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-collision_normal
-================
-
-collision_normal(x1,y1,obj [,rad [,res]])
-:   Returns a 2D "surface normal" (in degrees) at a given point on or near an instance detected within a circular test area.
-
-````````````````````````````````````````````````````````````````````````````
-/// collision_normal(x1,y1,obj [,rad [,res]])
-//
-//  Returns a 2D "surface normal" (in degrees) at a given point 
-//  on or near an instance detected within a circular test area.
-//  Makes approximately pi*(rad*rad)/(res*res) collision calls.
-//
-//      x1,y1       point on the surface, real
-//      obj         object or instance (or all), real
-//      rad         radius of test area (default 4), real
-//      res         resolution of test (default 1), real
-//
-/// GMLscripts.com/license
-{
-    var xx,yy,obj,rad,nx,ny,i,j;
-    xx  = argument0;
-    yy  = argument1;
-    obj = argument2;
-    rad = argument3;
-    res = argument4;
-    if (rad <= 0) rad = 4;
-    if (res <= 0) res = 1;
-    nx = 0;
-    ny = 0;
-    if (collision_circle(xx,yy,rad,obj,true,true)) {
-        for (j=res; j<=rad; j+=res) {
-            for (i=0; i<rad; i+=res) {
-                if (point_distance(0,0,i,j) <= rad) {
-                    if (!collision_point(xx+i,yy+j,obj,true,true)) { nx += i; ny += j; }
-                    if (!collision_point(xx+j,yy-i,obj,true,true)) { nx += j; ny -= i; }
-                    if (!collision_point(xx-i,yy-j,obj,true,true)) { nx -= i; ny -= j; }
-                    if (!collision_point(xx-j,yy+i,obj,true,true)) { nx -= j; ny += i; }
-                }
-            }
-        }
-        if (nx == 0 && ny == 0) return (-1);
-        return point_direction(0,0,nx,ny);
-    }else{
-        return (-1);
-    }
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/collision_normal';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -261,7 +214,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="collision_normal.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="collision_normal.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

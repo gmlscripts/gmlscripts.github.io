@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: draw_rectangle_dashed_color</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="draw_rectangle_dashed_color.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="draw_rectangle_dashed_color.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="draw_rectangle_dashed_color.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -126,99 +125,13 @@ Related: <a href="draw_arc.html">draw_arc</a>, <a href="draw_chord.html">draw_ch
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Drawing/draw_rectangle_dashed_color.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Drawing/draw_rectangle_dashed_color.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Drawing/draw_rectangle_dashed_color.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Drawing/draw_rectangle_dashed_color.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-draw_rectangle_dashed_color
-===========================
-
-Warning: This does not currently work with GameMaker:Studio due to 
-changes in variable handling and sprite creation. The work performed 
-in the initialization section will have to be done a different way. 
-This will be fixed soon.
-
-draw_rectangle_dashed_color(x1,y1,x2,y2,col1,col2,col3,col4,size)
-:   Draws a rectangle made of dashes of a given size.
-
-````````````````````````````````````````````````````````````````````````````
-/// draw_rectangle_dashed_color(x1,y1,x2,y2,col1,col2,col3,col4,size)
-//
-//  Draws a rectangle made of dashes of a given size.
-//  If no size is given, single pixel dots are used.
-//  Creates a sprite, 2x2 pixels in size, and a pair
-//  of global variables the first it is called.
-//
-//      x1,y1       1st corner of the rectangle, real
-//      x2,y2       2nd corner of the rectangle, real
-//      col1        top-left corner color, real
-//      col2        top-right corner color, real
-//      col3        bottom-right corner color, real
-//      col4        bottom-left corner color, real
-//      size        length of the dashes in pixels, real (optional)   
-//
-/// GMLscripts.com/license
-{
-    // initialize the script on the first call
-    if (!variable_global_exists("_DRAW_RECT_DASH_SPR")) {
-        var i,j,k,l;
-        i = draw_getpixel(0,0);
-        j = draw_getpixel(1,0);
-        k = draw_getpixel(0,1);
-        l = draw_getpixel(1,1);
-        draw_point_color(0,0,c_white);
-        draw_point_color(1,0,c_black);
-        draw_point_color(0,1,c_black);
-        draw_point_color(1,1,c_white);
-        global._DRAW_RECT_DASH_SPR = sprite_create_from_screen(0,0,2,2,0,1,0,0,0,0);
-        global._DRAW_RECT_DASH_TEX = sprite_get_texture(global._DRAW_RECT_DASH_SPR,0);
-        draw_point_color(0,0,i);
-        draw_point_color(1,0,j);
-        draw_point_color(0,1,k);
-        draw_point_color(1,1,l);
-    }
-    
-    // main script begin
-    var x1,y1,x2,y2,u1,v1,u2,v2,alpha;;
-    x1 = min(argument0,argument2);
-    y1 = min(argument1,argument3);
-    x2 = max(argument0,argument2);
-    y2 = max(argument1,argument3);
-    
-    // scale and center texture UV coordinates
-    argument8 = max(1,argument8);
-    u2 = (x2-x1)/(2*argument8);
-    v2 = (y2-y1)/(2*argument8);
-    u1 = 0.25 - (u2 mod 2)/2;
-    v1 = 0.25 - (v2 mod 2)/2;
-    u2 += u1;
-    v2 += v1;
-    
-    // draw textured rectangle using the given colors and default alpha
-    alpha = draw_get_alpha();
-    texture_set_repeat(1);    
-    draw_primitive_begin_texture(pr_linestrip, global._DRAW_RECT_DASH_TEX);
-    draw_vertex_texture_color(x1, y1, u1, v1, argument4, alpha);
-    draw_vertex_texture_color(x2, y1, u2, v1, argument5, alpha);
-    draw_vertex_texture_color(x2, y2, u2, v2, argument6, alpha);
-    draw_vertex_texture_color(x1, y2, u1, v2, argument7, alpha);
-    draw_vertex_texture_color(x1, y1, u1, v1, argument4, alpha);
-    draw_primitive_end(); 
-    return 0;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: Daniel-Dane, xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/draw_rectangle_dashed_color';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -318,7 +231,7 @@ contributors: Daniel-Dane, xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="draw_rectangle_dashed_color.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="draw_rectangle_dashed_color.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

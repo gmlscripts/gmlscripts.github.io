@@ -3,23 +3,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Script Submission Rules (Page 1) / Script Submission / GMLscripts.com</title>
-<link rel="icon" type="image/gif" href="../favicon.gif" />
+<link rel="icon" type="image/gif" href="/favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/javascript" src="../jquery.min.js"></script>
-<script type="text/javascript" src="../prettify/prettify.js"></script>
-<script type="text/javascript" src="../prettify/lang-gml.js"></script>
-<script type="text/javascript" src="../cookie.js"></script>
-<script type="text/javascript" src="../contrast.js"></script>
-<script type="text/javascript" src="../accordionmenu.js"></script>
-<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
-<link rel="stylesheet" type="text/css" href="../contrast.css" />
-<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
-<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
-<link rel="stylesheet" type="text/css" href="http://static.gmlscripts.local/forums/style/Dark.css?v=1433115957" />
+<script type="text/javascript" src="/jquery.min.js"></script>
+<script type="text/javascript" src="/prettify/prettify.js"></script>
+<script type="text/javascript" src="/prettify/lang-gml.js"></script>
+<script type="text/javascript" src="/cookie.js"></script>
+<script type="text/javascript" src="/contrast.js"></script>
+<script type="text/javascript" src="/accordionmenu.js"></script>
+<link rel="stylesheet" type="text/css" href="/prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="/contrast.css" />
+<link rel="stylesheet" type="text/css" href="/accordionmenu30.css" />
+<link rel="stylesheet" type="text/css" href="/gmlscripts30.css" />
+<link rel="stylesheet" type="text/css" href="style/Dark.css?v=1433115957" />
 
 <!--[if lte IE 6]><script type="text/javascript" src="style/imports/minmax.js"></script><![endif]-->
 </head>
@@ -33,18 +33,18 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 <div id="brdheader" class="block">
 	<div class="box">
 		<div id="brdtitle" class="inbox">
-			<h1><a href="http://static.gmlscripts.local/forums/index.php">GMLscripts.com</a></h1>
+			<h1><a href="index.php">GMLscripts.com</a></h1>
 			<div id="brddesc">Discuss and collaborate on GML scripts</div>
 		</div>
-		<img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" /><div id="brdmenu" class="inbox">
-			<span id="header-image"><a href="../index.html" id="home"><img style="display:inline-block;margin-top:-1px;margin-bottom:-4px" src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a></span><ul>
-				<li id="navextra1"><a href="../script/index.html">Scripts</a></li><li id="navindex" class="isactive"><a href="http://static.gmlscripts.local/forums/index.php">Forums</a></li><li id="navuserlist"><a href="http://static.gmlscripts.local/forums/userlist.php">Members</a></li><li id="navrules"><a href="http://static.gmlscripts.local/forums/misc.php?action=rules">Rules</a></li><li id="navsearch"><a href="http://static.gmlscripts.local/forums/search.php">Search</a></li><li id="navregister"><a href="http://static.gmlscripts.local/forums/register.php">Register</a></li><li id="navlogin"><a href="http://static.gmlscripts.local/forums/login.php">Login</a></li><li id="navextra2"><a href="http://twitter.com/gmlscripts">Follow</a></li>
+		<img id="contrast" src="/images/30/_note.png" title="Invert" alt="Invert" /><div id="brdmenu" class="inbox">
+			<span id="header-image"><a href="/" id="home"><img style="display:inline-block;margin-top:-1px;margin-bottom:-4px" src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a></span><ul>
+				<li id="navextra1"><a href="/script/index">Scripts</a></li><li id="navindex" class="isactive"><a href="index.php">Forums</a></li><li id="navuserlist"><a href="userlist.php">Members</a></li><li id="navrules"><a href="misc.php?action=rules">Rules</a></li><li id="navsearch"><a href="search.php">Search</a></li><li id="navregister"><a href="register.php">Register</a></li><li id="navlogin"><a href="login.php">Login</a></li><li id="navextra2"><a href="http://twitter.com/gmlscripts">Follow</a></li>
 			</ul>
 		</div>
 		<div id="brdwelcome" class="inbox">
 			<p class="conl">You are not logged in.</p>
 			<ul class="conr">
-				<li><span>Topics: <a href="http://static.gmlscripts.local/forums/search.php?action=show_recent" title="Find topics with recent posts.">Active</a> | <a href="http://static.gmlscripts.local/forums/search.php?action=show_unanswered" title="Find topics with no replies.">Unanswered</a></span></li>
+				<li><span>Topics: <a href="search.php?action=show_recent" title="Find topics with recent posts.">Active</a> | <a href="search.php?action=show_unanswered" title="Find topics with no replies.">Unanswered</a></span></li>
 			</ul>
 			<div class="clearer"></div>
 		</div>
@@ -57,9 +57,9 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 <div class="linkst">
 	<div class="inbox crumbsplus">
 		<ul class="crumbs">
-			<li><a href="http://static.gmlscripts.local/forums/index.php">Forums</a></li>
-			<li><span>»&#160;</span><a href="http://static.gmlscripts.local/forums/viewforum.php?id=11">Script Submission</a></li>
-			<li><span>»&#160;</span><strong><a href="viewtopic.php@id=45.html">Script Submission Rules</a></strong></li>
+			<li><a href="index.php">Forums</a></li>
+			<li><span>»&#160;</span><a href="viewforum.php?id=11">Script Submission</a></li>
+			<li><span>»&#160;</span><strong><a href="viewtopic.php?id=45">Script Submission Rules</a></strong></li>
 		</ul>
 		<div class="pagepost">
 			<p class="pagelink conl"><span class="pages-label">Pages: </span><strong class="item1">1</strong></p>
@@ -69,17 +69,17 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </div>
 
 <div id="p159" class="blockpost rowodd firstpost blockpost1">
-	<h2><span><span class="conr">#1</span> <a href="http://static.gmlscripts.local/forums/viewtopic.php?pid=159#p159">2007-11-02 16:22:03</a></span></h2>
+	<h2><span><span class="conr">#1</span> <a href="viewtopic.php?pid=159#p159">2007-11-02 16:22:03</a></span></h2>
 	<div class="box">
 		<div class="inbox">
 			<div class="postbody">
 				<div class="postleft">
 					<dl>
-						<dt><strong><a href="http://static.gmlscripts.local/forums/profile.php?id=2">xot</a></strong></dt>
+						<dt><strong><a href="profile.php?id=2">xot</a></strong></dt>
 						<dd class="usertitle"><strong>Administrator</strong></dd>
 						<dd class="postavatar"><img src="http://www.gmlscripts.local/forums/img/avatars/2.png?m=1420594607" width="120" height="120" alt="" /></dd>
 						<dd><span>Registered: 2007-08-18</span></dd>
-						<dd><span>Posts: 1,122</span></dd>
+						<dd><span>Posts: 1,094</span></dd>
 					</dl>
 				</div>
 				<div class="postright">
@@ -100,15 +100,44 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 	</div>
 </div>
 
+<div id="p3690" class="blockpost roweven">
+	<h2><span><span class="conr">#2</span> <a href="viewtopic.php?pid=3690#p3690">2015-06-05 06:35:50</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postbody">
+				<div class="postleft">
+					<dl>
+						<dt><strong><a href="profile.php?id=2694">Adam milne</a></strong></dt>
+						<dd class="usertitle"><strong>Member</strong></dd>
+						<dd><span>Registered: 2015-06-05</span></dd>
+						<dd><span>Posts: 1</span></dd>
+					</dl>
+				</div>
+				<div class="postright">
+					<h3>Re: Script Submission Rules</h3>
+					<div class="postmsg">
+						<p>Your Script&#160; is very nice</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="inbox">
+			<div class="postfoot clearb">
+				<div class="postfootleft"><p><span>Offline</span></p></div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="postlinksb">
 	<div class="inbox crumbsplus">
 		<div class="pagepost">
 			<p class="pagelink conl"><span class="pages-label">Pages: </span><strong class="item1">1</strong></p>
 		</div>
 		<ul class="crumbs">
-			<li><a href="http://static.gmlscripts.local/forums/index.php">Forums</a></li>
-			<li><span>»&#160;</span><a href="http://static.gmlscripts.local/forums/viewforum.php?id=11">Script Submission</a></li>
-			<li><span>»&#160;</span><strong><a href="viewtopic.php@id=45.html">Script Submission Rules</a></strong></li>
+			<li><a href="index.php">Forums</a></li>
+			<li><span>»&#160;</span><a href="viewforum.php?id=11">Script Submission</a></li>
+			<li><span>»&#160;</span><strong><a href="viewtopic.php?id=45">Script Submission Rules</a></strong></li>
 		</ul>
 		<div class="clearer"></div>
 	</div>
@@ -120,7 +149,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 	<div class="box">
 		<div id="brdfooternav" class="inbox">
 			<div class="conl">
-				<form id="qjump" method="get" action="http://static.gmlscripts.local/forums/viewforum.php">
+				<form id="qjump" method="get" action="viewforum.php">
 					<div><label><span>Jump to<br /></span>
 					<select name="id" onchange="window.location=('viewforum.php?id='+this.options[this.selectedIndex].value)">
 						<optgroup label="General">

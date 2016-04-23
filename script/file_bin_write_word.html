@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: file_bin_write_word</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="file_bin_write_word.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="file_bin_write_word.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="file_bin_write_word.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -91,63 +90,13 @@ Related: <a href="file_bin_read_word.html">file_bin_read_word</a>, <a href="file
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Files/Input_and_Output/file_bin_write_word.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Files/Input_and_Output/file_bin_write_word.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Files/Input_and_Output/file_bin_write_word.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Files/Input_and_Output/file_bin_write_word.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-file_bin_write_word
-===================
-
-Writes a binary word of a given byte-size to an open binary file.
-
-    fid = file_bin_open("test.dat", 1);
-    word = 123456789;
-    file_bin_write_word(fid, 4, true, word));
-    file_bin_write_word(fid, 4, false, word));
-    file_bin_close(fid);
-    //  test.dat contents: 07 5B CD 15 15 CD 5B 07
-
-file_bin_write_word(file,size,bigend,value)
-:   Writes a binary word of a given byte-size to an open binary file.
-
-````````````````````````````````````````````````````````````````````````````
-/// file_bin_write_word(file,size,bigend,value)
-//
-//  Writes a binary word of a given byte-size to an open binary file.
-//
-//      file        file id of an open binary file, real
-//      size        size of the word in bytes, real
-//      bigend      true to use big-endian byte order (MSB first), bool
-//      value       integer value to write, real
-//
-/// GMLscripts.com/license
-{
-    var file,size,bigend,value,i,b;
-    file = argument0;
-    size = argument1;
-    bigend = argument2;
-    value = argument3;
-    for (i=0; i<size; i+=1) {
-        b[i] = value & 255;
-        value = value >> 8;
-    }
-    if (bigend) for (i=size-1; i>=0; i-=1) file_bin_write_byte(file,b[i]);
-    else for (i=0; i<size; i+=1) file_bin_write_byte(file,b[i]);
-    return 0;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: Leif902, xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/file_bin_write_word';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -247,7 +196,7 @@ contributors: Leif902, xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="file_bin_write_word.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="file_bin_write_word.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

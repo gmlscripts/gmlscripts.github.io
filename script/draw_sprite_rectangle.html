@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: draw_sprite_rectangle</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="draw_sprite_rectangle.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="draw_sprite_rectangle.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="draw_sprite_rectangle.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -116,89 +115,13 @@ Related: <a href="draw_sprite_flip_ext.html">draw_sprite_flip_ext</a>, <a href="
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_rectangle.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_rectangle.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_rectangle.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_rectangle.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-draw_sprite_rectangle
-=====================
-
-Draws a rectangle using a sprite sliced into 9 sections.
-The 3x3 sections are used to draw the four corners, the
-four edges, and the center of the rectangle. The center
-and edge sections are stretched to fill the respective
-areas of the rectangle.
-
-draw_sprite_rectangle(sprite,subimg,x1,y1,x2,y2,left,top,right,bottom)
-:   Draws a rectangle using a sprite sliced into 9 sections.
-
-````````````````````````````````````````````````````````````````````````````
-/// draw_sprite_rectangle(sprite,subimg,x1,y1,x2,y2,left,top,right,bottom)
-//
-//  Draws a rectangle using a sprite sliced into 9 sections.
-//  The 3x3 sections are used to draw the four corners, the
-//  four edges, and the center of the rectangle. The center
-//  and edge sections are stretched to fill the respective
-//  areas of the rectangle.
-//
-//      sprite  sprite index
-//      subimg  sprite subimage
-//      x1,y1   top-left corner of rectangle
-//      x2,y2   bottom-right corner of rectangle
-//      left    left edge width in pixels
-//      top     top edge width in pixels
-//      right   right edge width in pixels
-//      bottom  bottom edge width in pixels
-//
-/// GMLscripts.com/license
-{
-    var spr = argument0,
-        img = argument1,
-        x1  = argument2,
-        y1  = argument3,
-        x2  = argument4,
-        y2  = argument5,
-        l   = argument6,
-        t   = argument7,
-        r   = argument8,
-        b   = argument9;
-    
-    var x3 = x1 + l;
-    var y3 = y1 + t;
-    var x4 = x2 - r + 1;
-    var y4 = y2 - b + 1;
-    var x5 = sprite_get_width(spr) - r;
-    var y5 = sprite_get_height(spr) - b;
-    var w = x5 - l;
-    var h = y5 - t;
-    var xs = (x4 - x3) / w;
-    var ys = (y4 - y3) / h;
-    
-    draw_sprite_part_ext(spr, img, 0,  0,  l, t, x1, y1, 1.0, 1.0, c_white, 1.0);
-    draw_sprite_part_ext(spr, img, l,  0,  w, t, x3, y1, xs,  1.0, c_white, 1.0);
-    draw_sprite_part_ext(spr, img, x5, 0,  r, t, x4, y1, 1.0, 1.0, c_white, 1.0);
-    draw_sprite_part_ext(spr, img, 0,  t,  l, h, x1, y3, 1.0, ys,  c_white, 1.0);
-    draw_sprite_part_ext(spr, img, l,  t,  w, h, x3, y3, xs,  ys,  c_white, 1.0);
-    draw_sprite_part_ext(spr, img, x5, t,  r, h, x4, y3, 1.0, ys,  c_white, 1.0);
-    draw_sprite_part_ext(spr, img, 0,  y5, l, b, x1, y4, 1.0, 1.0, c_white, 1.0);
-    draw_sprite_part_ext(spr, img, l,  y5, w, b, x3, y4, xs,  1.0, c_white, 1.0);
-    draw_sprite_part_ext(spr, img, x5, y5, r, b, x4, y4, 1.0, 1.0, c_white, 1.0);
-    
-    return 0;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/draw_sprite_rectangle';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -298,7 +221,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="draw_sprite_rectangle.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="draw_sprite_rectangle.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

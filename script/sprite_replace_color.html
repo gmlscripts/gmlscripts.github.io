@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: sprite_replace_color</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="sprite_replace_color.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="sprite_replace_color.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="sprite_replace_color.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -42,15 +41,10 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
         <div class="top-right"></div>
         <div class="inside">
 <h1>sprite_replace_color</h1>
-<p class="warning"><span>WARNING:</span>
-<img class="float-right" src="../images/sprite_replace_color_bug.png" alt="bug" title="bug" \/>
-This script is <a href="https://github.com/gmlscripts/scripts/issues/1">under review</a>. Some strange issues with color bleeding
-are being investigated. At the moment, the script may not work due to
-a possible GameMaker:Studio bug that has been difficult to reproduce.
-Differently colored neighboring pixels are mixing when the sprite is drawn
-to a surface. It's something like pixel interpolation, even though
-interpolation is disabled. When a color is replaced, the script may fail
-to recolor a fringe of pixels bordering the replaced areas.</p>
+<p>Replaces one color in a given sprite with another. It is meant to called once
+per color replacement. This only needs be done once, such as at the start of
+a game.</p>
+<p><img src="../images/sprite_replace_color.gif" alt="sprite_replace_color()" title="sprite_replace_color()" /></p>
 <p class="note"><span>NOTE:</span> Here is a much slower script that supports color blending:
 <a href="sprite_replace_color_blend.html">sprite_replace_color_blend()</a></p>
 <dl class="dictionary script">
@@ -132,107 +126,13 @@ Related: <a href="sprite_desaturate.html">sprite_desaturate</a>, <a href="sprite
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Resources/Sprites/sprite_replace_color.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Resources/Sprites/sprite_replace_color.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Resources/Sprites/sprite_replace_color.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Resources/Sprites/sprite_replace_color.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-sprite_replace_color
-====================
-
-Warning: 
-![right](/images/sprite_replace_color_bug.png "bug")
-This script is [under review]. Some strange issues with color bleeding 
-are being investigated. At the moment, the script may not work due to 
-a possible GameMaker:Studio bug that has been difficult to reproduce. 
-Differently colored neighboring pixels are mixing when the sprite is drawn 
-to a surface. It's something like pixel interpolation, even though 
-interpolation is disabled. When a color is replaced, the script may fail 
-to recolor a fringe of pixels bordering the replaced areas.
-[under review]: https://github.com/gmlscripts/scripts/issues/1
-
-Note: Here is a much slower script that supports color blending:
-[sprite_replace_color_blend()](/script/sprite_replace_color_blend)
-
-sprite_replace_color(sprite,oldcolor,newcolor)
-:   Replaces one color in a given sprite with another.
-
-````````````````````````````````````````````````````````````````````````````
-/// sprite_replace_color(sprite,oldcolor,newcolor)
-//
-//  Replaces one color in a given sprite with another. No new sprite are
-//  created, the given sprite is changed. Returns (-1) on error.
-//
-//      sprite      sprite to change, real
-//      oldcolor    color that will be replaced, real
-//      newcolor    color used as replacement, real
-//
-/// GMLscripts.com/license
-{
-    var sprite, oldc, newc;
-    sprite = argument0;
-    oldc  = argument1;
-    newc  = argument2;
-
-    var w, h, n, i, xo, yo, surf, tempsprite, newsprite, alphasprite;
-    w  = sprite_get_width(sprite);
-    h  = sprite_get_height(sprite);
-    n  = sprite_get_number(sprite);
-    xo = sprite_get_xoffset(sprite);
-    yo = sprite_get_yoffset(sprite);
-    
-    surf = surface_create(w,h+1);
-    surface_set_target(surf);
-    
-    for(i=0; i<n; i+=1) {
-        draw_clear_alpha(oldc,1);
-        draw_set_blend_mode_ext(bm_one,bm_zero);
-        draw_sprite(sprite,i,xo,yo);
-        tempsprite = sprite_create_from_surface(surf,0,0,w,h+1,true,false,xo,yo);
-        draw_clear_alpha(newc,1);
-        draw_set_blend_mode_ext(bm_src_alpha,bm_inv_src_alpha);
-        draw_sprite(tempsprite,0,xo,yo);
-        if (i == 0) {
-            newsprite = sprite_create_from_surface(surf,0,0,w,h,false,false,xo,yo);
-            if (newsprite < 0) return -1;
-        }else{
-            sprite_add_from_surface(newsprite,surf,0,0,w,h,false,false);
-        }     
-        draw_clear_alpha(c_white,1);
-        draw_set_blend_mode_ext(bm_zero,bm_src_alpha);
-        draw_sprite(sprite,i,xo,yo);
-        if (i == 0) {
-            alphasprite = sprite_create_from_surface(surf,0,0,w,h,false,false,xo,yo);
-            if (alphasprite < 0) {
-                sprite_delete(newsprite);
-                return -1;
-            }
-        }else{
-            sprite_add_from_surface(alphasprite,surf,0,0,w,h,false,false);
-        }
-        sprite_delete(tempsprite);
-    }
-    
-    draw_set_blend_mode(bm_normal);
-    surface_reset_target();
-    sprite_assign(sprite,newsprite);
-    sprite_set_alpha_from_sprite(sprite,alphasprite);
-    sprite_delete(newsprite);
-    sprite_delete(alphasprite);
-    surface_free(surf);
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/sprite_replace_color';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -332,7 +232,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="sprite_replace_color.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="sprite_replace_color.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

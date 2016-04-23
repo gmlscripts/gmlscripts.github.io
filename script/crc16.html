@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: crc16</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="crc16.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="crc16.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="crc16.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -140,115 +139,13 @@ Related: <strong>crc16</strong>, <a href="md2.html">md2</a>, <a href="soundex.ht
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Hashing/crc16.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Hashing/crc16.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Hashing/crc16.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Hashing/crc16.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-crc16
-=====
-
-Performs a cyclic redundancy check on a string.
-
-[Wikipedia]:
-> A cyclic redundancy check (CRC) is a type of function that takes as input
-> a data stream of any length, and produces as output a value of a certain 
-> space, commonly a 32-bit integer. The term CRC is often used to denote 
-> either the function or the function's output. A CRC can be used as a 
-> checksum to detect alteration of data during transmission or storage. 
-> CRCs are popular because they are simple to implement in binary hardware, 
-> are easy to analyze mathematically, and are particularly good at detecting 
-> common errors caused by noise in transmission channels. The CRC was 
-> invented by W. Wesley Peterson, and published in his 1961 paper.
-
-[Wikipedia]: http://en.wikipedia.org/wiki/Cyclic_redundancy_check
-
-    crc16();                    //  initialize
-    text = "Hello World";
-    hash = crc16(text);         //  hash == 0x4D25
-    hash = crc16(text,true);    //  hash == 0xB126
-    
-Note: This uses the common 16-bit CRC16-CCITT algorithm (with two modes 
-of operation) used in X.25, V.41, CDMA, Bluetooth, XMODEM, PPP, IrDA, 
-BACnet, and other protocols.
-
-Note: This script requires initialization to use. To ready the script
-for use it must first be called without any arguments. This only needs
-to be done once.
-
-crc16(str [,mode])
-:   Returns a CRC16-CCITT hash value for a given string.
-
-````````````````````````````````````````````````````````````````````````````
-/// crc16(str [,mode])
-//
-//  Returns a CRC16-CCITT hash value for a given string.
-//
-//  This script requires initialization to use. To ready the 
-//  script for use it must first be called without any arguments. 
-//  This only needs to be done once.
-//
-//      str     data to hash with CRC16-CCITT, string
-//      mode    set to TRUE for pedantic "good" mode, boolean (optional)
-//
-//  Notes:
-//      For speed, this creates a lookup table in the form of a global array
-//      called _CRC16tab[]. It features two modes of operation. The "bad" mode
-//      is the common implementation found most places. The "good" mode is an
-//      implementation that is closer to the actual CRC16-CCITT specification.
-//
-/// GMLscripts.com/license
-{
-    if (argument_count == 0) {
-        // Initialize lookup table.
-        var tab;
-        tab  = "00000041290825812387165162064524774289033303237161412904541949548536775780661935";
-        tab += "04657005281291508786211731704429431253023768933560459474181854205500766246358334";
-        tab += "09314133790105605121258302989517572216374234646411340883815358862629275060454669";
-        tab += "13907098420564901584304232635822165181004693942874386813461663455593905519751132";
-        tab += "18628227572675830887021120624110242143715166055789597906391935144392734327447403";
-        tab += "23285191563141527286067690264014899107705631752188644476031839801356724793143802";
-        tab += "27814318791968423749112981536303168072336084664911527165678144330483953620040265";
-        tab += "32407283422427720212158911182607761036966543961374573095324448923448584079336728";
-        tab += "37256331934551441451535164945361774577110422400161124820841920484164212874224679";
-        tab += "33721377844197946042499815404458239623020068904752089471301016949210122520729270";
-        tab += "46570424433831234185628305870354572504451353809411052800115329798256712154017413";
-        tab += "42971470983471338840592316335850973551000993914066016810580826199303261794122068";
-        tab += "55628515656375859695393683530547498434352259618533307262666306336022731446610403";
-        tab += "52093561566022364286358333989643963480261906123124271913125402801068641093114994";
-        tab += "64814606875668452557485544442740424362973178227655236521952515522113950739203265";
-        tab += "61215653425308557212449554908236825409522818332310200532418011923160500379307920";
-        for (var i=0; i<256; i++) {
-            global._CRC16tab[i] = real(string_copy(tab, i*5+1, 5));
-        }
-        return 0;
-    }
-    
-    var str,crc,len,pos,byte;
-    str = argument[0];
-    crc = $FFFF;
-    if (argument_count == 2 && argument[1]) crc = $1D0F;
-    len = string_length(str);
-    pos = 1;
-    repeat(len) {
-        byte = ord(string_char_at(str, pos));
-        crc = ((crc<<8)^global._CRC16tab[((crc>>8)^byte)&$FF])&$FFFF;
-        pos += 1;
-    }
-    return crc;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/crc16';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -348,7 +245,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="crc16.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="crc16.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

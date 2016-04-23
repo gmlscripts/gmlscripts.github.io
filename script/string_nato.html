@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: string_nato</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="string_nato.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="string_nato.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="string_nato.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -105,76 +104,13 @@ Related: <a href="number_format.html">number_format</a>, <a href="speakable_pass
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Strings/string_nato.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Strings/string_nato.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Strings/string_nato.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Strings/string_nato.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-string_nato
-===========
-
-Returns a given string as expressed by the Nato phonetic alphabet.
-Phonetic words will be separarted by spaces. Non-alphanumeric 
-characters are removed.
-
-    text = "Testing: 1-2-3.";
-    nato = string_nato(text);
-    
-    //  nato == "Tango Echo Sierra Tango India November Golf One Two Three"
-
-string_nato(text)
-:   Returns a given string as expressed by the Nato phonetic alphabet.
-
-````````````````````````````````````````````````````````````````````````````
-/// string_nato(text)
-//
-//  Returns a given string as expressed by the Nato phonetic alphabet.
-//  Phonetic words will be separarted by spaces. Non-alphanumeric 
-//  characters are removed.
-//
-//      text        text to translate, string
-//
-/// GMLscripts.com/license
-{
-    var in = string_upper(argument0);
-    var len = string_length(in);
-    var out = "";
-    
-    var nato = ds_map_create();
-    nato[? "A"] = "Alfa";     nato[? "B"] = "Bravo";     nato[? "C"] = "Charlie";
-    nato[? "D"] = "Delta";    nato[? "E"] = "Echo";      nato[? "F"] = "Foxtrot";
-    nato[? "G"] = "Golf";     nato[? "H"] = "Hotel";     nato[? "I"] = "India";
-    nato[? "J"] = "Juliett";  nato[? "K"] = "Kilo";      nato[? "L"] = "Lima";
-    nato[? "M"] = "Mike";     nato[? "N"] = "November";  nato[? "O"] = "Oscar";
-    nato[? "P"] = "Papa";     nato[? "Q"] = "Quebec";    nato[? "R"] = "Romeo";
-    nato[? "S"] = "Sierra";   nato[? "T"] = "Tango";     nato[? "U"] = "Uniform";
-    nato[? "V"] = "Victor";   nato[? "W"] = "Whiskey";   nato[? "X"] = "X-ray";
-    nato[? "Y"] = "Yankee";   nato[? "Z"] = "Zulu";      nato[? "0"] = "Zero";
-    nato[? "1"] = "One";      nato[? "2"] = "Two";       nato[? "3"] = "Three";
-    nato[? "4"] = "Four";     nato[? "5"] = "Five";      nato[? "6"] = "Six";
-    nato[? "7"] = "Seven";    nato[? "8"] = "Eight";     nato[? "9"] = "Niner";
-    
-    for (var i=1; i<len; i++) {
-        var c = string_char_at(in ,i);
-        if (!ds_map_exists(nato ,c)) continue;
-        if (i > 1) out += " ";
-        out += nato[? c];
-    }
-    
-    ds_map_destroy(nato);
-    return out;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/string_nato';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -274,7 +210,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="string_nato.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="string_nato.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

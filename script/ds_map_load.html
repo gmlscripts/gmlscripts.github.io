@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: ds_map_load</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="ds_map_load.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="ds_map_load.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="ds_map_load.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -133,106 +132,13 @@ Related: <a href="ds_map_clone.html">ds_map_clone</a>, <a href="ds_map_deep_clon
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Data_Structures/Maps/ds_map_load.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Data_Structures/Maps/ds_map_load.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Data_Structures/Maps/ds_map_load.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Data_Structures/Maps/ds_map_load.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-ds_map_load
-===========
-
-Note: This script is made somewhat redundant by the addition of 
-native functions `ds_map_read()` and `ds_map_write()`,
-although this script works differently.
-
-ds_map_load(file [,delim])
-:   Loads the contents of a file into a new map data structure, returning its id.
-
-````````````````````````````````````````````````````````````````````````````
-/// ds_map_load(file [,delim])
-//
-//  Loads the contents of a file into a new 
-//  map data structure, returning its id.
-//
-//      file        file name, string
-//      delim       delimiter used between elements, string
-//
-/// GMLscripts.com/license
-{
-    var FileIn, MapItems, CurrLine, NumItems, i, TempKey, TempValue;
-
-    // Open the file that contains the map
-    FileIn = file_text_open_read(argument0);  // Open the Map File
-    MapItems = ds_map_create();               // Create the Map to be read into
-    CurrLine = '';                            // Default to an empty string
-
-    // Read the entire file into a variable
-    while (!file_text_eof(FileIn)) {
-        CurrLine += file_text_read_string(FileIn);
-        // Technically we should not have a return and a comma
-        // But just incase lets make sure that we do not add an extra one.
-        if (string_char_at(CurrLine,string_length(CurrLine)) != ',') {
-            if (argument1 != 0) {
-                if (string_char_at(CurrLine,string_length(CurrLine)) != string(argument1)) {
-                    CurrLine += ',';
-                }
-            }else{
-                CurrLine += ',';
-            }
-        }
-        file_text_readln(FileIn);
-    }
-
-    // Remove the final comma
-    CurrLine = string_delete(CurrLine,string_length(CurrLine),1);
-
-    // Add Support for other separators.
-    CurrLine = string_replace_all(CurrLine,';',',');
-    if ( argument1 != 0 ) {
-        CurrLine = string_replace_all(CurrLine,string(argument1),',');
-    }
-    CurrLine = string_replace_all(CurrLine,', ',",");
-    CurrLine = string_replace_all(CurrLine,' ,',",");
-
-    // Get the number of items to be placed into the map, if there is an
-    // odd number, round up and we will default to 0.
-    NumItems = ceil((string_count(',',CurrLine) + 1)/2);
-
-    // Read The Values into the Map
-    for( i = 0; i < NumItems; i += 1 ) {
-        if ( string_count(',',CurrLine) > 1 ) {
-            TempKey = string_copy(CurrLine,1,string_pos(',',CurrLine)-1);
-            CurrLine = string_delete(CurrLine,1,string_pos(',',CurrLine));
-            TempValue = string_copy(CurrLine,1,string_pos(',',CurrLine)-1);
-            CurrLine = string_delete(CurrLine,1,string_pos(',',CurrLine));
-        }else{
-            if ( string_count(',',CurrLine) = 1 ) {
-                TempKey = string_copy(CurrLine,1,string_pos(',',CurrLine)-1);
-                CurrLine = string_delete(CurrLine,1,string_pos(',',CurrLine));
-                TempValue = CurrLine;
-                CurrLine = '';
-            }else{
-                TempKey = CurrLine;
-                CurrLine = '';
-                TempValue = 0;
-            }
-        }
-        ds_map_add(MapItems,TempKey,TempValue);
-    }
-    return (MapItems);
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: Leif902
-
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/ds_map_load';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -332,7 +238,7 @@ contributors: Leif902
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="ds_map_load.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="ds_map_load.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

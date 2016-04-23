@@ -5,7 +5,6 @@
 <title>GMLscripts.com :: date_format</title>
 <link rel="icon" type="image/gif" href="../favicon.gif" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<link rel="alternate" title="GMLscripts.com :: Forum Posts" href="/forums/rss.xml" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
@@ -23,14 +22,14 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </head>
 <body >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="/index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="/paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
+<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. That problem is a lack of money. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible. <a href="../paypal.html">Donations</a> are gratefully accepted to help get things back to normal.</p>
 <!-- Header -->
 <div id="header">
     <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
     <div class="header-left"></div>
     <div class="header-right">
         <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="../#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="../#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="../#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
+        <a href="index.html" class="nav">Scripts</a><a href="date_format.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="date_format.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="date_format.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
     </div>
 </div>
 
@@ -241,215 +240,13 @@ Related: <strong>date_format</strong>, <a href="date_get_easter.html">date_get_e
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Date-Time/date_format.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Date-Time/date_format.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Date-Time/date_format.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Date-Time/date_format.gml" target="_blank">Raw</a>
 </p>
-
-<!--
-
-date_format
-===========
-
-Returns a date/time value in a wide variety of useful, customizable forms.
-Designed to closely mimic [PHP's date function].
-
-demo: date_format 512 64
-
-    // Assuming today is March 10th, 2001, 5:16:18 pm
-
-    today = date_format("F j, Y, g:i a");                 // March 10, 2001, 5:16 pm
-    today = date_format("m.d.y");                         // 03.10.01
-    today = date_format("j, n, Y");                       // 10, 3, 2001
-    today = date_format("Ymd");                           // 20010310
-    today = date_format('h-i-s, j-m-y, it is w Day');     // 05-16-18, 10-03-01, 1631 1618 6 Satpm01
-    today = date_format('\i\t \i\s \t\h\e jS \d\a\y.');   // it is the 10th day.
-    today = date_format("D M j G:i:s Y");                 // Sat Mar 10 17:16:18 2001
-    today = date_format('H:m:s \m \i\s\ \m\o\n\t\h');     // 17:03:18 m is month
-    today = date_format("H:i:s");                         // 17:16:18 
-
-date_format(format [,datetime])
-:   Returns a string formatted according to the given format string using the given date-time value or current local time if no date-time is given.
-
-````````````````````````````````````````````````````````````````````````````
-/// date_format(format [,datetime])
-//
-//  Returns a string formatted according to the given format string using
-//  the given date-time value or current local time if no date-time is given.
-//
-//      format      string controlling date formatting, string
-//      datetime    date-time value, real (optional)
-//
-//  Day format characters:
-//      d - day of the month with leading zeros, 2 digits with leading zeros; 01 through 31
-//      D - day of the week, textual, 3 letters; Fri
-//      j - day of the month without leading zeros; 1 through 31
-//      l - day of the week, textual, long; Friday
-//      N - ISO 8601 day number of the week; 1 (Monday) through 7 (Sunday)
-//      S - English ordinal suffix, textual, 2 characters; st, nd, rd, th
-//      w - day of the week, numeric, 0 (Sunday) through 6 (Saturday)
-//      z - day of the year (starting from zero); 0 through 365
-//
-//  Week format characters:
-//      W - ISO 8601 week number of year, weeks starting on Monday; 42
-//
-//  Month format characters:
-//      F - month, textual, long; January
-//      m - month with leading zeros; 01 through 12
-//      M - month, textual, 3 letters; Jan
-//      n - month without leading zeros; 1 through 12
-//      t - number of days in the given month; 28 through 31
-//
-//  Year format characters:
-//      L - whether it is a leap year; 0 or 1
-//      o - ISO 8601 year, like Y unless ISO week belongs to prev or next year; 2008
-//      Y - year, 4 digits; 1999
-//      y - year, 2 digits; 99
-//
-//  Time format characters:
-//      a - lowercase Ante meridiem and Post meridiem; am or pm
-//      A - uppercase Ante meridiem and Post meridiem; AM or PM
-//      g - hour, 12-hour format without leading zeros; 1 through 12
-//      G - hour, 24-hour format without leading zeros; 0 through 23
-//      h - hour, 12-hour format; 01 through 12
-//      H - hour, 24-hour format; 00 through 23
-//      i - minutes, with leading zero; 00 through 59
-//      s - seconds, with leading zero; 00 through 59
-//
-//  Full Date/Time format characters:
-//      c - ISO 8601 extended format date; 2004-02-12T15:19:21
-//      r - RFC 2822 formatted data; Thu, 21 Dec 2000 16:01:07 -0000
-//      U - seconds since the Unix epoch
-//
-//      \ - following character should be returned literally, not interpreted
-//
-//  Examples:
-//      date_format("l jS of F Y h:i:s A") == "Sunday 4th of May 2008 05:45:34 PM"
-//      date_format('\I\t \i\s \t\h\e zS \d\a\y.') == "It is the 124th day."
-//
-/// GMLscripts.com/license
-{
-    var str,dat,out,day,month,year,week,weekday,second,minute,hour24,hour12,i,c;
-    str = argument[0];
-    if (argument_count > 1) dat = argument[1];
-    else dat = date_current_datetime();
-    out = "";
-    day     = date_get_day(dat);
-    month   = date_get_month(dat);
-    year    = date_get_year(dat);
-    week    = date_get_week(dat);
-    weekday = date_get_weekday(dat);
-    second  = date_get_second(dat);
-    minute  = date_get_minute(dat);
-    hour24  = date_get_hour(dat);
-    hour12  = ((hour24+23) mod 12)+1;
-    for (i=1; i<=string_length(str); i+=1) {
-        c = string_char_at(str,i);
-        switch (c) {
-        case "F":
-            switch (month) {
-            case 1:  out += "January";   break;
-            case 2:  out += "February";  break;
-            case 3:  out += "March";     break;
-            case 4:  out += "April";     break;
-            case 5:  out += "May";       break;
-            case 6:  out += "June";      break;
-            case 7:  out += "July";      break;
-            case 8:  out += "August";    break;
-            case 9:  out += "September"; break;
-            case 10: out += "October";   break;
-            case 11: out += "November";  break;
-            case 12: out += "December";  break;
-            }
-            break;
-        case "M":
-            switch (month) {
-            case 1:  out += "Jan"; break;
-            case 2:  out += "Feb"; break;
-            case 3:  out += "Mar"; break;
-            case 4:  out += "Apr"; break;
-            case 5:  out += "May"; break;
-            case 6:  out += "Jun"; break;
-            case 7:  out += "Jul"; break;
-            case 8:  out += "Aug"; break;
-            case 9:  out += "Sep"; break;
-            case 10: out += "Oct"; break;
-            case 11: out += "Nov"; break;
-            case 12: out += "Dec"; break;
-            }
-            break;
-        case "l":
-            switch (weekday) {
-            case 1: out += "Sunday";    break;
-            case 2: out += "Monday";    break;
-            case 3: out += "Tuesday";   break;
-            case 4: out += "Wednesday"; break;
-            case 5: out += "Thursday";  break;
-            case 6: out += "Friday";    break;
-            case 7: out += "Saturday";  break;
-            }
-            break;
-        case "D":
-            switch (weekday) {
-            case 1: out += "Sun"; break;
-            case 2: out += "Mon"; break;
-            case 3: out += "Tue"; break;
-            case 4: out += "Wed"; break;
-            case 5: out += "Thu"; break;
-            case 6: out += "Fri"; break;
-            case 7: out += "Sat"; break;
-            }
-            break;
-        case "S":
-            if (day >= 10 && day <= 20) out += "th";
-            else if ((day mod 10) == 1) out += "st";
-            else if ((day mod 10) == 2) out += "nd";
-            else if ((day mod 10) == 3) out += "rd";
-            else                        out += "th";
-            break;
-        case "o":
-            if (month ==  1 && day <=  3 && week != 1) { out += string(year-1); break; }
-            if (month == 12 && day >= 29 && week == 1) { out += string(year+1); break; }
-        case "Y": out += string(year); break;
-        case "y": out += string_copy(string(year),3,2); break;
-        case "m": if (month < 10) out += "0";
-        case "n": out += string(month); break;
-        case "d": if (day < 10) out += "0";
-        case "j": out += string(day); break;
-        case "H": if (hour24 < 10) out += "0";
-        case "G": out += string(hour24); break;
-        case "h": if (hour12 < 10) out += "0";
-        case "g": out += string(hour12); break;
-        case "i": if (minute < 10) out += "0"; out += string(minute); break;
-        case "s": if (second < 10) out += "0"; out += string(second); break;
-        case "a": if (hour24 < 12) out += "am" else out += "pm"; break;
-        case "A": if (hour24 < 12) out += "AM" else out += "PM"; break;
-        case "U": out += string(round(date_second_span(dat,25569))); break;
-        case "z": out += string(date_get_day_of_year(dat)-1); break;
-        case "t": out += string(date_days_in_month(month)); break;
-        case "L": out += string(date_leap_year(dat)); break;
-        case "w": out += string(weekday-1); break;
-        case "N": out += string(((weekday+5) mod 7)+1); break;
-        case "W": out += string(week); break;
-        case "c": out += date_format("o-m-dTH:i:s",dat); break;
-        case "r": out += date_format("D, j M Y H:i:s -0000",dat); break;
-        case "\": i += 1; c = string_char_at(str,i);
-        default:  out += c; break;
-        }
-    }
-    return out;
-}
-
-````````````````````````````````````````````````````````````````````````````
-
-contributors: xot
-
-[PHP's date function]: http://us2.php.net/manual/en/function.date.php
-
--->
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
     var disqus_identifier = '/script/date_format';
-    var disqus_url = ''+disqus_identifier;
+    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
     
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -549,7 +346,7 @@ contributors: xot
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="date_format.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2015, xot media multimixing</p></div>
+    <div class="footer-right"><a href="date_format.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
 </div>
 <script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
