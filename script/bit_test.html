@@ -43,7 +43,8 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 <h1>bit_test</h1>
 <div class="codebox example">
 <pre><code class="prettyprint lang-gml">bits = 229;               //  bits == 229 (11100101)
-test = bit_test(bits,4);  //  test == 0   (...^....)</code></pre>
+test = bit_test(bits,4);  //  test == 0   (...^....)
+test = bit_test(bits,5);  //  test == 1   (..^.....)</code></pre>
 </div>
 <dl class="dictionary script">
 <dt><a href="bit_test.html">bit_test(bitfield,bit)</a></dt>
@@ -59,7 +60,7 @@ test = bit_test(bits,4);  //  test == 0   (...^....)</code></pre>
 //
 /// GMLscripts.com/license
 {
-    return argument0 &amp; (1 &lt;&lt; argument1);
+    return 1 &amp; (argument0 &gt;&gt; argument1);
 }
 </code></pre>
 </div>
