@@ -41,7 +41,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
         <div class="top-right"></div>
         <div class="inside">
 <h1>map_sprites</h1>
-<dl class="dictionary script">
+<dl class="dictionary recent script">
 <dt><a href="map_sprites.html">map_sprites(map)</a></dt>
 <dd>Fills a given map data structure with the id values of all sprite resources, keyed by strings of their names.</dd>
 </dl>
@@ -55,9 +55,11 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 //
 /// GMLscripts.com/license
 {
-    var no,i,ds_map;
+    var surf,no,i,ds_map;
     ds_map = argument0;
-    no = sprite_create_from_screen(0,0,1,1,false,false,false,false,0,0);
+    surf = surface_create(1,1);
+    no = sprite_create_from_surface(surf,0,0,1,1,false,false,0,0);
+    surface_free(surf);
     sprite_delete(no);
     for (i=0; i&lt;no; i+=1) {
         if (sprite_exists(i)) {
@@ -69,7 +71,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </code></pre>
 </div>
 <p id="contributors">
-Contributors: paul23
+Contributors: paul23, RaniSputnik
 </p>
 <p id="related">
 Related: <a href="map_backgrounds.html">map_backgrounds</a>, <a href="map_fonts.html">map_fonts</a>, <a href="map_objects.html">map_objects</a>, <a href="map_paths.html">map_paths</a>, <a href="map_rooms.html">map_rooms</a>, <a href="map_sounds.html">map_sounds</a>, <strong>map_sprites</strong>, <a href="map_timelines.html">map_timelines</a>
@@ -165,6 +167,12 @@ GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Resources/Man
                 <ul class="sub-menu" style="display: none;">
                     <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
                     <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="platform" class="platform">
+                <a href="map_sprites.html#platform">Platform</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Platform/Device/index.html">Device</a></li>
                 </ul>
             </li>
             <li id="resources" class="resources">

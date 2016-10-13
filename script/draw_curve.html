@@ -41,7 +41,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
         <div class="top-right"></div>
         <div class="inside">
 <h1>draw_curve</h1>
-<dl class="dictionary script">
+<dl class="dictionary recent script">
 <dt><a href="draw_curve.html">draw_curve(x1,y1,x2,y2,direction,detail)</a></dt>
 <dd>Draws a curve between two points with a given starting angle.</dd>
 </dl>
@@ -57,7 +57,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 //
 /// GMLscripts.com/license
 {
-    var x1, y1, x2, y2, start_angle, detail, dist, dist_ang, step, draw_x, draw_y;
+    var x1, y1, x2, y2, start_angle, detail, dist, dist_ang, inc, draw_x, draw_y;
     x1 = argument[0];
     y1 = argument[1];
     x2 = argument[2];
@@ -67,10 +67,10 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 
     dist = point_distance(x1,y1,x2,y2);
     dist_ang = angle_difference(point_direction(x1,y1,x2,y2),start_angle);
-    step = (1/detail);
+    inc = (1/detail);
 
     draw_primitive_begin(pr_linestrip);
-    for (i=0; i&lt;1+step; i+=step) {
+    for (i=0; i&lt;1+inc; i+=inc) {
         draw_x = x1 + (lengthdir_x(i * dist, i * dist_ang + start_angle));
         draw_y = y1 + (lengthdir_y(i * dist, i * dist_ang + start_angle));
         draw_vertex(draw_x,draw_y);
@@ -81,7 +81,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </code></pre>
 </div>
 <p id="contributors">
-Contributors: Keth, greenfalcon44
+Contributors: Keth, greenfalcon44, RaniSputnik
 </p>
 <p id="related">
 Related: <a href="draw_arc.html">draw_arc</a>, <a href="draw_chord.html">draw_chord</a>, <a href="draw_crosshair.html">draw_crosshair</a>, <a href="draw_crosshair_ext.html">draw_crosshair_ext</a>, <a href="draw_crosshair_width.html">draw_crosshair_width</a>, <a href="draw_crosshair_width_ext.html">draw_crosshair_width_ext</a>, <strong>draw_curve</strong>, <a href="draw_pie.html">draw_pie</a>, <a href="draw_rectangle_dashed.html">draw_rectangle_dashed</a>, <a href="draw_rectangle_dashed_color.html">draw_rectangle_dashed_color</a>, <a href="draw_rectangle_inverted.html">draw_rectangle_inverted</a>, <a href="draw_roundrect_ext.html">draw_roundrect_ext</a>
@@ -177,6 +177,12 @@ GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Draw
                 <ul class="sub-menu" style="display: none;">
                     <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
                     <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="platform" class="platform">
+                <a href="draw_curve.html#platform">Platform</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="Platform/Device/index.html">Device</a></li>
                 </ul>
             </li>
             <li id="resources" class="resources">

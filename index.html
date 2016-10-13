@@ -53,7 +53,66 @@ improved an existing one, please consider <a href="#">submitting</a> it.</p>
 <p><span style="text-align:center; display:block;"><a href="news.html">Read More News</a></span></p>
 <hr />
 <h2>Recent Changes</h2>
-<p>No changes in last 30 days.</p><hr />
+<dl class="dictionary recent">
+<dt><a href="script/ds_list_add_list.html">ds_list_add_list(id,list)</a></dt>
+<dd>Adds a list to a given list and marks it.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/file_text_open_write_all.html">file_text_open_write_all(fname,str)</a></dt>
+<dd>Writes a multiline string to a given file.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/file_text_open_read_all.html">file_text_open_read_all(fname)</a></dt>
+<dd>Returns the contents of a given file as a multiline string.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/ds_list_add_map.html">ds_list_add_map(id,map)</a></dt>
+<dd>Adds a map to a given list and marks it.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/draw_curve.html">draw_curve(x1,y1,x2,y2,direction,detail)</a></dt>
+<dd>Draws a curve between two points with a given starting angle.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/map_backgrounds.html">map_backgrounds(map)</a></dt>
+<dd>Fills a given map data structure with the id values of all background resources, keyed by strings of their names.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/map_sprites.html">map_sprites(map)</a></dt>
+<dd>Fills a given map data structure with the id values of all sprite resources, keyed by strings of their names.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/device_is_desktop.html">device_is_desktop()</a></dt>
+<dd>Returns whether or not the current device is a desktop, workstation or laptop.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/clamp.html">clamp(x,a,b)</a></dt>
+<dd>Returns a when (x &lt; a), b when (x &gt; b), x otherwise.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/point_in_circle.html">point_in_circle(px,py,cx,cy,rad)</a></dt>
+<dd>Returns true if the given test point is within the given circle, false otherwise.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/lerp.html">lerp(a,b,x)</a></dt>
+<dd>Returns a if x is 0, b if x is 1, for other values of x returns linear interpolation of a to b controlled by x.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/point_in_triangle.html">point_in_triangle(px,py,x1,y1,x2,y2,x3,y3)</a></dt>
+<dd>Returns true if the given test point is within the given triangle, falso otherwise.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/ds_grid_shuffle.html">ds_grid_shuffle(id)</a></dt>
+<dd>Rearranges the cell contents of a given grid in randomly.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/angle_difference.html">angle_difference(angle1, angle2)</a></dt>
+<dd>Returns the relative angle [-180..180] between the given angles.</dd>
+</dl>
+<dl class="dictionary recent">
+<dt><a href="script/draw_self.html">draw_self()</a></dt>
+<dd>Draws the assigned sprite of the calling instance, using its subimage, position, scaling, rotation, and blending settings.</dd>
+</dl><hr />
 <!-- DISQUS START -->
 <div id="recentcomments" class="dsq-widget">
 <h2 class="dsq-widget-title">Recent Comments</h2>
@@ -133,6 +192,12 @@ improved an existing one, please consider <a href="#">submitting</a> it.</p>
                 <ul class="sub-menu" style="display: none;">
                     <li><a href="script/Interaction/Gamepad/index.html">Gamepad</a></li>
                     <li><a href="script/Interaction/Mouse/index.html">Mouse</a></li>
+                </ul>
+            </li>
+            <li id="platform" class="platform">
+                <a href="index.html#platform">Platform</a>
+                <ul class="sub-menu" style="display: none;">
+                    <li><a href="script/Platform/Device/index.html">Device</a></li>
                 </ul>
             </li>
             <li id="resources" class="resources">
