@@ -24,7 +24,7 @@ http://rockablethemes.com
 	padding: 0;
 	border: none;
 	outline: none;
-	background-image: url(/images/30/accordion-menu.gif);
+	background-image: url(/images/30/accordion-menu.png);
 }
 
 .accordion li {
@@ -39,7 +39,7 @@ http://rockablethemes.com
 	padding: 0 20px 0 20px;
 	height: 34px;
 	color: #EEE;
-	font: bold 12px/32px Verdana, Arial, sans-serif;
+	font: bold 14px/32px sans-serif;
 	text-align: center;
 	text-decoration: none;
 	text-shadow: 1px 1px 3px #111;
@@ -76,7 +76,7 @@ div.menu + div.menu {
 
 .sub-menu li a {
 	color: #CCC;
-	font: bold 12px/32px Arial, sans-serif;
+	font: bold 14px/32px sans-serif;
 	text-align: left;
 	text-shadow: 1px 1px 3px #111;
 	background-position: 0px -102px;

@@ -8,13 +8,14 @@
 <script type="text/x-mathjax-config">//<![CDATA[
 MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
 MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript" src="../jquery.min.js"></script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
 <script type="text/javascript" src="../cookie.js"></script>
 <script type="text/javascript" src="../contrast.js"></script>
 <script type="text/javascript" src="../accordionmenu.js"></script>
+<script type="text/javascript" src="../clipboard.js"></script>
 <link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
 <link rel="stylesheet" type="text/css" href="../contrast.css" />
 <link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
@@ -62,7 +63,7 @@ today = date_format("H:i:s");                         // 17:16:18 </code></pre>
 <dd>Returns a string formatted according to the given format string using the given date-time value or current local time if no date-time is given.</dd>
 </dl>
 <div class="codebox script">
-<pre><code class="prettyprint lang-gml">/// date_format(format [,datetime])
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('date_format')">COPY</a></span><code class="prettyprint lang-gml" id="date_format">/// date_format(format [,datetime])
 //
 //  Returns a string formatted according to the given format string using
 //  the given date-time value or current local time if no date-time is given.
@@ -170,24 +171,24 @@ today = date_format("H:i:s");                         // 17:16:18 </code></pre>
             break;
         case "l":
             switch (weekday) {
-            case 1: out += "Sunday";    break;
-            case 2: out += "Monday";    break;
-            case 3: out += "Tuesday";   break;
-            case 4: out += "Wednesday"; break;
-            case 5: out += "Thursday";  break;
-            case 6: out += "Friday";    break;
-            case 7: out += "Saturday";  break;
+            case 0: out += "Sunday";    break;
+            case 1: out += "Monday";    break;
+            case 2: out += "Tuesday";   break;
+            case 3: out += "Wednesday"; break;
+            case 4: out += "Thursday";  break;
+            case 5: out += "Friday";    break;
+            case 6: out += "Saturday";  break;
             }
             break;
         case "D":
             switch (weekday) {
-            case 1: out += "Sun"; break;
-            case 2: out += "Mon"; break;
-            case 3: out += "Tue"; break;
-            case 4: out += "Wed"; break;
-            case 5: out += "Thu"; break;
-            case 6: out += "Fri"; break;
-            case 7: out += "Sat"; break;
+            case 0: out += "Sun"; break;
+            case 1: out += "Mon"; break;
+            case 2: out += "Tue"; break;
+            case 3: out += "Wed"; break;
+            case 4: out += "Thu"; break;
+            case 5: out += "Fri"; break;
+            case 6: out += "Sat"; break;
             }
             break;
         case "S":
@@ -218,8 +219,8 @@ today = date_format("H:i:s");                         // 17:16:18 </code></pre>
         case "z": out += string(date_get_day_of_year(dat)-1); break;
         case "t": out += string(date_days_in_month(month)); break;
         case "L": out += string(date_leap_year(dat)); break;
-        case "w": out += string(weekday-1); break;
-        case "N": out += string(((weekday+5) mod 7)+1); break;
+        case "w": out += string(weekday); break;
+        case "N": out += string(((weekday+6) mod 7)+1); break;
         case "W": out += string(week); break;
         case "c": out += date_format("o-m-dTH:i:s",dat); break;
         case "r": out += date_format("D, j M Y H:i:s -0000",dat); break;
@@ -235,7 +236,7 @@ today = date_format("H:i:s");                         // 17:16:18 </code></pre>
 Contributors: xot
 </p>
 <p id="related">
-Related: <strong>date_format</strong>, <a href="date_get_easter.html">date_get_easter</a>, <a href="time_string.html">time_string</a>
+Related: <strong>date_format</strong>, <a href="date_get_easter.html">date_get_easter</a>, <a href="time_string.html">time_string</a>, <a href="unix_timestamp.html">unix_timestamp</a>
 </p>
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Date-Time/date_format.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Date-Time/date_format.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Date-Time/date_format.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Date-Time/date_format.gml" target="_blank">Raw</a>
@@ -352,9 +353,21 @@ GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/D
 <!-- Footer -->
 <div id="footer">
     <div class="footer-left"></div>
-    <div class="footer-right"><a href="date_format.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2016, xot media multimixing</p></div>
+    <div class="footer-right"><a href="date_format.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2018, xot media multimixing</p></div>
 </div>
-<script type="text/javascript">prettyPrint();</script>
+<div id="cookies" style="display:none;">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var cookies = getCookie("cookies");
+        if (cookies != "ok") {
+            $("#cookies").css({display:"block", bottom:"-60px"}).animate({bottom:"0px"}, 400);
+            $("#cookiebutton").click(function() {
+                setCookie("cookies","ok",365);
+                $("#cookies").animate({bottom:"-60px"}, 400, function(){$(this).css({display:"none"})});
+            });
+        }
+    });
+</script><script type="text/javascript">prettyPrint();</script>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
 </script>
 <script type="text/javascript"><!--
