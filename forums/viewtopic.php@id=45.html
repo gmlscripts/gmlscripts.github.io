@@ -3,29 +3,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Script Submission Rules / Script Submission / GMLscripts.com</title>
-<link rel="icon" type="image/gif" href="../favicon.gif" />
+<meta name="theme-color" content="#FC7C13">
+<link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
-MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
-MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/javascript" src="../jquery.min.js"></script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
-<script type="text/javascript" src="../cookie.js"></script>
-<script type="text/javascript" src="../contrast.js"></script>
-<script type="text/javascript" src="../accordionmenu.js"></script>
-<script type="text/javascript" src="../clipboard.js"></script>
-<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
-<link rel="stylesheet" type="text/css" href="../contrast.css" />
-<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
-<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
-<link rel="stylesheet" type="text/css" href="http://static.gmlscripts.local/forums/style/Dark.css?v=1530425816" />
+<script type="text/javascript" src="../gmlscripts35.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="http://static.gmlscripts.local/forums/style/Dark.css?v=1541224941" />
 
 <link rel="canonical" href="viewtopic.php@id=45.html" title="Page 1" />
 </head>
 
-<body>
+<body onLoad="setupContrastFilter(); PR.prettyPrint();">
 
 <div id="punviewtopic" class="pun">
 <div class="top-box"></div>
@@ -37,8 +31,8 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 			<h1><a href="http://static.gmlscripts.local/forums/index.php">GMLscripts.com</a></h1>
 			<div id="brddesc">Discuss and collaborate on GML scripts</div>
 		</div>
-		<img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" /><div id="brdmenu" class="inbox">
-			<span id="header-image"><a href="../index.html" id="home"><img style="display:inline-block;margin-top:-1px;margin-bottom:-4px" src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a></span><ul>
+		<img id="contrast" src="../images/35/_note.png" title="Invert" alt="Invert" /><div id="brdmenu" class="inbox">
+			<span id="header-image"><a href="../index.html" id="home"><img style="display:inline-block;margin:8px 0 -3px 0;" src="../images/35/gmlscripts-header3d.png" alt="GMLscripts.com" /></a></span><ul>
 				<li id="navextra1"><a href="../script/index.html">Scripts</a></li><li id="navindex" class="isactive"><a href="http://static.gmlscripts.local/forums/index.php">Forums</a></li><li id="navuserlist"><a href="http://static.gmlscripts.local/forums/userlist.php">Members</a></li><li id="navrules"><a href="http://static.gmlscripts.local/forums/misc.php?action=rules">Rules</a></li><li id="navsearch"><a href="http://static.gmlscripts.local/forums/search.php">Search</a></li><li id="navregister"><a href="http://static.gmlscripts.local/forums/register.php">Register</a></li><li id="navlogin"><a href="http://static.gmlscripts.local/forums/login.php">Login</a></li><li id="navextra2"><a href="http://twitter.com/gmlscripts">Follow</a></li>
 			</ul>
 		</div>
@@ -80,7 +74,7 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 						<dd class="usertitle"><strong>Administrator</strong></dd>
 						<dd class="postavatar"><img src="http://www.gmlscripts.local/forums/img/avatars/2.png?m=1420594607" width="120" height="120" alt="" /></dd>
 						<dd><span>Registered: 2007-08-18</span></dd>
-						<dd><span>Posts: 1,171</span></dd>
+						<dd><span>Posts: 1,188</span></dd>
 					</dl>
 				</div>
 				<div class="postright">
@@ -153,6 +147,5 @@ MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
 </div>
 <div class="end-box"></div>
 </div>
-<script type="text/javascript">prettyPrint();</script>
 </body>
 </html>

@@ -1,53 +1,130 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
 <title>GMLscripts.com :: point_in_circle</title>
-<link rel="icon" type="image/gif" href="../favicon.gif" />
+<meta name="theme-color" content="#FC7C13">
+<link rel="icon" type="image/png" href="../favicon.png" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
 <script type="text/x-mathjax-config">//<![CDATA[
-MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
-MathJax.Hub.Queue(function () { $(".mathjax").fadeIn();} );//]]></script>
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript">var scripts = "point_in_circle"</script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
-<script type="text/javascript" src="../cookie.js"></script>
-<script type="text/javascript" src="../contrast.js"></script>
-<script type="text/javascript" src="../accordionmenu.js"></script>
-<script type="text/javascript" src="../clipboard.js"></script>
-<link rel="stylesheet" type="text/css" href="../prettify/prettify.css" />
-<link rel="stylesheet" type="text/css" href="../contrast.css" />
-<link rel="stylesheet" type="text/css" href="../accordionmenu30.css" />
-<link rel="stylesheet" type="text/css" href="../gmlscripts30.css" />
+<script type="text/javascript" src="../gmlscripts35.js"></script>
+<link rel="stylesheet" type="text/css" href="../gmlscripts35.css" />
+<link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
 </head>
-<body >
+<body onload="start();" >
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
-<p style="background-color: #622; padding: 1em; border: 2px solid; font-weight: bold;">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror because there is a problem with normal hosting. This mirror is up-to-date but is functionally limited. The forums are unavailable and new submissions are not possible.</p>
-<!-- Header -->
-<div id="header">
-    <img id="contrast" src="../images/30/_note.png" title="Invert" alt="Invert" />
-    <div class="header-left"></div>
-    <div class="header-right">
-        <a href="../index.html" id="home"><img src="../images/30/gmlscripts-header3b.gif" alt="GMLscripts.com" /></a><br />
-        <a href="index.html" class="nav">Scripts</a><a href="point_in_circle.html#" class="nav">Forums</a><a href="../license.html" class="nav">License</a><a href="../search.html" class="nav">Search</a><a href="point_in_circle.html#" class="nav">Submit</a><a href="../paypal.html" class="nav">Donate</a><a href="point_in_circle.html#" class="nav">Releases</a><a href="http://twitter.com/gmlscripts" class="nav">Follow</a>
-    </div>
+<p class="static">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror. The forums access and script submissions are not available through this mirror.</p>
+<header>
+  <img id="contrast" src="../images/35/_note.png" title="Invert" alt="Invert" />
+  <a href="../index.html" id="home"><img src="../images/35/gmlscripts-header3d.png" alt="GMLscripts.com" /></a>
+  <nav id="headnav">
+    <ul><li>
+      <a href="index.html">Scripts</a></li><li>
+      <a href="point_in_circle.html#">Forums</a></li><li>
+      <a href="../license.html">License</a></li><li>
+      <a href="../search.html">Search</a></li><li>
+      <a href="point_in_circle.html#">Submit</a></li><li>
+      <a href="../paypal.html">Donate</a></li><li>
+      <a href="point_in_circle.html#">Releases</a></li><li>
+      <a href="http://twitter.com/gmlscripts">Follow</a></li>
+    </ul>
+  </nav>
+</header>
+<nav id="sidenav">
+<div>
+  <span>Scripts</span>
+  <ul class="accordion" id="Scripts">
+    <li id="computation" class="computation">
+      <a href="point_in_circle.html#computation">Computation</a>
+      <ul>
+        <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
+        <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
+        <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
+        <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
+        <li><a href="Computation/Data_Hashing/index.html">Data Hashing</a></li>
+        <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
+        <li><a href="Computation/Geometry/index.html">Geometry</a></li>
+        <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
+        <li><a href="Computation/Probability/index.html">Probability</a></li>
+        <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
+        <li><a href="Computation/Strings/index.html">Strings</a></li>
+      </ul>
+    </li>
+    <li id="data_structures" class="data_structures">
+      <a href="point_in_circle.html#data_structures">Data Structures</a>
+      <ul>
+        <li><a href="Data_Structures/Arrays/index.html">Arrays</a></li>
+        <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
+        <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
+        <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
+      </ul>
+    </li>
+    <li id="files" class="files">
+      <a href="point_in_circle.html#files">Files</a>
+      <ul>
+        <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
+      </ul>
+    </li>
+    <li id="game_play" class="game_play">
+      <a href="point_in_circle.html#game_play">Game Play</a>
+      <ul>
+        <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
+        <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
+        <li><a href="Game_Play/Instances/index.html">Instances</a></li>
+        <li><a href="Game_Play/Movement/index.html">Movement</a></li>
+      </ul>
+    </li>
+    <li id="graphics" class="graphics">
+      <a href="point_in_circle.html#graphics">Graphics</a>
+      <ul>
+        <li><a href="Graphics/3D/index.html">3D</a></li>
+        <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
+        <li><a href="Graphics/Color/index.html">Color</a></li>
+        <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
+        <li><a href="Graphics/Shaders/index.html">Shaders</a></li>
+        <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
+        <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
+        <li><a href="Graphics/Text/index.html">Text</a></li>
+      </ul>
+    </li>
+    <li id="interaction" class="interaction">
+      <a href="point_in_circle.html#interaction">Interaction</a>
+      <ul>
+        <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
+        <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
+      </ul>
+    </li>
+    <li id="platform" class="platform">
+      <a href="point_in_circle.html#platform">Platform</a>
+      <ul>
+        <li><a href="Platform/Device/index.html">Device</a></li>
+      </ul>
+    </li>
+    <li id="resources" class="resources">
+      <a href="point_in_circle.html#resources">Resources</a>
+      <ul>
+        <li><a href="Resources/Management/index.html">Management</a></li>
+        <li><a href="Resources/Sprites/index.html">Sprites</a></li>
+      </ul>
+    </li>
+  </ul>
+  <span></span>
 </div>
-
-<!-- Main column -->
-<div id="container">
-    <div id="content">
-        <!-- start roundcorners -->
-        <div class="top-left"></div>
-        <div class="top-right"></div>
-        <div class="inside">
+</nav>
+<main>
 <h1>point_in_circle</h1>
 <dl class="dictionary script">
 <dt><a href="point_in_circle.html">point_in_circle(px,py,cx,cy,rad)</a></dt>
 <dd>Returns true if the given test point is within the given circle, false otherwise.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('point_in_circle')">COPY</a></span><code class="prettyprint lang-gml" id="point_in_circle">/// point_in_circle(px,py,cx,cy,rad)
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('point_in_circle')">COPY</a></span><code class="prettyprint lang-gml linenums" id="point_in_circle">/// point_in_circle(px,py,cx,cy,rad)
 //
 //  Returns true if the given test point is
 //  within the given circle, false otherwise.
@@ -74,152 +151,26 @@ GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/G
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'gmlscripts'; // required: replace example with your forum shortname
-    var disqus_identifier = '/script/point_in_circle';
-    var disqus_url = 'http://www.gmlscripts.com'+disqus_identifier;
-    
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/point_in_circle';
+this.page.identifier = '/script/point_in_circle';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
-            <p class="nobottomgap" style="font-size:1px;"></p>
-        </div>
-        <!-- finish roundcorners -->
-        <div class="bottom-left"></div>
-        <div class="bottom-right"></div>
-    </div>
-</div>
-<!-- end of main column -->
-
-<!-- Secondary column -->
-<div id="sidebar">
-    <div class="menu">
-        <span class="menu-head">Scripts</span>
-        <ul class="accordion" id="Scripts">
-            <li id="computation" class="computation">
-                <a href="point_in_circle.html#computation">Computation</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Computation/Base_Conversion/index.html">Base Conversion</a></li>
-                    <li><a href="Computation/Bitwise/index.html">Bitwise</a></li>
-                    <li><a href="Computation/Data_Encoding/index.html">Data Encoding</a></li>
-                    <li><a href="Computation/Data_Encryption/index.html">Data Encryption</a></li>
-                    <li><a href="Computation/Data_Hashing/index.html">Data Hashing</a></li>
-                    <li><a href="Computation/Date-Time/index.html">Date-Time</a></li>
-                    <li><a href="Computation/Geometry/index.html">Geometry</a></li>
-                    <li><a href="Computation/Parametric_Functions/index.html">Parametric Functions</a></li>
-                    <li><a href="Computation/Probability/index.html">Probability</a></li>
-                    <li><a href="Computation/Real_Numbers/index.html">Real Numbers</a></li>
-                    <li><a href="Computation/Strings/index.html">Strings</a></li>
-                </ul>
-            </li>
-            <li id="data_structures" class="data_structures">
-                <a href="point_in_circle.html#data_structures">Data Structures</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Data_Structures/Arrays/index.html">Arrays</a></li>
-                    <li><a href="Data_Structures/Grids/index.html">Grids</a></li>
-                    <li><a href="Data_Structures/Lists/index.html">Lists</a></li>
-                    <li><a href="Data_Structures/Maps/index.html">Maps</a></li>
-                </ul>
-            </li>
-            <li id="files" class="files">
-                <a href="point_in_circle.html#files">Files</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Files/Input_and_Output/index.html">Input and Output</a></li>
-                </ul>
-            </li>
-            <li id="game_play" class="game_play">
-                <a href="point_in_circle.html#game_play">Game Play</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Game_Play/Artificial_Intelligence/index.html">Artificial Intelligence</a></li>
-                    <li><a href="Game_Play/Collisions/index.html">Collisions</a></li>
-                    <li><a href="Game_Play/Instances/index.html">Instances</a></li>
-                    <li><a href="Game_Play/Movement/index.html">Movement</a></li>
-                </ul>
-            </li>
-            <li id="graphics" class="graphics">
-                <a href="point_in_circle.html#graphics">Graphics</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Graphics/3D/index.html">3D</a></li>
-                    <li><a href="Graphics/Backgrounds/index.html">Backgrounds</a></li>
-                    <li><a href="Graphics/Color/index.html">Color</a></li>
-                    <li><a href="Graphics/Drawing/index.html">Drawing</a></li>
-                    <li><a href="Graphics/Shaders/index.html">Shaders</a></li>
-                    <li><a href="Graphics/Sprites/index.html">Sprites</a></li>
-                    <li><a href="Graphics/Surfaces/index.html">Surfaces</a></li>
-                    <li><a href="Graphics/Text/index.html">Text</a></li>
-                </ul>
-            </li>
-            <li id="interaction" class="interaction">
-                <a href="point_in_circle.html#interaction">Interaction</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Interaction/Gamepad/index.html">Gamepad</a></li>
-                    <li><a href="Interaction/Mouse/index.html">Mouse</a></li>
-                </ul>
-            </li>
-            <li id="platform" class="platform">
-                <a href="point_in_circle.html#platform">Platform</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Platform/Device/index.html">Device</a></li>
-                </ul>
-            </li>
-            <li id="resources" class="resources">
-                <a href="point_in_circle.html#resources">Resources</a>
-                <ul class="sub-menu" style="display: none;">
-                    <li><a href="Resources/Management/index.html">Management</a></li>
-                    <li><a href="Resources/Sprites/index.html">Sprites</a></li>
-                </ul>
-            </li>
-        </ul>
-        <span class="menu-foot"></span>
-    </div>
-</div>
-<!-- end of secondary column -->
-
-<!-- Footer -->
-<div id="footer">
-    <div class="footer-left"></div>
-    <div class="footer-right"><a href="point_in_circle.html#" id="xot"><img title="web by xot" alt="X" src="../images/30/x.gif" width="22" height="22" style="border-width:0; padding-top:6px; float:right;" /></a><p>copyright &copy; 2007&#8211;2018, xot media multimixing</p></div>
-</div>
-<div id="cookies" style="display:none;">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        var cookies = getCookie("cookies");
-        if (cookies != "ok") {
-            $("#cookies").css({display:"block", bottom:"-60px"}).animate({bottom:"0px"}, 400);
-            $("#cookiebutton").click(function() {
-                setCookie("cookies","ok",365);
-                $("#cookies").animate({bottom:"-60px"}, 400, function(){$(this).css({display:"none"})});
-            });
-        }
-    });
-</script><script type="text/javascript">prettyPrint();</script>
-<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
-</script>
-<script type="text/javascript"><!--
-_uacct = "UA-103560-3";
-urchinTracker();
-// -->
-</script>
-<!-- DISQUS START -->
-<script type="text/javascript">
-//<![CDATA[
-(function() {
-	var links = document.getElementsByTagName('a');
-	var query = '?';
-	for(var i = 0; i < links.length; i++) {
-	if(links[i].href.indexOf('#disqus_thread') >= 0) {
-		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-	}
-	}
-	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/gmlscripts/get_num_replies.js' + query + '"></' + 'script>');
-})();
-//]]>
-</script>
-<!-- DISQUS END -->
+</main>
+<footer>
+  copyright &copy; 2007-2018, xot media multimixing
+  <span><img src="../images/35/x.png" title="web by xot" alt="X" /></span>
+  <div id="cookies">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
+</footer>
 </body>
 </html>
