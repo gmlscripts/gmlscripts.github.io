@@ -11,13 +11,14 @@ MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"
 MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript">var scripts = "draw_surface_center"</script>
+<script type="text/javascript">var locals = "parent, list";</script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
 <script type="text/javascript" src="../gmlscripts35.js"></script>
 <link rel="stylesheet" type="text/css" href="../gmlscripts35.css" />
 <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
 </head>
-<body onload="start();" >
+<body onload="start();">
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <p class="static">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror. Forum access and script submissions are not available through this mirror.</p>
 <header>
@@ -28,7 +29,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
       <a href="index.html">Scripts</a></li><li>
       <a href="draw_surface_center.html#">Forums</a></li><li>
       <a href="../license.html">License</a></li><li>
-      <a href="../search.html">Search</a></li><li>
+      <a href="draw_surface_center.html#">Search</a></li><li>
       <a href="draw_surface_center.html#">Submit</a></li><li>
       <a href="../paypal.html">Donate</a></li><li>
       <a href="draw_surface_center.html#">Releases</a></li><li>
@@ -120,27 +121,25 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <main>
 <h1>draw_surface_center</h1>
 <dl class="dictionary script">
-<dt><a href="draw_surface_center.html">draw_surface_center(id,x,y)</a></dt>
-<dd>Draws a surface centered at a given point.</dd>
+<dt><a href="draw_surface_center.html">draw_surface_center(surface, cx, cy)</a></dt>
+<dd>Draws surface centered at given point.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('draw_surface_center')">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_surface_center">/// draw_surface_center(id,x,y)
-//
-//  Draws a surface centered at a given point.
-//
-//      id          surface id, real
-//      x,y         position of center of surface, real
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_surface_center'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_surface_center">/// @func   draw_surface_center(surface, cx, cy)
+///
+/// @desc   Draws surface centered at given point.
+///
+/// @param  {surface}   surface     surface to draw
+/// @param  {real}      cx          x-position for surface center
+/// @param  {real}      cy          y-position for surface center
+///
 /// GMLscripts.com/license
+
+function draw_surface_center(surface, cx, cy)
 {
-    var surface,sx,sy,mx,my;
-    surface = argument0;
-    sx = argument1;
-    sy = argument2;
-    mx = surface_get_width(surface)/2;
-    my = surface_get_height(surface)/2;
-    draw_surface(surface,sx-mx,sy-my);
-    return 0;
+    cx -= surface_get_width(surface) / 2;
+    cy -= surface_get_height(surface) / 2;
+    draw_surface(surface, cx, cy);
 }
 </code></pre>
 </div>
@@ -173,7 +172,7 @@ s.setAttribute('data-timestamp', +new Date());
 <!-- DISQUS END -->
 </main>
 <footer>
-  copyright &copy; 2007-2018, xot media multimixing
+  copyright &copy; 2007-2024, xot media multimixing 
   <span><img src="../images/35/x.png" title="web by xot" alt="X" /></span>
   <div id="cookies">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
 </footer>

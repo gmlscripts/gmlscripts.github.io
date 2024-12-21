@@ -50,7 +50,14 @@ function delCookie(name, path, domain) {
 **
 **  https://stackoverflow.com/a/30810322
 **  This code has been modified to copy text from
-**  a DOM element and to hide textarea scrollbars
+**  a DOM element and to hide textarea scrollbars.
+**  It also removes \xA0 (nbsp) characters generated
+**  by the innerText DOM accessor. These occur when
+**  it collapses lines consisting of only whitespace
+**  to a single space and are also generated between
+**  successive linebreaks. Non-critical whitespace
+**  in the original code is not preserved but it's
+**  better than inserting weird characters into it.
 */
 function copyToClipboard(id) {
   var textArea = document.createElement("textarea");
@@ -65,22 +72,33 @@ function copyToClipboard(id) {
   textArea.style.boxShadow = "none";
   textArea.style.overflow = "hidden";
   textArea.style.background = "transparent";
-  textArea.value = document.getElementById(id).innerText;
+  textArea.value = document.getElementById(id).innerText.replace(/\u00a0/g,"");
   document.body.appendChild(textArea);
   textArea.focus();
   textArea.select();
 
+  var successful = false;
   try {
-  var successful = document.execCommand("copy");
-  var msg = successful ? "successful" : "unsuccessful";
-  console.log("Copy to clipboard was " + msg + ".");
+    successful = document.execCommand("copy");
+    var msg = successful ? "successful" : "unsuccessful";
   } catch (err) {
-  console.log("Copy is not supported in this browser.");
+    console.log("Copy is not supported in this browser.");
   }
 
   document.body.removeChild(textArea);
+
+  return successful;
 }
 
+var timeoutID = undefined;
+function copyUpdate(e,success) {
+    if (success) {
+        e.innerText = "COPIED";
+        clearTimeout(timeoutID);
+        timeoutID = setTimeout(function() { e.innerText = "COPY"; }, 6000);
+    }
+    return false;
+}
 
 
 /*
@@ -188,4 +206,20 @@ function showMathJax() {
       mathjax[i].style.maxHeight = mathjax[i].scrollHeight+"px";
       mathjax[i].style.opacity = 1.0;
   }
+}
+
+
+
+/*
+**  CODE EXPANDER
+*/
+function expandCode(e) {
+    var vscroll = e.parentNode;
+    if (vscroll.classList.contains("expand")) {
+        vscroll.classList.remove("expand");
+        e.textContent = "Expand";
+    } else {
+        vscroll.classList.add("expand");
+        e.textContent = "Collapse";
+    }
 }

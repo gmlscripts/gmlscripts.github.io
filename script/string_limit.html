@@ -11,13 +11,14 @@ MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"
 MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript">var scripts = "string_limit"</script>
+<script type="text/javascript">var locals = "parent, list";</script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
 <script type="text/javascript" src="../gmlscripts35.js"></script>
 <link rel="stylesheet" type="text/css" href="../gmlscripts35.css" />
 <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
 </head>
-<body onload="start();" >
+<body onload="start();">
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <p class="static">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror. Forum access and script submissions are not available through this mirror.</p>
 <header>
@@ -28,7 +29,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
       <a href="index.html">Scripts</a></li><li>
       <a href="string_limit.html#">Forums</a></li><li>
       <a href="../license.html">License</a></li><li>
-      <a href="../search.html">Search</a></li><li>
+      <a href="string_limit.html#">Search</a></li><li>
       <a href="string_limit.html#">Submit</a></li><li>
       <a href="../paypal.html">Donate</a></li><li>
       <a href="string_limit.html#">Releases</a></li><li>
@@ -119,30 +120,42 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 </nav>
 <main>
 <h1>string_limit</h1>
+<p>Returns a given string, truncated if it exceeds a certain length.
+If truncated, an extension (such as an ellipsis) can be appended.</p>
+<div class="codebox example">
+<pre><code class="prettyprint lang-gml linenums">//  string_limit(str, len, ext)
+s = string_limit("this is long text", 10, "...");   //  "this is..."
+s = string_limit("this is long text", 10);          //  "this is lo"
+s = string_limit("this is long text", 1);           //  "t"
+s = string_limit("this is long text", 1, "...");    //  "..."</code></pre>
+</div>
 <dl class="dictionary script">
-<dt><a href="string_limit.html">string_limit(string,length,ext)</a></dt>
+<dt><a href="string_limit.html">string_limit(str, len, ext)</a></dt>
 <dd>Returns a given string, truncated if it exceeds a certain length.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('string_limit')">COPY</a></span><code class="prettyprint lang-gml linenums" id="string_limit">/// string_limit(string,length,ext)
-//
-//  Returns a given string, truncated if it exceeds a certain length.
-//  If truncated, an extension (such as an ellipsis) can be appended.
-//
-//      str         text, string
-//      length      character length, real
-//      ext         text to append, string
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('string_limit'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="string_limit">/// @func   string_limit(str, len, ext)
+///
+/// @desc   Returns a given string, truncated if it exceeds a certain length.
+///         If truncated, an extension (such as an ellipsis) can be appended.
+///
+/// @param  {string}    str         text
+/// @param  {real}      len         character length
+/// @param  {string}    ext         text to append, optional
+///
+/// @return {string}    truncated string
+///
 /// GMLscripts.com/license
+
+function string_limit(str, len, ext = "")
 {
-    var str,ext,wid;
-    str = argument0;
-    ext = argument2;
-    wid = max(argument1, string_length(ext));
-    if (string_length(str) &lt;= wid) return str;
+    var wid = max(len, string_length(ext));
+    if (string_length(str) &lt;= wid) {
+        return str;
+    }
     while (string_length(str + ext) &gt; wid) {
         str = string_delete(str, string_length(str), 1);
-    } 
+    }
     return str + ext;
 }
 </code></pre>
@@ -151,7 +164,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 Contributors: xot
 </p>
 <p id="related">
-Related: <a href="number_format.html">number_format</a>, <a href="speakable_password.html">speakable_password</a>, <a href="string_add_spaces.html">string_add_spaces</a>, <a href="string_escape.html">string_escape</a>, <a href="string_extract.html">string_extract</a>, <a href="string_left.html">string_left</a>, <strong>string_limit</strong>, <a href="string_lpad.html">string_lpad</a>, <a href="string_ltrim.html">string_ltrim</a>, <a href="string_nato.html">string_nato</a>, <a href="string_parse.html">string_parse</a>, <a href="string_parse_number.html">string_parse_number</a>, <a href="string_parse_single.html">string_parse_single</a>, <a href="string_random.html">string_random</a>, <a href="string_remove_whitespace.html">string_remove_whitespace</a>, <a href="string_reverse.html">string_reverse</a>, <a href="string_right.html">string_right</a>, <a href="string_rpad.html">string_rpad</a>, <a href="string_rpos.html">string_rpos</a>, <a href="string_rtrim.html">string_rtrim</a>, <a href="string_shuffle.html">string_shuffle</a>, <a href="string_split.html">string_split</a>, <a href="string_stagger_case.html">string_stagger_case</a>, <a href="string_trim.html">string_trim</a>, <a href="string_ucfirst.html">string_ucfirst</a>, <a href="string_ucwords.html">string_ucwords</a>, <a href="string_wordwrap.html">string_wordwrap</a>
+Related: <a href="number_format.html">number_format</a>, <a href="speakable_password.html">speakable_password</a>, <a href="string_add_spaces.html">string_add_spaces</a>, <a href="string_extract.html">string_extract</a>, <a href="string_left.html">string_left</a>, <strong>string_limit</strong>, <a href="string_lpad.html">string_lpad</a>, <a href="string_ltrim.html">string_ltrim</a>, <a href="string_nato.html">string_nato</a>, <a href="string_parse.html">string_parse</a>, <a href="string_parse_number.html">string_parse_number</a>, <a href="string_parse_single.html">string_parse_single</a>, <a href="string_random.html">string_random</a>, <a href="string_remove_whitespace.html">string_remove_whitespace</a>, <a href="string_reverse.html">string_reverse</a>, <a href="string_right.html">string_right</a>, <a href="string_rpad.html">string_rpad</a>, <a href="string_rpos.html">string_rpos</a>, <a href="string_rtrim.html">string_rtrim</a>, <a href="string_shuffle.html">string_shuffle</a>, <a href="string_split.html">string_split</a>, <a href="string_stagger_case.html">string_stagger_case</a>, <a href="string_trim.html">string_trim</a>, <a href="string_ucfirst.html">string_ucfirst</a>, <a href="string_ucwords.html">string_ucwords</a>, <a href="string_wordwrap.html">string_wordwrap</a>
 </p>
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Strings/string_limit.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Strings/string_limit.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Strings/string_limit.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Strings/string_limit.gml" target="_blank">Raw</a>
@@ -176,7 +189,7 @@ s.setAttribute('data-timestamp', +new Date());
 <!-- DISQUS END -->
 </main>
 <footer>
-  copyright &copy; 2007-2018, xot media multimixing
+  copyright &copy; 2007-2024, xot media multimixing 
   <span><img src="../images/35/x.png" title="web by xot" alt="X" /></span>
   <div id="cookies">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
 </footer>

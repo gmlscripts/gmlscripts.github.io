@@ -11,13 +11,14 @@ MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"
 MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript">var scripts = "hex_to_dec"</script>
+<script type="text/javascript">var locals = "parent, list";</script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
 <script type="text/javascript" src="../gmlscripts35.js"></script>
 <link rel="stylesheet" type="text/css" href="../gmlscripts35.css" />
 <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
 </head>
-<body onload="start();" >
+<body onload="start();">
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <p class="static">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror. Forum access and script submissions are not available through this mirror.</p>
 <header>
@@ -28,7 +29,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
       <a href="index.html">Scripts</a></li><li>
       <a href="hex_to_dec.html#">Forums</a></li><li>
       <a href="../license.html">License</a></li><li>
-      <a href="../search.html">Search</a></li><li>
+      <a href="hex_to_dec.html#">Search</a></li><li>
       <a href="hex_to_dec.html#">Submit</a></li><li>
       <a href="../paypal.html">Donate</a></li><li>
       <a href="hex_to_dec.html#">Releases</a></li><li>
@@ -121,31 +122,35 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <h1>hex_to_dec</h1>
 <p>Converts a string of hexidecimal digits to a decimal value.</p>
 <div class="codebox example">
-<pre><code class="prettyprint lang-gml linenums">dec = hex_to_dec("7B");   //  dec == 123
-dec = hex_to_dec("1C8");  //  dec == 456
-dec = hex_to_dec("315");  //  dec == 789</code></pre>
+<pre><code class="prettyprint lang-gml linenums">dec = hex_to_dec("7B");         //  dec == 123
+dec = hex_to_dec("1C8");        //  dec == 456
+dec = hex_to_dec("315");        //  dec == 789</code></pre>
 </div>
 <dl class="dictionary script">
 <dt><a href="hex_to_dec.html">hex_to_dec(hex)</a></dt>
-<dd>Returns a decimal integer (real) representing the given hexadeciaml string.</dd>
+<dd>Returns an integer converted from an hexadecimal string.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('hex_to_dec')">COPY</a></span><code class="prettyprint lang-gml linenums" id="hex_to_dec">/// hex_to_dec(hex)
-//
-//  Returns a decimal integer (real)
-//  representing the given hexadeciaml string.
-//
-//      hex         hexadecimal digits, string
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('hex_to_dec'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="hex_to_dec">/// @func   hex_to_dec(hex)
+///
+/// @desc   Returns an integer converted from an hexadecimal string.
+///
+/// @param  {string}    hex         hexadecimal digits
+///
+/// @return {real}      positive integer
+///
 /// GMLscripts.com/license
+
+function hex_to_dec(hex) 
 {
-    var hex, dec, h, p;
-    hex = string_upper(argument0);
-    dec = 0;
-    h = "0123456789ABCDEF";
-    for (p=1; p&lt;=string_length(hex); p+=1) {
-        dec = dec &lt;&lt; 4 | (string_pos(string_char_at(hex, p), h) - 1);
+    var dec = 0;
+
+    var dig = "0123456789ABCDEF";
+    var len = string_length(hex);
+    for (var pos = 1; pos &lt;= len; pos += 1) {
+        dec = dec &lt;&lt; 4 | (string_pos(string_char_at(hex, pos), dig) - 1);
     }
+
     return dec;
 }
 </code></pre>
@@ -179,7 +184,7 @@ s.setAttribute('data-timestamp', +new Date());
 <!-- DISQUS END -->
 </main>
 <footer>
-  copyright &copy; 2007-2018, xot media multimixing
+  copyright &copy; 2007-2024, xot media multimixing 
   <span><img src="../images/35/x.png" title="web by xot" alt="X" /></span>
   <div id="cookies">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
 </footer>

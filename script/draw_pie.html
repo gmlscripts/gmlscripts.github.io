@@ -11,13 +11,14 @@ MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"
 MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript">var scripts = "draw_pie"</script>
+<script type="text/javascript">var locals = "parent, list";</script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
 <script type="text/javascript" src="../gmlscripts35.js"></script>
 <link rel="stylesheet" type="text/css" href="../gmlscripts35.css" />
 <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
 </head>
-<body onload="start();" >
+<body onload="start();">
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <p class="static">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror. Forum access and script submissions are not available through this mirror.</p>
 <header>
@@ -28,7 +29,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
       <a href="index.html">Scripts</a></li><li>
       <a href="draw_pie.html#">Forums</a></li><li>
       <a href="../license.html">License</a></li><li>
-      <a href="../search.html">Search</a></li><li>
+      <a href="draw_pie.html#">Search</a></li><li>
       <a href="draw_pie.html#">Submit</a></li><li>
       <a href="../paypal.html">Donate</a></li><li>
       <a href="draw_pie.html#">Releases</a></li><li>
@@ -124,7 +125,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <dd>Draws a sector of an elliptical disc, mimicking draw_pie() from GM5.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('draw_pie')">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_pie">/// draw_pie(x1,y1,x2,y2,x3,y3,x4,y4,outline,precision)
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_pie'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_pie">/// draw_pie(x1,y1,x2,y2,x3,y3,x4,y4,outline,precision)
 //
 //  Draws a sector of an elliptical disc, mimicking draw_pie() from GM5.
 //  It also mimics draw_ellipse() from GM6 in that it will draw either as a
@@ -218,7 +219,7 @@ s.setAttribute('data-timestamp', +new Date());
 <!-- DISQUS END -->
 </main>
 <footer>
-  copyright &copy; 2007-2018, xot media multimixing
+  copyright &copy; 2007-2024, xot media multimixing 
   <span><img src="../images/35/x.png" title="web by xot" alt="X" /></span>
   <div id="cookies">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
 </footer>

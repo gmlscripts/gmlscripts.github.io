@@ -11,13 +11,14 @@ MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"
 MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript">var scripts = "asin"</script>
+<script type="text/javascript">var locals = "parent, list";</script>
 <script type="text/javascript" src="../prettify/prettify.js"></script>
 <script type="text/javascript" src="../prettify/lang-gml.js"></script>
 <script type="text/javascript" src="../gmlscripts35.js"></script>
 <link rel="stylesheet" type="text/css" href="../gmlscripts35.css" />
 <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
 </head>
-<body onload="start();" >
+<body onload="start();">
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <p class="static">You are currently viewing the <a href="../index.html">GMLscripts.com</a> static mirror. Forum access and script submissions are not available through this mirror.</p>
 <header>
@@ -28,7 +29,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
       <a href="index.html">Scripts</a></li><li>
       <a href="asin.html#">Forums</a></li><li>
       <a href="../license.html">License</a></li><li>
-      <a href="../search.html">Search</a></li><li>
+      <a href="asin.html#">Search</a></li><li>
       <a href="asin.html#">Submit</a></li><li>
       <a href="../paypal.html">Donate</a></li><li>
       <a href="asin.html#">Releases</a></li><li>
@@ -119,23 +120,27 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 </nav>
 <main>
 <h1>asin</h1>
+<p class="note"><span>NOTE:</span> This script function nominated for removal from the site index.</p>
+<p>Returns the arcsine of a given angle for the nth repetition.</p>
 <dl class="dictionary script">
-<dt><a href="asin.html">asin(rad,n)</a></dt>
+<dt><a href="asin.html">asin(rad, n)</a></dt>
 <dd>Returns the arcsine of a given angle for the nth repetition.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyToClipboard('asin')">COPY</a></span><code class="prettyprint lang-gml linenums" id="asin">/// asin(rad,n)
-//
-//  Returns the arcsine of a given angle for the nth repetition.
-//
-//      rad         angle, radians, real
-//      n           repetition, integer, real
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('asin'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="asin">/// @func   asin(rad, n)
+///
+/// @desc   Returns the arcsine of a given angle for the nth repetition.
+///
+/// @param  {real}      rad         angle in radians
+/// @param  {real}      n           repetition, integer
+///
+/// @return {real}      arcsine
+///
 /// GMLscripts.com/license
+
+function asin(rad, n)
 {
-    var a,n;
-    a = arcsin(argument0);
-    n = argument1;
+    var a = arcsin(rad);
     return a - 2 * n * a + pi * n + floor(n / 2) * 4 * a;
 }
 </code></pre>
@@ -144,7 +149,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 Contributors: Leif902, xot
 </p>
 <p id="related">
-Related: <a href="acos.html">acos</a>, <strong>asin</strong>, <a href="factor.html">factor</a>, <a href="factor_quadratic.html">factor_quadratic</a>, <a href="fibonacci.html">fibonacci</a>, <a href="gcd.html">gcd</a>, <a href="is_even.html">is_even</a>, <a href="is_factor.html">is_factor</a>, <a href="is_odd.html">is_odd</a>, <a href="is_power.html">is_power</a>, <a href="lcm.html">lcm</a>, <a href="next_pow2.html">next_pow2</a>, <a href="round_fixed.html">round_fixed</a>, <a href="select.html">select</a>, <a href="select_relative.html">select_relative</a>, <a href="select_relative_wrap.html">select_relative_wrap</a>, <a href="sum_interval.html">sum_interval</a>, <a href="toggle.html">toggle</a>
+Related: <a href="acos.html">acos</a>, <strong>asin</strong>, <a href="factor.html">factor</a>, <a href="factor_quadratic.html">factor_quadratic</a>, <a href="fibonacci.html">fibonacci</a>, <a href="gcd.html">gcd</a>, <a href="is_even.html">is_even</a>, <a href="is_factor.html">is_factor</a>, <a href="is_odd.html">is_odd</a>, <a href="is_power.html">is_power</a>, <a href="lcm.html">lcm</a>, <a href="next_pow2.html">next_pow2</a>, <a href="round_fixed.html">round_fixed</a>, <a href="select.html">select</a>, <a href="select_index.html">select_index</a>, <a href="select_relative.html">select_relative</a>, <a href="select_relative_wrap.html">select_relative_wrap</a>, <a href="sum_interval.html">sum_interval</a>, <a href="toggle.html">toggle</a>
 </p>
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Real_Numbers/asin.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Real_Numbers/asin.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Real_Numbers/asin.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Real_Numbers/asin.gml" target="_blank">Raw</a>
@@ -169,7 +174,7 @@ s.setAttribute('data-timestamp', +new Date());
 <!-- DISQUS END -->
 </main>
 <footer>
-  copyright &copy; 2007-2018, xot media multimixing
+  copyright &copy; 2007-2024, xot media multimixing 
   <span><img src="../images/35/x.png" title="web by xot" alt="X" /></span>
   <div id="cookies">This site uses cookies to improve navigation and to log into our forums. By continuing to use this site, you agree to the use of cookies.<a id="cookiebutton">OK</a></div>
 </footer>
