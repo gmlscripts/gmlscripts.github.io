@@ -694,10 +694,10 @@ p.example {
 /*  STATIC SITE  */
 .static {
 	background-color: #622;
-	border: 2px solid;
-	font-weight: bold;
-	padding: 1em;
-    text-align: center;
+	border: 1px solid;
+	border-radius: 12px;
+	padding: 0 12px;
+	text-align: center;
 }
 
 
