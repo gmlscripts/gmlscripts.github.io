@@ -696,6 +696,7 @@ p.example {
 	background-color: #622;
 	border: 1px solid;
 	border-radius: 12px;
+	margin-top: 0;
 	padding: 0 12px;
 	text-align: center;
 }
