@@ -1,6 +1,6 @@
 /*  GLOBAL STYLES  */
 body {
-	background: #000 url(/images/35/bg_page.png) repeat scroll top left;
+	background: #000 url(/images/36/bg_page.png) repeat scroll top left;
 	color: #CCC;
 	font: 18px/24px "ABeeZee", sans-serif;
 	margin: 0;
@@ -34,7 +34,7 @@ blockquote {
 	margin-left: 0px;
 	font-size: 0.95em;
 	padding-left: 24px;
-	background-image: url(/images/35/bg_quote.png);
+	background-image: url(/images/36/bg_quote.png);
 	background-repeat: repeat-y;
 }
 header,
@@ -122,7 +122,7 @@ th, td {
     border-top: 1px solid #CCC;
     border-left: 1px solid #CCC;
     padding: 4px;
-} 
+}
 hr {
 	border: none;
 	border-top-color: #FC7C13;
@@ -141,14 +141,14 @@ h1 a, h2 a {
 	font-weight: 400;
 }
 h1:first-child {
-	background: #222 url(/images/35/bg_headline.png) repeat-x scroll top left;
+	background: #222 url(/images/36/bg_headline.png) repeat-x scroll top left;
 	margin-left: -16px;
 	margin-right: -16px;
 	padding: 0 16px 4px 16px;
 }
 .blogdate {
 	background-color: #F80;
-	background-image: url(/images/35/bg_blogdate.png);
+	background-image: url(/images/36/bg_blogdate.png);
 	background-repeat: repeat;
 	border-top: #FFCC33 1px solid;
 	border-radius: 14px;
@@ -325,7 +325,7 @@ footer span {
 
 /*  SCRIPT DEFINITION  */
 dl {
-	background: #25444d url(/images/35/bg_usage.png);
+	background: #25444d url(/images/36/bg_usage.png);
 	border: 1px solid #204048;
 	border-top-color: #4080B0;
 	border-bottom-color: #102028;
@@ -363,7 +363,7 @@ dl.script {
 	margin-bottom: 0;
 }
 dl.recent::before {
-	content: url(/images/35/_recent.png);
+	content: url(/images/36/_recent.png);
 	float: right;
 	margin: 3px;
 }
@@ -438,20 +438,25 @@ pre, code {
 .codebox .linenums:first-child {
 	counter-reset: linecounter;
 }
-.str { color: #FFF899; }
-.kwd { color: #FFB871; font-weight: bold; }
-.fnc { color: #FFB871; }
-.com { color: #8FEF8F; }
-.lit { color: #FF8080; }
-.pnc { color: #C0C0C0; }
-.pln { color: #C0C0C0; }
-.scr { color: #FFB871; }
-.obj { color: #58E55A; }
-.glo { color: #58E55A; }
-.con { color: #FF8080; }
-.rsc { color: #FF8080; }
-.loc { color: #FFF899; }
-
+.dark .gmlError 		{ color: #ff00ff; }
+.dark .gmlCommentLine,
+.dark .gmlCommentBlock 	{ color: #75c475; }
+.dark .gmlMacro,
+.dark .gmlConstant,
+.dark .gmlEnum,
+.dark .gmlEnumField 	{ color: #FF8080; }
+.dark .gmlNumber 		{ color: #FF8080; }
+.dark .gmlString 		{ color: #FCF320; }
+.dark .gmlKeyword,
+.dark .gmlCurlyBracket 	{ font-weight: bold; }
+.dark .gmlKeyword,
+.dark .gmlCurlyBracket,
+.dark .gmlFunction,
+.dark .gmlScript 		{ color: #FFB871; }
+.dark .gmlLocal 		{ color: #FFF899 }
+.dark .gmlVariable 		{ color: #58E55A }
+.dark .gmlHeaderMeta 	{ color: #A7B }
+.dark .gmlHeaderName 	{ color: #77BB5B }
 
 /*  SCRIPT PAGE  */
 .note {
@@ -467,7 +472,7 @@ pre, code {
 	padding-right: 5px;
 }
 .note::before {
-	content: url(/images/35/_note.png);
+	content: url(/images/36/_note.png);
 	padding-right: 6px;
 	position: relative;
 	top: 2px;
@@ -492,7 +497,7 @@ pre, code {
 	padding-right: 5px;
 }
 .warning::before {
-	content: url(/images/35/_warning.png);
+	content: url(/images/36/_warning.png);
 	padding-right: 6px;
 	position: relative;
 	top: 2px;
@@ -586,25 +591,25 @@ p.example {
 	text-align: left;
 }
 #contributors::before {
-	content: url(/images/35/_contributors.png);
+	content: url(/images/36/_contributors.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
 }
 #related::before {
-	content: url(/images/35/_related.png);
+	content: url(/images/36/_related.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
 }
 #history::before {
-	content: url(/images/35/_history.png);
+	content: url(/images/36/_history.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
 }
 #github::before {
-	content: url(/images/35/_github.png);
+	content: url(/images/36/_github.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
@@ -620,70 +625,6 @@ p.example {
 }
 
 
-/*  GAMEMAKER RELEASES PAGE  */
-#releases table {
-	border-spacing: 0;
-	border-top: 1px solid gray;
-	border-left: 1px solid gray;
-}
-#releases td {
-	border-right: 1px solid gray;
-	border-bottom: 1px solid gray;
-	padding: 16px 32px;
-	text-align: center;
-}
-#releases td:first-child {
-	font-family: 'Paytone One', sans-serif;
-	font-size: 25px;
-	font-weight: 400;
-	line-height: 1em;
-	margin: 12px 0 18px 0;
-	text-align: left;
-	text-shadow: 1px 1px 3px #000;
-}
-#releases td:first-child a {
-	font-weight: 400;
-}
-#releases .gms2 {
-	background-color: #153;
-}
-#releases .gms2 td {
-	border-bottom: 1px dashed gray;
-}
-#releases .gms2rt {
-	background-color: #153;
-}
-#releases .gms2rt td {
-	border-top: none;
-}
-#releases .gms2B {
-	background-color: #144;
-}
-#releases .gms2B td {
-	border-bottom: 1px dashed gray;
-}
-#releases .gms2rtB {
-	background-color: #144;
-}
-#releases .gms2rtB td {
-	border-top: none;
-}
-#releases .stable {
-	background-color: #135;
-}
-#releases .beta {
-	background-color: #124;
-}
-#releases .ea {
-	background-color: #113;
-}
-#ajax {
-    display: block;
-	padding: 279px 0;
-	text-align: center;
-}
-
-
 /*  PAYPAL PAGE  */
 #paypal {
 	clear: both;
@@ -696,101 +637,8 @@ p.example {
 	background-color: #622;
 	border: 1px solid;
 	border-radius: 12px;
-	margin-top: 0;
 	padding: 0 12px;
 	text-align: center;
-}
-
-
-/*  THROBBER EFFECT  */
-.throb {
-	animation: navthrobber0 1s linear 0s infinite alternate;
-}
-@keyframes navthrobber0 {
-	from { color: #FC7C13; }
-	to   { color: #FFCC33; }
-}
-.throb:hover {
-	animation: navthrobber1 1s linear 0s infinite alternate;
-}
-@keyframes navthrobber1 {
-	from { color: #000000; }
-	to   { color: #D92C00; }
-}
-.disabled {
-	color: inherit;
-	cursor: default;
-	pointer-events: none;
-	text-decoration: none;
-}
-
-
-/*  CONTRAST FILTER EFFECT  */
-#contrast {
-	opacity: 0.5;
-	position: absolute;
-	right: 8px;
-	top: 8px;
-    transition: opacity 250ms linear;
-}
-.filter {
-	filter: invert(1);
-}
-.filter img {
-	filter: invert(1);
-}
-.filter iframe {
-	filter: invert(1);
-}
-.filter #disqus_thread {
-	filter: invert(1);
-}
-.filter #home {
-	filter: invert(1);
-}
-.filter #xot {
-	filter: invert(1);
-}
-.filter #toolbar {
-	background-color: #111;
-}
-.filter textarea {
-	filter: invert(1);
-}
-
-
-/*  COOKIE NOTICE  */
-#cookies {
-	background-color: #111;
-	border-top: 2px solid #888;
-	display: none;
-	font-weight: bold;
-	line-height: 1em;
-	padding: 14px 140px 14px 40px;
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
-#cookiebutton {
-	background-color: #FC7C13;
-	border-top: 1px solid #FFCC33;
-	border-radius: 5px;
-	color: #FFF;
-	cursor: pointer;
-	margin: -6px 0;
-	padding: 6px 32px;
-	position: absolute;
-	right: 40px;
-	text-decoration: none;
-}
-#cookiebutton:hover {
-	background-color: #FC3;
-	color: #000;
-}
-#cookiebutton:active {
-	background-color: #FC3;
-	color: #000;
 }
 
 
@@ -822,26 +670,6 @@ p.example {
 	color: #000;
 	text-decoration: none;
 }
-
-
-/*  SIDELINK for icuurd12b42's Help Userscript  */
-#sidelink:active {
-	text-decoration: none;
-}
-#sidelink:hover {
-	text-decoration: none;
-}
-
-
-/*  MARK EXTERNAL LINKS WITH AN ICON  */
-/*  Troublesome with image links and just messy looking on some pages.
-main a[href^="http://"]:not([href*="gmlscripts.local"])::after,
-main a[href^="https://"]:not([href*="gmlscripts.local"])::after{
-	content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAABGdBTUEAAK/INwWK6QAAAAxQTFRF+3wTJSMiaUAf63UWo7NLDgAAAAJ0Uk5T/wDltzBKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADFJREFUCNdFjEEOwDAAggD//+cd2qyeDEZQ5USV1FPbmw7Fli3AZcSl4/5a/Ap5CtQPFIIAX2uL0ZsAAAAASUVORK5CYII=');
-	display: inline-block;
-	margin: 0 4px;
-}
-*/
 
 
 @media print {

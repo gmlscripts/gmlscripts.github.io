@@ -3,44 +3,6 @@
 */
 function start() {
     setupAccordion();
-    setupCookies();
-    setupContrastFilter();
-    PR.prettyPrint();
-}
-
-
-
-/*
-**  COOKIE HANDLERS
-*/
-function getCookie(c_name) {
-  if (document.cookie.length>0) {
-    var c_start = document.cookie.indexOf(c_name + "=");
-    if (c_start !== -1) {
-      c_start = c_start + c_name.length+1;
-      var c_end = document.cookie.indexOf(";",c_start);
-      if (c_end === -1) { c_end = document.cookie.length; }
-      return unescape(document.cookie.substring(c_start,c_end));
-    }
-  }
-  return "";
-}
-
-function setCookie(c_name,c_value,expiredays) {
-  var exdate = new Date();
-  exdate.setDate(exdate.getDate() + expiredays);
-  document.cookie = c_name + "=" + escape(c_value)
-  +  ((expiredays === null) ? "" : ";expires=" + exdate.toGMTString())
-  + ";path=/";
-}
-
-function delCookie(name, path, domain) {
-  if (getCookie(name)) {
-    document.cookie = name + "="
-    + ((path   === null) ? "" : "; path="   + path)
-    +  ((domain === null) ? "" : "; domain=" + domain)
-    +  "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-  }
 }
 
 
@@ -101,33 +63,26 @@ function copyUpdate(e,success) {
 }
 
 
+
 /*
 **  ACCORDION MENU HANDLER
 */
 function setupAccordion() {
-
-  var accordion_active = getCookie("accordion");
-
-  // Set height of active element explicitly
-  active_element = document.getElementById(accordion_active);
-  if (active_element) {
-    active_element.childNodes[3].style.maxHeight = active_element.childNodes[3].scrollHeight+"px";
-  }
-
   // Select accordion elements
   var accordion_head = document.querySelectorAll(".accordion > li > a"),
       accordion_body = document.querySelectorAll(".accordion > li > ul");
-
   for (var i=0; i<accordion_head.length; i++) {
-
+    // Set height of initial active element
+    if (accordion_head[i].classList.contains("active")) {
+      accordion_head[i].nextElementSibling.style.maxHeight = accordion_head[i].nextElementSibling.scrollHeight+"px";
+    }
+    // Set event listeners
     accordion_head[i].addEventListener("click", function (event) {
-
       // Disable header links
       event.preventDefault();
       // Show and hide the tabs on click
       if (this.getAttribute("class") != "active") {
         accordion_active = this.parentNode.getAttribute("id");
-        setCookie("accordion",accordion_active,1);
         for (var j=0; j<accordion_body.length; j++) {
           accordion_body[j].style.maxHeight = null;
         }
@@ -137,60 +92,12 @@ function setupAccordion() {
         }
         this.classList.add("active");
       } else {
-        setCookie("accordion",null,0);
         for (var j=0; j<accordion_head.length; j++) {
           accordion_head[j].classList.remove("active");
         }
         this.nextElementSibling.style.maxHeight = null;
       }
     });
-  }
-}
-
-
-
-/*
-**  CONTRAST FILTER HANDLER
-*/
-function setupContrastFilter() {
-  var contrast = document.getElementById("contrast");
-  if (getCookie("contrast")) {
-    contrast.classList.add("active");
-    document.querySelector("html").classList.add("filter");
-  }
-  contrast.style.opacity = 0.5;
-  contrast.style.cursor = "pointer";
-  contrast.addEventListener("mouseover", function() { this.style.opacity = 1.0; });
-  contrast.addEventListener("mouseout",  function() { this.style.opacity = 0.5; });
-  contrast.addEventListener("click", function() {
-      if (this.getAttribute("class") == "active") {
-          setCookie("contrast",null,0);
-          this.classList.remove("active");
-          document.querySelector("html").classList.remove("filter");
-      } else {
-          setCookie("contrast",1,1);
-          this.classList.add("active");
-          document.querySelector("html").classList.add("filter");
-      }
-  });
-}
-
-
-
-/*
-**  COOKIE NOTICE HANDLER
-*/
-function setupCookies() {
-  var cookies = getCookie("cookies");
-  if (cookies != "ok") {
-  var notice = document.getElementById("cookies");
-  notice.style.display = "block";
-  var button = document.getElementById("cookiebutton");
-  button.addEventListener("click", function (event) {
-    var notice = document.getElementById("cookies");
-    notice.style.display = "none";
-    setCookie("cookies","ok",365);
-  });
   }
 }
 

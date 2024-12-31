@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>GMLscripts.com :: ds_list_max</title>
+<title>GMLscripts.com :: Donate</title>
 <meta name="theme-color" content="#FC7C13">
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
@@ -51,8 +51,8 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
       </ul>
     </li>
     <li id="data_structures" class="data_structures">
-      <a href="#data_structures" class="active">Data Structures</a>
-      <ul style="max-height: unset;">
+      <a href="#data_structures">Data Structures</a>
+      <ul>
         <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
         <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
         <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
@@ -112,66 +112,69 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 </div>
 </nav>
 <main>
-<h1>ds_list_max</h1>
-<p>Returns the maximum value in a list.</p>
-<dl class="dictionary script">
-<dt><a href="/script/ds_list_max">ds_list_max(list)</a></dt>
-<dd>Returns the maximum value in a list.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('ds_list_max'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="ds_list_max">/// @func   ds_list_max(list)
-///
-/// @desc   Returns the maximum value in a list.
-///         If the list is empty, undefined is returned.
-///         All list elements must be comparable.
-///
-/// @param  {list}      list        list data structure
-///
-/// @return {any}       maximum value
-///
-/// GMLscripts.com/license
+  <h1>Make A Donation</h1>
+  <span class="postimg fright"><img src="/images/wario.jpg" /></span>
+  <h2>So it's come to this &#8212; begging</h2>
+  <p>
+    It's true.
+    I'm oscillating my silicon cup for a few cyber-shekels.
+    <a href="/">GMLscripts.com</a> costs money.
+    If you would like to make a donation to help offset the costs of domain registration, web hosting, and techno-trousers, please click on the "donate" button.
+  </p>
+  <p>
+    Flexible international payment options are available including credit card, bank card, or PayPal account.
+    Donations as low as $1 are gratefully accepted.
+    Smaller donations are not feasible because we incur a 2.9% + $0.30 fee per donation.
+  </p>
+  <div id="paypal">
+    <script type="text/javascript">
+<!--
+var maxamt = 9999.00;
+var minamt = 1.00;
+function ChkAmt (obj1) {  // check any qty limits on items
+var amt;
+  amt = obj1.amount.value;
+  if (isNaN (amt)) {
+    alert ("Enter a valid number for amount");
+    ClrAmt ();            // always clear the values!
+    return false;
+  }
 
-function ds_list_max(list)
-{
-    var n = ds_list_size(list);
-    var maxv = ds_list_find_value(list, 0);
-
-    for (var i=1; i&lt;n; i++) {
-        var val = ds_list_find_value(list, i);
-        if (val &gt; maxv) maxv = val;
-    }
-
-    return maxv;
+  if (amt < minamt) {
+    alert ("You must donate at least $" + minamt.toFixed(2));
+    ClrAmt ();
+    return false;
+  }
+  ClrAmt ();
+  return true;
 }
-</code></pre>
-</div>
-<p id="contributors">
-Contributors: Quimp
-</p>
-<p id="related">
-Related: <a href="ds_list_add_list">ds_list_add_list</a>, <a href="ds_list_add_map">ds_list_add_map</a>, <a href="ds_list_cv">ds_list_cv</a>, <a href="ds_list_flip">ds_list_flip</a>, <a href="ds_list_geometric_mean">ds_list_geometric_mean</a>, <strong>ds_list_max</strong>, <a href="ds_list_mean">ds_list_mean</a>, <a href="ds_list_median">ds_list_median</a>, <a href="ds_list_min">ds_list_min</a>, <a href="ds_list_pop_standard_deviation">ds_list_pop_standard_deviation</a>, <a href="ds_list_range">ds_list_range</a>, <a href="ds_list_select_relative">ds_list_select_relative</a>, <a href="ds_list_select_relative_wrap">ds_list_select_relative_wrap</a>, <a href="ds_list_standard_deviation">ds_list_standard_deviation</a>, <a href="ds_list_standard_score">ds_list_standard_score</a>, <a href="ds_list_sum">ds_list_sum</a>, <a href="ds_list_sum_of_squares">ds_list_sum_of_squares</a>, <a href="ds_list_sum_squares">ds_list_sum_squares</a>, <a href="ds_list_variance">ds_list_variance</a>, <a href="ds_list_vmr">ds_list_vmr</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Data_Structures/Lists/ds_list_max.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Data_Structures/Lists/ds_list_max.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Data_Structures/Lists/ds_list_max.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Data_Structures/Lists/ds_list_max.gml" target="_blank">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/ds_list_max';
-this.page.identifier = '/script/ds_list_max';
-};
 
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
+function ClrAmt () {  // Clear out the limits
+  maxamt = 9999.00;  //not used unless you want to set some max amount.
+  minamt = 1.00;   //set the minimum amount for a donation
+}
+
+//-->
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+onsubmit="this.target = 'paypal'; if(!ChkAmt (this)) return false;">
+Donation amount ($1.00 minimum):
+<big>$</big>&nbsp;<input type="text" name="amount" size="6">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="gmlscripts@gmail.com">
+<input type="hidden" name="item_name" value="Donation for the site">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="no_note" value="0">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="shipping" value="0">
+<input type="hidden" name="tax" value="0">
+<input type="hidden" name="return" value="https://www.gmlscripts.com/paid.html">
+<input type="hidden" name="cancel_return" value="https://www.gmlscripts.com/nopay.html">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate" align="top">
+</form>    <p>
+      <small>GMLscripts.com is not a charity. Donations are not tax deductable.</small>
+    </p>
+  </div>
 </main>
 <footer>
   copyright &copy; 2007-2024, xot media multimixing
