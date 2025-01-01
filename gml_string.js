@@ -322,7 +322,7 @@ gml_string_hint_$locals.hintLocals_recFunc = function(ctx,pos) {
 		return pos;
 	}
 	var tk = tokens[pos++];
-	if(tk.kind == gml_string_kind.Ident) {
+	if(tk.kind == gml_string_kind.Ident || tk.kind == gml_string_kind.Function) {
 		tk.kind = gml_string_kind.Script;
 		while(pos < len) if(gs_GsTokenTools.isSpace(tokens[pos])) {
 			++pos;
