@@ -161,13 +161,16 @@ h1:first-child {
 	text-shadow: none;
 	width: 192px;
 }
-.postimg.fright {
+.fright {
 	float: right;
 	margin-left: 1em;
 }
-.postimg.fleft {
+.fleft {
 	float: left;
 	margin-left: 1em;
+}
+.center {
+	text-align: center;
 }
 .byline {
 	clear: both;
@@ -178,6 +181,14 @@ h1:first-child {
 	clear: both;
 	display: block;
 	text-align: center;
+}
+.columns {
+	column-count: 3;
+	column-gap: 2em;
+}
+.columns section {
+	break-inside: avoid;
+	padding: 0.25em 0;
 }
 
 
@@ -627,18 +638,21 @@ p.example {
 
 /*  PAYPAL PAGE  */
 #paypal {
+	background-color: #222;
+	border: 1px solid #E62;
 	clear: both;
+	margin: 2em auto;
+	padding: 1em 2em;
+	position: relative;
 	text-align: center;
+	width: 50%;
 }
-
-
-/*  STATIC SITE  */
-.static {
-	background-color: #622;
-	border: 1px solid;
-	border-radius: 12px;
-	padding: 0 12px;
-	text-align: center;
+#paypal input {
+	font-size: 20px;
+	padding: 4px 8px;
+}
+#paypal span {
+	font-size: 20px;
 }
 
 

@@ -1,115 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>GMLscripts.com :: cambridge_encode</title>
-<meta name="theme-color" content="#FC7C13">
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<script type="text/x-mathjax-config">//<![CDATA[
-MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
-MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/javascript" src="/gml_string.js"></script>
-<script type="text/javascript" src="/gml_highlight.js"></script>
-<script type="text/javascript" src="/gmlscripts36.js"></script>
-<link rel="stylesheet" type="text/css" href="/gmlscripts36.css" />
-<link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FC7C13">
+  <title>GMLscripts.com :: cambridge_encode</title>
+  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+  <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
+  <script type="text/x-mathjax-config">//<![CDATA[
+    MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+    MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="/gml_string.js"></script>
+  <script type="text/javascript" src="/gml_highlight.js"></script>
+  <script type="text/javascript" src="/gmlscripts37.js"></script>
 </head>
-<body onload="start();">
+<body onload="start()">
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <header>
   <a href="/" id="home"><img src="/images/36/gmlscripts-header3d.png" alt="GMLscripts.com" /></a>
   <nav id="headnav">
     <ul><li>
-      <a href="/script/index">Scripts</a></li><li>
+      <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
-      <a href="https://github.com/gmlscripts/scripts/pulls">Submit</a></li><li>
+      <a href="/news">News</a></li><li>
+      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
 <nav id="sidenav">
-<div>
-  <span>Scripts</span>
-  <ul class="accordion" id="Scripts">
-    <li id="computation" class="computation">
-      <a href="#computation" class="active">Computation</a>
-      <ul style="max-height: unset;">
-        <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
-        <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
-        <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
-        <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
-        <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
-        <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
-        <li><a href="/script/Computation/Geometry/">Geometry</a></li>
-        <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
-        <li><a href="/script/Computation/Probability/">Probability</a></li>
-        <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
-        <li><a href="/script/Computation/Strings/">Strings</a></li>
-      </ul>
-    </li>
-    <li id="data_structures" class="data_structures">
-      <a href="#data_structures">Data Structures</a>
-      <ul>
-        <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
-        <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
-        <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
-        <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
-      </ul>
-    </li>
-    <li id="files" class="files">
-      <a href="#files">Files</a>
-      <ul>
-        <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
-      </ul>
-    </li>
-    <li id="game_play" class="game_play">
-      <a href="#game_play">Game Play</a>
-      <ul>
-        <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
-        <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
-        <li><a href="/script/Game_Play/Instances/">Instances</a></li>
-        <li><a href="/script/Game_Play/Movement/">Movement</a></li>
-      </ul>
-    </li>
-    <li id="graphics" class="graphics">
-      <a href="#graphics">Graphics</a>
-      <ul>
-        <li><a href="/script/Graphics/3D/">3D</a></li>
-        <li><a href="/script/Graphics/Backgrounds/">Backgrounds</a></li>
-        <li><a href="/script/Graphics/Color/">Color</a></li>
-        <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
-        <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
-        <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
-        <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
-        <li><a href="/script/Graphics/Text/">Text</a></li>
-      </ul>
-    </li>
-    <li id="interaction" class="interaction">
-      <a href="#interaction">Interaction</a>
-      <ul>
-        <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
-        <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
-      </ul>
-    </li>
-    <li id="platform" class="platform">
-      <a href="#platform">Platform</a>
-      <ul>
-        <li><a href="/script/Platform/Device/">Device</a></li>
-      </ul>
-    </li>
-    <li id="resources" class="resources">
-      <a href="#resources">Resources</a>
-      <ul>
-        <li><a href="/script/Resources/Management/">Management</a></li>
-        <li><a href="/script/Resources/Sprites/">Sprites</a></li>
-      </ul>
-    </li>
-  </ul>
-  <span></span>
-</div>
+  <div>
+    <span>Scripts</span>
+    <ul class="accordion" id="Scripts">
+      <li id="computation" class="computation">
+        <a href="#computation" class="active">Computation</a>
+        <ul style="max-height: unset;">
+          <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
+          <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
+          <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
+          <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
+          <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
+          <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
+          <li><a href="/script/Computation/Geometry/">Geometry</a></li>
+          <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
+          <li><a href="/script/Computation/Probability/">Probability</a></li>
+          <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
+          <li><a href="/script/Computation/Strings/">Strings</a></li>
+        </ul>
+      </li>
+      <li id="data_structures" class="data_structures">
+        <a href="#data_structures">Data Structures</a>
+        <ul>
+          <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
+          <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
+          <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
+          <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
+        </ul>
+      </li>
+      <li id="files" class="files">
+        <a href="#files">Files</a>
+        <ul>
+          <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
+        </ul>
+      </li>
+      <li id="game_play" class="game_play">
+        <a href="#game_play">Game Play</a>
+        <ul>
+          <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
+          <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
+          <li><a href="/script/Game_Play/Instances/">Instances</a></li>
+          <li><a href="/script/Game_Play/Movement/">Movement</a></li>
+        </ul>
+      </li>
+      <li id="graphics" class="graphics">
+        <a href="#graphics">Graphics</a>
+        <ul>
+          <li><a href="/script/Graphics/3D/">3D</a></li>
+          <li><a href="/script/Graphics/Backgrounds/">Backgrounds</a></li>
+          <li><a href="/script/Graphics/Color/">Color</a></li>
+          <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
+          <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
+          <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
+          <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
+          <li><a href="/script/Graphics/Text/">Text</a></li>
+        </ul>
+      </li>
+      <li id="interaction" class="interaction">
+        <a href="#interaction">Interaction</a>
+        <ul>
+          <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
+          <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
+        </ul>
+      </li>
+      <li id="platform" class="platform">
+        <a href="#platform">Platform</a>
+        <ul>
+          <li><a href="/script/Platform/Device/">Device</a></li>
+        </ul>
+      </li>
+      <li id="resources" class="resources">
+        <a href="#resources">Resources</a>
+        <ul>
+          <li><a href="/script/Resources/Management/">Management</a></li>
+          <li><a href="/script/Resources/Sprites/">Sprites</a></li>
+        </ul>
+      </li>
+    </ul>
+    <span></span>
+  </div>
 </nav>
 <main>
 <h1>cambridge_encode</h1>
@@ -119,10 +122,11 @@ need be constant for most people to be able to read the word. Using
 this encoding method people can read your text, but machines will
 have a harder time picking out keywords.</p>
 <div class="codebox example">
-<pre><code class="prettyprint lang-gml linenums">s = cambridge_encode("Hello, World!");  //  eg. "Hlelo, Wrlod!"
+<pre><code class="prettyprint lang-gml">s = cambridge_encode("Hello, World!");  //  eg. "Hlelo, Wrlod!"
 s = cambridge_encode("Hello, World!");  //  eg. "Hlleo, Wolrd!"
 s = cambridge_encode("tossed salads");  //  eg. "tsesod sdalas"
-s = cambridge_encode("scrambled egg");  //  eg. "srbleacmd egg"</code></pre>
+s = cambridge_encode("scrambled egg");  //  eg. "srbleacmd egg"
+</code></pre>
 </div>
 <dl class="dictionary script">
 <dt><a href="/script/cambridge_encode">cambridge_encode(str, alphabet)</a></dt>
@@ -133,14 +137,14 @@ s = cambridge_encode("scrambled egg");  //  eg. "srbleacmd egg"</code></pre>
 ///
 /// @desc   Returns given string with the interior letters of each word scrambled.
 ///         The first and last letters of a word are left as-is. Words are separated
-///         by non-word characters, eg. characters that are not "A" through "Z".
+///         by non-word characters, eg. characters that are not &quot;A&quot; through &quot;Z&quot;.
 ///         To accomodate non-English languages, or for special uses, an alphabet
 ///         may be supplied as a string of valid characters. Upper and lower case
 ///         letters are considered different and both may be required. The default
-///         English alphabet consists of "A" through "Z", upper and lower case.
+///         English alphabet consists of &quot;A&quot; through &quot;Z&quot;, upper and lower case.
 ///         Characters in the string that are not in the alphabet are left in place.
 ///
-///         Example: "cambridge_encode" ==&gt; "cgmrdaibe_eoncde"
+///         Example: &quot;cambridge_encode&quot; ==&gt; &quot;cgmrdaibe_eoncde&quot;
 ///
 /// @param  {string}    str         text to encode
 /// @param  {string}    alphabet    valid word characters (default English alphabet)
@@ -152,7 +156,7 @@ s = cambridge_encode("scrambled egg");  //  eg. "srbleacmd egg"</code></pre>
 function cambridge_encode(str, alphabet=undefined)
 {
     //  Create default alphabet, if needed
-    alphabet ??= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    alphabet ??= &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
 
     //  Split words and non-words
     var words;
@@ -160,7 +164,7 @@ function cambridge_encode(str, alphabet=undefined)
     words[1] = ds_queue_create();
     var len = string_length(str);
     var state = 0;
-    var word = "";
+    var word = &quot;&quot;;
     for (var i=1; i&lt;=len; i++) {
         var c = string_char_at(str, i);
         var w = string_pos(c, alphabet) &gt; 0;
@@ -173,8 +177,8 @@ function cambridge_encode(str, alphabet=undefined)
         }
     }
     ds_queue_enqueue(words[state], word);
-    if (ds_queue_size(words[0]) &lt; ds_queue_size(words[1])) ds_queue_enqueue(words[0], "");
-    if (ds_queue_size(words[1]) &lt; ds_queue_size(words[0])) ds_queue_enqueue(words[1], "");
+    if (ds_queue_size(words[0]) &lt; ds_queue_size(words[1])) ds_queue_enqueue(words[0], &quot;&quot;);
+    if (ds_queue_size(words[1]) &lt; ds_queue_size(words[0])) ds_queue_enqueue(words[1], &quot;&quot;);
 
     //  Scramble each word
     repeat (ds_queue_size(words[1])) {
@@ -192,7 +196,7 @@ function cambridge_encode(str, alphabet=undefined)
     }
 
     //  Combine words and non-words
-    var out = "";
+    var out = &quot;&quot;;
     repeat (ds_queue_size(words[0])) {
         out += ds_queue_dequeue(words[0]);
         out += ds_queue_dequeue(words[1]);
@@ -212,7 +216,7 @@ Contributors: Leif902, xot
 Related: <strong>cambridge_encode</strong>, <a href="rc4">rc4</a>, <a href="rot13">rot13</a>, <a href="vigenere_ascii">vigenere_ascii</a>, <a href="vigenere_cipher">vigenere_cipher</a>
 </p>
 <p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Encryption/cambridge_encode.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Encryption/cambridge_encode.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Encryption/cambridge_encode.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Encryption/cambridge_encode.gml" target="_blank">Raw</a>
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Encryption/cambridge_encode.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Encryption/cambridge_encode.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Encryption/cambridge_encode.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Encryption/cambridge_encode.gml">Raw</a>
 </p>
 <hr />
 <!-- DISQUS START -->
@@ -220,7 +224,7 @@ GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/D
 <script>
 var disqus_config = function () {
 this.page.url = 'https://www.gmlscripts.com/script/cambridge_encode';
-this.page.identifier = '/script/cambridge_encode';
+this.page.identifier = 'script/cambridge_encode';
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -232,9 +236,10 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
+
 </main>
 <footer>
-  copyright &copy; 2007-2024, xot media multimixing
+  copyright &copy; 2007-2025, xot media multimixing
   <span><img src="/images/36/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>

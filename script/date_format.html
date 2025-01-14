@@ -1,123 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>GMLscripts.com :: date_format</title>
-<meta name="theme-color" content="#FC7C13">
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-<script type="text/x-mathjax-config">//<![CDATA[
-MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
-MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/javascript" src="/gml_string.js"></script>
-<script type="text/javascript" src="/gml_highlight.js"></script>
-<script type="text/javascript" src="/gmlscripts36.js"></script>
-<link rel="stylesheet" type="text/css" href="/gmlscripts36.css" />
-<link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FC7C13">
+  <title>GMLscripts.com :: date_format</title>
+  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
+  <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
+  <script type="text/x-mathjax-config">//<![CDATA[
+    MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+    MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="/gml_string.js"></script>
+  <script type="text/javascript" src="/gml_highlight.js"></script>
+  <script type="text/javascript" src="/gmlscripts37.js"></script>
 </head>
-<body onload="start();">
+<body onload="start()">
 <noscript><div>JAVASCRIPT REQUIRED</div></noscript>
 <header>
   <a href="/" id="home"><img src="/images/36/gmlscripts-header3d.png" alt="GMLscripts.com" /></a>
   <nav id="headnav">
     <ul><li>
-      <a href="/script/index">Scripts</a></li><li>
+      <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
-      <a href="https://github.com/gmlscripts/scripts/pulls">Submit</a></li><li>
+      <a href="/news">News</a></li><li>
+      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
 <nav id="sidenav">
-<div>
-  <span>Scripts</span>
-  <ul class="accordion" id="Scripts">
-    <li id="computation" class="computation">
-      <a href="#computation" class="active">Computation</a>
-      <ul style="max-height: unset;">
-        <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
-        <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
-        <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
-        <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
-        <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
-        <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
-        <li><a href="/script/Computation/Geometry/">Geometry</a></li>
-        <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
-        <li><a href="/script/Computation/Probability/">Probability</a></li>
-        <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
-        <li><a href="/script/Computation/Strings/">Strings</a></li>
-      </ul>
-    </li>
-    <li id="data_structures" class="data_structures">
-      <a href="#data_structures">Data Structures</a>
-      <ul>
-        <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
-        <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
-        <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
-        <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
-      </ul>
-    </li>
-    <li id="files" class="files">
-      <a href="#files">Files</a>
-      <ul>
-        <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
-      </ul>
-    </li>
-    <li id="game_play" class="game_play">
-      <a href="#game_play">Game Play</a>
-      <ul>
-        <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
-        <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
-        <li><a href="/script/Game_Play/Instances/">Instances</a></li>
-        <li><a href="/script/Game_Play/Movement/">Movement</a></li>
-      </ul>
-    </li>
-    <li id="graphics" class="graphics">
-      <a href="#graphics">Graphics</a>
-      <ul>
-        <li><a href="/script/Graphics/3D/">3D</a></li>
-        <li><a href="/script/Graphics/Backgrounds/">Backgrounds</a></li>
-        <li><a href="/script/Graphics/Color/">Color</a></li>
-        <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
-        <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
-        <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
-        <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
-        <li><a href="/script/Graphics/Text/">Text</a></li>
-      </ul>
-    </li>
-    <li id="interaction" class="interaction">
-      <a href="#interaction">Interaction</a>
-      <ul>
-        <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
-        <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
-      </ul>
-    </li>
-    <li id="platform" class="platform">
-      <a href="#platform">Platform</a>
-      <ul>
-        <li><a href="/script/Platform/Device/">Device</a></li>
-      </ul>
-    </li>
-    <li id="resources" class="resources">
-      <a href="#resources">Resources</a>
-      <ul>
-        <li><a href="/script/Resources/Management/">Management</a></li>
-        <li><a href="/script/Resources/Sprites/">Sprites</a></li>
-      </ul>
-    </li>
-  </ul>
-  <span></span>
-</div>
+  <div>
+    <span>Scripts</span>
+    <ul class="accordion" id="Scripts">
+      <li id="computation" class="computation">
+        <a href="#computation" class="active">Computation</a>
+        <ul style="max-height: unset;">
+          <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
+          <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
+          <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
+          <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
+          <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
+          <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
+          <li><a href="/script/Computation/Geometry/">Geometry</a></li>
+          <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
+          <li><a href="/script/Computation/Probability/">Probability</a></li>
+          <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
+          <li><a href="/script/Computation/Strings/">Strings</a></li>
+        </ul>
+      </li>
+      <li id="data_structures" class="data_structures">
+        <a href="#data_structures">Data Structures</a>
+        <ul>
+          <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
+          <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
+          <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
+          <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
+        </ul>
+      </li>
+      <li id="files" class="files">
+        <a href="#files">Files</a>
+        <ul>
+          <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
+        </ul>
+      </li>
+      <li id="game_play" class="game_play">
+        <a href="#game_play">Game Play</a>
+        <ul>
+          <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
+          <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
+          <li><a href="/script/Game_Play/Instances/">Instances</a></li>
+          <li><a href="/script/Game_Play/Movement/">Movement</a></li>
+        </ul>
+      </li>
+      <li id="graphics" class="graphics">
+        <a href="#graphics">Graphics</a>
+        <ul>
+          <li><a href="/script/Graphics/3D/">3D</a></li>
+          <li><a href="/script/Graphics/Backgrounds/">Backgrounds</a></li>
+          <li><a href="/script/Graphics/Color/">Color</a></li>
+          <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
+          <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
+          <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
+          <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
+          <li><a href="/script/Graphics/Text/">Text</a></li>
+        </ul>
+      </li>
+      <li id="interaction" class="interaction">
+        <a href="#interaction">Interaction</a>
+        <ul>
+          <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
+          <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
+        </ul>
+      </li>
+      <li id="platform" class="platform">
+        <a href="#platform">Platform</a>
+        <ul>
+          <li><a href="/script/Platform/Device/">Device</a></li>
+        </ul>
+      </li>
+      <li id="resources" class="resources">
+        <a href="#resources">Resources</a>
+        <ul>
+          <li><a href="/script/Resources/Management/">Management</a></li>
+          <li><a href="/script/Resources/Sprites/">Sprites</a></li>
+        </ul>
+      </li>
+    </ul>
+    <span></span>
+  </div>
 </nav>
 <main>
 <h1>date_format</h1>
 <p>Returns a formatted string generated from a date-time.
 Designed to closely mimic <a href="http://us2.php.net/manual/en/function.date.php">PHP's date function</a>.</p>
-<div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="512" height="64" src="https://gmlscripts.github.io/demos/date_format/index.html"></iframe><a href="https://gmlscripts.github.io/demos/date_format/date_format.yyz">Download</a></span></div>
+<div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="512" height="64" src="/demos/date_format/index.html"></iframe><a href="/demos/date_format/date_format.yyz">Download</a></span></div>
 <div class="codebox example">
-<pre><code class="prettyprint lang-gml linenums">// Assuming today is March 10th, 2001, 5:16:18 pm
+<pre><code class="prettyprint lang-gml">// Assuming today is March 10th, 2001, 5:16:18 pm
 
 today = date_format("F j, Y, g:i a");                 // March 10, 2001, 5:16 pm
 today = date_format("m.d.y");                         // 03.10.01
@@ -127,7 +130,8 @@ today = date_format("h-i-s, j-m-y, it is w Day");     // 05-16-18, 10-03-01, 163
 today = date_format(@"\i\t \i\s \t\h\e jS \d\a\y.");  // it is the 10th day.
 today = date_format("D M j G:i:s Y");                 // Sat Mar 10 17:16:18 2001
 today = date_format(@"H:m:s \m \i\s\ \m\o\n\t\h");    // 17:03:18 m is month
-today = date_format("H:i:s");                         // 17:16:18 </code></pre>
+today = date_format("H:i:s");                         // 17:16:18
+</code></pre>
 </div>
 <p class="warning"><span>WARNING:</span> ISO 8601 week number is currently broken in GameMaker Studio.
 This also means ISO 8601 year is not calculated correctly.</p>
@@ -190,23 +194,23 @@ This also means ISO 8601 year is not calculated correctly.</p>
 ///
 ///     \ - next character output literally, not interpreted (see note below)
 ///
-/// Note: \ (backslash) is an "escape" character in standard strings and must itself
+/// Note: \ (backslash) is an &quot;escape&quot; character in standard strings and must itself
 ///     be escaped. For instance, \t is interpreted as the TAB character in a standard
-///     string; when written as \\t, a literal "t" is produced by this function instead.
-///     However, GameMaker Studio 2 also has "verbatim" strings which do not use escape
+///     string; when written as \\t, a literal &quot;t&quot; is produced by this function instead.
+///     However, GameMaker Studio 2 also has &quot;verbatim&quot; strings which do not use escape
 ///     sequences. These are literal strings prefixed by an @ symbol. Backslashes in
-///     these do not require escaping and \t would produce a literal "t" not a TAB.
+///     these do not require escaping and \t would produce a literal &quot;t&quot; not a TAB.
 ///
 /// Examples:
-///     date_format("l jS \\of F Y h:i:s A") == "Sunday 4th of May 2008 05:45:34 PM"
-///     date_format("\\I\\t \\i\\s \\t\\h\\e zS \\d\\a\\y.") == "It is the 124th day."
-///     date_format(@"\I\t \i\s \t\h\e zS \d\a\y.") == "It is the 124th day."
+///     date_format(&quot;l jS \\of F Y h:i:s A&quot;) == &quot;Sunday 4th of May 2008 05:45:34 PM&quot;
+///     date_format(&quot;\\I\\t \\i\\s \\t\\h\\e zS \\d\\a\\y.&quot;) == &quot;It is the 124th day.&quot;
+///     date_format(@&quot;\I\t \i\s \t\h\e zS \d\a\y.&quot;) == &quot;It is the 124th day.&quot;
 ///
 /// GMLscripts.com/license
 
 function date_format(format, datetime=date_current_datetime())
 {
-    var out = "";
+    var out = &quot;&quot;;
     var day,month,year,week,weekday,second,minute,hour24,hour12;
     day     = date_get_day(datetime);
     month   = date_get_month(datetime);
@@ -220,94 +224,94 @@ function date_format(format, datetime=date_current_datetime())
     for (var i = 1; i &lt;= string_length(format); i += 1) {
         var c = string_char_at(format,i);
         switch (c) {
-        case "F":
+        case &quot;F&quot;:
             switch (month) {
-            case 1:  out += "January";   break;
-            case 2:  out += "February";  break;
-            case 3:  out += "March";     break;
-            case 4:  out += "April";     break;
-            case 5:  out += "May";       break;
-            case 6:  out += "June";      break;
-            case 7:  out += "July";      break;
-            case 8:  out += "August";    break;
-            case 9:  out += "September"; break;
-            case 10: out += "October";   break;
-            case 11: out += "November";  break;
-            case 12: out += "December";  break;
+            case 1:  out += &quot;January&quot;;   break;
+            case 2:  out += &quot;February&quot;;  break;
+            case 3:  out += &quot;March&quot;;     break;
+            case 4:  out += &quot;April&quot;;     break;
+            case 5:  out += &quot;May&quot;;       break;
+            case 6:  out += &quot;June&quot;;      break;
+            case 7:  out += &quot;July&quot;;      break;
+            case 8:  out += &quot;August&quot;;    break;
+            case 9:  out += &quot;September&quot;; break;
+            case 10: out += &quot;October&quot;;   break;
+            case 11: out += &quot;November&quot;;  break;
+            case 12: out += &quot;December&quot;;  break;
             }
             break;
-        case "M":
+        case &quot;M&quot;:
             switch (month) {
-            case 1:  out += "Jan"; break;
-            case 2:  out += "Feb"; break;
-            case 3:  out += "Mar"; break;
-            case 4:  out += "Apr"; break;
-            case 5:  out += "May"; break;
-            case 6:  out += "Jun"; break;
-            case 7:  out += "Jul"; break;
-            case 8:  out += "Aug"; break;
-            case 9:  out += "Sep"; break;
-            case 10: out += "Oct"; break;
-            case 11: out += "Nov"; break;
-            case 12: out += "Dec"; break;
+            case 1:  out += &quot;Jan&quot;; break;
+            case 2:  out += &quot;Feb&quot;; break;
+            case 3:  out += &quot;Mar&quot;; break;
+            case 4:  out += &quot;Apr&quot;; break;
+            case 5:  out += &quot;May&quot;; break;
+            case 6:  out += &quot;Jun&quot;; break;
+            case 7:  out += &quot;Jul&quot;; break;
+            case 8:  out += &quot;Aug&quot;; break;
+            case 9:  out += &quot;Sep&quot;; break;
+            case 10: out += &quot;Oct&quot;; break;
+            case 11: out += &quot;Nov&quot;; break;
+            case 12: out += &quot;Dec&quot;; break;
             }
             break;
-        case "l":
+        case &quot;l&quot;:
             switch (weekday) {
-            case 0: out += "Sunday";    break;
-            case 1: out += "Monday";    break;
-            case 2: out += "Tuesday";   break;
-            case 3: out += "Wednesday"; break;
-            case 4: out += "Thursday";  break;
-            case 5: out += "Friday";    break;
-            case 6: out += "Saturday";  break;
+            case 0: out += &quot;Sunday&quot;;    break;
+            case 1: out += &quot;Monday&quot;;    break;
+            case 2: out += &quot;Tuesday&quot;;   break;
+            case 3: out += &quot;Wednesday&quot;; break;
+            case 4: out += &quot;Thursday&quot;;  break;
+            case 5: out += &quot;Friday&quot;;    break;
+            case 6: out += &quot;Saturday&quot;;  break;
             }
             break;
-        case "D":
+        case &quot;D&quot;:
             switch (weekday) {
-            case 0: out += "Sun"; break;
-            case 1: out += "Mon"; break;
-            case 2: out += "Tue"; break;
-            case 3: out += "Wed"; break;
-            case 4: out += "Thu"; break;
-            case 5: out += "Fri"; break;
-            case 6: out += "Sat"; break;
+            case 0: out += &quot;Sun&quot;; break;
+            case 1: out += &quot;Mon&quot;; break;
+            case 2: out += &quot;Tue&quot;; break;
+            case 3: out += &quot;Wed&quot;; break;
+            case 4: out += &quot;Thu&quot;; break;
+            case 5: out += &quot;Fri&quot;; break;
+            case 6: out += &quot;Sat&quot;; break;
             }
             break;
-        case "S":
-            if (day &gt;= 10 &amp;&amp; day &lt;= 20) out += "th";
-            else if ((day mod 10) == 1) out += "st";
-            else if ((day mod 10) == 2) out += "nd";
-            else if ((day mod 10) == 3) out += "rd";
-            else                        out += "th";
+        case &quot;S&quot;:
+            if (day &gt;= 10 &amp;&amp; day &lt;= 20) out += &quot;th&quot;;
+            else if ((day mod 10) == 1) out += &quot;st&quot;;
+            else if ((day mod 10) == 2) out += &quot;nd&quot;;
+            else if ((day mod 10) == 3) out += &quot;rd&quot;;
+            else                        out += &quot;th&quot;;
             break;
-        case "o":
+        case &quot;o&quot;:
             if (month ==  1 &amp;&amp; day &lt;=  3 &amp;&amp; week != 1) { out += string(year - 1); break; }
             if (month == 12 &amp;&amp; day &gt;= 29 &amp;&amp; week == 1) { out += string(year + 1); break; }
-        case "Y": out += string(year); break;
-        case "y": out += string_copy(string(year),3,2); break;
-        case "m": if (month &lt; 10) out += "0";
-        case "n": out += string(month); break;
-        case "d": if (day &lt; 10) out += "0";
-        case "j": out += string(day); break;
-        case "H": if (hour24 &lt; 10) out += "0";
-        case "G": out += string(hour24); break;
-        case "h": if (hour12 &lt; 10) out += "0";
-        case "g": out += string(hour12); break;
-        case "i": if (minute &lt; 10) out += "0"; out += string(minute); break;
-        case "s": if (second &lt; 10) out += "0"; out += string(second); break;
-        case "a": if (hour24 &lt; 12) out += "am" else out += "pm"; break;
-        case "A": if (hour24 &lt; 12) out += "AM" else out += "PM"; break;
-        case "U": out += string(floor(date_second_span(datetime, 25569))); break;
-        case "z": out += string(date_get_day_of_year(datetime) - 1); break;
-        case "t": out += string(date_days_in_month(datetime)); break;
-        case "L": out += string(date_leap_year(datetime)); break;
-        case "w": out += string(weekday); break;
-        case "N": out += string(((weekday + 6) mod 7) + 1); break;
-        case "W": out += string(week); break;
-        case "c": out += date_format("o-m-dTH:i:s", datetime); break;
-        case "r": out += date_format("D, d M Y H:i:s +0000", datetime); break;
-        case "\\": i += 1; c = string_char_at(format, i);
+        case &quot;Y&quot;: out += string(year); break;
+        case &quot;y&quot;: out += string_copy(string(year),3,2); break;
+        case &quot;m&quot;: if (month &lt; 10) out += &quot;0&quot;;
+        case &quot;n&quot;: out += string(month); break;
+        case &quot;d&quot;: if (day &lt; 10) out += &quot;0&quot;;
+        case &quot;j&quot;: out += string(day); break;
+        case &quot;H&quot;: if (hour24 &lt; 10) out += &quot;0&quot;;
+        case &quot;G&quot;: out += string(hour24); break;
+        case &quot;h&quot;: if (hour12 &lt; 10) out += &quot;0&quot;;
+        case &quot;g&quot;: out += string(hour12); break;
+        case &quot;i&quot;: if (minute &lt; 10) out += &quot;0&quot;; out += string(minute); break;
+        case &quot;s&quot;: if (second &lt; 10) out += &quot;0&quot;; out += string(second); break;
+        case &quot;a&quot;: if (hour24 &lt; 12) out += &quot;am&quot; else out += &quot;pm&quot;; break;
+        case &quot;A&quot;: if (hour24 &lt; 12) out += &quot;AM&quot; else out += &quot;PM&quot;; break;
+        case &quot;U&quot;: out += string(floor(date_second_span(datetime, 25569))); break;
+        case &quot;z&quot;: out += string(date_get_day_of_year(datetime) - 1); break;
+        case &quot;t&quot;: out += string(date_days_in_month(datetime)); break;
+        case &quot;L&quot;: out += string(date_leap_year(datetime)); break;
+        case &quot;w&quot;: out += string(weekday); break;
+        case &quot;N&quot;: out += string(((weekday + 6) mod 7) + 1); break;
+        case &quot;W&quot;: out += string(week); break;
+        case &quot;c&quot;: out += date_format(&quot;o-m-dTH:i:s&quot;, datetime); break;
+        case &quot;r&quot;: out += date_format(&quot;D, d M Y H:i:s +0000&quot;, datetime); break;
+        case &quot;\\&quot;: i += 1; c = string_char_at(format, i);
         default:  out += c; break;
         }
     }
@@ -322,7 +326,7 @@ Contributors: xot
 Related: <strong>date_format</strong>, <a href="date_get_easter">date_get_easter</a>, <a href="time_string">time_string</a>, <a href="unix_timestamp">unix_timestamp</a>
 </p>
 <p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Date-Time/date_format.gml" target="_blank">View</a>  &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Date-Time/date_format.gml" target="_blank">Commits</a>  &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Date-Time/date_format.gml" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Date-Time/date_format.gml" target="_blank">Raw</a>
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Date-Time/date_format.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Date-Time/date_format.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Date-Time/date_format.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Date-Time/date_format.gml">Raw</a>
 </p>
 <hr />
 <!-- DISQUS START -->
@@ -330,7 +334,7 @@ GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/D
 <script>
 var disqus_config = function () {
 this.page.url = 'https://www.gmlscripts.com/script/date_format';
-this.page.identifier = '/script/date_format';
+this.page.identifier = 'script/date_format';
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -342,9 +346,10 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
+
 </main>
 <footer>
-  copyright &copy; 2007-2024, xot media multimixing
+  copyright &copy; 2007-2025, xot media multimixing
   <span><img src="/images/36/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
