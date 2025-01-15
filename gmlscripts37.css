@@ -1,6 +1,6 @@
 /*  GLOBAL STYLES  */
 body {
-	background: #000 url(/images/36/bg_page.png) repeat scroll top left;
+	background: #000 url(/images/37/bg_page.png) repeat scroll top left;
 	color: #CCC;
 	font: 18px/24px "ABeeZee", sans-serif;
 	margin: 0;
@@ -34,7 +34,7 @@ blockquote {
 	margin-left: 0px;
 	font-size: 0.95em;
 	padding-left: 24px;
-	background-image: url(/images/36/bg_quote.png);
+	background-image: url(/images/37/bg_quote.png);
 	background-repeat: repeat-y;
 }
 header,
@@ -141,14 +141,14 @@ h1 a, h2 a {
 	font-weight: 400;
 }
 h1:first-child {
-	background: #222 url(/images/36/bg_headline.png) repeat-x scroll top left;
+	background: #222 url(/images/37/bg_headline.png) repeat-x scroll top left;
 	margin-left: -16px;
 	margin-right: -16px;
 	padding: 0 16px 4px 16px;
 }
 .blogdate {
 	background-color: #F80;
-	background-image: url(/images/36/bg_blogdate.png);
+	background-image: url(/images/37/bg_blogdate.png);
 	background-repeat: repeat;
 	border-top: #FFCC33 1px solid;
 	border-radius: 14px;
@@ -336,7 +336,7 @@ footer span {
 
 /*  SCRIPT DEFINITION  */
 dl {
-	background: #25444d url(/images/36/bg_usage.png);
+	background: #25444d url(/images/37/bg_usage.png);
 	border: 1px solid #204048;
 	border-top-color: #4080B0;
 	border-bottom-color: #102028;
@@ -374,7 +374,7 @@ dl.script {
 	margin-bottom: 0;
 }
 dl.recent::before {
-	content: url(/images/36/_recent.png);
+	content: url(/images/37/_recent.png);
 	float: right;
 	margin: 3px;
 }
@@ -483,7 +483,7 @@ pre, code {
 	padding-right: 5px;
 }
 .note::before {
-	content: url(/images/36/_note.png);
+	content: url(/images/37/_note.png);
 	padding-right: 6px;
 	position: relative;
 	top: 2px;
@@ -508,7 +508,7 @@ pre, code {
 	padding-right: 5px;
 }
 .warning::before {
-	content: url(/images/36/_warning.png);
+	content: url(/images/37/_warning.png);
 	padding-right: 6px;
 	position: relative;
 	top: 2px;
@@ -602,25 +602,25 @@ p.example {
 	text-align: left;
 }
 #contributors::before {
-	content: url(/images/36/_contributors.png);
+	content: url(/images/37/_contributors.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
 }
 #related::before {
-	content: url(/images/36/_related.png);
+	content: url(/images/37/_related.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
 }
 #history::before {
-	content: url(/images/36/_history.png);
+	content: url(/images/37/_history.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
 }
 #github::before {
-	content: url(/images/36/_github.png);
+	content: url(/images/37/_github.png);
 	padding-right: 6px;
 	position: relative;
 	top: 3px;
