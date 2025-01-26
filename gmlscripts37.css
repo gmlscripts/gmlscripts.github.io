@@ -31,7 +31,7 @@ a:active {
 	text-decoration: underline;
 }
 blockquote {
-	margin-left: 0px;
+	margin-left: 0;
 	font-size: 0.95em;
 	padding-left: 24px;
 	background-image: url(/images/37/bg_quote.png);
@@ -167,7 +167,7 @@ h1:first-child {
 }
 .fleft {
 	float: left;
-	margin-left: 1em;
+	margin-right: 1em;
 }
 .center {
 	text-align: center;
@@ -491,8 +491,6 @@ pre, code {
 .note::after {
 	content: '';
 	display: table;
-}
-.note::after {
 	clear: both;
 }
 .warning {
@@ -516,8 +514,6 @@ pre, code {
 .warning::after {
 	content: '';
 	display: table;
-}
-.warning::after {
 	clear: both;
 }
 .demo {
@@ -568,8 +564,10 @@ div.example::before {
 }
 p.example {
     background-color: #111;
-	margin: auto;
-	margin-bottom: 2em;
+	border: 1px solid #555;
+	display: block;
+	margin: 4px auto 1em;
+    padding: 0 4px;
 	width: 90%;
 }
 p.example::before {
@@ -581,12 +579,6 @@ p.example::before {
 	font-size: 0.8em;
 	font-weight: bold;
 	margin: 4px 0;
-    padding: 0 4px;
-}
-p.example {
-	border: 1px solid #555;
-	display: block;
-	margin: 4px auto 1em;
     padding: 0 4px;
 }
 
@@ -683,59 +675,4 @@ p.example {
 	background-color: #FC3;
 	color: #000;
 	text-decoration: none;
-}
-
-
-@media print {
-	body {
-		font-size: 9pt;
-		line-height: 11pt;
-		margin: 0;
-		padding: 0;
-	}
-	main {
-		border-style: none;
-		margin: 0;
-	}
-	*, h1, h2 {
-		text-shadow: none;
-	}
-	pre, code {
-		font-size: 8pt;
-		line-height: 9pt;
-		overflow: hidden;
-	}
-	.example {
-		margin: 0;
-	}
-	dl,
-	.blogdate,
-	.note,
-	.warning,
-	.codebox {
-		border-style: none;
-	}
-	.codebox .linenums > li::before {
-		display: none;
-	}
-	header,
-	hr,
-	footer,
-	.demo,
-	.copy,
-	#sidenav,
-	#related,
-	#github,
-	#disqus_thread,
-	#recentcomments,
-	#recentcomments + a {
-		display: none;
-		float: none;
-		margin: 0;
-		padding: 0;
-	}
-	.dictionary.recent.script::before,
-	#contributors::before {
-		content: '';
-	}
 }

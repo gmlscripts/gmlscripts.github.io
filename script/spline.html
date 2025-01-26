@@ -116,21 +116,21 @@
 </nav>
 <main>
 <h1>spline</h1>
-<p>A Catmull-Rom spline interpolates smoothly between knot[1] and knot[n-2], 
-where n is the number of knots. Because the spline is a cubic polynomial, 
-there must be at least four knots. See <a href="/script/spline4">spline4</a> for a version optimized 
+<p>A Catmull-Rom spline interpolates smoothly between knot[1] and knot[n-2],
+where n is the number of knots. Because the spline is a cubic polynomial,
+there must be at least four knots. See <a href="/script/spline4">spline4</a> for a version optimized
 for four knots.</p>
 <blockquote>
-<p><a href="http://en.wikipedia.org/wiki/Catmull-Rom_spline#Catmull.E2.80.93Rom_spline">Wikipedia</a>: The curve is named after Edwin Catmull and Raphie Rom. 
-In computer graphics, Catmull-Rom splines are frequently used to get 
-smooth interpolated motion between key frames. For example, most camera 
-path animations generated from discrete key-frames are handled using 
-Catmull-Rom splines. They are popular mainly for being relatively easy 
-to compute, guaranteeing that each key frame position will be hit exactly, 
-and also guaranteeing that the tangents of the generated curve are 
+<p><a href="http://en.wikipedia.org/wiki/Catmull-Rom_spline#Catmull.E2.80.93Rom_spline">Wikipedia</a>: The curve is named after Edwin Catmull and Raphie Rom.
+In computer graphics, Catmull-Rom splines are frequently used to get
+smooth interpolated motion between key frames. For example, most camera
+path animations generated from discrete key-frames are handled using
+Catmull-Rom splines. They are popular mainly for being relatively easy
+to compute, guaranteeing that each key frame position will be hit exactly,
+and also guaranteeing that the tangents of the generated curve are
 continuous over multiple segments.</p>
 </blockquote>
-<p><img alt="spline" src="/images/spline1.gif" title="spline" /></p>
+<p><img alt="spline" src="/images/spline1.png" title="spline" /></p>
 <dl class="dictionary script">
 <dt><a href="/script/spline">spline(t, knotlist)</a></dt>
 <dd>Returns the Catmull-Rom interpolation of the given knot values at the given parameter position.</dd>
