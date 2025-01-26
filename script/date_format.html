@@ -133,8 +133,9 @@ today = date_format(@"H:m:s \m \i\s\ \m\o\n\t\h");    // 17:03:18 m is month
 today = date_format("H:i:s");                         // 17:16:18
 </code></pre>
 </div>
-<p class="warning"><span>WARNING:</span> ISO 8601 week number is currently broken in GameMaker Studio.
-This also means ISO 8601 year is not calculated correctly.</p>
+<p class="warning"><span>WARNING:</span> ISO 8601 week number may be inaccurate for some edge cases in
+GameMaker. This also means ISO 8601 year may not be calculated correctly.
+This is being investigated.</p>
 <dl class="dictionary script">
 <dt><a href="/script/date_format">date_format(format, datetime)</a></dt>
 <dd>Returns a formatted string generated from a date-time.</dd>
@@ -143,7 +144,7 @@ This also means ISO 8601 year is not calculated correctly.</p>
 <pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('date_format'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="date_format">/// @func   date_format(format, datetime)
 ///
 /// @desc   Returns a formatted string generated from a date-time.
-///         If no date-time value is given, the current time is used. 
+///         If no date-time value is given, the current time is used.
 ///         Find additional notes and format examples below.
 ///
 /// @param  {string}    format      string controlling date formatting
@@ -197,7 +198,7 @@ This also means ISO 8601 year is not calculated correctly.</p>
 /// Note: \ (backslash) is an &quot;escape&quot; character in standard strings and must itself
 ///     be escaped. For instance, \t is interpreted as the TAB character in a standard
 ///     string; when written as \\t, a literal &quot;t&quot; is produced by this function instead.
-///     However, GameMaker Studio 2 also has &quot;verbatim&quot; strings which do not use escape
+///     However, GameMaker also has &quot;verbatim&quot; strings which do not use escape
 ///     sequences. These are literal strings prefixed by an @ symbol. Backslashes in
 ///     these do not require escaping and \t would produce a literal &quot;t&quot; not a TAB.
 ///

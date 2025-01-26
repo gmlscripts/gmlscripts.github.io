@@ -117,23 +117,23 @@
 <main>
 <h1>bin_to_bytes</h1>
 <p>This function can turn a string of binary digits into a string of raw bytes.</p>
-<p>For instance, "01001000" is equal to 72 in decimal, which is the ASCII/Unicode 
+<p>For instance, "01001000" is equal to 72 in decimal, which is the ASCII/Unicode
 value for "H".</p>
 <div class="codebox example">
-<pre><code class="prettyprint lang-gml">// Convert a string of binary digits to 
+<pre><code class="prettyprint lang-gml">// Convert a string of binary digits to
 // a string raw bytes spelling "HELLO"
 binary = "0100100001000101010011000100110001001111";
 bytes = bin_to_bytes(binary);
 show_message(bytes);
 </code></pre>
 </div>
-<p class="note"><span>NOTE:</span> Care must be taken when using this function with GM:Studio. Unlike 
+<p class="note"><span>NOTE:</span> Care must be taken when using this function with GameMaker. Unlike
 earlier editions of GameMaker, strings are "null-terminated" and string
-functions are not "binary safe". Inserting a byte with a value of zero into 
-a string will prevent the rest of the string from being usable. Further, 
+functions are not "binary safe". Inserting a byte with a value of zero into
+a string will prevent the rest of the string from being usable. Further,
 certain combinations of bytes may be interpreted as UTF-8 multibyte characters
 and results may vary on different target platforms. Storing arbitrary binary
-data in GM:Studio strings is NOT recommended.</p>
+data in GameMaker strings is NOT recommended.</p>
 <dl class="dictionary script">
 <dt><a href="/script/bin_to_bytes">bin_to_bytes(bin)</a></dt>
 <dd>Returns a string of raw bytes (8 bits each) representing the given binary string.</dd>
