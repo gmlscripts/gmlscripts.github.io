@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: deceleration_distance</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,82 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>deceleration_distance</h1>
+<dl class="script">
+<dt><a href="/script/deceleration_distance">deceleration_distance(speed,friction)</a></dt>
+<dd>Returns the distance travelled by an object moving at a given speed and with a given rate of deceleration.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('deceleration_distance'))">COPY</a></span><code class="lang-gml linenums" id="deceleration_distance">/// deceleration_distance(speed,friction)
+//
+//  Returns the distance travelled by an object moving at
+//  a given speed and with a given rate of deceleration.
+//
+//      speed       speed, real
+//      friction    deceleration rate, real
+//
+/// GMLscripts.com/license
+{
+    var s,f;
+    s = argument0;
+    f = argument1;
+    if (f == 0) return -1 else return (s*(s-f))/(2*f);
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <strong>deceleration_distance</strong>, <a href="instance_closest_approach">instance_closest_approach</a>, <a href="instance_find_enemy">instance_find_enemy</a>, <a href="instance_find_friend">instance_find_friend</a>, <a href="instance_find_team">instance_find_team</a>, <a href="instance_nearest_notme">instance_nearest_notme</a>, <a href="instance_nth_farthest">instance_nth_farthest</a>, <a href="instance_nth_nearest">instance_nth_nearest</a>, <a href="instance_singleton">instance_singleton</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Instances/deceleration_distance.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Instances/deceleration_distance.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Instances/deceleration_distance.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Instances/deceleration_distance.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/deceleration_distance';
+this.page.identifier = 'script/deceleration_distance';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,62 +170,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>deceleration_distance</h1>
-<dl class="dictionary script">
-<dt><a href="/script/deceleration_distance">deceleration_distance(speed,friction)</a></dt>
-<dd>Returns the distance travelled by an object moving at a given speed and with a given rate of deceleration.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('deceleration_distance'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="deceleration_distance">/// deceleration_distance(speed,friction)
-//
-//  Returns the distance travelled by an object moving at
-//  a given speed and with a given rate of deceleration.
-//
-//      speed       speed, real
-//      friction    deceleration rate, real
-//
-/// GMLscripts.com/license
-{
-    var s,f;
-    s = argument0;
-    f = argument1;
-    if (f == 0) return -1 else return (s*(s-f))/(2*f);
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <strong>deceleration_distance</strong>, <a href="instance_closest_approach">instance_closest_approach</a>, <a href="instance_find_enemy">instance_find_enemy</a>, <a href="instance_find_friend">instance_find_friend</a>, <a href="instance_find_team">instance_find_team</a>, <a href="instance_nearest_notme">instance_nearest_notme</a>, <a href="instance_nth_farthest">instance_nth_farthest</a>, <a href="instance_nth_nearest">instance_nth_nearest</a>, <a href="instance_singleton">instance_singleton</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Instances/deceleration_distance.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Instances/deceleration_distance.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Instances/deceleration_distance.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Instances/deceleration_distance.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/deceleration_distance';
-this.page.identifier = 'script/deceleration_distance';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

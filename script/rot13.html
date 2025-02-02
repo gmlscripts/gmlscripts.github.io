@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: rot13</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,88 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>rot13</h1>
+<p class="note"><span>NOTE:</span> ROT13 isn't designed to be secure. It's designed to hide text that can 
+be cracked very easily. It is popular as a spoiler hider on some old-school 
+forums and newsgroups.</p>
+<dl class="script">
+<dt><a href="/script/rot13">rot13(str)</a></dt>
+<dd>Returns the given text encrypted/decrypted with the rot13 algorithm.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('rot13'))">COPY</a></span><code class="lang-gml linenums" id="rot13">/// rot13(str)
+//
+//  Returns the given text encrypted/decrypted with the rot13 algorithm.
+//
+//      str         text to be encrypted/decrypted, string
+//
+/// GMLscripts.com/license
+{
+    var a, b, str, len, val, i;
+    a = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
+    b = &quot;NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm&quot;;
+    str = string_letters(argument0);
+    len = string_length(str);
+    val = &quot;&quot;;
+    for (i=1; i&lt;=len; i+=1)
+    val += string_char_at(b,string_pos(string_char_at(str,i),a));
+    return val;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: Austin
+</p>
+<p id="related">
+Related: <a href="cambridge_encode">cambridge_encode</a>, <a href="rc4">rc4</a>, <strong>rot13</strong>, <a href="vigenere_ascii">vigenere_ascii</a>, <a href="vigenere_cipher">vigenere_cipher</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Encryption/rot13.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Encryption/rot13.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Encryption/rot13.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Encryption/rot13.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/rot13';
+this.page.identifier = 'script/rot13';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,68 +176,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>rot13</h1>
-<p class="note"><span>NOTE:</span> ROT13 isn't designed to be secure. It's designed to hide text that can 
-be cracked very easily. It is popular as a spoiler hider on some old-school 
-forums and newsgroups.</p>
-<dl class="dictionary script">
-<dt><a href="/script/rot13">rot13(str)</a></dt>
-<dd>Returns the given text encrypted/decrypted with the rot13 algorithm.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('rot13'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="rot13">/// rot13(str)
-//
-//  Returns the given text encrypted/decrypted with the rot13 algorithm.
-//
-//      str         text to be encrypted/decrypted, string
-//
-/// GMLscripts.com/license
-{
-    var a, b, str, len, val, i;
-    a = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
-    b = &quot;NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm&quot;;
-    str = string_letters(argument0);
-    len = string_length(str);
-    val = &quot;&quot;;
-    for (i=1; i&lt;=len; i+=1)
-    val += string_char_at(b,string_pos(string_char_at(str,i),a));
-    return val;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: Austin
-</p>
-<p id="related">
-Related: <a href="cambridge_encode">cambridge_encode</a>, <a href="rc4">rc4</a>, <strong>rot13</strong>, <a href="vigenere_ascii">vigenere_ascii</a>, <a href="vigenere_cipher">vigenere_cipher</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Encryption/rot13.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Encryption/rot13.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Encryption/rot13.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Encryption/rot13.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/rot13';
-this.page.identifier = 'script/rot13';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

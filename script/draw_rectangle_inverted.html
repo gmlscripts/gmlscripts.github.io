@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: draw_rectangle_inverted</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,87 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>draw_rectangle_inverted</h1>
+<p>Draws a rectangle which inverts the colors beneath it.</p>
+<dl class="script">
+<dt><a href="/script/draw_rectangle_inverted">draw_rectangle_inverted(x1, y1, x2, y2)</a></dt>
+<dd>Draws a rectangle which inverts the colors beneath it.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_rectangle_inverted'))">COPY</a></span><code class="lang-gml linenums" id="draw_rectangle_inverted">/// @func   draw_rectangle_inverted(x1, y1, x2, y2)
+///
+/// @desc   Draws a rectangle which inverts the colors beneath it.
+///
+/// @param  {real}      x1          x-coordinate of 1st rectangle corner
+/// @param  {real}      y1          y-coordinate of 1st rectangle corner
+/// @param  {real}      x2          x-coordinate of 2nd rectangle corner
+/// @param  {real}      y2          y-coordinate of 2nd rectangle corner
+///
+/// GMLscripts.com/license
+
+function draw_rectangle_inverted(x1, y1, x2, y2)
+{
+    var src = gpu_get_blendmode_src();
+    var dst = gpu_get_blendmode_dest();
+    gpu_set_blendmode_ext(bm_inv_dest_color, bm_inv_src_color);
+    draw_rectangle_color(x1, y1, x2, y2, c_white, c_white, c_white, c_white, false);
+    gpu_set_blendmode_ext(src, dst);
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: edmunn, xot
+</p>
+<p id="related">
+Related: <a href="draw_arc">draw_arc</a>, <a href="draw_chord">draw_chord</a>, <a href="draw_crosshair">draw_crosshair</a>, <a href="draw_crosshair_ext">draw_crosshair_ext</a>, <a href="draw_crosshair_width">draw_crosshair_width</a>, <a href="draw_crosshair_width_ext">draw_crosshair_width_ext</a>, <a href="draw_curve">draw_curve</a>, <a href="draw_pie">draw_pie</a>, <a href="draw_rectangle_dashed">draw_rectangle_dashed</a>, <a href="draw_rectangle_dashed_color">draw_rectangle_dashed_color</a>, <strong>draw_rectangle_inverted</strong>, <a href="draw_roundrect_ext">draw_roundrect_ext</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Drawing/draw_rectangle_inverted.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Drawing/draw_rectangle_inverted.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Drawing/draw_rectangle_inverted.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Drawing/draw_rectangle_inverted.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/draw_rectangle_inverted';
+this.page.identifier = 'script/draw_rectangle_inverted';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,67 +175,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>draw_rectangle_inverted</h1>
-<p>Draws a rectangle which inverts the colors beneath it.</p>
-<dl class="dictionary script">
-<dt><a href="/script/draw_rectangle_inverted">draw_rectangle_inverted(x1, y1, x2, y2)</a></dt>
-<dd>Draws a rectangle which inverts the colors beneath it.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_rectangle_inverted'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_rectangle_inverted">/// @func   draw_rectangle_inverted(x1, y1, x2, y2)
-///
-/// @desc   Draws a rectangle which inverts the colors beneath it.
-///
-/// @param  {real}      x1          x-coordinate of 1st rectangle corner
-/// @param  {real}      y1          y-coordinate of 1st rectangle corner
-/// @param  {real}      x2          x-coordinate of 2nd rectangle corner
-/// @param  {real}      y2          y-coordinate of 2nd rectangle corner
-///
-/// GMLscripts.com/license
-
-function draw_rectangle_inverted(x1, y1, x2, y2)
-{
-    var src = gpu_get_blendmode_src();
-    var dst = gpu_get_blendmode_dest();
-    gpu_set_blendmode_ext(bm_inv_dest_color, bm_inv_src_color);
-    draw_rectangle_color(x1, y1, x2, y2, c_white, c_white, c_white, c_white, false);
-    gpu_set_blendmode_ext(src, dst);
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: edmunn, xot
-</p>
-<p id="related">
-Related: <a href="draw_arc">draw_arc</a>, <a href="draw_chord">draw_chord</a>, <a href="draw_crosshair">draw_crosshair</a>, <a href="draw_crosshair_ext">draw_crosshair_ext</a>, <a href="draw_crosshair_width">draw_crosshair_width</a>, <a href="draw_crosshair_width_ext">draw_crosshair_width_ext</a>, <a href="draw_curve">draw_curve</a>, <a href="draw_pie">draw_pie</a>, <a href="draw_rectangle_dashed">draw_rectangle_dashed</a>, <a href="draw_rectangle_dashed_color">draw_rectangle_dashed_color</a>, <strong>draw_rectangle_inverted</strong>, <a href="draw_roundrect_ext">draw_roundrect_ext</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Drawing/draw_rectangle_inverted.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Drawing/draw_rectangle_inverted.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Drawing/draw_rectangle_inverted.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Drawing/draw_rectangle_inverted.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/draw_rectangle_inverted';
-this.page.identifier = 'script/draw_rectangle_inverted';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

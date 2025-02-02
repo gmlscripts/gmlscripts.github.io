@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: b64_to_bytes</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,95 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>b64_to_bytes</h1>
+<dl class="script">
+<dt><a href="/script/b64_to_bytes">b64_to_bytes(b64)</a></dt>
+<dd>Returns a string of raw bytes, 8 bits each.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('b64_to_bytes'))">COPY</a></span><code class="lang-gml linenums" id="b64_to_bytes">/// b64_to_bytes(b64)
+//
+//  Returns a string of raw bytes, 8 bits each. Base64 strings 
+//  with characters outside of the RFC 3548 standard or excess
+//  padding characters at the end will not decode correctly.
+//
+//      b64         base64 digits (RFC 3548), 6 bits each, string
+//
+/// GMLscripts.com/license
+{
+    var b64, len, pad, tab, str, i, bin;
+    b64 = argument0;
+    len = string_length(b64);
+    pad = &quot;=&quot;;
+    tab = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;
+    str = &quot;&quot;;
+    while (string_length(b64) mod 4) b64 += pad;
+    for(i=0; i&lt;len; i+=4) {
+        bin[0] = string_pos(string_char_at(b64,i+1),tab)-1;
+        bin[1] = string_pos(string_char_at(b64,i+2),tab)-1;
+        bin[2] = string_pos(string_char_at(b64,i+3),tab)-1;
+        bin[3] = string_pos(string_char_at(b64,i+4),tab)-1;
+        str += chr(255&amp;(bin[0]&lt;&lt;2)|(bin[1]&gt;&gt;4));
+        if (bin[2] &gt;= 0) str += chr(255&amp;(bin[1]&lt;&lt;4)|(bin[2]&gt;&gt;2));
+        if (bin[3] &gt;= 0) str += chr(255&amp;(bin[2]&lt;&lt;6)|(bin[3]));
+    }
+    return str;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <strong>b64_to_bytes</strong>, <a href="bin_to_bytes">bin_to_bytes</a>, <a href="bytes_to_b64">bytes_to_b64</a>, <a href="bytes_to_bin">bytes_to_bin</a>, <a href="bytes_to_hex">bytes_to_hex</a>, <a href="decode_real_double">decode_real_double</a>, <a href="encode_real_double">encode_real_double</a>, <a href="hex_to_bytes">hex_to_bytes</a>, <a href="value_min_bits">value_min_bits</a>, <a href="word_max_value">word_max_value</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Encoding/b64_to_bytes.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Encoding/b64_to_bytes.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Encoding/b64_to_bytes.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Encoding/b64_to_bytes.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/b64_to_bytes';
+this.page.identifier = 'script/b64_to_bytes';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,75 +183,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>b64_to_bytes</h1>
-<dl class="dictionary script">
-<dt><a href="/script/b64_to_bytes">b64_to_bytes(b64)</a></dt>
-<dd>Returns a string of raw bytes, 8 bits each.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('b64_to_bytes'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="b64_to_bytes">/// b64_to_bytes(b64)
-//
-//  Returns a string of raw bytes, 8 bits each. Base64 strings 
-//  with characters outside of the RFC 3548 standard or excess
-//  padding characters at the end will not decode correctly.
-//
-//      b64         base64 digits (RFC 3548), 6 bits each, string
-//
-/// GMLscripts.com/license
-{
-    var b64, len, pad, tab, str, i, bin;
-    b64 = argument0;
-    len = string_length(b64);
-    pad = &quot;=&quot;;
-    tab = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;
-    str = &quot;&quot;;
-    while (string_length(b64) mod 4) b64 += pad;
-    for(i=0; i&lt;len; i+=4) {
-        bin[0] = string_pos(string_char_at(b64,i+1),tab)-1;
-        bin[1] = string_pos(string_char_at(b64,i+2),tab)-1;
-        bin[2] = string_pos(string_char_at(b64,i+3),tab)-1;
-        bin[3] = string_pos(string_char_at(b64,i+4),tab)-1;
-        str += chr(255&amp;(bin[0]&lt;&lt;2)|(bin[1]&gt;&gt;4));
-        if (bin[2] &gt;= 0) str += chr(255&amp;(bin[1]&lt;&lt;4)|(bin[2]&gt;&gt;2));
-        if (bin[3] &gt;= 0) str += chr(255&amp;(bin[2]&lt;&lt;6)|(bin[3]));
-    }
-    return str;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <strong>b64_to_bytes</strong>, <a href="bin_to_bytes">bin_to_bytes</a>, <a href="bytes_to_b64">bytes_to_b64</a>, <a href="bytes_to_bin">bytes_to_bin</a>, <a href="bytes_to_hex">bytes_to_hex</a>, <a href="decode_real_double">decode_real_double</a>, <a href="encode_real_double">encode_real_double</a>, <a href="hex_to_bytes">hex_to_bytes</a>, <a href="value_min_bits">value_min_bits</a>, <a href="word_max_value">word_max_value</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Encoding/b64_to_bytes.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Encoding/b64_to_bytes.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Encoding/b64_to_bytes.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Encoding/b64_to_bytes.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/b64_to_bytes';
-this.page.identifier = 'script/b64_to_bytes';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

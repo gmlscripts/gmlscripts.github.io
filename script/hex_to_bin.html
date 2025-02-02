@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: hex_to_bin</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,99 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>hex_to_bin</h1>
+<p>Converts a string of hexidecimal digits to a string of binary digits.</p>
+<div class="codebox example">
+<pre><code class="lang-gml">bin = hex_to_bin("4");          //  bin == "0100"
+bin = hex_to_bin("0E");         //  bin == "00001110"
+bin = hex_to_bin("1F");         //  bin == "00011111"
+bin = hex_to_bin("55");         //  bin == "01010101"
+bin = hex_to_bin("AA");         //  bin == "10101010"
+</code></pre>
+</div>
+<dl class="script">
+<dt><a href="/script/hex_to_bin">hex_to_bin(hex)</a></dt>
+<dd>Returns a binary string converted from a hexadecimal string.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('hex_to_bin'))">COPY</a></span><code class="lang-gml linenums" id="hex_to_bin">/// @func   hex_to_bin(hex)
+///
+/// @desc   Returns a binary string converted from a hexadecimal string.
+///
+/// @param  {string}    hex         hexadecimal digits
+///
+/// @return {string}    binary digits
+///
+/// GMLscripts.com/license
+
+function hex_to_bin(hex) 
+{
+    hex = string_upper(hex);
+    var bin = &quot;&quot;;
+
+    var nib = &quot;0000101100111101000&quot;;
+    var dig = &quot;0125B6C937FEDA48&quot;;
+    var len = string_length(hex);
+    for (var pos = 1; pos &lt;= len; pos += 1) {
+        bin += string_copy(nib, string_pos(string_char_at(hex, pos), dig), 4);
+    }
+    return bin;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="base_convert">base_convert</a>, <a href="bin_to_dec">bin_to_dec</a>, <a href="bin_to_fraction">bin_to_fraction</a>, <a href="bin_to_hex">bin_to_hex</a>, <a href="dec_to_bin">dec_to_bin</a>, <a href="dec_to_hex">dec_to_hex</a>, <a href="dec_to_oct">dec_to_oct</a>, <a href="dec_to_roman">dec_to_roman</a>, <a href="fraction_to_bin">fraction_to_bin</a>, <strong>hex_to_bin</strong>, <a href="hex_to_dec">hex_to_dec</a>, <a href="oct_to_dec">oct_to_dec</a>, <a href="roman_to_dec">roman_to_dec</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Base_Conversion/hex_to_bin.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Base_Conversion/hex_to_bin.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Base_Conversion/hex_to_bin.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Base_Conversion/hex_to_bin.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/hex_to_bin';
+this.page.identifier = 'script/hex_to_bin';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,79 +187,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>hex_to_bin</h1>
-<p>Converts a string of hexidecimal digits to a string of binary digits.</p>
-<div class="codebox example">
-<pre><code class="prettyprint lang-gml">bin = hex_to_bin("4");          //  bin == "0100"
-bin = hex_to_bin("0E");         //  bin == "00001110"
-bin = hex_to_bin("1F");         //  bin == "00011111"
-bin = hex_to_bin("55");         //  bin == "01010101"
-bin = hex_to_bin("AA");         //  bin == "10101010"
-</code></pre>
 </div>
-<dl class="dictionary script">
-<dt><a href="/script/hex_to_bin">hex_to_bin(hex)</a></dt>
-<dd>Returns a binary string converted from a hexadecimal string.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('hex_to_bin'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="hex_to_bin">/// @func   hex_to_bin(hex)
-///
-/// @desc   Returns a binary string converted from a hexadecimal string.
-///
-/// @param  {string}    hex         hexadecimal digits
-///
-/// @return {string}    binary digits
-///
-/// GMLscripts.com/license
-
-function hex_to_bin(hex) 
-{
-    hex = string_upper(hex);
-    var bin = &quot;&quot;;
-
-    var nib = &quot;0000101100111101000&quot;;
-    var dig = &quot;0125B6C937FEDA48&quot;;
-    var len = string_length(hex);
-    for (var pos = 1; pos &lt;= len; pos += 1) {
-        bin += string_copy(nib, string_pos(string_char_at(hex, pos), dig), 4);
-    }
-    return bin;
-}
-</code></pre>
-</div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="base_convert">base_convert</a>, <a href="bin_to_dec">bin_to_dec</a>, <a href="bin_to_fraction">bin_to_fraction</a>, <a href="bin_to_hex">bin_to_hex</a>, <a href="dec_to_bin">dec_to_bin</a>, <a href="dec_to_hex">dec_to_hex</a>, <a href="dec_to_oct">dec_to_oct</a>, <a href="dec_to_roman">dec_to_roman</a>, <a href="fraction_to_bin">fraction_to_bin</a>, <strong>hex_to_bin</strong>, <a href="hex_to_dec">hex_to_dec</a>, <a href="oct_to_dec">oct_to_dec</a>, <a href="roman_to_dec">roman_to_dec</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Base_Conversion/hex_to_bin.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Base_Conversion/hex_to_bin.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Base_Conversion/hex_to_bin.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Base_Conversion/hex_to_bin.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/hex_to_bin';
-this.page.identifier = 'script/hex_to_bin';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

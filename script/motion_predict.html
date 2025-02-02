@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: motion_predict</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,104 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>motion_predict</h1>
+<dl class="script">
+<dt><a href="/script/motion_predict">motion_predict(instance,steps)</a></dt>
+<dd>Returns a list data structure populated with the predicted positions {x1,y1, x2,y2, ... , xsteps,ysteps} of an instance with regard to its current motion, friction, and gravity.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('motion_predict'))">COPY</a></span><code class="lang-gml linenums" id="motion_predict">/// motion_predict(instance,steps)
+//
+//  Returns a list data structure populated with the predicted 
+//  positions {x1,y1, x2,y2, ... , xsteps,ysteps} of an instance
+//  with regard to its current motion, friction, and gravity.
+//
+//      instance    instance id, real
+//      steps       number of steps to look ahead, real
+//
+/// GMLscripts.com/license
+{
+    var instance,steps,dsid,posx,posy,hspd,vspd,grvx,grvy,spd,dir;
+    instance = argument0;
+    steps = argument1;
+    dsid = ds_list_create();
+    with (instance) {
+        posx = x;
+        posy = y;
+        hspd = hspeed;
+        vspd = vspeed;
+        grvx = lengthdir_x(gravity,gravity_direction);
+        grvy = lengthdir_y(gravity,gravity_direction);
+        repeat (steps) {
+            spd = point_distance(0,0,hspd,vspd);
+            spd = max(0, spd-friction)/spd;
+            hspd *= spd;
+            vspd *= spd;
+            hspd += grvx;
+            vspd += grvy;
+            posx += hspd;
+            posy += vspd;
+            ds_list_add(dsid,posx);
+            ds_list_add(dsid,posy);
+        }
+    }
+    return dsid;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot, Tepi
+</p>
+<p id="related">
+Related: <a href="intercept_course">intercept_course</a>, <strong>motion_predict</strong>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Artificial_Intelligence/motion_predict.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Artificial_Intelligence/motion_predict.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Artificial_Intelligence/motion_predict.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Artificial_Intelligence/motion_predict.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/motion_predict';
+this.page.identifier = 'script/motion_predict';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,84 +192,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>motion_predict</h1>
-<dl class="dictionary script">
-<dt><a href="/script/motion_predict">motion_predict(instance,steps)</a></dt>
-<dd>Returns a list data structure populated with the predicted positions {x1,y1, x2,y2, ... , xsteps,ysteps} of an instance with regard to its current motion, friction, and gravity.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('motion_predict'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="motion_predict">/// motion_predict(instance,steps)
-//
-//  Returns a list data structure populated with the predicted 
-//  positions {x1,y1, x2,y2, ... , xsteps,ysteps} of an instance
-//  with regard to its current motion, friction, and gravity.
-//
-//      instance    instance id, real
-//      steps       number of steps to look ahead, real
-//
-/// GMLscripts.com/license
-{
-    var instance,steps,dsid,posx,posy,hspd,vspd,grvx,grvy,spd,dir;
-    instance = argument0;
-    steps = argument1;
-    dsid = ds_list_create();
-    with (instance) {
-        posx = x;
-        posy = y;
-        hspd = hspeed;
-        vspd = vspeed;
-        grvx = lengthdir_x(gravity,gravity_direction);
-        grvy = lengthdir_y(gravity,gravity_direction);
-        repeat (steps) {
-            spd = point_distance(0,0,hspd,vspd);
-            spd = max(0, spd-friction)/spd;
-            hspd *= spd;
-            vspd *= spd;
-            hspd += grvx;
-            vspd += grvy;
-            posx += hspd;
-            posy += vspd;
-            ds_list_add(dsid,posx);
-            ds_list_add(dsid,posy);
-        }
-    }
-    return dsid;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot, Tepi
-</p>
-<p id="related">
-Related: <a href="intercept_course">intercept_course</a>, <strong>motion_predict</strong>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Artificial_Intelligence/motion_predict.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Artificial_Intelligence/motion_predict.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Artificial_Intelligence/motion_predict.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Artificial_Intelligence/motion_predict.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/motion_predict';
-this.page.identifier = 'script/motion_predict';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

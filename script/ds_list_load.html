@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: ds_list_load</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,113 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>ds_list_load</h1>
+<p class="note"><span>NOTE:</span> This script has been deprecated and removed from the index.
+It appears here for historical purposes only.</p>
+<p class="note"><span>NOTE:</span> This script is made somewhat redundant by the addition of 
+native functions <code>ds_list_read()</code> and <code>ds_list_write()</code>,
+although this script works differently. For the interchange of
+human-readable lists, native functions <code>json_encode()</code> and
+<code>json_decode()</code> are more robust and are compatible with many
+existing tools.</p>
+<dl class="script">
+<dt><a href="/script/ds_list_load">ds_list_load(filename [,separator])</a></dt>
+<dd>Returns as ds_list retrieved from a given file, or (-1) on error.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('ds_list_load'))">COPY</a></span><code class="lang-gml linenums" id="ds_list_load">/// ds_list_load(filename [,separator])
+//
+//  Returns as ds_list retrieved from a given file, or (-1) on error.
+//
+//      filename    file path to save the list to, string
+//      separator   separator used between elements, string (optional)
+//
+//  If separator is not given, each list element must be on a separate line.
+//  If separator also appears within data, the list will not load correctly.
+//
+/// GMLscripts.com/license
+{
+    var dsid,filename,sep,fid,dat,len,ind,pos;
+    filename = argument0;
+    if (is_string(argument1)) sep = argument1; else sep = chr(13)+chr(10);
+    fid = file_text_open_read(filename);
+    if (fid &gt; 0) {
+        dat = &quot;&quot;;
+        while (!file_text_eof(fid)) {
+            dat += file_text_read_string(fid);
+            file_text_readln(fid);
+        }
+        dat += sep;
+        len = string_length(sep);
+        ind = 0;
+        dsid = ds_list_create();
+        repeat (string_count(sep,dat)) {
+            pos = string_pos(sep,dat)-1;
+            ds_list_add(dsid,string_copy(dat,1,pos));
+            dat = string_delete(dat,1,pos+len);
+            ind += 1;
+        }
+        file_text_close(fid);
+        return dsid;
+    }else{
+        return -1;
+    }
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: Leif902, xot
+</p>
+<p id="related">
+Related: <a href="ds_list_add_list">ds_list_add_list</a>, <a href="ds_list_add_map">ds_list_add_map</a>, <a href="ds_list_cv">ds_list_cv</a>, <a href="ds_list_flip">ds_list_flip</a>, <a href="ds_list_geometric_mean">ds_list_geometric_mean</a>, <a href="ds_list_max">ds_list_max</a>, <a href="ds_list_mean">ds_list_mean</a>, <a href="ds_list_median">ds_list_median</a>, <a href="ds_list_min">ds_list_min</a>, <a href="ds_list_pop_standard_deviation">ds_list_pop_standard_deviation</a>, <a href="ds_list_range">ds_list_range</a>, <a href="ds_list_select_relative">ds_list_select_relative</a>, <a href="ds_list_select_relative_wrap">ds_list_select_relative_wrap</a>, <a href="ds_list_standard_deviation">ds_list_standard_deviation</a>, <a href="ds_list_standard_score">ds_list_standard_score</a>, <a href="ds_list_sum">ds_list_sum</a>, <a href="ds_list_sum_of_squares">ds_list_sum_of_squares</a>, <a href="ds_list_sum_squares">ds_list_sum_squares</a>, <a href="ds_list_variance">ds_list_variance</a>, <a href="ds_list_vmr">ds_list_vmr</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Data_Structures/Lists/ds_list_load.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Data_Structures/Lists/ds_list_load.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Data_Structures/Lists/ds_list_load.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Data_Structures/Lists/ds_list_load.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/ds_list_load';
+this.page.identifier = 'script/ds_list_load';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,93 +201,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>ds_list_load</h1>
-<p class="note"><span>NOTE:</span> This script has been deprecated and removed from the index.
-It appears here for historical purposes only.</p>
-<p class="note"><span>NOTE:</span> This script is made somewhat redundant by the addition of 
-native functions <code>ds_list_read()</code> and <code>ds_list_write()</code>,
-although this script works differently. For the interchange of
-human-readable lists, native functions <code>json_encode()</code> and
-<code>json_decode()</code> are more robust and are compatible with many
-existing tools.</p>
-<dl class="dictionary script">
-<dt><a href="/script/ds_list_load">ds_list_load(filename [,separator])</a></dt>
-<dd>Returns as ds_list retrieved from a given file, or (-1) on error.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('ds_list_load'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="ds_list_load">/// ds_list_load(filename [,separator])
-//
-//  Returns as ds_list retrieved from a given file, or (-1) on error.
-//
-//      filename    file path to save the list to, string
-//      separator   separator used between elements, string (optional)
-//
-//  If separator is not given, each list element must be on a separate line.
-//  If separator also appears within data, the list will not load correctly.
-//
-/// GMLscripts.com/license
-{
-    var dsid,filename,sep,fid,dat,len,ind,pos;
-    filename = argument0;
-    if (is_string(argument1)) sep = argument1; else sep = chr(13)+chr(10);
-    fid = file_text_open_read(filename);
-    if (fid &gt; 0) {
-        dat = &quot;&quot;;
-        while (!file_text_eof(fid)) {
-            dat += file_text_read_string(fid);
-            file_text_readln(fid);
-        }
-        dat += sep;
-        len = string_length(sep);
-        ind = 0;
-        dsid = ds_list_create();
-        repeat (string_count(sep,dat)) {
-            pos = string_pos(sep,dat)-1;
-            ds_list_add(dsid,string_copy(dat,1,pos));
-            dat = string_delete(dat,1,pos+len);
-            ind += 1;
-        }
-        file_text_close(fid);
-        return dsid;
-    }else{
-        return -1;
-    }
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: Leif902, xot
-</p>
-<p id="related">
-Related: <a href="ds_list_add_list">ds_list_add_list</a>, <a href="ds_list_add_map">ds_list_add_map</a>, <a href="ds_list_cv">ds_list_cv</a>, <a href="ds_list_flip">ds_list_flip</a>, <a href="ds_list_geometric_mean">ds_list_geometric_mean</a>, <a href="ds_list_max">ds_list_max</a>, <a href="ds_list_mean">ds_list_mean</a>, <a href="ds_list_median">ds_list_median</a>, <a href="ds_list_min">ds_list_min</a>, <a href="ds_list_pop_standard_deviation">ds_list_pop_standard_deviation</a>, <a href="ds_list_range">ds_list_range</a>, <a href="ds_list_select_relative">ds_list_select_relative</a>, <a href="ds_list_select_relative_wrap">ds_list_select_relative_wrap</a>, <a href="ds_list_standard_deviation">ds_list_standard_deviation</a>, <a href="ds_list_standard_score">ds_list_standard_score</a>, <a href="ds_list_sum">ds_list_sum</a>, <a href="ds_list_sum_of_squares">ds_list_sum_of_squares</a>, <a href="ds_list_sum_squares">ds_list_sum_squares</a>, <a href="ds_list_variance">ds_list_variance</a>, <a href="ds_list_vmr">ds_list_vmr</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Data_Structures/Lists/ds_list_load.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Data_Structures/Lists/ds_list_load.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Data_Structures/Lists/ds_list_load.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Data_Structures/Lists/ds_list_load.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/ds_list_load';
-this.page.identifier = 'script/ds_list_load';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: Game Play :: Instances</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,68 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>Game Play :: Instances</h1>
+<dl>
+<dt><a href="/script/deceleration_distance">deceleration_distance(speed,friction)</a></dt>
+<dd>Returns the distance travelled by an object moving at a given speed and with a given rate of deceleration.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_closest_approach">instance_closest_approach(inst[,time])</a></dt>
+<dd>Returns the distance in pixels (or time in steps) until the calling and given instances are at their nearest separation based on their current positions and speeds.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_find_enemy">instance_find_enemy(object)</a></dt>
+<dd>Returns the nearest instance of an object whose local variable "team" has a different value than the calling instance, or noone if no instance is found.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_find_friend">instance_find_friend(object)</a></dt>
+<dd>Returns the nearest instance of an object whose local variable "team" has the same value as calling instance, or noone if no instance is found.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_find_team">instance_find_team(object,team)</a></dt>
+<dd>Returns the nearest instance of an object whose local variable "team" has the same value as a given team, or noone if no instance is found.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_nearest_notme">instance_nearest_notme(x,y,obj)</a></dt>
+<dd>Returns the nearest instance to a given point, disregarding the calling instance.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_nth_farthest">instance_nth_farthest(x,y,obj,n)</a></dt>
+<dd>Returns the id of the nth farthest instance of an object from a given point or noone if none is found.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_nth_nearest">instance_nth_nearest(x,y,obj,n)</a></dt>
+<dd>Returns the id of the nth nearest instance of an object to a given point or noone if none is found.</dd>
+</dl>
+<dl>
+<dt><a href="/script/instance_singleton">instance_singleton(object)</a></dt>
+<dd>Returns a single instance of the given object, creating one if no instance exists.</dd>
+</dl>
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,48 +156,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>Game Play :: Instances</h1>
-<dl class="dictionary">
-<dt><a href="/script/deceleration_distance">deceleration_distance(speed,friction)</a></dt>
-<dd>Returns the distance travelled by an object moving at a given speed and with a given rate of deceleration.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_closest_approach">instance_closest_approach(inst[,time])</a></dt>
-<dd>Returns the distance in pixels (or time in steps) until the calling and given instances are at their nearest separation based on their current positions and speeds.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_find_enemy">instance_find_enemy(object)</a></dt>
-<dd>Returns the nearest instance of an object whose local variable "team" has a different value than the calling instance, or noone if no instance is found.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_find_friend">instance_find_friend(object)</a></dt>
-<dd>Returns the nearest instance of an object whose local variable "team" has the same value as calling instance, or noone if no instance is found.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_find_team">instance_find_team(object,team)</a></dt>
-<dd>Returns the nearest instance of an object whose local variable "team" has the same value as a given team, or noone if no instance is found.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_nearest_notme">instance_nearest_notme(x,y,obj)</a></dt>
-<dd>Returns the nearest instance to a given point, disregarding the calling instance.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_nth_farthest">instance_nth_farthest(x,y,obj,n)</a></dt>
-<dd>Returns the id of the nth farthest instance of an object from a given point or noone if none is found.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_nth_nearest">instance_nth_nearest(x,y,obj,n)</a></dt>
-<dd>Returns the id of the nth nearest instance of an object to a given point or noone if none is found.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/instance_singleton">instance_singleton(object)</a></dt>
-<dd>Returns a single instance of the given object, creating one if no instance exists.</dd>
-</dl>
-</main>
+</div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

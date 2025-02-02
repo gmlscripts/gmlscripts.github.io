@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: spline</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,121 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>spline</h1>
+<p>A Catmull-Rom spline interpolates smoothly between knot[1] and knot[n-2],
+where n is the number of knots. Because the spline is a cubic polynomial,
+there must be at least four knots. See <a href="/script/spline4">spline4</a> for a version optimized
+for four knots.</p>
+<blockquote>
+<p><a href="http://en.wikipedia.org/wiki/Catmull-Rom_spline#Catmull.E2.80.93Rom_spline">Wikipedia</a>: The curve is named after Edwin Catmull and Raphie Rom.
+In computer graphics, Catmull-Rom splines are frequently used to get
+smooth interpolated motion between key frames. For example, most camera
+path animations generated from discrete key-frames are handled using
+Catmull-Rom splines. They are popular mainly for being relatively easy
+to compute, guaranteeing that each key frame position will be hit exactly,
+and also guaranteeing that the tangents of the generated curve are
+continuous over multiple segments.</p>
+</blockquote>
+<p><img alt="spline" src="/images/spline1.png" title="spline" /></p>
+<dl class="script">
+<dt><a href="/script/spline">spline(t, knotlist)</a></dt>
+<dd>Returns the Catmull-Rom interpolation of the given knot values at the given parameter position.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('spline'))">COPY</a></span><code class="lang-gml linenums" id="spline">/// @func   spline(t, knotlist)
+///
+/// @desc   Returns the Catmull-Rom interpolation of the given
+///         knot values at the given parameter position.
+///
+///         If (t) is 0, returns knot[2], if (t) is 1, returns knot[N-1],
+///         (where 1 is the first knot and N is the last knot). For other
+///         values of (t), interpolates smoothly from knot[2] to knot[N-1].
+///         The first and last knots determine the derivatives of the spline
+///         end points. Because the spline is a cubic polynomial, there must
+///         be at least four knots.
+///
+/// @param  {real}      t           interpolation parameter [0..1]
+/// @param  {list}      knotlist    ds_list of spline knot values
+///
+/// @return {real}      value on the spline
+///
+/// GMLscripts.com/license
+
+function spline(t, knotlist)
+{
+    var nknots, nspans, span, k, c3, c2, c1, c0;
+    nknots = ds_list_size(knotlist);
+    nspans = nknots - 3;
+    if (nspans &lt; 1) return 0; // ERROR: too few knots
+    t = clamp(t, 0, 1) * nspans;
+    span = floor(t);
+    if (span &gt;= nknots - 3) span = nknots - 3;
+    t -= span;
+    k[0] = ds_list_find_value(knotlist,span);
+    k[1] = ds_list_find_value(knotlist,span+1);
+    k[2] = ds_list_find_value(knotlist,span+2);
+    k[3] = ds_list_find_value(knotlist,span+3);
+    c3 = -0.5 * k[0] + 1.5 * k[1] - 1.5 * k[2] + 0.5 * k[3];
+    c2 = k[0] - 2.5 * k[1] + 2 * k[2] - 0.5 * k[3];
+    c1 = -0.5 * k[0] + 0.5 * k[2];
+    c0 = k[1];
+    return ((c3 * t + c2) * t + c1) * t + c0;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="bias">bias</a>, <a href="boxstep">boxstep</a>, <a href="gain">gain</a>, <a href="gammacorrect">gammacorrect</a>, <a href="map_range">map_range</a>, <a href="pulse">pulse</a>, <a href="smoothstep">smoothstep</a>, <strong>spline</strong>, <a href="spline4">spline4</a>, <a href="step">step</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Parametric_Functions/spline.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Parametric_Functions/spline.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Parametric_Functions/spline.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Parametric_Functions/spline.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/spline';
+this.page.identifier = 'script/spline';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,101 +209,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>spline</h1>
-<p>A Catmull-Rom spline interpolates smoothly between knot[1] and knot[n-2],
-where n is the number of knots. Because the spline is a cubic polynomial,
-there must be at least four knots. See <a href="/script/spline4">spline4</a> for a version optimized
-for four knots.</p>
-<blockquote>
-<p><a href="http://en.wikipedia.org/wiki/Catmull-Rom_spline#Catmull.E2.80.93Rom_spline">Wikipedia</a>: The curve is named after Edwin Catmull and Raphie Rom.
-In computer graphics, Catmull-Rom splines are frequently used to get
-smooth interpolated motion between key frames. For example, most camera
-path animations generated from discrete key-frames are handled using
-Catmull-Rom splines. They are popular mainly for being relatively easy
-to compute, guaranteeing that each key frame position will be hit exactly,
-and also guaranteeing that the tangents of the generated curve are
-continuous over multiple segments.</p>
-</blockquote>
-<p><img alt="spline" src="/images/spline1.png" title="spline" /></p>
-<dl class="dictionary script">
-<dt><a href="/script/spline">spline(t, knotlist)</a></dt>
-<dd>Returns the Catmull-Rom interpolation of the given knot values at the given parameter position.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('spline'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="spline">/// @func   spline(t, knotlist)
-///
-/// @desc   Returns the Catmull-Rom interpolation of the given
-///         knot values at the given parameter position.
-///
-///         If (t) is 0, returns knot[2], if (t) is 1, returns knot[N-1],
-///         (where 1 is the first knot and N is the last knot). For other
-///         values of (t), interpolates smoothly from knot[2] to knot[N-1].
-///         The first and last knots determine the derivatives of the spline
-///         end points. Because the spline is a cubic polynomial, there must
-///         be at least four knots.
-///
-/// @param  {real}      t           interpolation parameter [0..1]
-/// @param  {list}      knotlist    ds_list of spline knot values
-///
-/// @return {real}      value on the spline
-///
-/// GMLscripts.com/license
-
-function spline(t, knotlist)
-{
-    var nknots, nspans, span, k, c3, c2, c1, c0;
-    nknots = ds_list_size(knotlist);
-    nspans = nknots - 3;
-    if (nspans &lt; 1) return 0; // ERROR: too few knots
-    t = clamp(t, 0, 1) * nspans;
-    span = floor(t);
-    if (span &gt;= nknots - 3) span = nknots - 3;
-    t -= span;
-    k[0] = ds_list_find_value(knotlist,span);
-    k[1] = ds_list_find_value(knotlist,span+1);
-    k[2] = ds_list_find_value(knotlist,span+2);
-    k[3] = ds_list_find_value(knotlist,span+3);
-    c3 = -0.5 * k[0] + 1.5 * k[1] - 1.5 * k[2] + 0.5 * k[3];
-    c2 = k[0] - 2.5 * k[1] + 2 * k[2] - 0.5 * k[3];
-    c1 = -0.5 * k[0] + 0.5 * k[2];
-    c0 = k[1];
-    return ((c3 * t + c2) * t + c1) * t + c0;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="bias">bias</a>, <a href="boxstep">boxstep</a>, <a href="gain">gain</a>, <a href="gammacorrect">gammacorrect</a>, <a href="map_range">map_range</a>, <a href="pulse">pulse</a>, <a href="smoothstep">smoothstep</a>, <strong>spline</strong>, <a href="spline4">spline4</a>, <a href="step">step</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Parametric_Functions/spline.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Parametric_Functions/spline.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Parametric_Functions/spline.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Parametric_Functions/spline.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/spline';
-this.page.identifier = 'script/spline';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

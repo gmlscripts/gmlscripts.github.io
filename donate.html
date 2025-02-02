@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: Donate</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,91 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>Make A Donation</h1>
+<p><img class="fright" src="/images/wario.jpg" alt="“Money, money, money!" title="“Money, money, money!" /></p>
+<h2>So it's come to this — begging</h2>
+<p>It's true. I'm oscillating my silicon cup for a few cyber-shekels.
+<a href="/">GMLscripts.com</a> costs money. If you would like to make a donation
+to help offset the costs of domain registration, web hosting, and
+techno-trousers, please click on the "donate" button.</p>
+<p>Flexible international payment options are available including credit card,
+bank card, or PayPal account. Donations as low as $1 are gratefully accepted.
+Smaller amounts are not feasible because we incur a 2.9% + $0.49 fee per donation.</p>
+<script type="text/javascript">
+var maxamt = 9999.00;
+var minamt = 1.00;
+function ChkAmt (obj1) {  // check any qty limits on items
+    var amt;
+    amt = obj1.amount.value;
+    if (isNaN (amt)) {
+        alert ("Enter a valid number for amount");
+        ClrAmt ();        // always clear the values!
+        return false;
+    }
+
+    if (amt < minamt) {
+        alert ("You must donate at least $" + minamt.toFixed(2));
+        ClrAmt ();
+        return false;
+    }
+    ClrAmt ();
+    return true;
+}
+function ClrAmt () {   // Clear out the limits
+    maxamt = 9999.00;  // not used unless you want to set some max amount.
+    minamt = 1.00;     // set the minimum amount for a donation
+}
+</script>
+<div id="paypal">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+  onsubmit="this.target = 'paypal'; if(!ChkAmt (this)) return false;">
+    <p>
+      <span>US&nbsp;$&nbsp;<input type="text" name="amount" size="6"></span>
+    </p>
+    <p>
+      ($1.00 minimum donation)
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="gmlscripts@gmail.com">
+      <input type="hidden" name="item_name" value="Donation for the site">
+      <input type="hidden" name="no_shipping" value="1">
+      <input type="hidden" name="no_note" value="0">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="shipping" value="0">
+      <input type="hidden" name="tax" value="0">
+      <input type="hidden" name="return" value="https://www.gmlscripts.com/completed">
+      <input type="hidden" name="cancel_return" value="https://www.gmlscripts.com/cancel">
+    </p>
+    <p>
+      <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate" align="top">
+    </p>
+  </form>
+  <p><small>GMLscripts.com is not a charity. Donations are not tax deductable.</small></p>
+</div>
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,71 +179,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>Make A Donation</h1>
-<p><img class="fright" src="/images/wario.jpg" alt="“Money, money, money!" title="“Money, money, money!" /></p>
-<h2>So it's come to this — begging</h2>
-<p>It's true. I'm oscillating my silicon cup for a few cyber-shekels.
-<a href="/">GMLscripts.com</a> costs money. If you would like to make a donation
-to help offset the costs of domain registration, web hosting, and
-techno-trousers, please click on the "donate" button.</p>
-<p>Flexible international payment options are available including credit card,
-bank card, or PayPal account. Donations as low as $1 are gratefully accepted.
-Smaller amounts are not feasible because we incur a 2.9% + $0.49 fee per donation.</p>
-<script type="text/javascript">
-var maxamt = 9999.00;
-var minamt = 1.00;
-function ChkAmt (obj1) {  // check any qty limits on items
-    var amt;
-    amt = obj1.amount.value;
-    if (isNaN (amt)) {
-        alert ("Enter a valid number for amount");
-        ClrAmt ();        // always clear the values!
-        return false;
-    }
-
-    if (amt < minamt) {
-        alert ("You must donate at least $" + minamt.toFixed(2));
-        ClrAmt ();
-        return false;
-    }
-    ClrAmt ();
-    return true;
-}
-function ClrAmt () {   // Clear out the limits
-    maxamt = 9999.00;  // not used unless you want to set some max amount.
-    minamt = 1.00;     // set the minimum amount for a donation
-}
-</script>
-<div id="paypal">
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-  onsubmit="this.target = 'paypal'; if(!ChkAmt (this)) return false;">
-    <p>
-      <span>US&nbsp;$&nbsp;<input type="text" name="amount" size="6"></span>
-    </p>
-    <p>
-      ($1.00 minimum donation)
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="gmlscripts@gmail.com">
-      <input type="hidden" name="item_name" value="Donation for the site">
-      <input type="hidden" name="no_shipping" value="1">
-      <input type="hidden" name="no_note" value="0">
-      <input type="hidden" name="currency_code" value="USD">
-      <input type="hidden" name="shipping" value="0">
-      <input type="hidden" name="tax" value="0">
-      <input type="hidden" name="return" value="https://www.gmlscripts.com/completed">
-      <input type="hidden" name="cancel_return" value="https://www.gmlscripts.com/cancel">
-    </p>
-    <p>
-      <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate" align="top">
-    </p>
-  </form>
-  <p><small>GMLscripts.com is not a charity. Donations are not tax deductable.</small></p>
 </div>
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

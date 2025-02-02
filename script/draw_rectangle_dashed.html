@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: draw_rectangle_dashed</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,116 +13,38 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
-<nav id="sidenav">
-  <div>
-    <span>Scripts</span>
-    <ul class="accordion" id="Scripts">
-      <li id="computation" class="computation">
-        <a href="#computation">Computation</a>
-        <ul>
-          <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
-          <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
-          <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
-          <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
-          <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
-          <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
-          <li><a href="/script/Computation/Geometry/">Geometry</a></li>
-          <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
-          <li><a href="/script/Computation/Probability/">Probability</a></li>
-          <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
-          <li><a href="/script/Computation/Strings/">Strings</a></li>
-        </ul>
-      </li>
-      <li id="data_structures" class="data_structures">
-        <a href="#data_structures">Data Structures</a>
-        <ul>
-          <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
-          <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
-          <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
-          <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
-        </ul>
-      </li>
-      <li id="files" class="files">
-        <a href="#files">Files</a>
-        <ul>
-          <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
-        </ul>
-      </li>
-      <li id="game_play" class="game_play">
-        <a href="#game_play">Game Play</a>
-        <ul>
-          <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
-          <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
-          <li><a href="/script/Game_Play/Instances/">Instances</a></li>
-          <li><a href="/script/Game_Play/Movement/">Movement</a></li>
-        </ul>
-      </li>
-      <li id="graphics" class="graphics">
-        <a href="#graphics" class="active">Graphics</a>
-        <ul style="max-height: unset;">
-          <li><a href="/script/Graphics/3D/">3D</a></li>
-          <li><a href="/script/Graphics/Backgrounds/">Backgrounds</a></li>
-          <li><a href="/script/Graphics/Color/">Color</a></li>
-          <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
-          <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
-          <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
-          <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
-          <li><a href="/script/Graphics/Text/">Text</a></li>
-        </ul>
-      </li>
-      <li id="interaction" class="interaction">
-        <a href="#interaction">Interaction</a>
-        <ul>
-          <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
-          <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
-        </ul>
-      </li>
-      <li id="platform" class="platform">
-        <a href="#platform">Platform</a>
-        <ul>
-          <li><a href="/script/Platform/Device/">Device</a></li>
-        </ul>
-      </li>
-      <li id="resources" class="resources">
-        <a href="#resources">Resources</a>
-        <ul>
-          <li><a href="/script/Resources/Management/">Management</a></li>
-          <li><a href="/script/Resources/Sprites/">Sprites</a></li>
-        </ul>
-      </li>
-    </ul>
-    <span></span>
-  </div>
-</nav>
+<div class="wrapper">
 <main>
 <h1>draw_rectangle_dashed</h1>
 <p>Draws a rectangle made of dashes of a given size.</p>
-<dl class="dictionary script">
+<dl class="script">
 <dt><a href="/script/draw_rectangle_dashed">draw_rectangle_dashed(x1, y1, x2, y2, size, center)</a></dt>
 <dd>Draws a rectangle made of dashes of a given size.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_rectangle_dashed'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_rectangle_dashed">/// @func   draw_rectangle_dashed(x1, y1, x2, y2, size, center)
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_rectangle_dashed'))">COPY</a></span><code class="lang-gml linenums" id="draw_rectangle_dashed">/// @func   draw_rectangle_dashed(x1, y1, x2, y2, size, center)
 ///
 /// @desc   Draws a rectangle made of dashes of a given size.
 ///         The coordinates of the rectangle are given by two
@@ -224,9 +146,91 @@ s.setAttribute('data-timestamp', +new Date());
 <!-- DISQUS END -->
 
 </main>
+<nav id="sidenav">
+  <div>
+    <span>Scripts</span>
+    <ul class="accordion" id="Scripts">
+      <li id="computation" class="computation">
+        <a href="#computation">Computation</a>
+        <ul>
+          <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
+          <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
+          <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
+          <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
+          <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
+          <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
+          <li><a href="/script/Computation/Geometry/">Geometry</a></li>
+          <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
+          <li><a href="/script/Computation/Probability/">Probability</a></li>
+          <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
+          <li><a href="/script/Computation/Strings/">Strings</a></li>
+        </ul>
+      </li>
+      <li id="data_structures" class="data_structures">
+        <a href="#data_structures">Data Structures</a>
+        <ul>
+          <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
+          <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
+          <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
+          <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
+        </ul>
+      </li>
+      <li id="files" class="files">
+        <a href="#files">Files</a>
+        <ul>
+          <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
+        </ul>
+      </li>
+      <li id="game_play" class="game_play">
+        <a href="#game_play">Game Play</a>
+        <ul>
+          <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
+          <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
+          <li><a href="/script/Game_Play/Instances/">Instances</a></li>
+          <li><a href="/script/Game_Play/Movement/">Movement</a></li>
+        </ul>
+      </li>
+      <li id="graphics" class="graphics">
+        <a href="#graphics" class="active">Graphics</a>
+        <ul style="max-height: unset;">
+          <li><a href="/script/Graphics/3D/">3D</a></li>
+          <li><a href="/script/Graphics/Backgrounds/">Backgrounds</a></li>
+          <li><a href="/script/Graphics/Color/">Color</a></li>
+          <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
+          <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
+          <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
+          <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
+          <li><a href="/script/Graphics/Text/">Text</a></li>
+        </ul>
+      </li>
+      <li id="interaction" class="interaction">
+        <a href="#interaction">Interaction</a>
+        <ul>
+          <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
+          <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
+        </ul>
+      </li>
+      <li id="platform" class="platform">
+        <a href="#platform">Platform</a>
+        <ul>
+          <li><a href="/script/Platform/Device/">Device</a></li>
+        </ul>
+      </li>
+      <li id="resources" class="resources">
+        <a href="#resources">Resources</a>
+        <ul>
+          <li><a href="/script/Resources/Management/">Management</a></li>
+          <li><a href="/script/Resources/Sprites/">Sprites</a></li>
+        </ul>
+      </li>
+    </ul>
+    <span></span>
+  </div>
+</nav>
+</div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

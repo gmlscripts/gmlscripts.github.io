@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: polygon_centroid</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,107 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>polygon_centroid</h1>
+<dl class="script">
+<dt><a href="/script/polygon_centroid">polygon_centroid(polygon)</a></dt>
+<dd>Returns the centroid of a given 2D polygon as a ds_list containing a coordiate pair.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('polygon_centroid'))">COPY</a></span><code class="lang-gml linenums" id="polygon_centroid">/// polygon_centroid(polygon)
+//
+//  Returns the centroid of a given 2D polygon as a ds_list
+//  containing a coordiate pair. A centroid can be thought
+//  of as the center of mass for the polygon. 
+//
+//      polygon     ds_list of an ordered series of coordinate 
+//                  pairs defining the shape of a polygon
+//
+//  Polygons are closed figures with edges spanning consecutive 
+//  vertices and from the last vertex to the first. Polygons must be
+//  simple, which means they cannot have edges that cross one another.
+//
+/// GMLscripts.com/license
+{
+    var centroid, ai, atmp, xtmp, ytmp, i, j, x1, y1, x2, y2;
+    centroid = ds_list_create();
+    atmp = 0;
+    xtmp = 0;
+    ytmp = 0;
+    j = ds_list_size(argument0);
+    for (i=0; i&lt;j div 2; i+=1) 
+    {
+        x1 = ds_list_find_value(argument0, (2*i)   mod j);
+        y1 = ds_list_find_value(argument0, (2*i+1) mod j);
+        x2 = ds_list_find_value(argument0, (2*i+2) mod j);
+        y2 = ds_list_find_value(argument0, (2*i+3) mod j);
+        ai = x1 * y2 - x2 * y1;
+        atmp += ai;
+        xtmp += (x2 + x1) * ai;
+        ytmp += (y2 + y1) * ai;
+    }
+    if (atmp != 0) 
+    {
+        atmp *= 3;
+        ds_list_add(centroid, xtmp / atmp);
+        ds_list_add(centroid, ytmp / atmp);
+    }
+    return centroid;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="cone_volume">cone_volume</a>, <a href="is_clockwise">is_clockwise</a>, <a href="line_get_slope">line_get_slope</a>, <a href="lines_intersect">lines_intersect</a>, <a href="point_in_polygon">point_in_polygon</a>, <a href="point_line_distance">point_line_distance</a>, <a href="polygon_area">polygon_area</a>, <strong>polygon_centroid</strong>, <a href="polygon_to_triangles">polygon_to_triangles</a>, <a href="sphere_volume">sphere_volume</a>, <a href="triangle_side_area">triangle_side_area</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Geometry/polygon_centroid.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Geometry/polygon_centroid.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Geometry/polygon_centroid.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Geometry/polygon_centroid.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/polygon_centroid';
+this.page.identifier = 'script/polygon_centroid';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,87 +195,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>polygon_centroid</h1>
-<dl class="dictionary script">
-<dt><a href="/script/polygon_centroid">polygon_centroid(polygon)</a></dt>
-<dd>Returns the centroid of a given 2D polygon as a ds_list containing a coordiate pair.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('polygon_centroid'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="polygon_centroid">/// polygon_centroid(polygon)
-//
-//  Returns the centroid of a given 2D polygon as a ds_list
-//  containing a coordiate pair. A centroid can be thought
-//  of as the center of mass for the polygon. 
-//
-//      polygon     ds_list of an ordered series of coordinate 
-//                  pairs defining the shape of a polygon
-//
-//  Polygons are closed figures with edges spanning consecutive 
-//  vertices and from the last vertex to the first. Polygons must be
-//  simple, which means they cannot have edges that cross one another.
-//
-/// GMLscripts.com/license
-{
-    var centroid, ai, atmp, xtmp, ytmp, i, j, x1, y1, x2, y2;
-    centroid = ds_list_create();
-    atmp = 0;
-    xtmp = 0;
-    ytmp = 0;
-    j = ds_list_size(argument0);
-    for (i=0; i&lt;j div 2; i+=1) 
-    {
-        x1 = ds_list_find_value(argument0, (2*i)   mod j);
-        y1 = ds_list_find_value(argument0, (2*i+1) mod j);
-        x2 = ds_list_find_value(argument0, (2*i+2) mod j);
-        y2 = ds_list_find_value(argument0, (2*i+3) mod j);
-        ai = x1 * y2 - x2 * y1;
-        atmp += ai;
-        xtmp += (x2 + x1) * ai;
-        ytmp += (y2 + y1) * ai;
-    }
-    if (atmp != 0) 
-    {
-        atmp *= 3;
-        ds_list_add(centroid, xtmp / atmp);
-        ds_list_add(centroid, ytmp / atmp);
-    }
-    return centroid;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="cone_volume">cone_volume</a>, <a href="is_clockwise">is_clockwise</a>, <a href="line_get_slope">line_get_slope</a>, <a href="lines_intersect">lines_intersect</a>, <a href="point_in_polygon">point_in_polygon</a>, <a href="point_line_distance">point_line_distance</a>, <a href="polygon_area">polygon_area</a>, <strong>polygon_centroid</strong>, <a href="polygon_to_triangles">polygon_to_triangles</a>, <a href="sphere_volume">sphere_volume</a>, <a href="triangle_side_area">triangle_side_area</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Geometry/polygon_centroid.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Geometry/polygon_centroid.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Geometry/polygon_centroid.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Geometry/polygon_centroid.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/polygon_centroid';
-this.page.identifier = 'script/polygon_centroid';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

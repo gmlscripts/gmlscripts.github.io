@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: GMLscripts.com</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,72 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>Welcome</h1>
+<p>The mission of <a href="#">GMLscripts.com</a> is to provide the highest quality
+<a href="https://www.gamemaker.io/" title="GameMaker">GameMaker</a> scripts available. These GML scripts are <a href="/license">completely free</a>
+for use in your GameMaker projects. Credit is never required but is
+always appreciated.</p>
+<p>This is a collaboration. Every script on this website has been provided
+by a GameMaker user just like you. If you have a useful script, or have
+improved an existing one, please consider <a href="/submit">submitting</a> it.</p>
+<hr />
+<h2><span class="blogdate">February 2, 2025</span><span><a href="/news/20250202.html">GMLscripts.com 3.8 Transition (part 3)</a></span></h2>
+<p><img class="fright" src="/news/images/blogicon-20250202.png" alt="/news/images/blogicon-20250202.png" title="/news/images/blogicon-20250202.png" />
+This update marks the addition a new client-side search engine. The <a href="/search">search</a>
+page is accessible from the site's global navigation, currently at the top
+of every page. Simply type your query and see the search results instantly.
+The search corpus is composed of script pages. Search may be improved with
+the addition of tags. Implicit tags are already being employed but it is
+possible tags will be explicitly added to script pages to improve results.</p>
+<p>Returning to the site is the reporting of recent script changes. A list of
+script changes appears on the <a href="/">landing</a> page and decorators are now added to
+script definitions wherever they appear on site.</p>
+<p>Improvements have been made to news navigation but more work is required. The
+two major changes needed are the pagination of the <a href="/news">news</a> index and the creation
+of news summaries. These will require some thought.</p>
+<p>Minor visual changes and optimizations have been made that are probably not
+noticable. Further optimizations are anticipated and a full visual overhaul
+is one the horizon.</p>
+<p class="byline"><em>posted by  xot</em></p>
+<p><span class="more"><a href="/news">Read More News</a></span></p>
+<hr />
+<h2>Recent Changes</h2>
+<div id='recentscripts'></div>
+
+<hr />
+<!-- DISQUS START -->
+<div id="recentcomments" class="dsq-widget">
+    <h2 class="dsq-widget-title">Recent Comments</h2>
+    <script type="text/javascript" src="//gmlscripts.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=24&excerpt_length=200"></script>
+</div>
+<a href="https://disqus.com/">Powered by Disqus</a>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,53 +160,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>Welcome</h1>
-<p>The mission of <a href="#">GMLscripts.com</a> is to provide the highest quality
-<a href="https://www.gamemaker.io/" title="GameMaker">GameMaker</a> scripts available. These GML scripts are <a href="/license">completely free</a>
-for use in your GameMaker projects. Credit is never required but is
-always appreciated.</p>
-<p>This is a collaboration. Every script on this website has been provided
-by a GameMaker user just like you. If you have a useful script, or have
-improved an existing one, please consider <a href="/submit">submitting</a> it.</p>
-<hr />
-<h2><span class="blogdate">January 14, 2025</span><span><a href="/news/20250114.html">GMLscripts.com 3.7 Transition (part 2)</a></span></h2>
-<p><img class="fright" src="/news/images/blogicon-20250114.gif" alt="/news/images/blogicon-20250114.gif" title="/news/images/blogicon-20250114.gif" />
-Work behind the scenes continues. The site is now statically generated by
-an entirely new fully offline system I've written in Python. This is my
-first major Python project which has been quite a learning experience. Much
-of the code is based on the old PHP dynamic page generator, but now the
-site is generated in only five seconds compared to the 15 minutes it took
-using <code>wget</code> to crawl a locally hosted dynamic version.</p>
-<p>The new build process includes a templating engine that takes many cues
-from <a href="https://jekyllrb.com/">Jekyll</a> to empower a simple news blog, which was a fun programming
-task. More work is needed to fully realize my needs. All material is now
-referenced from the same single sources, so all pages and repo files should
-stay in sync automatically. With any luck, there shouldn't be much visible
-difference from the previous version.</p>
-<p>More obvious changes have been made to the script submission process. This
-includes a new <a href="/script/CONTRIBUTING">contribution guide</a> and updated <a href="/script/STYLEGUIDE">style guide</a>.</p>
-<p>The next update should include a search engine, improved news navigation,
-and a return of the recent changes list and script decorators.</p>
-<p class="byline"><em>posted by  xot</em></p>
-<p><span class="more"><a href="/news">Read More News</a></span></p>
-<hr />
-<h2>Recent Changes</h2>
-<div id='recent'>No script changes in last 30 days.</div>
-
-<hr />
-<!-- DISQUS START -->
-<div id="recentcomments" class="dsq-widget">
-    <h2 class="dsq-widget-title">Recent Comments</h2>
-    <script type="text/javascript" src="//gmlscripts.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=24&excerpt_length=200"></script>
 </div>
-<a href="https://disqus.com/">Powered by Disqus</a>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

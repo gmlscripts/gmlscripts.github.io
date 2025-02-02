@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: draw_sprite_inverted</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,100 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>draw_sprite_inverted</h1>
+<div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="512" height="128" src="/demos/draw_sprite_inverted/index.html"></iframe><a href="/demos/draw_sprite_inverted/draw_sprite_inverted.yyz">Download</a></span></div>
+<dl class="script">
+<dt><a href="/script/draw_sprite_inverted">draw_sprite_inverted(sprite,subimage,x,y)</a></dt>
+<dd>Draws a sprite with inverted colors.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_inverted'))">COPY</a></span><code class="lang-gml linenums" id="draw_sprite_inverted">/// draw_sprite_inverted(sprite,subimage,x,y)
+//
+//  Draws a sprite with inverted colors. This accepts the same arguments
+//  as draw_sprite().
+//
+//      sprite      sprite index, real
+//      subimg      sprite subimage, real
+//      x,y         position, real
+//
+//  Notes: Resets blending mode to normal.
+//
+/// GMLscripts.com/license
+{
+    var w = sprite_get_width(argument0);
+    var h = sprite_get_height(argument0);
+    var xo = sprite_get_xoffset(argument0);
+    var yo = sprite_get_yoffset(argument0);
+    var a = draw_get_alpha();
+    draw_set_alpha(0);
+    d3d_transform_stack_push();
+    d3d_transform_add_translation(argument2-xo,argument3-yo,0);
+    draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
+    draw_rectangle_color(0,0,w,h,c_white,c_white,c_white,c_white,false);
+    draw_set_blend_mode_ext(bm_src_alpha, bm_inv_src_alpha);
+    draw_sprite_ext(argument0,argument1,xo,yo,1,1,0,c_white,1);
+    draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
+    draw_rectangle_color(0,0,w,h,c_white,c_white,c_white,c_white,false);
+    d3d_transform_stack_pop();
+    draw_set_blend_mode(bm_normal);
+    draw_set_alpha(a);
+    return 0;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <strong>draw_sprite_inverted</strong>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_inverted.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_inverted.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_inverted.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_inverted.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/draw_sprite_inverted';
+this.page.identifier = 'script/draw_sprite_inverted';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,80 +188,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>draw_sprite_inverted</h1>
-<div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="512" height="128" src="/demos/draw_sprite_inverted/index.html"></iframe><a href="/demos/draw_sprite_inverted/draw_sprite_inverted.yyz">Download</a></span></div>
-<dl class="dictionary script">
-<dt><a href="/script/draw_sprite_inverted">draw_sprite_inverted(sprite,subimage,x,y)</a></dt>
-<dd>Draws a sprite with inverted colors.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_inverted'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_sprite_inverted">/// draw_sprite_inverted(sprite,subimage,x,y)
-//
-//  Draws a sprite with inverted colors. This accepts the same arguments
-//  as draw_sprite().
-//
-//      sprite      sprite index, real
-//      subimg      sprite subimage, real
-//      x,y         position, real
-//
-//  Notes: Resets blending mode to normal.
-//
-/// GMLscripts.com/license
-{
-    var w = sprite_get_width(argument0);
-    var h = sprite_get_height(argument0);
-    var xo = sprite_get_xoffset(argument0);
-    var yo = sprite_get_yoffset(argument0);
-    var a = draw_get_alpha();
-    draw_set_alpha(0);
-    d3d_transform_stack_push();
-    d3d_transform_add_translation(argument2-xo,argument3-yo,0);
-    draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
-    draw_rectangle_color(0,0,w,h,c_white,c_white,c_white,c_white,false);
-    draw_set_blend_mode_ext(bm_src_alpha, bm_inv_src_alpha);
-    draw_sprite_ext(argument0,argument1,xo,yo,1,1,0,c_white,1);
-    draw_set_blend_mode_ext(bm_inv_dest_color, bm_inv_src_color);
-    draw_rectangle_color(0,0,w,h,c_white,c_white,c_white,c_white,false);
-    d3d_transform_stack_pop();
-    draw_set_blend_mode(bm_normal);
-    draw_set_alpha(a);
-    return 0;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <strong>draw_sprite_inverted</strong>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_inverted.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_inverted.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_inverted.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_inverted.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/draw_sprite_inverted';
-this.page.identifier = 'script/draw_sprite_inverted';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

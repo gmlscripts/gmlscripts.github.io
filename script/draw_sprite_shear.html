@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: draw_sprite_shear</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,101 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>draw_sprite_shear</h1>
+<p>Draws a given sprite sheared by a given amount.</p>
+<div class="codebox demo"><span>Adjust sliders to change shearing amount.<iframe frameborder="0" scrolling="no" width="256" height="256" src="/demos/draw_sprite_shear/index.html"></iframe><a href="/demos/draw_sprite_shear/draw_sprite_shear.yyz">Download</a></span></div>
+<dl class="script">
+<dt><a href="/script/draw_sprite_shear">draw_sprite_shear(sprite,subimg,x,y,xshear,yshear)</a></dt>
+<dd>Draws a given sprite sheared by a given amount.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_shear'))">COPY</a></span><code class="lang-gml linenums" id="draw_sprite_shear">/// draw_sprite_shear(sprite,subimg,x,y,xshear,yshear)
+//
+//  Draws a given sprite sheared by a given amount.
+//
+//      sprite      sprite index, integer
+//      subimg      image index, integer
+//      x,y         screen position, real
+//      xshear      shear rate of x-axis, real
+//      yshear      shear rate of y-axis, real
+//
+/// GMLscripts.com/license
+{
+    var spr = argument0;
+    var sub = argument1;
+    var xps = argument2;
+    var yps = argument3;
+    var xsh = argument4;
+    var ysh = argument5;
+
+    var M;
+    M[15] = 1;  M[14] = 0;  M[13] = 0;    M[12] = 0;
+    M[11] = 0;  M[10] = 1;  M[9]  = 0;    M[8]  = 0;
+    M[7]  = 0;  M[6]  = 0;  M[5]  = 1;    M[4]  = xsh;
+    M[3]  = 0;  M[2]  = 0;  M[1]  = ysh;  M[0]  = 1;
+
+    d3d_transform_stack_push();
+    matrix_set(matrix_world, M);
+    d3d_transform_add_translation(xps, yps, 0);
+    draw_sprite(spr, sub, 0, 0);
+    d3d_transform_stack_pop();
+    return 0;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <strong>draw_sprite_shear</strong>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_shear.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_shear.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_shear.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_shear.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/draw_sprite_shear';
+this.page.identifier = 'script/draw_sprite_shear';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,81 +189,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>draw_sprite_shear</h1>
-<p>Draws a given sprite sheared by a given amount.</p>
-<div class="codebox demo"><span>Adjust sliders to change shearing amount.<iframe frameborder="0" scrolling="no" width="256" height="256" src="/demos/draw_sprite_shear/index.html"></iframe><a href="/demos/draw_sprite_shear/draw_sprite_shear.yyz">Download</a></span></div>
-<dl class="dictionary script">
-<dt><a href="/script/draw_sprite_shear">draw_sprite_shear(sprite,subimg,x,y,xshear,yshear)</a></dt>
-<dd>Draws a given sprite sheared by a given amount.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_shear'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="draw_sprite_shear">/// draw_sprite_shear(sprite,subimg,x,y,xshear,yshear)
-//
-//  Draws a given sprite sheared by a given amount.
-//
-//      sprite      sprite index, integer
-//      subimg      image index, integer
-//      x,y         screen position, real
-//      xshear      shear rate of x-axis, real
-//      yshear      shear rate of y-axis, real
-//
-/// GMLscripts.com/license
-{
-    var spr = argument0;
-    var sub = argument1;
-    var xps = argument2;
-    var yps = argument3;
-    var xsh = argument4;
-    var ysh = argument5;
-
-    var M;
-    M[15] = 1;  M[14] = 0;  M[13] = 0;    M[12] = 0;
-    M[11] = 0;  M[10] = 1;  M[9]  = 0;    M[8]  = 0;
-    M[7]  = 0;  M[6]  = 0;  M[5]  = 1;    M[4]  = xsh;
-    M[3]  = 0;  M[2]  = 0;  M[1]  = ysh;  M[0]  = 1;
-
-    d3d_transform_stack_push();
-    matrix_set(matrix_world, M);
-    d3d_transform_add_translation(xps, yps, 0);
-    draw_sprite(spr, sub, 0, 0);
-    d3d_transform_stack_pop();
-    return 0;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <strong>draw_sprite_shear</strong>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_shear.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_shear.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_shear.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_shear.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/draw_sprite_shear';
-this.page.identifier = 'script/draw_sprite_shear';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: time_string</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,102 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>time_string</h1>
+<div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="512" height="64" src="/demos/time_string/index.html"></iframe><a href="/demos/time_string/time_string.yyz">Download</a></span></div>
+<dl class="script">
+<dt><a href="/script/time_string">time_string(format, sep)</a></dt>
+<dd>Returns the system time as a string in 12 or 24 hour "HH:MM:SS" format.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('time_string'))">COPY</a></span><code class="lang-gml linenums" id="time_string">/// @func   time_string(format, sep)
+///
+/// @desc   Returns the system time as a string in 12 or 24 hour &quot;HH:MM:SS&quot; format.
+///         The default separator is &quot;:&quot; but a custom string can be supplied.
+///
+/// @param  {real}      format      12 or 24
+/// @param  {string}    [sep=&quot;:&quot;]   separator
+///
+/// @return {string}    formatted time
+///
+/// GMLscripts.com/license
+
+function time_string(format, sep = &quot;:&quot;) 
+{
+    var date = date_current_datetime();
+    var hours = date_get_hour(date);
+    var mins = date_get_minute(date);
+    var secs = date_get_second(date);
+
+    if ((format == 12) &amp;&amp; (hours &gt; 12)) hours -= 12;
+
+    var str_hr, str_mn, str_sc;
+
+    if (hours &lt; 10) str_hr = &quot;0&quot; + string(hours);
+    else str_hr = string(hours);
+
+    if (mins &lt; 10) str_mn = &quot;0&quot; + string(mins);
+    else str_mn = string(mins);
+
+    if (secs &lt; 10) str_sc = &quot;0&quot; + string(secs);
+    else str_sc = string(secs);
+
+    return (str_hr + sep + str_mn + sep + str_sc);
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: ArtySpace, xot
+</p>
+<p id="related">
+Related: <a href="date_format">date_format</a>, <a href="date_get_easter">date_get_easter</a>, <strong>time_string</strong>, <a href="unix_timestamp">unix_timestamp</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Date-Time/time_string.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Date-Time/time_string.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Date-Time/time_string.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Date-Time/time_string.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/time_string';
+this.page.identifier = 'script/time_string';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,82 +190,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>time_string</h1>
-<div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="512" height="64" src="/demos/time_string/index.html"></iframe><a href="/demos/time_string/time_string.yyz">Download</a></span></div>
-<dl class="dictionary script">
-<dt><a href="/script/time_string">time_string(format, sep)</a></dt>
-<dd>Returns the system time as a string in 12 or 24 hour "HH:MM:SS" format.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('time_string'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="time_string">/// @func   time_string(format, sep)
-///
-/// @desc   Returns the system time as a string in 12 or 24 hour &quot;HH:MM:SS&quot; format.
-///         The default separator is &quot;:&quot; but a custom string can be supplied.
-///
-/// @param  {real}      format      12 or 24
-/// @param  {string}    [sep=&quot;:&quot;]   separator
-///
-/// @return {string}    formatted time
-///
-/// GMLscripts.com/license
-
-function time_string(format, sep = &quot;:&quot;) 
-{
-    var date = date_current_datetime();
-    var hours = date_get_hour(date);
-    var mins = date_get_minute(date);
-    var secs = date_get_second(date);
-
-    if ((format == 12) &amp;&amp; (hours &gt; 12)) hours -= 12;
-
-    var str_hr, str_mn, str_sc;
-
-    if (hours &lt; 10) str_hr = &quot;0&quot; + string(hours);
-    else str_hr = string(hours);
-
-    if (mins &lt; 10) str_mn = &quot;0&quot; + string(mins);
-    else str_mn = string(mins);
-
-    if (secs &lt; 10) str_sc = &quot;0&quot; + string(secs);
-    else str_sc = string(secs);
-
-    return (str_hr + sep + str_mn + sep + str_sc);
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: ArtySpace, xot
-</p>
-<p id="related">
-Related: <a href="date_format">date_format</a>, <a href="date_get_easter">date_get_easter</a>, <strong>time_string</strong>, <a href="unix_timestamp">unix_timestamp</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Date-Time/time_string.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Date-Time/time_string.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Date-Time/time_string.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Date-Time/time_string.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/time_string';
-this.page.identifier = 'script/time_string';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

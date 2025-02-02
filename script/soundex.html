@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: soundex</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,110 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>soundex</h1>
+<p><a href="http://en.wikipedia.org/wiki/Soundex">Wikipedia</a>:</p>
+<blockquote>
+<p>Soundex is a phonetic algorithm for indexing names by sound, 
+as pronounced in English. The goal is for names with the same 
+pronunciation to be encoded to the same representation so that 
+they can be matched despite minor differences in spelling.
+Using this algorithm, both "Robert" and "Rupert" return the same 
+string "R163" while "Rubin" yields "R150".</p>
+</blockquote>
+<p>A complete description of the soundex system can be found in the 
+<a href="http://www.archives.gov/research/census/soundex.html">U.S. National Archives</a>.</p>
+<dl class="script">
+<dt><a href="/script/soundex">soundex(str)</a></dt>
+<dd>Returns the Soundex value of the given string.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('soundex'))">COPY</a></span><code class="lang-gml linenums" id="soundex">/// soundex(str)
+//
+//  Returns the Soundex value of the given string.
+//  Soundex values are short strings of similar values
+//  for words which sound similar in spoken English.
+//  It was developed to help index related family names.
+//
+//      str         English word, string
+//
+/// GMLscripts.com/license
+{
+    var str = string_upper(string_letters(argument0));
+    var len = string_length(str);
+    if (len == 0) return &quot;&quot;;
+    var tab = &quot;0123012X02245501262301X202&quot;;
+    var out = string_char_at(str,1);
+    var lastc = out;
+    var lastv = string_char_at(tab,ord(out)-64);
+    for (var pos=2; pos&lt;=len; pos++) {
+        var char = string_char_at(str,pos);
+        var val = string_char_at(tab,ord(char)-64);
+        if (char == lastc) continue;
+        if (val == &quot;X&quot;) continue;
+        lastc = char;
+        if (val == lastv) continue;
+        lastv = val;
+        if (val == &quot;0&quot;) continue;
+        out += val;
+    }
+    out = string_copy(out+&quot;000&quot;,1,4);
+    return out;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="crc16">crc16</a>, <a href="md2">md2</a>, <strong>soundex</strong>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Hashing/soundex.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Hashing/soundex.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Hashing/soundex.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Hashing/soundex.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/soundex';
+this.page.identifier = 'script/soundex';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,90 +198,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>soundex</h1>
-<p><a href="http://en.wikipedia.org/wiki/Soundex">Wikipedia</a>:</p>
-<blockquote>
-<p>Soundex is a phonetic algorithm for indexing names by sound, 
-as pronounced in English. The goal is for names with the same 
-pronunciation to be encoded to the same representation so that 
-they can be matched despite minor differences in spelling.
-Using this algorithm, both "Robert" and "Rupert" return the same 
-string "R163" while "Rubin" yields "R150".</p>
-</blockquote>
-<p>A complete description of the soundex system can be found in the 
-<a href="http://www.archives.gov/research/census/soundex.html">U.S. National Archives</a>.</p>
-<dl class="dictionary script">
-<dt><a href="/script/soundex">soundex(str)</a></dt>
-<dd>Returns the Soundex value of the given string.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('soundex'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="soundex">/// soundex(str)
-//
-//  Returns the Soundex value of the given string.
-//  Soundex values are short strings of similar values
-//  for words which sound similar in spoken English.
-//  It was developed to help index related family names.
-//
-//      str         English word, string
-//
-/// GMLscripts.com/license
-{
-    var str = string_upper(string_letters(argument0));
-    var len = string_length(str);
-    if (len == 0) return &quot;&quot;;
-    var tab = &quot;0123012X02245501262301X202&quot;;
-    var out = string_char_at(str,1);
-    var lastc = out;
-    var lastv = string_char_at(tab,ord(out)-64);
-    for (var pos=2; pos&lt;=len; pos++) {
-        var char = string_char_at(str,pos);
-        var val = string_char_at(tab,ord(char)-64);
-        if (char == lastc) continue;
-        if (val == &quot;X&quot;) continue;
-        lastc = char;
-        if (val == lastv) continue;
-        lastv = val;
-        if (val == &quot;0&quot;) continue;
-        out += val;
-    }
-    out = string_copy(out+&quot;000&quot;,1,4);
-    return out;
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="crc16">crc16</a>, <a href="md2">md2</a>, <strong>soundex</strong>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Data_Hashing/soundex.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Data_Hashing/soundex.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Data_Hashing/soundex.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Data_Hashing/soundex.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/soundex';
-this.page.identifier = 'script/soundex';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

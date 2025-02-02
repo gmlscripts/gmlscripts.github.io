@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: string_nato</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,120 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>string_nato</h1>
+<p>Returns a given string as expressed by the NATO phonetic alphabet.
+Phonetic words will be separarted by spaces. Non-alphanumeric 
+characters are removed.</p>
+<div class="codebox example">
+<pre><code class="lang-gml">text = "Test: 1-2-3.";
+nato = string_nato(text);   //  "Tango Echo Sierra Tango One Two Three"
+</code></pre>
+</div>
+<dl class="script">
+<dt><a href="/script/string_nato">string_nato(text)</a></dt>
+<dd>Returns a given string as expressed by the NATO phonetic alphabet.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('string_nato'))">COPY</a></span><code class="lang-gml linenums" id="string_nato">/// @func   string_nato(text)
+///
+/// @desc   Returns a given string as expressed by the NATO phonetic alphabet.
+///         Phonetic words will be separarted by spaces. Non-alphanumeric 
+///         characters are removed.
+///
+/// @param  {string}    text        text to transcribe
+///
+/// @return {string}    transcribed text
+///
+/// GMLscripts.com/license
+
+function string_nato(text)
+{
+    var str = string_upper(text);
+    var len = string_length(str);
+    var out = &quot;&quot;;
+
+    var nato = ds_map_create();
+    nato[? &quot;A&quot;] = &quot;Alfa&quot;;     nato[? &quot;B&quot;] = &quot;Bravo&quot;;     nato[? &quot;C&quot;] = &quot;Charlie&quot;;
+    nato[? &quot;D&quot;] = &quot;Delta&quot;;    nato[? &quot;E&quot;] = &quot;Echo&quot;;      nato[? &quot;F&quot;] = &quot;Foxtrot&quot;;
+    nato[? &quot;G&quot;] = &quot;Golf&quot;;     nato[? &quot;H&quot;] = &quot;Hotel&quot;;     nato[? &quot;I&quot;] = &quot;India&quot;;
+    nato[? &quot;J&quot;] = &quot;Juliett&quot;;  nato[? &quot;K&quot;] = &quot;Kilo&quot;;      nato[? &quot;L&quot;] = &quot;Lima&quot;;
+    nato[? &quot;M&quot;] = &quot;Mike&quot;;     nato[? &quot;N&quot;] = &quot;November&quot;;  nato[? &quot;O&quot;] = &quot;Oscar&quot;;
+    nato[? &quot;P&quot;] = &quot;Papa&quot;;     nato[? &quot;Q&quot;] = &quot;Quebec&quot;;    nato[? &quot;R&quot;] = &quot;Romeo&quot;;
+    nato[? &quot;S&quot;] = &quot;Sierra&quot;;   nato[? &quot;T&quot;] = &quot;Tango&quot;;     nato[? &quot;U&quot;] = &quot;Uniform&quot;;
+    nato[? &quot;V&quot;] = &quot;Victor&quot;;   nato[? &quot;W&quot;] = &quot;Whiskey&quot;;   nato[? &quot;X&quot;] = &quot;X-ray&quot;;
+    nato[? &quot;Y&quot;] = &quot;Yankee&quot;;   nato[? &quot;Z&quot;] = &quot;Zulu&quot;;      nato[? &quot;0&quot;] = &quot;Zero&quot;;
+    nato[? &quot;1&quot;] = &quot;One&quot;;      nato[? &quot;2&quot;] = &quot;Two&quot;;       nato[? &quot;3&quot;] = &quot;Three&quot;;
+    nato[? &quot;4&quot;] = &quot;Four&quot;;     nato[? &quot;5&quot;] = &quot;Five&quot;;      nato[? &quot;6&quot;] = &quot;Six&quot;;
+    nato[? &quot;7&quot;] = &quot;Seven&quot;;    nato[? &quot;8&quot;] = &quot;Eight&quot;;     nato[? &quot;9&quot;] = &quot;Niner&quot;;
+
+    var s = &quot;&quot;;
+    for (var i = 1; i &lt;= len; i++) {
+        var c = string_char_at(str , i);
+        if (!ds_map_exists(nato, c)) {
+            continue;
+        }
+        out += s + nato[? c];
+        s = &quot; &quot;;
+    }
+
+    ds_map_destroy(nato);
+    return out;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="number_format">number_format</a>, <a href="speakable_password">speakable_password</a>, <a href="string_add_spaces">string_add_spaces</a>, <a href="string_extract">string_extract</a>, <a href="string_left">string_left</a>, <a href="string_limit">string_limit</a>, <a href="string_lpad">string_lpad</a>, <a href="string_ltrim">string_ltrim</a>, <strong>string_nato</strong>, <a href="string_parse">string_parse</a>, <a href="string_parse_number">string_parse_number</a>, <a href="string_parse_single">string_parse_single</a>, <a href="string_random">string_random</a>, <a href="string_remove_whitespace">string_remove_whitespace</a>, <a href="string_reverse">string_reverse</a>, <a href="string_right">string_right</a>, <a href="string_rpad">string_rpad</a>, <a href="string_rpos">string_rpos</a>, <a href="string_rtrim">string_rtrim</a>, <a href="string_shuffle">string_shuffle</a>, <a href="string_split">string_split</a>, <a href="string_stagger_case">string_stagger_case</a>, <a href="string_trim">string_trim</a>, <a href="string_ucfirst">string_ucfirst</a>, <a href="string_ucwords">string_ucwords</a>, <a href="string_wordwrap">string_wordwrap</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Strings/string_nato.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Strings/string_nato.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Strings/string_nato.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Strings/string_nato.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/string_nato';
+this.page.identifier = 'script/string_nato';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,100 +208,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>string_nato</h1>
-<p>Returns a given string as expressed by the NATO phonetic alphabet.
-Phonetic words will be separarted by spaces. Non-alphanumeric 
-characters are removed.</p>
-<div class="codebox example">
-<pre><code class="prettyprint lang-gml">text = "Test: 1-2-3.";
-nato = string_nato(text);   //  "Tango Echo Sierra Tango One Two Three"
-</code></pre>
 </div>
-<dl class="dictionary script">
-<dt><a href="/script/string_nato">string_nato(text)</a></dt>
-<dd>Returns a given string as expressed by the NATO phonetic alphabet.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('string_nato'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="string_nato">/// @func   string_nato(text)
-///
-/// @desc   Returns a given string as expressed by the NATO phonetic alphabet.
-///         Phonetic words will be separarted by spaces. Non-alphanumeric 
-///         characters are removed.
-///
-/// @param  {string}    text        text to transcribe
-///
-/// @return {string}    transcribed text
-///
-/// GMLscripts.com/license
-
-function string_nato(text)
-{
-    var str = string_upper(text);
-    var len = string_length(str);
-    var out = &quot;&quot;;
-
-    var nato = ds_map_create();
-    nato[? &quot;A&quot;] = &quot;Alfa&quot;;     nato[? &quot;B&quot;] = &quot;Bravo&quot;;     nato[? &quot;C&quot;] = &quot;Charlie&quot;;
-    nato[? &quot;D&quot;] = &quot;Delta&quot;;    nato[? &quot;E&quot;] = &quot;Echo&quot;;      nato[? &quot;F&quot;] = &quot;Foxtrot&quot;;
-    nato[? &quot;G&quot;] = &quot;Golf&quot;;     nato[? &quot;H&quot;] = &quot;Hotel&quot;;     nato[? &quot;I&quot;] = &quot;India&quot;;
-    nato[? &quot;J&quot;] = &quot;Juliett&quot;;  nato[? &quot;K&quot;] = &quot;Kilo&quot;;      nato[? &quot;L&quot;] = &quot;Lima&quot;;
-    nato[? &quot;M&quot;] = &quot;Mike&quot;;     nato[? &quot;N&quot;] = &quot;November&quot;;  nato[? &quot;O&quot;] = &quot;Oscar&quot;;
-    nato[? &quot;P&quot;] = &quot;Papa&quot;;     nato[? &quot;Q&quot;] = &quot;Quebec&quot;;    nato[? &quot;R&quot;] = &quot;Romeo&quot;;
-    nato[? &quot;S&quot;] = &quot;Sierra&quot;;   nato[? &quot;T&quot;] = &quot;Tango&quot;;     nato[? &quot;U&quot;] = &quot;Uniform&quot;;
-    nato[? &quot;V&quot;] = &quot;Victor&quot;;   nato[? &quot;W&quot;] = &quot;Whiskey&quot;;   nato[? &quot;X&quot;] = &quot;X-ray&quot;;
-    nato[? &quot;Y&quot;] = &quot;Yankee&quot;;   nato[? &quot;Z&quot;] = &quot;Zulu&quot;;      nato[? &quot;0&quot;] = &quot;Zero&quot;;
-    nato[? &quot;1&quot;] = &quot;One&quot;;      nato[? &quot;2&quot;] = &quot;Two&quot;;       nato[? &quot;3&quot;] = &quot;Three&quot;;
-    nato[? &quot;4&quot;] = &quot;Four&quot;;     nato[? &quot;5&quot;] = &quot;Five&quot;;      nato[? &quot;6&quot;] = &quot;Six&quot;;
-    nato[? &quot;7&quot;] = &quot;Seven&quot;;    nato[? &quot;8&quot;] = &quot;Eight&quot;;     nato[? &quot;9&quot;] = &quot;Niner&quot;;
-
-    var s = &quot;&quot;;
-    for (var i = 1; i &lt;= len; i++) {
-        var c = string_char_at(str , i);
-        if (!ds_map_exists(nato, c)) {
-            continue;
-        }
-        out += s + nato[? c];
-        s = &quot; &quot;;
-    }
-
-    ds_map_destroy(nato);
-    return out;
-}
-</code></pre>
-</div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="number_format">number_format</a>, <a href="speakable_password">speakable_password</a>, <a href="string_add_spaces">string_add_spaces</a>, <a href="string_extract">string_extract</a>, <a href="string_left">string_left</a>, <a href="string_limit">string_limit</a>, <a href="string_lpad">string_lpad</a>, <a href="string_ltrim">string_ltrim</a>, <strong>string_nato</strong>, <a href="string_parse">string_parse</a>, <a href="string_parse_number">string_parse_number</a>, <a href="string_parse_single">string_parse_single</a>, <a href="string_random">string_random</a>, <a href="string_remove_whitespace">string_remove_whitespace</a>, <a href="string_reverse">string_reverse</a>, <a href="string_right">string_right</a>, <a href="string_rpad">string_rpad</a>, <a href="string_rpos">string_rpos</a>, <a href="string_rtrim">string_rtrim</a>, <a href="string_shuffle">string_shuffle</a>, <a href="string_split">string_split</a>, <a href="string_stagger_case">string_stagger_case</a>, <a href="string_trim">string_trim</a>, <a href="string_ucfirst">string_ucfirst</a>, <a href="string_ucwords">string_ucwords</a>, <a href="string_wordwrap">string_wordwrap</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Strings/string_nato.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Strings/string_nato.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Strings/string_nato.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Strings/string_nato.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/string_nato';
-this.page.identifier = 'script/string_nato';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

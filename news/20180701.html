@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: Minor and Future Updates</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,58 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h2><span class="blogdate">July 1, 2018</span><span><a href="/news/20180701.html">Minor and Future Updates</a></span></h2>
+<p><img class="fright" src="/news/images/blogicon-20180701.png" alt="/news/images/blogicon-20180701.png" title="/news/images/blogicon-20180701.png" />
+The site is currently undergoing some minor updates. You may have noticed
+larger text and larger header navigation links and a lack of my first love,
+Verdana. She had a good run but isn't ideal for larger, higher resolution
+displays. Other changes are nigh invisible and more are coming to modernize
+the site. A much larger overhaul is on the horizon.</p>
+<p>A more significant update is the addition of a "copy" button next to
+scripts. This new feature should copy the entire script into the text
+clipboard without any tedious mousing around. This is something I've wanted
+since the start but back in those days it was only possible using a Flash
+widget or was rarely supported in JavaScript by a few browsers. Eventually,
+as the web became more standardized, JavaScript methods were removed due to
+security concerns. That left Flash as the only option which was more than I
+was willing to accept. In the last couple of years, I've learned,
+JavaScript clipboard functionality has started to creep back into most
+browsers, so I finally put the feature in. It's a little bit wonky behind
+the scenes but it works.</p>
+<p>Finally, scripts are going to start supporting GameMaker Studio 2 better.
+This means JSDoc headers broadly but there are a few scripts that aren't
+compatible with GMS2 because of changes in function names or changes in the
+engine. I still need to work out how to deal with those while keeping GMS1
+compatible scripts available. GameMaker: Studio 1.x has been sunsetted but
+a lot of people still use it. I have already explored options, going back
+to the introduction of GM:Studio, but none of them are all that appealing.</p>
+<p class="byline"><em>posted by  xot</em></p>
+<p><span class="next"><a href="/news/20180726.html">Next</a></span></p>
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,38 +146,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h2><span class="blogdate">July 1, 2018</span><span><a href="/news/20180701.html">Minor and Future Updates</a></span></h2>
-<p><img class="fright" src="/news/images/blogicon-20180701.gif" alt="/news/images/blogicon-20180701.gif" title="/news/images/blogicon-20180701.gif" />
-The site is currently undergoing some minor updates. You may have noticed
-larger text and larger header navigation links and a lack of my first love,
-Verdana. She had a good run but isn't ideal for larger, higher resolution
-displays. Other changes are nigh invisible and more are coming to modernize
-the site. A much larger overhaul is on the horizon.</p>
-<p>A more significant update is the addition of a "copy" button next to
-scripts. This new feature should copy the entire script into the text
-clipboard without any tedious mousing around. This is something I've wanted
-since the start but back in those days it was only possible using a Flash
-widget or was rarely supported in JavaScript by a few browsers. Eventually,
-as the web became more standardized, JavaScript methods were removed due to
-security concerns. That left Flash as the only option which was more than I
-was willing to accept. In the last couple of years, I've learned,
-JavaScript clipboard functionality has started to creep back into most
-browsers, so I finally put the feature in. It's a little bit wonky behind
-the scenes but it works.</p>
-<p>Finally, scripts are going to start supporting GameMaker Studio 2 better.
-This means JSDoc headers broadly but there are a few scripts that aren't
-compatible with GMS2 because of changes in function names or changes in the
-engine. I still need to work out how to deal with those while keeping GMS1
-compatible scripts available. GameMaker: Studio 1.x has been sunsetted but
-a lot of people still use it. I have already explored options, going back
-to the introduction of GM:Studio, but none of them are all that appealing.</p>
-<p class="byline"><em>posted by  xot</em></p>
-<p><span class="fright"><a href="/news/20180726.html">Next</a></span></p>
-</main>
+</div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

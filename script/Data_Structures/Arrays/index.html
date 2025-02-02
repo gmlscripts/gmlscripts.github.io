@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: Data Structures :: Arrays</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,56 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>Data Structures :: Arrays</h1>
+<dl>
+<dt><a href="/script/array_select_relative">array_select_relative(current, delta, choices)</a></dt>
+<dd>Returns an array element in a position relative to a given value.</dd>
+</dl>
+<dl>
+<dt><a href="/script/array_select_relative_wrap">array_select_relative_wrap(current, delta, choices)</a></dt>
+<dd>Returns an array element in a position relative to a given value.</dd>
+</dl>
+<dl>
+<dt><a href="/script/explode">explode(del, str)</a></dt>
+<dd>Returns an array of strings parsed from a given string of elements separated by a delimiter.</dd>
+</dl>
+<dl>
+<dt><a href="/script/explode_real">explode_real(delimiter,string)</a></dt>
+<dd>Returns an array of real values parsed from a given string of elements separated by a delimiter.</dd>
+</dl>
+<dl>
+<dt><a href="/script/implode">implode(del, arr)</a></dt>
+<dd>Returns a string of elements from a given array of strings and separated by a delimiter.</dd>
+</dl>
+<dl>
+<dt><a href="/script/implode_real">implode_real(del, arr)</a></dt>
+<dd>Returns a string of elements from a given array of real values and separated by a delimiter.</dd>
+</dl>
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,36 +144,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>Data Structures :: Arrays</h1>
-<dl class="dictionary">
-<dt><a href="/script/array_select_relative">array_select_relative(current, delta, choices)</a></dt>
-<dd>Returns an array element in a position relative to a given value.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/array_select_relative_wrap">array_select_relative_wrap(current, delta, choices)</a></dt>
-<dd>Returns an array element in a position relative to a given value.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/explode">explode(del, str)</a></dt>
-<dd>Returns an array of strings parsed from a given string of elements separated by a delimiter.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/explode_real">explode_real(delimiter,string)</a></dt>
-<dd>Returns an array of real values parsed from a given string of elements separated by a delimiter.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/implode">implode(del, arr)</a></dt>
-<dd>Returns a string of elements from a given array of strings and separated by a delimiter.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/implode_real">implode_real(del, arr)</a></dt>
-<dd>Returns a string of elements from a given array of real values and separated by a delimiter.</dd>
-</dl>
-</main>
+</div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: smoothstep</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,93 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>smoothstep</h1>
+<p>This function makes a smooth transition from 0 to 1 beginning at
+threshold a and ending at threshold b. In order to do this,
+smoothstep contains a cubic function whose slope is 0 at a and b
+and whose value is 0 at a and 1 at b. There is only one cubic
+function that has these properties for a = 0 and b = 1, namely
+the function <script type="math/tex">3x^2 - 2x^3</script>. This function can be used to provide
+smooth transitions between values or to "ease" animation in and out.</p>
+<p><img alt="smoothstep" src="/images/smoothstep1.png" title="smoothstep" /></p>
+<dl class="script">
+<dt><a href="/script/smoothstep">smoothstep(a, b, x)</a></dt>
+<dd>Returns 0 when (x &lt;= a), 1 when (x &gt;= b), a smooth transition from 0 to 1 otherwise.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('smoothstep'))">COPY</a></span><code class="lang-gml linenums" id="smoothstep">/// @func   smoothstep(a, b, x)
+///
+/// @desc   Returns 0 when (x &lt;= a), 1 when (x &gt;= b), a smooth transition
+///         from 0 to 1 otherwise. If a &gt;= b the result is not defined.
+///
+/// @param  {real}      a           lower bound
+/// @param  {real}      b           upper bound
+/// @param  {real}      x           value
+///
+/// @return {real}      adjusted value
+///
+/// GMLscripts.com/license
+
+function smoothstep(a, b, x)
+{
+    var t = clamp((x - a) / (b - a), 0, 1);
+    return t * t * (3 - 2 * t);
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="bias">bias</a>, <a href="boxstep">boxstep</a>, <a href="gain">gain</a>, <a href="gammacorrect">gammacorrect</a>, <a href="map_range">map_range</a>, <a href="pulse">pulse</a>, <strong>smoothstep</strong>, <a href="spline">spline</a>, <a href="spline4">spline4</a>, <strong>step</strong>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Parametric_Functions/smoothstep.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Parametric_Functions/smoothstep.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Parametric_Functions/smoothstep.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Parametric_Functions/smoothstep.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/smoothstep';
+this.page.identifier = 'script/smoothstep';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,73 +181,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>smoothstep</h1>
-<p>This function makes a smooth transition from 0 to 1 beginning at
-threshold a and ending at threshold b. In order to do this,
-smoothstep contains a cubic function whose slope is 0 at a and b
-and whose value is 0 at a and 1 at b. There is only one cubic
-function that has these properties for a = 0 and b = 1, namely
-the function <script type="math/tex">3x^2 - 2x^3</script>. This function can be used to provide
-smooth transitions between values or to "ease" animation in and out.</p>
-<p><img alt="smoothstep" src="/images/smoothstep1.png" title="smoothstep" /></p>
-<dl class="dictionary script">
-<dt><a href="/script/smoothstep">smoothstep(a, b, x)</a></dt>
-<dd>Returns 0 when (x &lt;= a), 1 when (x &gt;= b), a smooth transition from 0 to 1 otherwise.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('smoothstep'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="smoothstep">/// @func   smoothstep(a, b, x)
-///
-/// @desc   Returns 0 when (x &lt;= a), 1 when (x &gt;= b), a smooth transition
-///         from 0 to 1 otherwise. If a &gt;= b the result is not defined.
-///
-/// @param  {real}      a           lower bound
-/// @param  {real}      b           upper bound
-/// @param  {real}      x           value
-///
-/// @return {real}      adjusted value
-///
-/// GMLscripts.com/license
-
-function smoothstep(a, b, x)
-{
-    var t = clamp((x - a) / (b - a), 0, 1);
-    return t * t * (3 - 2 * t);
-}
-</code></pre>
 </div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="bias">bias</a>, <a href="boxstep">boxstep</a>, <a href="gain">gain</a>, <a href="gammacorrect">gammacorrect</a>, <a href="map_range">map_range</a>, <a href="pulse">pulse</a>, <strong>smoothstep</strong>, <a href="spline">spline</a>, <a href="spline4">spline4</a>, <strong>step</strong>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Parametric_Functions/smoothstep.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Parametric_Functions/smoothstep.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Parametric_Functions/smoothstep.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Parametric_Functions/smoothstep.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/smoothstep';
-this.page.identifier = 'script/smoothstep';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

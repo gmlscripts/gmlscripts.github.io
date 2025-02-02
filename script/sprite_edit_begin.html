@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: sprite_edit_begin</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,138 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>sprite_edit_begin</h1>
+<p><img alt="sprite_edig_begin" src="/images/sprite_edit_begin.gif" title="sprite_edit_begin()" /></p>
+<dl class="script">
+<dt><a href="/script/sprite_edit_begin">sprite_edit_begin(sprite)</a></dt>
+<dd>Edit a sprite dynamically using drawing commands.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('sprite_edit_begin'))">COPY</a></span><code class="lang-gml linenums" id="sprite_edit_begin">/// sprite_edit_begin(sprite)
+//
+//  Edit a sprite dynamically using drawing commands. This script begins
+//  an editing session and returns a session ID. All further drawing 
+//  commands are directed to a surface holding a horizontal strip of frames
+//  from a given sprite. A call to script sprite_edit_end() ends editing.
+//
+//      sprite      sprite to edit, real
+//
+//  Note: Blending mode is reset to normal after calling this script.
+//
+/// GMLscripts.com/license
+{
+    var sprite,a,w,h,n,xoff,yoff,surface,i;
+    sprite = argument0;
+    a = draw_get_alpha();
+    w = sprite_get_width(sprite);
+    h = sprite_get_height(sprite);
+    n = sprite_get_number(sprite);
+    xoff = sprite_get_xoffset(sprite);
+    yoff = sprite_get_yoffset(sprite);
+    surface = surface_create(w*n,h);
+    surface_set_target(surface);
+    draw_clear_alpha(c_black,0);
+    draw_set_blend_mode_ext(bm_one,bm_zero);
+    draw_set_alpha(1);
+    for(i=0; i&lt;n; i+=1) {
+        draw_sprite(sprite,i,i*w+xoff,yoff);
+    }
+    draw_set_blend_mode(bm_normal);
+    draw_set_alpha(a);
+    return (string(surface)+':'+string(sprite));
+}
+</code></pre>
+</div>
+<dl class="script">
+<dt><a href="/script/sprite_edit_end">sprite_edit_end(session)</a></dt>
+<dd>Ends a sprite editing session started with sprite_edit_begin().</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('sprite_edit_end'))">COPY</a></span><code class="lang-gml linenums" id="sprite_edit_end">/// sprite_edit_end(session)
+//
+//  Ends a sprite editing session started with sprite_edit_begin().
+//  At the end of a session, the original sprite is replaced with
+//  a new version and the editing surface is freed.
+//
+//      session     editing session ID given by sprite_edit_begin(), real
+//
+/// GMLscripts.com/license
+{
+    var session,p,surface,sprite,w,h,n,prec,tran,smth,load,xoff,yoff,temp,i;
+    session = argument0        
+    p = string_pos(':',session);
+    surface = real(string_copy(session,1,p-1));
+    sprite = real(string_copy(session,p+1,10));
+    w = sprite_get_width(sprite);
+    h = sprite_get_height(sprite);
+    n = sprite_get_number(sprite);
+    xoff = sprite_get_xoffset(sprite);
+    yoff = sprite_get_yoffset(sprite);
+    temp = sprite_create_from_surface(surface,0,0,w,h,false,false,xoff,yoff);
+    for(i=1; i&lt;n; i+=1) {
+        sprite_add_from_surface(temp,surface,w*i,0,w,h,false,false);
+    }
+    sprite_assign(sprite,temp);
+    sprite_delete(temp);
+    surface_reset_target();
+    surface_free(surface);
+    return 0;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: Leif902, xot
+</p>
+<p id="related">
+Related: <a href="sprite_desaturate">sprite_desaturate</a>, <strong>sprite_edit_begin</strong>, <a href="sprite_invert_color">sprite_invert_color</a>, <a href="sprite_replace_color">sprite_replace_color</a>, <a href="sprite_replace_color_blend">sprite_replace_color_blend</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Resources/Sprites/sprite_edit_begin.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Resources/Sprites/sprite_edit_begin.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Resources/Sprites/sprite_edit_begin.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Resources/Sprites/sprite_edit_begin.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/sprite_edit_begin';
+this.page.identifier = 'script/sprite_edit_begin';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,118 +226,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>sprite_edit_begin</h1>
-<p><img alt="sprite_edig_begin" src="/images/sprite_edit_begin.gif" title="sprite_edit_begin()" /></p>
-<dl class="dictionary script">
-<dt><a href="/script/sprite_edit_begin">sprite_edit_begin(sprite)</a></dt>
-<dd>Edit a sprite dynamically using drawing commands.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('sprite_edit_begin'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="sprite_edit_begin">/// sprite_edit_begin(sprite)
-//
-//  Edit a sprite dynamically using drawing commands. This script begins
-//  an editing session and returns a session ID. All further drawing 
-//  commands are directed to a surface holding a horizontal strip of frames
-//  from a given sprite. A call to script sprite_edit_end() ends editing.
-//
-//      sprite      sprite to edit, real
-//
-//  Note: Blending mode is reset to normal after calling this script.
-//
-/// GMLscripts.com/license
-{
-    var sprite,a,w,h,n,xoff,yoff,surface,i;
-    sprite = argument0;
-    a = draw_get_alpha();
-    w = sprite_get_width(sprite);
-    h = sprite_get_height(sprite);
-    n = sprite_get_number(sprite);
-    xoff = sprite_get_xoffset(sprite);
-    yoff = sprite_get_yoffset(sprite);
-    surface = surface_create(w*n,h);
-    surface_set_target(surface);
-    draw_clear_alpha(c_black,0);
-    draw_set_blend_mode_ext(bm_one,bm_zero);
-    draw_set_alpha(1);
-    for(i=0; i&lt;n; i+=1) {
-        draw_sprite(sprite,i,i*w+xoff,yoff);
-    }
-    draw_set_blend_mode(bm_normal);
-    draw_set_alpha(a);
-    return (string(surface)+':'+string(sprite));
-}
-</code></pre>
 </div>
-<dl class="dictionary script">
-<dt><a href="/script/sprite_edit_end">sprite_edit_end(session)</a></dt>
-<dd>Ends a sprite editing session started with sprite_edit_begin().</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('sprite_edit_end'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="sprite_edit_end">/// sprite_edit_end(session)
-//
-//  Ends a sprite editing session started with sprite_edit_begin().
-//  At the end of a session, the original sprite is replaced with
-//  a new version and the editing surface is freed.
-//
-//      session     editing session ID given by sprite_edit_begin(), real
-//
-/// GMLscripts.com/license
-{
-    var session,p,surface,sprite,w,h,n,prec,tran,smth,load,xoff,yoff,temp,i;
-    session = argument0        
-    p = string_pos(':',session);
-    surface = real(string_copy(session,1,p-1));
-    sprite = real(string_copy(session,p+1,10));
-    w = sprite_get_width(sprite);
-    h = sprite_get_height(sprite);
-    n = sprite_get_number(sprite);
-    xoff = sprite_get_xoffset(sprite);
-    yoff = sprite_get_yoffset(sprite);
-    temp = sprite_create_from_surface(surface,0,0,w,h,false,false,xoff,yoff);
-    for(i=1; i&lt;n; i+=1) {
-        sprite_add_from_surface(temp,surface,w*i,0,w,h,false,false);
-    }
-    sprite_assign(sprite,temp);
-    sprite_delete(temp);
-    surface_reset_target();
-    surface_free(surface);
-    return 0;
-}
-</code></pre>
-</div>
-<p id="contributors">
-Contributors: Leif902, xot
-</p>
-<p id="related">
-Related: <a href="sprite_desaturate">sprite_desaturate</a>, <strong>sprite_edit_begin</strong>, <a href="sprite_invert_color">sprite_invert_color</a>, <a href="sprite_replace_color">sprite_replace_color</a>, <a href="sprite_replace_color_blend">sprite_replace_color_blend</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Resources/Sprites/sprite_edit_begin.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Resources/Sprites/sprite_edit_begin.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Resources/Sprites/sprite_edit_begin.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Resources/Sprites/sprite_edit_begin.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/sprite_edit_begin';
-this.page.identifier = 'script/sprite_edit_begin';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

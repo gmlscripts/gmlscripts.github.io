@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: select_relative_wrap</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,119 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>select_relative_wrap</h1>
+<p>Returns an argument in a position relative to a given value. This is useful
+for sequentially selecting values from a list based on a current value.</p>
+<div class="codebox example">
+<pre><code class="lang-gml">//  Move forwards {+1} through a list of colors
+color = select_relative_wrap(color, +1, c_red, c_orange, c_yellow, c_green, c_blue);
+</code></pre>
+</div>
+<p>In the above example, if the current value of <code>color</code> is <code>c_orange</code>, then its new value
+would be set to the next value in the list, <code>c_yellow</code>.</p>
+<div class="codebox example">
+<pre><code class="lang-gml">//  Or move backwards {-1} through a list of colors
+color = select_relative_wrap(color, -1, c_red, c_orange, c_yellow, c_green, c_blue);
+</code></pre>
+</div>
+<p>If a relative position is beyond the range of given choices, the position "wraps around"
+to the other end of the list. In the second example, if the current value of <code>color</code> is
+<code>c_red</code>, then its new value would be set to <code>c_blue</code>.</p>
+<p>If the current value isn't among the choices, the returned value is undefined.</p>
+<dl class="script">
+<dt><a href="/script/select_relative_wrap">select_relative_wrap(current, delta, choice0, choice1, choice2, ...)</a></dt>
+<dd>Returns an argument in a position relative to a given value.</dd>
+</dl>
+<div class="codebox script">
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('select_relative_wrap'))">COPY</a></span><code class="lang-gml linenums" id="select_relative_wrap">/// @func   select_relative_wrap(current, delta, choice0, choice1, choice2, ...)
+///
+/// @desc   Returns an argument in a position relative to a given value.
+///         If a relative position is beyond the range of given choices,
+///         the position is wrapped until it is within range. If current
+///         value isn't among the choices, the return value is undefined.
+///
+///         eg. select_relative_wrap(&quot;Name&quot;, -2, &quot;Hello&quot;, &quot;Doctor&quot;, &quot;Name&quot;) == &quot;Hello&quot;
+///             select_relative_wrap(&quot;Name&quot;, 2, &quot;Hello&quot;, &quot;Doctor&quot;, &quot;Name&quot;) == &quot;Doctor&quot;
+///
+/// @param  {any*}      current     value matching a given choice
+/// @param  {real}      delta       relative position of desired choice
+/// @param  {any*}      choiceN     value to return, if selected
+///
+/// @return {any*}      selected choice
+///
+/// GMLscripts.com/license
+
+function select_relative_wrap()
+{
+    var current = argument[0];
+    var delta = argument[1];
+    var size = argument_count - 2;
+    var choices = ds_list_create();
+    var result = undefined;
+    for (var i = 2; i &lt; argument_count; i++) ds_list_add(choices, argument[i]);
+    i = ds_list_find_index(choices, current);
+    if (i &gt;= 0) {
+        i = (((i + delta) mod size) + size) mod size;
+        result = ds_list_find_value(choices, i);
+    }
+    ds_list_destroy(choices);
+    return result;
+}
+</code></pre>
+</div>
+<p id="contributors">
+Contributors: xot
+</p>
+<p id="related">
+Related: <a href="acos">acos</a>, <a href="asin">asin</a>, <a href="factor">factor</a>, <a href="factor_quadratic">factor_quadratic</a>, <a href="fibonacci">fibonacci</a>, <a href="gcd">gcd</a>, <a href="is_even">is_even</a>, <a href="is_factor">is_factor</a>, <a href="is_odd">is_odd</a>, <a href="is_power">is_power</a>, <a href="lcm">lcm</a>, <a href="next_pow2">next_pow2</a>, <a href="round_fixed">round_fixed</a>, <a href="select">select</a>, <a href="select_index">select_index</a>, <a href="select_relative">select_relative</a>, <strong>select_relative_wrap</strong>, <a href="sum_interval">sum_interval</a>, <a href="toggle">toggle</a>
+</p>
+<p id="github">
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Real_Numbers/select_relative_wrap.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Real_Numbers/select_relative_wrap.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Real_Numbers/select_relative_wrap.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Real_Numbers/select_relative_wrap.gml">Raw</a>
+</p>
+<hr />
+<!-- DISQUS START -->
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.gmlscripts.com/script/select_relative_wrap';
+this.page.identifier = 'script/select_relative_wrap';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gmlscripts.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- DISQUS END -->
+
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,99 +207,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>select_relative_wrap</h1>
-<p>Returns an argument in a position relative to a given value. This is useful
-for sequentially selecting values from a list based on a current value.</p>
-<div class="codebox example">
-<pre><code class="prettyprint lang-gml">//  Move forwards {+1} through a list of colors
-color = select_relative_wrap(color, +1, c_red, c_orange, c_yellow, c_green, c_blue);
-</code></pre>
 </div>
-<p>In the above example, if the current value of <code>color</code> is <code>c_orange</code>, then its new value
-would be set to the next value in the list, <code>c_yellow</code>.</p>
-<div class="codebox example">
-<pre><code class="prettyprint lang-gml">//  Or move backwards {-1} through a list of colors
-color = select_relative_wrap(color, -1, c_red, c_orange, c_yellow, c_green, c_blue);
-</code></pre>
-</div>
-<p>If a relative position is beyond the range of given choices, the position "wraps around"
-to the other end of the list. In the second example, if the current value of <code>color</code> is
-<code>c_red</code>, then its new value would be set to <code>c_blue</code>.</p>
-<p>If the current value isn't among the choices, the returned value is undefined.</p>
-<dl class="dictionary script">
-<dt><a href="/script/select_relative_wrap">select_relative_wrap(current, delta, choice0, choice1, choice2, ...)</a></dt>
-<dd>Returns an argument in a position relative to a given value.</dd>
-</dl>
-<div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('select_relative_wrap'))">COPY</a></span><code class="prettyprint lang-gml linenums" id="select_relative_wrap">/// @func   select_relative_wrap(current, delta, choice0, choice1, choice2, ...)
-///
-/// @desc   Returns an argument in a position relative to a given value.
-///         If a relative position is beyond the range of given choices,
-///         the position is wrapped until it is within range. If current
-///         value isn't among the choices, the return value is undefined.
-///
-///         eg. select_relative_wrap(&quot;Name&quot;, -2, &quot;Hello&quot;, &quot;Doctor&quot;, &quot;Name&quot;) == &quot;Hello&quot;
-///             select_relative_wrap(&quot;Name&quot;, 2, &quot;Hello&quot;, &quot;Doctor&quot;, &quot;Name&quot;) == &quot;Doctor&quot;
-///
-/// @param  {any*}      current     value matching a given choice
-/// @param  {real}      delta       relative position of desired choice
-/// @param  {any*}      choiceN     value to return, if selected
-///
-/// @return {any*}      selected choice
-///
-/// GMLscripts.com/license
-
-function select_relative_wrap()
-{
-    var current = argument[0];
-    var delta = argument[1];
-    var size = argument_count - 2;
-    var choices = ds_list_create();
-    var result = undefined;
-    for (var i = 2; i &lt; argument_count; i++) ds_list_add(choices, argument[i]);
-    i = ds_list_find_index(choices, current);
-    if (i &gt;= 0) {
-        i = (((i + delta) mod size) + size) mod size;
-        result = ds_list_find_value(choices, i);
-    }
-    ds_list_destroy(choices);
-    return result;
-}
-</code></pre>
-</div>
-<p id="contributors">
-Contributors: xot
-</p>
-<p id="related">
-Related: <a href="acos">acos</a>, <a href="asin">asin</a>, <a href="factor">factor</a>, <a href="factor_quadratic">factor_quadratic</a>, <a href="fibonacci">fibonacci</a>, <a href="gcd">gcd</a>, <a href="is_even">is_even</a>, <a href="is_factor">is_factor</a>, <a href="is_odd">is_odd</a>, <a href="is_power">is_power</a>, <a href="lcm">lcm</a>, <a href="next_pow2">next_pow2</a>, <a href="round_fixed">round_fixed</a>, <a href="select">select</a>, <a href="select_index">select_index</a>, <a href="select_relative">select_relative</a>, <strong>select_relative_wrap</strong>, <a href="sum_interval">sum_interval</a>, <a href="toggle">toggle</a>
-</p>
-<p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Computation/Real_Numbers/select_relative_wrap.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Computation/Real_Numbers/select_relative_wrap.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Computation/Real_Numbers/select_relative_wrap.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Computation/Real_Numbers/select_relative_wrap.gml">Raw</a>
-</p>
-<hr />
-<!-- DISQUS START -->
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/select_relative_wrap';
-this.page.identifier = 'script/select_relative_wrap';
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://gmlscripts.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<!-- DISQUS END -->
-
-</main>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

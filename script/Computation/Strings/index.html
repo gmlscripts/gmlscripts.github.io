@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: Computation :: Strings</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,136 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>Computation :: Strings</h1>
+<dl>
+<dt><a href="/script/number_format">number_format(number, places, decimal, thousands)</a></dt>
+<dd>Returns a number as a string with thousands and decimal markers.</dd>
+</dl>
+<dl>
+<dt><a href="/script/speakable_password">speakable_password(length)</a></dt>
+<dd>Returns a random speakable password of a given length.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_add_spaces">string_add_spaces(str)</a></dt>
+<dd>Returns given string with spaces inserted between each character.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_extract">string_extract(str, sep, index)</a></dt>
+<dd>Returns the element at given index within a string of elements.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_left">string_left(str, num)</a></dt>
+<dd>Returns a number of characters from the start of a string.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_limit">string_limit(str, len, ext)</a></dt>
+<dd>Returns a given string, truncated if it exceeds a certain length.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_lpad">string_lpad(str, len, pad)</a></dt>
+<dd>Returns a string padded on its left to a given length.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_ltrim">string_ltrim(str, trim)</a></dt>
+<dd>Returns given string with whitespace stripped from its start.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_nato">string_nato(text)</a></dt>
+<dd>Returns a given string as expressed by the NATO phonetic alphabet.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_parse">string_parse(str, token, ignore)</a></dt>
+<dd>Returns a list of token-separated substrings from a given string.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_parse_number">string_parse_number(str, token, ignore)</a></dt>
+<dd>Returns number of token-separated substrings from a given string.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_parse_single">string_parse_single(str, token, n, ignore)</a></dt>
+<dd>Returns the nth token-separated substring from a given string.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_random">string_random(str, count)</a></dt>
+<dd>Returns a string of a given length composed of characters randomly selected from a given set.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_remove_whitespace">string_remove_whitespace(str, sub)</a></dt>
+<dd>Consolidates and removes all whitespace from a string, optionally replacing it with a character or string.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_reverse">string_reverse(str)</a></dt>
+<dd>Returns a given string with the characters in reverse order.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_right">string_right(str, num)</a></dt>
+<dd>Returns a number of characters from the end of a string.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_rpad">string_rpad(str, len, pad)</a></dt>
+<dd>Returns a string padded on its right to a given length.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_rpos">string_rpos(substr, str)</a></dt>
+<dd>Returns the right-most position of a substring within a string.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_rtrim">string_rtrim(str, trim)</a></dt>
+<dd>Returns given string with whitespace stripped from its end.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_shuffle">string_shuffle(str)</a></dt>
+<dd>Returns a given string with charactars shuffled.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_split">string_split(str, len, brk)</a></dt>
+<dd>Returns a string with break characters inserted at a given interval.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_stagger_case">string_stagger_case(str, spaces, first)</a></dt>
+<dd>Returns a string with the letters in staggered case, such as: "hElLo! hOw ArE yOu ToDaY?"</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_trim">string_trim(str, trim)</a></dt>
+<dd>Returns given string with whitespace stripped from its start and end.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_ucfirst">string_ucfirst(str)</a></dt>
+<dd>Returns a string with the first character capitalized.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_ucwords">string_ucwords(str)</a></dt>
+<dd>Returns a string with each word capitalized.</dd>
+</dl>
+<dl>
+<dt><a href="/script/string_wordwrap">string_wordwrap(str, len, brk, cut)</a></dt>
+<dd>Returns a string with break characters inserted between words at a given character interval.</dd>
+</dl>
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,116 +224,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>Computation :: Strings</h1>
-<dl class="dictionary">
-<dt><a href="/script/number_format">number_format(number, places, decimal, thousands)</a></dt>
-<dd>Returns a number as a string with thousands and decimal markers.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/speakable_password">speakable_password(length)</a></dt>
-<dd>Returns a random speakable password of a given length.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_add_spaces">string_add_spaces(str)</a></dt>
-<dd>Returns given string with spaces inserted between each character.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_extract">string_extract(str, sep, index)</a></dt>
-<dd>Returns the element at given index within a string of elements.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_left">string_left(str, num)</a></dt>
-<dd>Returns a number of characters from the start of a string.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_limit">string_limit(str, len, ext)</a></dt>
-<dd>Returns a given string, truncated if it exceeds a certain length.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_lpad">string_lpad(str, len, pad)</a></dt>
-<dd>Returns a string padded on its left to a given length.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_ltrim">string_ltrim(str, trim)</a></dt>
-<dd>Returns given string with whitespace stripped from its start.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_nato">string_nato(text)</a></dt>
-<dd>Returns a given string as expressed by the NATO phonetic alphabet.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_parse">string_parse(str, token, ignore)</a></dt>
-<dd>Returns a list of token-separated substrings from a given string.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_parse_number">string_parse_number(str, token, ignore)</a></dt>
-<dd>Returns number of token-separated substrings from a given string.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_parse_single">string_parse_single(str, token, n, ignore)</a></dt>
-<dd>Returns the nth token-separated substring from a given string.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_random">string_random(str, count)</a></dt>
-<dd>Returns a string of a given length composed of characters randomly selected from a given set.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_remove_whitespace">string_remove_whitespace(str, sub)</a></dt>
-<dd>Consolidates and removes all whitespace from a string, optionally replacing it with a character or string.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_reverse">string_reverse(str)</a></dt>
-<dd>Returns a given string with the characters in reverse order.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_right">string_right(str, num)</a></dt>
-<dd>Returns a number of characters from the end of a string.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_rpad">string_rpad(str, len, pad)</a></dt>
-<dd>Returns a string padded on its right to a given length.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_rpos">string_rpos(substr, str)</a></dt>
-<dd>Returns the right-most position of a substring within a string.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_rtrim">string_rtrim(str, trim)</a></dt>
-<dd>Returns given string with whitespace stripped from its end.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_shuffle">string_shuffle(str)</a></dt>
-<dd>Returns a given string with charactars shuffled.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_split">string_split(str, len, brk)</a></dt>
-<dd>Returns a string with break characters inserted at a given interval.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_stagger_case">string_stagger_case(str, spaces, first)</a></dt>
-<dd>Returns a string with the letters in staggered case, such as: "hElLo! hOw ArE yOu ToDaY?"</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_trim">string_trim(str, trim)</a></dt>
-<dd>Returns given string with whitespace stripped from its start and end.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_ucfirst">string_ucfirst(str)</a></dt>
-<dd>Returns a string with the first character capitalized.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_ucwords">string_ucwords(str)</a></dt>
-<dd>Returns a string with each word capitalized.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/string_wordwrap">string_wordwrap(str, len, brk, cut)</a></dt>
-<dd>Returns a string with break characters inserted between words at a given character interval.</dd>
-</dl>
-</main>
+</div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

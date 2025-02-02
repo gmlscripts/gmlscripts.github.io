@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: Computation :: Real Numbers</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,108 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h1>Computation :: Real Numbers</h1>
+<dl>
+<dt><a href="/script/acos">acos(rad, n)</a></dt>
+<dd>Returns the arccosine of a given angle for the nth repetition.</dd>
+</dl>
+<dl>
+<dt><a href="/script/asin">asin(rad, n)</a></dt>
+<dd>Returns the arcsine of a given angle for the nth repetition.</dd>
+</dl>
+<dl>
+<dt><a href="/script/factor">factor(num)</a></dt>
+<dd>Returns an array containing the prime factors of a given integer.</dd>
+</dl>
+<dl>
+<dt><a href="/script/factor_quadratic">factor_quadratic(b, c)</a></dt>
+<dd>Returns a string of factors for any quadratic equation (ax^2+bx+c=0), where a = 1 and b and c are integers.</dd>
+</dl>
+<dl>
+<dt><a href="/script/fibonacci">fibonacci(n)</a></dt>
+<dd>Returns the nth number of the Fibonacci sequence.</dd>
+</dl>
+<dl>
+<dt><a href="/script/gcd">gcd(a,b)</a></dt>
+<dd>Returns the greatest common divisor of the given integers.</dd>
+</dl>
+<dl>
+<dt><a href="/script/is_even">is_even(value)</a></dt>
+<dd>Returns true if a given value is even, false otherwise.</dd>
+</dl>
+<dl>
+<dt><a href="/script/is_factor">is_factor(divisor, value)</a></dt>
+<dd>Returns true if a given divisor is a factor of a given value, false otherwise.</dd>
+</dl>
+<dl>
+<dt><a href="/script/is_odd">is_odd(value)</a></dt>
+<dd>Returns true if a given value is odd, false otherwise.</dd>
+</dl>
+<dl>
+<dt><a href="/script/is_power">is_power(value, base)</a></dt>
+<dd>Returns true if a given value is a power of the a given base, or false if it is not (or if it cannot be determined).</dd>
+</dl>
+<dl>
+<dt><a href="/script/lcm">lcm(a, b)</a></dt>
+<dd>Returns the least common multiple of the given integers.</dd>
+</dl>
+<dl>
+<dt><a href="/script/next_pow2">next_pow2(n)</a></dt>
+<dd>Returns the next power-of-two greater than or equal to a given value.</dd>
+</dl>
+<dl>
+<dt><a href="/script/round_fixed">round_fixed(number, places)</a></dt>
+<dd>Returns a given number rounded to the a number of places.</dd>
+</dl>
+<dl>
+<dt><a href="/script/select">select(n, choice0, choice1, choice2, ...)</a></dt>
+<dd>Returns an argument selected by n.</dd>
+</dl>
+<dl>
+<dt><a href="/script/select_index">select_index(value, choice0, choice1, choice2, ...)</a></dt>
+<dd>Returns the index of an argument matching a given value.</dd>
+</dl>
+<dl>
+<dt><a href="/script/select_relative">select_relative(current, delta, choice0, choice1, choice2, ...)</a></dt>
+<dd>Returns an argument in a position relative to a given value.</dd>
+</dl>
+<dl>
+<dt><a href="/script/select_relative_wrap">select_relative_wrap(current, delta, choice0, choice1, choice2, ...)</a></dt>
+<dd>Returns an argument in a position relative to a given value.</dd>
+</dl>
+<dl>
+<dt><a href="/script/sum_interval">sum_interval(m, n)</a></dt>
+<dd>Returns the sum of consecutive integers between m and n (inclusive).</dd>
+</dl>
+<dl>
+<dt><a href="/script/toggle">toggle(b)</a></dt>
+<dd>Returns the given Boolean value negated.</dd>
+</dl>
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,88 +196,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h1>Computation :: Real Numbers</h1>
-<dl class="dictionary">
-<dt><a href="/script/acos">acos(rad, n)</a></dt>
-<dd>Returns the arccosine of a given angle for the nth repetition.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/asin">asin(rad, n)</a></dt>
-<dd>Returns the arcsine of a given angle for the nth repetition.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/factor">factor(num)</a></dt>
-<dd>Returns an array containing the prime factors of a given integer.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/factor_quadratic">factor_quadratic(b, c)</a></dt>
-<dd>Returns a string of factors for any quadratic equation (ax^2+bx+c=0), where a = 1 and b and c are integers.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/fibonacci">fibonacci(n)</a></dt>
-<dd>Returns the nth number of the Fibonacci sequence.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/gcd">gcd(a,b)</a></dt>
-<dd>Returns the greatest common divisor of the given integers.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/is_even">is_even(value)</a></dt>
-<dd>Returns true if a given value is even, false otherwise.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/is_factor">is_factor(divisor, value)</a></dt>
-<dd>Returns true if a given divisor is a factor of a given value, false otherwise.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/is_odd">is_odd(value)</a></dt>
-<dd>Returns true if a given value is odd, false otherwise.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/is_power">is_power(value, base)</a></dt>
-<dd>Returns true if a given value is a power of the a given base, or false if it is not (or if it cannot be determined).</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/lcm">lcm(a, b)</a></dt>
-<dd>Returns the least common multiple of the given integers.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/next_pow2">next_pow2(n)</a></dt>
-<dd>Returns the next power-of-two greater than or equal to a given value.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/round_fixed">round_fixed(number, places)</a></dt>
-<dd>Returns a given number rounded to the a number of places.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/select">select(n, choice0, choice1, choice2, ...)</a></dt>
-<dd>Returns an argument selected by n.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/select_index">select_index(value, choice0, choice1, choice2, ...)</a></dt>
-<dd>Returns the index of an argument matching a given value.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/select_relative">select_relative(current, delta, choice0, choice1, choice2, ...)</a></dt>
-<dd>Returns an argument in a position relative to a given value.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/select_relative_wrap">select_relative_wrap(current, delta, choice0, choice1, choice2, ...)</a></dt>
-<dd>Returns an argument in a position relative to a given value.</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/sum_interval">sum_interval(m, n)</a></dt>
-<dd>Returns the sum of consecutive integers between m and n (inclusive).</dd>
-</dl>
-<dl class="dictionary">
-<dt><a href="/script/toggle">toggle(b)</a></dt>
-<dd>Returns the given Boolean value negated.</dd>
-</dl>
-</main>
+</div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
   <title>GMLscripts.com :: GMLscripts.com 3.6 Transition</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts37.css" />
+  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
@@ -13,26 +13,61 @@
     MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
     MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script type="text/javascript" src="/search.js"></script>
   <script type="text/javascript" src="/gml_string.js"></script>
   <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts37.js"></script>
+  <script type="text/javascript" src="/gmlscripts38.js"></script>
 </head>
 <body onload="start()">
-<noscript><div>JAVASCRIPT REQUIRED</div></noscript>
+<noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/37/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
+  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
   <nav id="headnav">
     <ul><li>
       <a href="/script">Scripts</a></li><li>
       <a href="/license">License</a></li><li>
       <a href="/news">News</a></li><li>
-      <!--<a href="/search">Search</a></li><li>-->
+      <a href="/search">Search</a></li><li>
       <a href="/submit">Submit</a></li><li>
       <a href="/donate">Donate</a></li><li>
       <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
     </ul>
   </nav>
 </header>
+<div class="wrapper">
+<main>
+<h2><span class="blogdate">December 21, 2024</span><span><a href="/news/20241221.html">GMLscripts.com 3.6 Transition</a></span></h2>
+<p><img class="fright" src="/news/images/blogicon-20241221.png" alt="/news/images/blogicon-20241221.png" title="/news/images/blogicon-20241221.png" />
+This update represents one of the biggest changes to <a href="">GMLscripts.com</a> to
+date and it has been a long time coming. I wasn't sure how to introduce the
+changes but fate took an unfortunate turn. Some personal upheaval resulted
+in the site going offline for a couple of months which somewhat forced my
+hand. The site is back and at first glance, things appear the same.
+However, there are two major changes.</p>
+<p>First, the forums are no longer accessible. I'd been wanting to wind them
+down for a few years because they were never very active and the forum
+software itself is no longer maintained by its developers. Even when it was
+being supported, keeping the software up to date required a lot of manual,
+error-prone effort because of all the modifications I've made over the
+years. However, I think GitHub can help us out, and I intend to open
+<a href="https://github.com/gmlscripts/scripts/discussions">Discussions</a> there soon and script submissions can still be made via
+<a href="https://github.com/gmlscripts/scripts/pulls">Pull Request</a>.</p>
+<p>Second, the site is no longer dynamic. This has less of an effect on you
+than on me. Until now, all script pages were generated from a pair of
+source files which are found in the <a href="https://github.com/gmlscripts/scripts">GitHub Script Repository</a> — the GML
+script itself and an extended Markdown document. This was a nice system
+because script updates in the repo automatically appeared on the site.
+However, that is over. No more PHP, no more MySQL — at least here. The
+emergency "static mirror" is now the only version of the site. I still
+locally generate the static version of the site using the same dynamic
+backend but I'm looking into new site generation options.</p>
+<p>At the moment things are in transition and less than ideal. I have more
+tidying to do and I want to develop a fresh trajectory soon.</p>
+<p><em>Good luck to you all in 2025.</em></p>
+<p class="byline"><em>posted by  xot</em></p>
+<p><span class="previous"><a href="/news/20181101.html">Previous</a></span><span class="next"><a href="/news/20250114.html">Next</a></span></p>
+</main>
 <nav id="sidenav">
   <div>
     <span>Scripts</span>
@@ -114,41 +149,10 @@
     <span></span>
   </div>
 </nav>
-<main>
-<h2><span class="blogdate">December 21, 2024</span><span><a href="/news/20241221.html">GMLscripts.com 3.6 Transition</a></span></h2>
-<p><img class="fright" src="/news/images/blogicon-20241221.gif" alt="/news/images/blogicon-20241221.gif" title="/news/images/blogicon-20241221.gif" />
-This update represents one of the biggest changes to <a href="">GMLscripts.com</a> to
-date and it has been a long time coming. I wasn't sure how to introduce the
-changes but fate took an unfortunate turn. Some personal upheaval resulted
-in the site going offline for a couple of months which somewhat forced my
-hand. The site is back and at first glance, things appear the same.
-However, there are two major changes.</p>
-<p>First, the forums are no longer accessible. I'd been wanting to wind them
-down for a few years because they were never very active and the forum
-software itself is no longer maintained by its developers. Even when it was
-being supported, keeping the software up to date required a lot of manual,
-error-prone effort because of all the modifications I've made over the
-years. However, I think GitHub can help us out, and I intend to open
-<a href="https://github.com/gmlscripts/scripts/discussions">Discussions</a> there soon and script submissions can still be made via
-<a href="https://github.com/gmlscripts/scripts/pulls">Pull Request</a>.</p>
-<p>Second, the site is no longer dynamic. This has less of an effect on you
-than on me. Until now, all script pages were generated from a pair of
-source files which are found in the <a href="https://github.com/gmlscripts/scripts">GitHub Script Repository</a> — the GML
-script itself and an extended Markdown document. This was a nice system
-because script updates in the repo automatically appeared on the site.
-However, that is over. No more PHP, no more MySQL — at least here. The
-emergency "static mirror" is now the only version of the site. I still
-locally generate the static version of the site using the same dynamic
-backend but I'm looking into new site generation options.</p>
-<p>At the moment things are in transition and less than ideal. I have more
-tidying to do and I want to develop a fresh trajectory soon.</p>
-<p><em>Good luck to you all in 2025.</em></p>
-<p class="byline"><em>posted by  xot</em></p>
-<p><span class="fleft"><a href="/news/20181101.html">Previous</a></span><span class="fright"><a href="/news/20250114.html">Next</a></span></p>
-</main>
+</div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/37/x.png" title="web by xot" alt="X" /></span>
+  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
 </footer>
 </body>
 </html>
