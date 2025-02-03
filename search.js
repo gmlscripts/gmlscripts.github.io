@@ -87,14 +87,16 @@ function populateRecentScripts() {
         dl.appendChild(dd);
         recentScripts.appendChild(dl);
     }
-    if (results.length > maxResults) {
-        const p = document.createElement("p");
-        const a = document.createElement("a");
-        a.href = "https://github.com/gmlscripts/scripts/commits/master";
+    const p = document.createElement("p");
+    const a = document.createElement("a");
+    a.href = "https://github.com/gmlscripts/scripts/commits/master";
+    if (results.length == 1) {
+        a.textContent = "1 total change in the last " + RECENTDAYS + " days.";
+    } else {
         a.textContent = results.length + " total changes in the last " + RECENTDAYS + " days.";
-        p.appendChild(a);
-        recentScripts.appendChild(p);
     }
+    p.appendChild(a);
+    recentScripts.appendChild(p);
 }
 
 async function loadJson(url) {
