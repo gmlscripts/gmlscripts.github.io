@@ -1,5 +1,6 @@
 const RECENTDAYS = 30;
 const RECENTSECONDS = RECENTDAYS * 24 * 60 * 60;
+const MAXRESULTS = 10;
 
 function initializeSearch() {
     const index = lunr.Index.load(searchIndex);
@@ -56,47 +57,68 @@ function doRecentScriptsMarkup() {
 function populateRecentScripts() {
     const recentScripts = document.getElementById("recentscripts");
     if (!recentScripts) return;
+
+    // Build a dictionary of recent scripts, keyed by elapsed time and path
     const now = Math.floor(Date.now() / 1000);
-    const maxResults = 10;
-    results = [];
+    let results = {};
     for (let key in scriptIndex) {
-        if (now - scriptIndex[key].timestamp < RECENTSECONDS) {
-            results.push(scriptIndex[key]);
+        const elapsed = now - scriptIndex[key].timestamp;
+        if (elapsed < RECENTSECONDS) {
+            const hash = elapsed.toString().padStart(10, "0") + scriptIndex[key].path;
+            results[hash] = scriptIndex[key];
         }
     }
-    if (results.length == 0) {
-        const p = document.createElement("p");
-        p.textContent = "No script changes in last " + RECENTDAYS + " days.";
-        recentScripts.appendChild(p);
-        return;
-    }
-    for (let i = 0; i < Math.min(maxResults, results.length); i++) {
-        const result = results[i];
-        const sig = result.signature;
-        const sum = result.summary;
-        const uri = "/script/" + sig.split("(")[0];
-        const a = document.createElement("a");
-        a.href = uri;
-        a.text = sig;
-        const dd = document.createElement("dd");
-        dd.textContent = sum;
-        const dt = document.createElement("dt");
-        dt.appendChild(a);
-        const dl = document.createElement("dl");
-        dl.appendChild(dt);
-        dl.appendChild(dd);
-        recentScripts.appendChild(dl);
-    }
+
+    // Sort the dictionary of recent scripts by its hashed keys
+    const sortedKeys = Object.keys(results).sort();
+    let sortedResults = {};
+    sortedKeys.forEach(key => {
+        sortedResults[key] = results[key];
+    });
+    results = Object.values(sortedResults);
+
+    // Inject the recent scripts markup
+    const count = results.length;
     const p = document.createElement("p");
     const a = document.createElement("a");
-    a.href = "https://github.com/gmlscripts/scripts/commits/master";
-    if (results.length == 1) {
-        a.textContent = "1 total change in the last " + RECENTDAYS + " days.";
+    if (count > 0) {
+        results = results.slice(0, MAXRESULTS);
+        results.forEach((result) => {
+            const sig = result.signature;
+            const sum = result.summary;
+            const uri = "/script/" + getName(result.path);
+            const a = document.createElement("a");
+            a.href = uri;
+            a.text = sig;
+            const dd = document.createElement("dd");
+            dd.textContent = sum;
+            const dt = document.createElement("dt");
+            dt.appendChild(a);
+            const dl = document.createElement("dl");
+            dl.appendChild(dt);
+            dl.appendChild(dd);
+            recentScripts.appendChild(dl);
+        });
+        const others = count - MAXRESULTS;
+        if (others > 1) {
+            a.textContent = "... and " + others + " others in last " + RECENTDAYS + " days.";
+        } else if (others == 1) {
+            a.textContent = "... and 1 other in last " + RECENTDAYS + " days.";
+        } else {
+            a.textContent = count + " total changes in the last " + RECENTDAYS + " days.";
+        }
     } else {
-        a.textContent = results.length + " total changes in the last " + RECENTDAYS + " days.";
+        a.textContent = "No changes in the last " + RECENTDAYS + " days.";
     }
+    a.href = "https://github.com/gmlscripts/scripts/commits/master";
     p.appendChild(a);
     recentScripts.appendChild(p);
+}
+
+function getName(path) {
+    const parts = path.split('/');
+    const filename = parts[parts.length - 1];
+    return filename.split('.').slice(0, -1).join('.');
 }
 
 async function loadJson(url) {
