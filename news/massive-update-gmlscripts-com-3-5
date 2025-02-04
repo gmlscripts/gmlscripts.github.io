@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
-  <title>GMLscripts.com :: Minor and Future Updates</title>
+  <title>GMLscripts.com :: Massive Update - GMLscripts.com 3.5</title>
   <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
@@ -37,33 +37,25 @@
 </header>
 <div class="wrapper">
 <main>
-<h2><span class="blogdate">July 1, 2018</span><span><a href="/news/20180701.html">Minor and Future Updates</a></span></h2>
-<p><img class="fright" src="/news/images/blogicon-20180701.png" alt="/news/images/blogicon-20180701.png" title="/news/images/blogicon-20180701.png" />
-The site is currently undergoing some minor updates. You may have noticed
-larger text and larger header navigation links and a lack of my first love,
-Verdana. She had a good run but isn't ideal for larger, higher resolution
-displays. Other changes are nigh invisible and more are coming to modernize
-the site. A much larger overhaul is on the horizon.</p>
-<p>A more significant update is the addition of a "copy" button next to
-scripts. This new feature should copy the entire script into the text
-clipboard without any tedious mousing around. This is something I've wanted
-since the start but back in those days it was only possible using a Flash
-widget or was rarely supported in JavaScript by a few browsers. Eventually,
-as the web became more standardized, JavaScript methods were removed due to
-security concerns. That left Flash as the only option which was more than I
-was willing to accept. In the last couple of years, I've learned,
-JavaScript clipboard functionality has started to creep back into most
-browsers, so I finally put the feature in. It's a little bit wonky behind
-the scenes but it works.</p>
-<p>Finally, scripts are going to start supporting GameMaker Studio 2 better.
-This means JSDoc headers broadly but there are a few scripts that aren't
-compatible with GMS2 because of changes in function names or changes in the
-engine. I still need to work out how to deal with those while keeping GMS1
-compatible scripts available. GameMaker: Studio 1.x has been sunsetted but
-a lot of people still use it. I have already explored options, going back
-to the introduction of GM:Studio, but none of them are all that appealing.</p>
+<h2><span class="blogdate">November 1, 2018</span><span><a href="/news/massive-update-gmlscripts-com-3-5">Massive Update - GMLscripts.com 3.5</a></span></h2>
+<p><img class="fright" src="/news/images/blogicon-20181101.png" alt="/news/images/blogicon-20181101.png" title="/news/images/blogicon-20181101.png" />
+I've just uploaded a massive update to the inner workings of the site.
+With any luck, you will not notice any major changes (ie. broken stuff).
+Hopefully the site is easier to read, a little nicer looking, and it
+should load a bit quicker.</p>
+<p>The HTML, CSS, and JavaScript have been completely overhauled and
+streamlined. Heavy dependencies have been eliminated and minor ones have
+been consolidated. Server software has been updated across the board.</p>
+<p>In all, since the last update, Git tells me:</p>
+<blockquote>
+<p><code>134 files changed, 5364 insertions(+), 1761 deletions(-)</code></p>
+</blockquote>
+<p>This has been a big job and it is good to be finishing it. It also means
+that a new big job is ahead of me: updating all scripts on the site to
+<a href="/STYLEGUIDE">GameMaker Studio 2 standards</a>.</p>
+<p><em>Onward and upward!</em></p>
 <p class="byline"><em>posted by  xot</em></p>
-<p><span class="next"><a href="/news/20180726.html">Next</a></span></p>
+<p><span class="previous"><a href="/news/not-so-minor-ssl-update">Previous</a></span><span class="next"><a href="/news/gmlscripts-com-3-6-transition">Next</a></span></p>
 </main>
 <nav id="sidenav">
   <div>
