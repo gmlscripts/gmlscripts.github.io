@@ -38,36 +38,53 @@
 <div class="wrapper">
 <main>
 <h1>rot13</h1>
-<p class="note"><span>NOTE:</span> ROT13 isn't designed to be secure. It's designed to hide text that can 
-be cracked very easily. It is popular as a spoiler hider on some old-school 
-forums and newsgroups.</p>
+<p>ROT13 is a special case of the Caesar substitution cipher with a 13-position
+shift. It is self-inverse, meaning that when a ciphertext produced by ROT13
+is passed through it again, the original plaintext is recreated. Only letters
+in the English alphabet are transformed; all others pass through unchanged.</p>
+<p class="note"><span>NOTE:</span> ROT13 isn't designed to be secure. It's intended to hide text that can
+be revealed simply. It has a long history of use among graybeards who haunt
+bulletin boards, Usenet, and internet forums.</p>
+<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/ROT13">ROT13</a></p>
 <dl class="script">
 <dt><a href="/script/rot13">rot13(str)</a></dt>
-<dd>Returns the given text encrypted/decrypted with the rot13 algorithm.</dd>
+<dd>Returns the given string transformed with the ROT13 algorithm.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('rot13'))">COPY</a></span><code class="lang-gml linenums" id="rot13">/// rot13(str)
-//
-//  Returns the given text encrypted/decrypted with the rot13 algorithm.
-//
-//      str         text to be encrypted/decrypted, string
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('rot13'))">COPY</a></span><code class="lang-gml linenums" id="rot13">/// @func   rot13(str)
+///
+/// @desc   Returns the given string transformed with the ROT13 algorithm.
+///         ROT13 is a special case of the Caesar substitution cipher with
+///         a 13-position shift and is self-inverse. When ROT13 ciphertext
+///         is processed by the ROT13 algorithm, the original plaintext is
+///         produced. Characters absent from the English alphabet will not
+///         be changed.
+///
+/// @param  {string}    str         text to be transformed
+///
+/// @return {string}    ROT13 encoded text
+///
 /// GMLscripts.com/license
+
+function rot13_6(str)
 {
-    var a, b, str, len, val, i;
-    a = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
-    b = &quot;NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm&quot;;
-    str = string_letters(argument0);
-    len = string_length(str);
-    val = &quot;&quot;;
-    for (i=1; i&lt;=len; i+=1)
-    val += string_char_at(b,string_pos(string_char_at(str,i),a));
-    return val;
+    var out = &quot;&quot;;
+    var pt = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
+    var ct = &quot;NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm&quot;;
+    var len = string_length(str)
+    for (var i=1; i&lt;=len; i++)
+    {
+        var c = string_char_at(str, i);
+        var pos = string_pos(c, pt);
+        if (pos) c = string_char_at(ct, pos);
+        out += c;
+    }
+    return out;
 }
 </code></pre>
 </div>
 <p id="contributors">
-Contributors: Austin
+Contributors: xot
 </p>
 <p id="related">
 Related: <a href="cambridge_encode">cambridge_encode</a>, <a href="rc4">rc4</a>, <strong>rot13</strong>, <a href="vigenere_ascii">vigenere_ascii</a>, <a href="vigenere_cipher">vigenere_cipher</a>
