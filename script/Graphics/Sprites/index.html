@@ -40,6 +40,10 @@
 <h1>Graphics :: Sprites</h1>
 <p>Here you will find scripts for drawing sprites in various ways.</p>
 <dl>
+<dt><a href="/script/draw_self_shear">draw_self_shear(xshear, yshear)</a></dt>
+<dd>Draws an instance sprite with shearing applied.</dd>
+</dl>
+<dl>
 <dt><a href="/script/draw_sprite_flip_ext">draw_sprite_flip_ext(sprite,subimg,x,y,xscale,yscale,rot,color,alpha,fliph,flipv)</a></dt>
 <dd>Draws a sprite in the same manner as draw_sprite_ext() and can also flip the sprite horizontally and/or vertically.</dd>
 </dl>
@@ -64,8 +68,12 @@
 <dd>Draws a rectangle using a sprite sliced into 9 sections.</dd>
 </dl>
 <dl>
-<dt><a href="/script/draw_sprite_shear">draw_sprite_shear(sprite,subimg,x,y,xshear,yshear)</a></dt>
+<dt><a href="/script/draw_sprite_shear">draw_sprite_shear(sprite, subimg, x, y, xshear, yshear)</a></dt>
 <dd>Draws a given sprite sheared by a given amount.</dd>
+</dl>
+<dl>
+<dt><a href="/script/draw_sprite_shear_ext">draw_sprite_shear_ext(sprite, subimg, x, y, xshear, yshear, xscale, yscale, rot, color, alpha)</a></dt>
+<dd>Draws a given sprite with standard transformations and shearing applied.</dd>
 </dl>
 <dl>
 <dt><a href="/script/draw_sprite_stretched_direction">draw_sprite_stretched_direction(sprite,subimg,x,y,scale,dir)</a></dt>
