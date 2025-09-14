@@ -38,8 +38,8 @@
 <div class="wrapper">
 <main>
 <h1>draw_self_shear</h1>
-<p>Draws an instance sprite with shearing applied. The scaling, rotation, color,
-and alpha settings of the instance will work as expected.</p>
+<p>Draws an instance sprite with shearing applied. The drawn sprite will
+respect the transformation and blending settings of the instance.</p>
 <div class="codebox demo"><span>Adjust sliders to change shearing amount.<iframe frameborder="0" scrolling="no" width="320" height="320" src="/demos/draw_self_shear/index.html"></iframe><a href="/demos/draw_self_shear/draw_self_shear.yyz">Download</a></span></div>
 <dl class="script">
 <dt><a href="/script/draw_self_shear">draw_self_shear(xshear, yshear)</a></dt>
@@ -49,6 +49,8 @@ and alpha settings of the instance will work as expected.</p>
 <pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_self_shear'))">COPY</a></span><code class="lang-gml linenums" id="draw_self_shear">/// @func   draw_self_shear(xshear, yshear)
 ///
 /// @desc   Draws an instance sprite with shearing applied.
+///         The drawn sprite will respect the transformation
+///         and blending settings of the instance.
 ///
 /// @param  {real}      xshear      shear rate of x axis
 /// @param  {real}      yshear      shear rate of y axis
@@ -79,7 +81,7 @@ function draw_self_shear(xshear, yshear)
 Contributors: xot
 </p>
 <p id="related">
-Related: <strong>draw_self_shear</strong>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
+Related: <a href="draw_self_inverted">draw_self_inverted</a>, <strong>draw_self_shear</strong>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
 </p>
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_self_shear.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_self_shear.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_self_shear.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_self_shear.gml">Raw</a>

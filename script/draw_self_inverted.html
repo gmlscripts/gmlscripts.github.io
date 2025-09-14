@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
-  <title>GMLscripts.com :: draw_sprite_percent</title>
+  <title>GMLscripts.com :: draw_self_inverted</title>
   <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
@@ -37,55 +37,74 @@
 </header>
 <div class="wrapper">
 <main>
-<h1>draw_sprite_percent</h1>
+<h1>draw_self_inverted</h1>
+<p>Draws an instance sprite with inverted colors. The drawn sprite will
+respect the transformation and blending settings of the instance.</p>
+<div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="448" height="192" src="/demos/draw_self_inverted/index.html"></iframe><a href="/demos/draw_self_inverted/draw_self_inverted.yyz">Download</a></span></div>
 <dl class="script">
-<dt><a href="/script/draw_sprite_percent">draw_sprite_percent(sprite,percent,x,y,restrict)</a></dt>
-<dd>Draws a sprite using a percentage to select a subimage to draw, the first subimage at 0% and the last subimage at 100%.</dd>
+<dt><a href="/script/draw_self_inverted">draw_self_inverted()</a></dt>
+<dd>Draws an instance sprite with inverted colors.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_percent'))">COPY</a></span><code class="lang-gml linenums" id="draw_sprite_percent">/// draw_sprite_percent(sprite,percent,x,y,restrict)
-//
-//  Draws a sprite using a percentage to select a subimage to draw,
-//  the first subimage at 0% and the last subimage at 100%. Returns
-//  the selected subimage. Useful for a health gauge or progress bar.
-//
-//      sprite      sprite, real
-//      percent     percentage [0..100], real
-//      x,y         position to draw, real
-//      restrict    true if first and last subimages only
-//                  appear at exactly 0 and 100 percent, bool
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_self_inverted'))">COPY</a></span><code class="lang-gml linenums" id="draw_self_inverted">/// @func   draw_self_inverted()
+///
+/// @desc   Draws an instance sprite with inverted colors.
+///         The drawn sprite will respect the transformation
+///         and blending settings of the instance.
+///
+/// @return {real}      0 (unused)
+///
 /// GMLscripts.com/license
+
+function draw_self_inverted()
 {
-    var n,index;
-    n = sprite_get_number(argument0);
-    if (argument1 &gt;= 100) index = (n-1);
-    else if (argument1 &lt;= 0) index = 0;
-    else{
-        index = round(argument1*(n-1)/100);
-        if (argument4) index = min(max(1,index),(n-2));
-    }
-    draw_sprite(argument0,index,argument2,argument3);
-    return index;
+    var w = sprite_get_width(sprite_index);
+    var h = sprite_get_height(sprite_index);
+    var xo = sprite_get_xoffset(sprite_index);
+    var yo = sprite_get_yoffset(sprite_index);
+    var a = draw_get_alpha();
+    var b = gpu_get_blendmode_ext();
+
+    matrix_stack_push(matrix_build(x, y, 0, 0, 0, image_angle, 1, 1, 1));
+    matrix_stack_push(matrix_build(0, 0, 0, 0, 0, 0, image_xscale, image_yscale, 1));
+    matrix_stack_push(matrix_build(-xo, -yo, 0, 0, 0, 0, 1, 1, 1));
+    matrix_set(matrix_world, matrix_stack_top());
+
+    draw_set_alpha(0);
+    gpu_set_blendmode_ext(bm_inv_dest_color, bm_inv_src_color);
+    draw_rectangle_color(0, 0, w, h, c_white, c_white, c_white, c_white, false);
+    gpu_set_blendmode_ext(bm_src_alpha, bm_inv_src_alpha);
+    draw_sprite_ext(sprite_index, image_index, xo, yo, 1, 1, 0, image_blend, image_alpha);
+    gpu_set_blendmode_ext(bm_inv_dest_color, bm_inv_src_color);
+    draw_rectangle_color(0, 0, w, h, c_white, c_white, c_white, c_white, false);
+    gpu_set_blendmode_ext(b);
+    draw_set_alpha(a);
+
+    matrix_stack_pop();
+    matrix_stack_pop();
+    matrix_stack_pop();
+    matrix_set(matrix_world, matrix_stack_top());
+
+    return 0;
 }
 </code></pre>
 </div>
 <p id="contributors">
-Contributors: pspmasterPRO, xot
+Contributors: xot
 </p>
 <p id="related">
-Related: <a href="draw_self_inverted">draw_self_inverted</a>, <a href="draw_self_shear">draw_self_shear</a>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <strong>draw_sprite_percent</strong>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
+Related: <strong>draw_self_inverted</strong>, <a href="draw_self_shear">draw_self_shear</a>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
 </p>
 <p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_percent.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_percent.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_percent.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_percent.gml">Raw</a>
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_self_inverted.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_self_inverted.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_self_inverted.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_self_inverted.gml">Raw</a>
 </p>
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/draw_sprite_percent';
-this.page.identifier = 'script/draw_sprite_percent';
+this.page.url = 'https://www.gmlscripts.com/script/draw_self_inverted';
+this.page.identifier = 'script/draw_self_inverted';
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE

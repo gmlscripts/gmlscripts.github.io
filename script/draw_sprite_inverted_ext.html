@@ -51,8 +51,6 @@ and blending. This accepts the same arguments as <code>draw_sprite_ext()</code>.
 /// @desc   Draws a sprite with inverted colors and standard transformations
 ///         and blending. This accepts the same arguments as draw_sprite_ext().
 ///
-///         Note: Resets blending mode to normal.
-///
 /// @param  {sprite}    sprite      sprite index
 /// @param  {real}      subimg      image index
 /// @param  {real}      x           x screen position
@@ -69,6 +67,7 @@ function draw_sprite_inverted_ext(sprite, subimg, x, y, xscale, yscale, rot, col
     var xo = sprite_get_xoffset(sprite);
     var yo = sprite_get_yoffset(sprite);
     var a = draw_get_alpha();
+    var b = gpu_get_blendmode_ext();
 
     matrix_stack_push(matrix_build(x, y, 0, 0, 0, rot, 1, 1, 1));
     matrix_stack_push(matrix_build(0, 0, 0, 0, 0, 0, xscale, yscale, 1));
@@ -82,7 +81,7 @@ function draw_sprite_inverted_ext(sprite, subimg, x, y, xscale, yscale, rot, col
     draw_sprite_ext(sprite, subimg, xo, yo, 1, 1, 0, color, alpha);
     gpu_set_blendmode_ext(bm_inv_dest_color, bm_inv_src_color);
     draw_rectangle_color(0, 0, w, h, c_white, c_white, c_white, c_white, false);
-    gpu_set_blendmode(bm_normal);
+    gpu_set_blendmode_ext(b);
     draw_set_alpha(a);
 
     matrix_stack_pop();
@@ -98,7 +97,7 @@ function draw_sprite_inverted_ext(sprite, subimg, x, y, xscale, yscale, rot, col
 Contributors: xot
 </p>
 <p id="related">
-Related: <a href="draw_self_shear">draw_self_shear</a>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <strong>draw_sprite_inverted_ext</strong>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
+Related: <a href="draw_self_inverted">draw_self_inverted</a>, <a href="draw_self_shear">draw_self_shear</a>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <strong>draw_sprite_inverted_ext</strong>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>
 </p>
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_inverted_ext.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_inverted_ext.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_inverted_ext.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_inverted_ext.gml">Raw</a>
