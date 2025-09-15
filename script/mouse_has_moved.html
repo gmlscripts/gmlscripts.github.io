@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FC7C13">
-  <title>GMLscripts.com :: draw_get_button</title>
+  <title>GMLscripts.com :: mouse_has_moved</title>
   <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
@@ -37,81 +37,53 @@
 </header>
 <div class="wrapper">
 <main>
-<h1>draw_get_button</h1>
+<h1>mouse_has_moved</h1>
+<p>Returns true if the mouse has moved since it was last checked, false otherwise.
+Only movements within the game window or canvas are detected.</p>
 <dl class="script">
-<dt><a href="/script/draw_get_button">draw_get_button(x,y,str,width,height,color,hover,bgcolor)</a></dt>
-<dd>Draws a simple labeled button on the screen and returns true if it has been clicked using the left mouse button.</dd>
+<dt><a href="/script/mouse_has_moved">mouse_has_moved()</a></dt>
+<dd>Returns true if the mouse has moved since it was last checked, false otherwise.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_get_button'))">COPY</a></span><code class="lang-gml linenums" id="draw_get_button">/// draw_get_button(x,y,str,width,height,color,hover,bgcolor)
-//
-//  Draws a simple labeled button on the screen and returns true
-//  if it has been clicked using the left mouse button. This should
-//  be called during a Draw Event is intended for testing purposes. 
-//  Text alignment will be set to horizontal and vertical centering.
-//
-//      x,y         position to draw center of button, real
-//      str         text to display inside button, string
-//      width       width of button, real
-//      height      height of button, real
-//      color       color of text, real
-//      hover       color of text when mouse is over button, real
-//      bgcolor     color of background when mouse is over button, real
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('mouse_has_moved'))">COPY</a></span><code class="lang-gml linenums" id="mouse_has_moved">/// @func   mouse_has_moved()
+///
+/// @desc   Returns true if the mouse has moved since
+///         it was last checked, false otherwise.
+///         Only movements within the game window or
+///         canvas are detected.
+///
+/// @return {bool}      true if the mouse has moved
+///
 /// GMLscripts.com/license
-{
-    var xx,yy,str,w,h,col1,col2,col3,prev_color,prev_alpha,bl,br,bt,bb,in;
-    xx = argument0;
-    yy = argument1;
-    str = argument2;
-    w = argument3 / 2;
-    h = argument4 / 2;
-    col1 = argument5;
-    col2 = argument6;
-    col3 = argument7;
-    prev_color = draw_get_color();
-    prev_alpha = draw_get_alpha();
-    bl = xx - w;
-    br = xx + w;
-    bt = yy - h;
-    bb = yy + h;
-    in = (mouse_x&gt;bl &amp;&amp; mouse_x&lt;br &amp;&amp; mouse_y&gt;bt &amp;&amp; mouse_y&lt;bb);
-    if (in) {
-        draw_set_color(col3);
-        draw_set_alpha(0.2);
-        draw_rectangle(bl,bt,br,bb,false);
-        draw_set_color(col2);
-        draw_set_alpha(1);
-    }else{
-        draw_set_color(col1);
-        draw_set_alpha(0.3);
+
+function mouse_has_moved() {
+    static mx = mouse_x;
+    static my = mouse_y;
+    if (mx != mouse_x || my != mouse_y) {
+        mx = mouse_x;
+        my = mouse_y;
+        return true;
     }
-    draw_rectangle(bl,bt,br,bb,true);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_text(xx,yy,str);
-    draw_set_color(prev_color);
-    draw_set_alpha(prev_alpha);
-    return (in &amp;&amp; mouse_check_button_pressed(mb_left));
+    return false;
 }
 </code></pre>
 </div>
 <p id="contributors">
-Contributors: Mordi
+Contributors: xot
 </p>
 <p id="related">
-Related: <strong>draw_get_button</strong>, <a href="mouse_has_moved">mouse_has_moved</a>
+Related: <a href="draw_get_button">draw_get_button</a>, <strong>mouse_has_moved</strong>
 </p>
 <p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Interaction/Mouse/draw_get_button.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Interaction/Mouse/draw_get_button.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Interaction/Mouse/draw_get_button.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Interaction/Mouse/draw_get_button.gml">Raw</a>
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Interaction/Mouse/mouse_has_moved.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Interaction/Mouse/mouse_has_moved.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Interaction/Mouse/mouse_has_moved.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Interaction/Mouse/mouse_has_moved.gml">Raw</a>
 </p>
 <hr />
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-this.page.url = 'https://www.gmlscripts.com/script/draw_get_button';
-this.page.identifier = 'script/draw_get_button';
+this.page.url = 'https://www.gmlscripts.com/script/mouse_has_moved';
+this.page.identifier = 'script/mouse_has_moved';
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
