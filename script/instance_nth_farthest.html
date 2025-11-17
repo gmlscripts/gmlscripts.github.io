@@ -38,6 +38,8 @@
 <div class="wrapper">
 <main>
 <h1>instance_nth_farthest</h1>
+<p class="note"><span>NOTE:</span> This function is obsolete and has been replaced with an updated version with a new name.
+Please see <a href="instance_nth_furthest">instance_nth_furthest()</a>.</p>
 <dl class="script">
 <dt><a href="/script/instance_nth_farthest">instance_nth_farthest(x,y,obj,n)</a></dt>
 <dd>Returns the id of the nth farthest instance of an object from a given point or noone if none is found.</dd>
@@ -65,7 +67,7 @@
     with (object) ds_priority_add(list,id,distance_to_point(pointx,pointy));
     repeat (n) farthest = ds_priority_delete_max(list);
     ds_priority_destroy(list);
-    return farthest; 
+    return farthest;
 }
 </code></pre>
 </div>
@@ -73,7 +75,7 @@
 Contributors: xot
 </p>
 <p id="related">
-Related: <a href="deceleration_distance">deceleration_distance</a>, <a href="instance_closest_approach">instance_closest_approach</a>, <a href="instance_find_enemy">instance_find_enemy</a>, <a href="instance_find_friend">instance_find_friend</a>, <a href="instance_find_team">instance_find_team</a>, <a href="instance_nearest_notme">instance_nearest_notme</a>, <strong>instance_nth_farthest</strong>, <a href="instance_nth_nearest">instance_nth_nearest</a>, <a href="instance_singleton">instance_singleton</a>
+Related: <a href="deceleration_distance">deceleration_distance</a>, <a href="instance_closest_approach">instance_closest_approach</a>, <a href="instance_find_enemy">instance_find_enemy</a>, <a href="instance_find_friend">instance_find_friend</a>, <a href="instance_find_team">instance_find_team</a>, <a href="instance_nearest_notme">instance_nearest_notme</a>, <a href="instance_nth_furthest">instance_nth_furthest</a>, <a href="instance_nth_nearest">instance_nth_nearest</a>, <a href="instance_singleton">instance_singleton</a>
 </p>
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Instances/instance_nth_farthest.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Instances/instance_nth_farthest.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Instances/instance_nth_farthest.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Instances/instance_nth_farthest.gml">Raw</a>

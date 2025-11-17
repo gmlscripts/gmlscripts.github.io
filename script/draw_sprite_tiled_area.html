@@ -38,63 +38,53 @@
 <div class="wrapper">
 <main>
 <h1>draw_sprite_tiled_area</h1>
-<p>Draws a repeated sprite image, tiled to fill a given region and with
-a given offset. </p>
+<p>Draws a sprite tiled to fill a region at given offset.</p>
 <div class="codebox demo"><span>Mouse over to move origin offset.<iframe frameborder="0" scrolling="no" width="512" height="192" src="/demos/draw_sprite_tiled_area/index.html"></iframe><a href="/demos/draw_sprite_tiled_area/draw_sprite_tiled_area.yyz">Download</a></span></div>
 <dl class="script">
-<dt><a href="/script/draw_sprite_tiled_area">draw_sprite_tiled_area(sprite,subimg,x,y,x1,y2,x2,y2)</a></dt>
-<dd>Draws a repeated sprite image, tiled to fill a given region and with a given offset.</dd>
+<dt><a href="/script/draw_sprite_tiled_area">draw_sprite_tiled_area(sprite, subimg, x, y, x1, y2, x2, y2)</a></dt>
+<dd>Draws a sprite tiled to fill a region at given offset.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_tiled_area'))">COPY</a></span><code class="lang-gml linenums" id="draw_sprite_tiled_area">/// draw_sprite_tiled_area(sprite,subimg,x,y,x1,y2,x2,y2)
-//
-//  Draws a repeated sprite image, tiled to fill a given region and with
-//  a given offset. 
-//
-//      sprite      sprite to draw, real
-//      subimg      sprite subimage to draw, real
-//      x,y         origin offset, real
-//      x1,y1       top-left corner of tiled area, real
-//      x2,y2       bottom-right corner of tiled area, real
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_tiled_area'))">COPY</a></span><code class="lang-gml linenums" id="draw_sprite_tiled_area">/// @func   draw_sprite_tiled_area(sprite, subimg, x, y, x1, y2, x2, y2)
+///
+/// @desc   Draws a sprite tiled to fill a region at given offset.
+///
+/// @param  {sprite}    sprite      sprite index
+/// @param  {real}      subimg      image index
+/// @param  {real}      x           origin offset x-coordinate
+/// @param  {real}      y           origin offset x-coordinate
+/// @param  {real}      x1          top-left x-coordinate of tiled area
+/// @param  {real}      y1          top-left y-coordinate of tiled area
+/// @param  {real}      x2          bottom-right x-coordinate of tiled area
+/// @param  {real}      y2          bottom-right y-coordinate of tiled area
+///
+/// @return {real}      0 (unused)
+///
 /// GMLscripts.com/license
+
+function draw_sprite_tiled_area(sprite, subimg, x, y, x1, y1, x2, y2)
 {
-    var sprite,subimg,xx,yy,x1,y1,x2,y2;
-    sprite = argument0;
-    subimg = argument1;
-    xx = argument2;
-    yy = argument3;
-    x1 = argument4;
-    y1 = argument5;
-    x2 = argument6;
-    y2 = argument7;
+    var sw = sprite_get_width(sprite);
+    var sh = sprite_get_height(sprite);
 
-    var sw,sh,i,j,jj,left,top,width,height,X,Y;
-    sw = sprite_get_width(sprite);
-    sh = sprite_get_height(sprite);
+    var i = x1 - ((x1 mod sw) - (x mod sw)) - sw * ((x1 mod sw) &lt; (x mod sw));
+    var j = y1 - ((y1 mod sh) - (y mod sh)) - sh * ((y1 mod sh) &lt; (y mod sh));
+    var jj = j;
 
-    i = x1-((x1 mod sw) - (xx mod sw)) - sw*((x1 mod sw)&lt;(xx mod sw));
-    j = y1-((y1 mod sh) - (yy mod sh)) - sh*((y1 mod sh)&lt;(yy mod sh)); 
-    jj = j;
+    var left,top,width,height,px,py;
+    for (i=i; i&lt;=x2; i+=sw) {
+        for (j=j; j&lt;=y2; j+=sh) {
 
-    for(i=i; i&lt;=x2; i+=sw) {
-        for(j=j; j&lt;=y2; j+=sh) {
+            left = (i &lt;= x1) ? x1 - i : 0;
+            px = i + left;
 
-            if(i &lt;= x1) left = x1-i;
-            else left = 0;
-            X = i+left;
+            top = (j &lt;= y1) ? y1 - j : 0;
+            py = j + top;
 
-            if(j &lt;= y1) top = y1-j;
-            else top = 0;
-            Y = j+top;
+            width = (x2 &lt;= i + sw) ? (sw - (i + sw - x2) + 1) - left : sw - left;
+            height = (y2 &lt;= j + sh) ? (sh - (j + sh - y2) + 1) - top : sh - top;
 
-            if(x2 &lt;= i+sw) width = ((sw)-(i+sw-x2)+1)-left;
-            else width = sw-left;
-
-            if(y2 &lt;= j+sh) height = ((sh)-(j+sh-y2)+1)-top;
-            else height = sh-top;
-
-            draw_sprite_part(sprite,subimg,left,top,width,height,X,Y);
+            draw_sprite_part(sprite, subimg, left, top, width, height, px, py);
         }
         j = jj;
     }
@@ -103,7 +93,7 @@ a given offset. </p>
 </code></pre>
 </div>
 <p id="contributors">
-Contributors: EyeGuy
+Contributors: EyeGuy, xot
 </p>
 <p id="related">
 Related: <a href="draw_self_inverted">draw_self_inverted</a>, <a href="draw_self_shear">draw_self_shear</a>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <strong>draw_sprite_tiled_area</strong>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <a href="draw_sprite_wave_ext">draw_sprite_wave_ext</a>, <a href="motion_blur">motion_blur</a>

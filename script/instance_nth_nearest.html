@@ -43,30 +43,30 @@ about the 2nd nearest? Or the 3rd nearest? Or the nth nearest? This script
 answers that question.</p>
 <div class="codebox demo"><span><iframe frameborder="0" scrolling="no" width="512" height="64" src="/demos/instance_nth_nearest/index.html"></iframe><a href="/demos/instance_nth_nearest/instance_nth_nearest.yyz">Download</a></span></div>
 <dl class="script">
-<dt><a href="/script/instance_nth_nearest">instance_nth_nearest(x,y,obj,n)</a></dt>
+<dt><a href="/script/instance_nth_nearest">instance_nth_nearest(x, y, object, n)</a></dt>
 <dd>Returns the id of the nth nearest instance of an object to a given point or noone if none is found.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('instance_nth_nearest'))">COPY</a></span><code class="lang-gml linenums" id="instance_nth_nearest">/// instance_nth_nearest(x,y,obj,n)
-//
-//  Returns the id of the nth nearest instance of an object
-//  to a given point or noone if none is found.
-//
-//      x,y       point coordinates, real
-//      obj       object index (or all), real
-//      n         proximity, real
-//
+<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('instance_nth_nearest'))">COPY</a></span><code class="lang-gml linenums" id="instance_nth_nearest">/// @func   instance_nth_nearest(x, y, object, n)
+///
+/// @desc   Returns the id of the nth nearest instance of an object
+///         to a given point or noone if none is found.
+///
+/// @param  {real}      x           test point x-coordinate
+/// @param  {real}      y           test point y-coordinate
+/// @param  {object}    object      object index (or all)
+/// @param  {real}      n           proximity
+///
+/// @return {instance}  object instance id
+///
 /// GMLscripts.com/license
+
+function instance_nth_nearest(x, y, object, n)
 {
-    var pointx,pointy,object,n,list,nearest;
-    pointx = argument0;
-    pointy = argument1;
-    object = argument2;
-    n = argument3;
-    n = min(max(1,n),instance_number(object));
-    list = ds_priority_create();
-    nearest = noone;
-    with (object) ds_priority_add(list,id,distance_to_point(pointx,pointy));
+    n = clamp(instance_number(object), 1, n);
+    var list = ds_priority_create();
+    var nearest = noone;
+    with (object) ds_priority_add(list, id, distance_to_point(x, y));
     repeat (n) nearest = ds_priority_delete_min(list);
     ds_priority_destroy(list);
     return nearest;
@@ -77,7 +77,7 @@ answers that question.</p>
 Contributors: xot
 </p>
 <p id="related">
-Related: <a href="deceleration_distance">deceleration_distance</a>, <a href="instance_closest_approach">instance_closest_approach</a>, <a href="instance_find_enemy">instance_find_enemy</a>, <a href="instance_find_friend">instance_find_friend</a>, <a href="instance_find_team">instance_find_team</a>, <a href="instance_nearest_notme">instance_nearest_notme</a>, <a href="instance_nth_farthest">instance_nth_farthest</a>, <strong>instance_nth_nearest</strong>, <a href="instance_singleton">instance_singleton</a>
+Related: <a href="deceleration_distance">deceleration_distance</a>, <a href="instance_closest_approach">instance_closest_approach</a>, <a href="instance_find_enemy">instance_find_enemy</a>, <a href="instance_find_friend">instance_find_friend</a>, <a href="instance_find_team">instance_find_team</a>, <a href="instance_nearest_notme">instance_nearest_notme</a>, <a href="instance_nth_furthest">instance_nth_furthest</a>, <strong>instance_nth_nearest</strong>, <a href="instance_singleton">instance_singleton</a>
 </p>
 <p id="github">
 GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Game_Play/Instances/instance_nth_nearest.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Game_Play/Instances/instance_nth_nearest.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Game_Play/Instances/instance_nth_nearest.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Game_Play/Instances/instance_nth_nearest.gml">Raw</a>
