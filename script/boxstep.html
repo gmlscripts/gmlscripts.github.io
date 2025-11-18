@@ -38,9 +38,11 @@
 <div class="wrapper">
 <main>
 <h1>boxstep</h1>
-<p>The boxstep function is somewhere between <a href="/script/step">step</a> and <a href="/script/smoothstep">smoothstep</a>.
-It is the result of the convolution of a box filter with a step edge.
-The width of the box filter is (b - a) and the slope of the ramp is 1/width.</p>
+<p>The boxstep function is somewhere between <a href="/script/step">step</a> and <a href="/script/smoothstep">smoothstep</a>. It is
+the result of the convolution of a box filter with a step edge. The width
+of the box filter is <script type="math/tex">(b - a)</script> and the slope of the ramp is <script type="math/tex">1/width</script>.
+It can also be thought of as the inverse of linear interpolation, where
+a value inside a range returns a value from 0 to 1.</p>
 <p><img alt="boxstep" src="/images/boxstep.png" title="boxstep" /></p>
 <dl class="script">
 <dt><a href="/script/boxstep">boxstep(a, b, x)</a></dt>
