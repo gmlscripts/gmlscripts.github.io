@@ -1,39 +1,46 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#FC7C13">
-  <title>GMLscripts.com :: draw_sprite_wave_ext</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-  <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
-  <script type="text/x-mathjax-config">//<![CDATA[
-    MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
-    MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  <script tpye="text/javascript" src="/lunr.js"></script>
-  <script type="text/javascript" src="/search.js"></script>
-  <script type="text/javascript" src="/gml_string.js"></script>
-  <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts38.js"></script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="#FC7C13" name="theme-color">
+<meta content="summary" name="twitter:card">
+<meta content="draw_sprite_wave_ext(sprite, subimg, x, y, axis, wavelength, amplitude, phase, xscale, yscale, color, alpha)" name="twitter:title">
+<meta content="Draws a sprite with wave-like distortion." name="twitter:description">
+<meta content="https://gmlscripts.com/script/draw_sprite_wave_ext" name="twitter:url">
+<meta content="https://gmlscripts.com/images/G-172x172.jpg" name="twitter:image">
+<meta content="G logo" name="twitter:image:alt">
+<title>GMLscripts.com :: draw_sprite_wave_ext</title>
+<link href="/gmlscripts38.css" rel="stylesheet" type="text/css">
+<link href="/favicon.png" rel="icon" type="image/png">
+<link href="https://github.com/gmlscripts/scripts/commits/master.atom" rel="alternate" title="GMLscripts.com :: Script Commit History" type="application/rss+xml">
+<link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet">
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script src="/lunr.js" tpye="text/javascript"></script>
+<script src="/search.js" type="text/javascript"></script>
+<script src="/gml_string.js" type="text/javascript"></script>
+<script src="/gml_highlight.js" type="text/javascript"></script>
+<script src="/gmlscripts38.js" type="text/javascript"></script>
 </head>
 <body onload="start()">
 <noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
-  <nav id="headnav">
-    <ul><li>
-      <a href="/script">Scripts</a></li><li>
-      <a href="/license">License</a></li><li>
-      <a href="/news">News</a></li><li>
-      <a href="/search">Search</a></li><li>
-      <a href="/submit">Submit</a></li><li>
-      <a href="/donate">Donate</a></li><li>
-      <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
-    </ul>
-  </nav>
+<a href="/" id="home"><img alt="GMLscripts.com" height="40" src="/images/38/gmlscripts-header3d.png" width="500"></a>
+<nav id="headnav">
+<ul><li>
+<a href="/script">Scripts</a></li><li>
+<a href="/license">License</a></li><li>
+<a href="/news">News</a></li><li>
+<a href="/search">Search</a></li><li>
+<a href="/submit">Submit</a></li><li>
+<a href="/donate">Donate</a></li><li>
+<a href="https://bsky.app/profile/gmlscripts.com" rel="noopener noreferrer" target="_blank">Follow</a></li>
+</ul>
+</nav>
 </header>
 <div class="wrapper">
 <main>
@@ -45,13 +52,13 @@ can also be specified.</p>
 <p class="note"><span>NOTE:</span> This is a relatively expensive function compared to drawing a sprite
 normally. If it is needed for a large number of sprites, a shader-based
 alternative may be preferred.</p>
-<div class="codebox demo"><span>Use sliders and button to adjust effect.<iframe frameborder="0" scrolling="no" width="320" height="320" src="/demos/draw_sprite_wave_ext/index.html"></iframe><a href="/demos/draw_sprite_wave_ext/draw_sprite_wave_ext.yyz">Download</a></span></div>
+<div class="codebox demo"><span>Use sliders and button to adjust effect.<iframe frameborder="0" height="320" scrolling="no" src="/demos/draw_sprite_wave_ext/index.html" width="320"></iframe><a href="/demos/draw_sprite_wave_ext/draw_sprite_wave_ext.yyz">Download</a></span></div>
 <dl class="script">
 <dt><a href="/script/draw_sprite_wave_ext">draw_sprite_wave_ext(sprite, subimg, x, y, axis, wavelength, amplitude, phase, xscale, yscale, color, alpha)</a></dt>
 <dd>Draws a sprite with wave-like distortion.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('draw_sprite_wave_ext'))">COPY</a></span><code class="lang-gml linenums" id="draw_sprite_wave_ext">/// @func   draw_sprite_wave_ext(sprite, subimg, x, y, axis, wavelength, amplitude, phase, xscale, yscale, color, alpha)
+<pre><span class="copy"><a onclick="copyUpdate(this,copyToClipboard('draw_sprite_wave_ext'))" title="Copy to Clipboard">COPY</a></span><code class="lang-gml linenums" id="draw_sprite_wave_ext">/// @func   draw_sprite_wave_ext(sprite, subimg, x, y, axis, wavelength, amplitude, phase, xscale, yscale, color, alpha)
 ///
 /// @desc   Draws a sprite with wave-like distortion. The fractional part of the phase
 ///         argument controls the wave cycle. A full cycle covers the [0..1] interval.
@@ -107,9 +114,9 @@ Contributors: xot
 Related: <a href="draw_self_inverted">draw_self_inverted</a>, <a href="draw_self_shear">draw_self_shear</a>, <a href="draw_sprite_flip_ext">draw_sprite_flip_ext</a>, <a href="draw_sprite_halfpixel">draw_sprite_halfpixel</a>, <a href="draw_sprite_inverted">draw_sprite_inverted</a>, <a href="draw_sprite_inverted_ext">draw_sprite_inverted_ext</a>, <a href="draw_sprite_percent">draw_sprite_percent</a>, <a href="draw_sprite_rectangle">draw_sprite_rectangle</a>, <a href="draw_sprite_shear">draw_sprite_shear</a>, <a href="draw_sprite_shear_ext">draw_sprite_shear_ext</a>, <a href="draw_sprite_stretched_direction">draw_sprite_stretched_direction</a>, <a href="draw_sprite_tiled_area">draw_sprite_tiled_area</a>, <a href="draw_sprite_tiled_area_ext">draw_sprite_tiled_area_ext</a>, <a href="draw_sprite_wave">draw_sprite_wave</a>, <strong>draw_sprite_wave_ext</strong>, <a href="motion_blur">motion_blur</a>
 </p>
 <p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_wave_ext.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_wave_ext.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_wave_ext.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_wave_ext.gml">Raw</a>
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Graphics/Sprites/draw_sprite_wave_ext.gml" rel="noopener noreferrer" target="_blank">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Graphics/Sprites/draw_sprite_wave_ext.gml" rel="noopener noreferrer" target="_blank">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Graphics/Sprites/draw_sprite_wave_ext.gml" rel="noopener noreferrer" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Graphics/Sprites/draw_sprite_wave_ext.gml" rel="noopener noreferrer" target="_blank">Raw</a>
 </p>
-<hr />
+<hr>
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script>
@@ -125,93 +132,92 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
-
 </main>
 <nav id="sidenav">
-  <div>
-    <span>Scripts</span>
-    <ul class="accordion" id="Scripts">
-      <li id="computation" class="computation">
-        <a href="#computation">Computation</a>
-        <ul>
-          <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
-          <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
-          <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
-          <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
-          <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
-          <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
-          <li><a href="/script/Computation/Geometry/">Geometry</a></li>
-          <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
-          <li><a href="/script/Computation/Probability/">Probability</a></li>
-          <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
-          <li><a href="/script/Computation/Strings/">Strings</a></li>
-        </ul>
-      </li>
-      <li id="data_structures" class="data_structures">
-        <a href="#data_structures">Data Structures</a>
-        <ul>
-          <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
-          <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
-          <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
-          <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
-        </ul>
-      </li>
-      <li id="files" class="files">
-        <a href="#files">Files</a>
-        <ul>
-          <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
-        </ul>
-      </li>
-      <li id="game_play" class="game_play">
-        <a href="#game_play">Game Play</a>
-        <ul>
-          <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
-          <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
-          <li><a href="/script/Game_Play/Instances/">Instances</a></li>
-          <li><a href="/script/Game_Play/Movement/">Movement</a></li>
-        </ul>
-      </li>
-      <li id="graphics" class="graphics">
-        <a href="#graphics" class="active">Graphics</a>
-        <ul style="max-height: unset;">
-          <li><a href="/script/Graphics/Color/">Color</a></li>
-          <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
-          <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
-          <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
-          <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
-          <li><a href="/script/Graphics/Text/">Text</a></li>
-        </ul>
-      </li>
-      <li id="interaction" class="interaction">
-        <a href="#interaction">Interaction</a>
-        <ul>
-          <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
-          <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
-        </ul>
-      </li>
-      <li id="platform" class="platform">
-        <a href="#platform">Platform</a>
-        <ul>
-          <li><a href="/script/Platform/Device/">Device</a></li>
-        </ul>
-      </li>
-      <li id="resources" class="resources">
-        <a href="#resources">Resources</a>
-        <ul>
-          <li><a href="/script/Resources/Management/">Management</a></li>
-          <li><a href="/script/Resources/Sprites/">Sprites</a></li>
-        </ul>
-      </li>
-    </ul>
-    <span></span>
-  </div>
+<div>
+<span>Scripts</span>
+<ul class="accordion" id="Scripts">
+<li class="computation" id="computation">
+<a href="#computation">Computation</a>
+<ul>
+<li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
+<li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
+<li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
+<li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
+<li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
+<li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
+<li><a href="/script/Computation/Geometry/">Geometry</a></li>
+<li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
+<li><a href="/script/Computation/Probability/">Probability</a></li>
+<li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
+<li><a href="/script/Computation/Strings/">Strings</a></li>
+</ul>
+</li>
+<li class="data_structures" id="data_structures">
+<a href="#data_structures">Data Structures</a>
+<ul>
+<li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
+<li><a href="/script/Data_Structures/Grids/">Grids</a></li>
+<li><a href="/script/Data_Structures/Lists/">Lists</a></li>
+<li><a href="/script/Data_Structures/Maps/">Maps</a></li>
+</ul>
+</li>
+<li class="files" id="files">
+<a href="#files">Files</a>
+<ul>
+<li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
+</ul>
+</li>
+<li class="game_play" id="game_play">
+<a href="#game_play">Game Play</a>
+<ul>
+<li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
+<li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
+<li><a href="/script/Game_Play/Instances/">Instances</a></li>
+<li><a href="/script/Game_Play/Movement/">Movement</a></li>
+</ul>
+</li>
+<li class="graphics" id="graphics">
+<a class="active" href="#graphics">Graphics</a>
+<ul style="max-height: unset;">
+<li><a href="/script/Graphics/Color/">Color</a></li>
+<li><a href="/script/Graphics/Drawing/">Drawing</a></li>
+<li><a href="/script/Graphics/Shaders/">Shaders</a></li>
+<li><a href="/script/Graphics/Sprites/">Sprites</a></li>
+<li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
+<li><a href="/script/Graphics/Text/">Text</a></li>
+</ul>
+</li>
+<li class="interaction" id="interaction">
+<a href="#interaction">Interaction</a>
+<ul>
+<li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
+<li><a href="/script/Interaction/Mouse/">Mouse</a></li>
+</ul>
+</li>
+<li class="platform" id="platform">
+<a href="#platform">Platform</a>
+<ul>
+<li><a href="/script/Platform/Device/">Device</a></li>
+</ul>
+</li>
+<li class="resources" id="resources">
+<a href="#resources">Resources</a>
+<ul>
+<li><a href="/script/Resources/Management/">Management</a></li>
+<li><a href="/script/Resources/Sprites/">Sprites</a></li>
+</ul>
+</li>
+</ul>
+<span></span>
+</div>
 </nav>
 </div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
+  <span><img alt="X" src="/images/38/x.png" title="web by xot"></span>
 </footer>
 </body>
 </html>

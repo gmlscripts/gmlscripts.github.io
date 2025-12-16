@@ -1,39 +1,46 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#FC7C13">
-  <title>GMLscripts.com :: ds_list_select_relative_wrap</title>
-  <link rel="stylesheet" type="text/css" href="/gmlscripts38.css" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="alternate" title="GMLscripts.com :: Script Commit History" href="https://github.com/gmlscripts/scripts/commits/master.atom" type="application/rss+xml" />
-  <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet" />
-  <script type="text/x-mathjax-config">//<![CDATA[
-    MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
-    MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  <script tpye="text/javascript" src="/lunr.js"></script>
-  <script type="text/javascript" src="/search.js"></script>
-  <script type="text/javascript" src="/gml_string.js"></script>
-  <script type="text/javascript" src="/gml_highlight.js"></script>
-  <script type="text/javascript" src="/gmlscripts38.js"></script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="#FC7C13" name="theme-color">
+<meta content="summary" name="twitter:card">
+<meta content="ds_list_select_relative_wrap(current, delta, list)" name="twitter:title">
+<meta content="Returns a value from a list data structure in a position relative to a given value." name="twitter:description">
+<meta content="https://gmlscripts.com/script/ds_list_select_relative_wrap" name="twitter:url">
+<meta content="https://gmlscripts.com/images/G-172x172.jpg" name="twitter:image">
+<meta content="G logo" name="twitter:image:alt">
+<title>GMLscripts.com :: ds_list_select_relative_wrap</title>
+<link href="/gmlscripts38.css" rel="stylesheet" type="text/css">
+<link href="/favicon.png" rel="icon" type="image/png">
+<link href="https://github.com/gmlscripts/scripts/commits/master.atom" rel="alternate" title="GMLscripts.com :: Script Commit History" type="application/rss+xml">
+<link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet">
+<script type="text/x-mathjax-config">//<![CDATA[
+MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
+MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script src="/lunr.js" tpye="text/javascript"></script>
+<script src="/search.js" type="text/javascript"></script>
+<script src="/gml_string.js" type="text/javascript"></script>
+<script src="/gml_highlight.js" type="text/javascript"></script>
+<script src="/gmlscripts38.js" type="text/javascript"></script>
 </head>
 <body onload="start()">
 <noscript><div class="noscript">JAVASCRIPT REQUIRED</div></noscript>
 <header>
-  <a href="/" id="home"><img src="/images/38/gmlscripts-header3d.png" alt="GMLscripts.com" width="500" height="40"/></a>
-  <nav id="headnav">
-    <ul><li>
-      <a href="/script">Scripts</a></li><li>
-      <a href="/license">License</a></li><li>
-      <a href="/news">News</a></li><li>
-      <a href="/search">Search</a></li><li>
-      <a href="/submit">Submit</a></li><li>
-      <a href="/donate">Donate</a></li><li>
-      <a href="https://bsky.app/profile/gmlscripts.com">Follow</a></li>
-    </ul>
-  </nav>
+<a href="/" id="home"><img alt="GMLscripts.com" height="40" src="/images/38/gmlscripts-header3d.png" width="500"></a>
+<nav id="headnav">
+<ul><li>
+<a href="/script">Scripts</a></li><li>
+<a href="/license">License</a></li><li>
+<a href="/news">News</a></li><li>
+<a href="/search">Search</a></li><li>
+<a href="/submit">Submit</a></li><li>
+<a href="/donate">Donate</a></li><li>
+<a href="https://bsky.app/profile/gmlscripts.com" rel="noopener noreferrer" target="_blank">Follow</a></li>
+</ul>
+</nav>
 </header>
 <div class="wrapper">
 <main>
@@ -53,7 +60,7 @@ val = ds_list_select_relative_wrap("Name", 2, list);   //  val == "Doctor"
 <dd>Returns a value from a list data structure in a position relative to a given value.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a title="Copy to Clipboard" onclick="copyUpdate(this,copyToClipboard('ds_list_select_relative_wrap'))">COPY</a></span><code class="lang-gml linenums" id="ds_list_select_relative_wrap">/// @func   ds_list_select_relative_wrap(current, delta, list)
+<pre><span class="copy"><a onclick="copyUpdate(this,copyToClipboard('ds_list_select_relative_wrap'))" title="Copy to Clipboard">COPY</a></span><code class="lang-gml linenums" id="ds_list_select_relative_wrap">/// @func   ds_list_select_relative_wrap(current, delta, list)
 ///
 /// @desc   Returns a value from a list data structure in a position relative
 ///         to a given value. If a relative position is beyond extents of the
@@ -62,9 +69,9 @@ val = ds_list_select_relative_wrap("Name", 2, list);   //  val == "Doctor"
 ///         If current value is in the list more than once, the behavior is
 ///         not defined.
 ///
-///         eg. list == { &quot;Hello&quot;, &quot;Doctor&quot;, &quot;Name&quot; }
-///             ds_list_select_relative_wrap(&quot;Name&quot;, -2, list) == &quot;Hello&quot;
-///             ds_list_select_relative_wrap(&quot;Name&quot;, 2, list) == &quot;Doctor&quot;
+///         eg. list == { "Hello", "Doctor", "Name" }
+///             ds_list_select_relative_wrap("Name", -2, list) == "Hello"
+///             ds_list_select_relative_wrap("Name", 2, list) == "Doctor"
 ///
 /// @param  {any}       current     value matching a given choice
 /// @param  {real}      delta       relative position of desired choice, integer
@@ -92,9 +99,9 @@ Contributors: xot
 Related: <a href="ds_list_add_list">ds_list_add_list</a>, <a href="ds_list_add_map">ds_list_add_map</a>, <a href="ds_list_cv">ds_list_cv</a>, <a href="ds_list_flip">ds_list_flip</a>, <a href="ds_list_geometric_mean">ds_list_geometric_mean</a>, <a href="ds_list_max">ds_list_max</a>, <a href="ds_list_mean">ds_list_mean</a>, <a href="ds_list_median">ds_list_median</a>, <a href="ds_list_min">ds_list_min</a>, <a href="ds_list_pop_standard_deviation">ds_list_pop_standard_deviation</a>, <a href="ds_list_range">ds_list_range</a>, <a href="ds_list_select_relative">ds_list_select_relative</a>, <strong>ds_list_select_relative_wrap</strong>, <a href="ds_list_standard_deviation">ds_list_standard_deviation</a>, <a href="ds_list_standard_score">ds_list_standard_score</a>, <a href="ds_list_sum">ds_list_sum</a>, <a href="ds_list_sum_of_squares">ds_list_sum_of_squares</a>, <a href="ds_list_sum_squares">ds_list_sum_squares</a>, <a href="ds_list_variance">ds_list_variance</a>, <a href="ds_list_vmr">ds_list_vmr</a>
 </p>
 <p id="github">
-GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml">Raw</a>
+GitHub: <a href="https://github.com/gmlscripts/scripts/blob/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml" rel="noopener noreferrer" target="_blank">View</a> &middot; <a href="https://github.com/gmlscripts/scripts/commits/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml" rel="noopener noreferrer" target="_blank">Commits</a> &middot; <a href="https://github.com/gmlscripts/scripts/blame/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml" rel="noopener noreferrer" target="_blank">Blame</a> &middot; <a href="https://github.com/gmlscripts/scripts/raw/master/Data_Structures/Lists/ds_list_select_relative_wrap.gml" rel="noopener noreferrer" target="_blank">Raw</a>
 </p>
-<hr />
+<hr>
 <!-- DISQUS START -->
 <div id="disqus_thread"></div>
 <script>
@@ -110,93 +117,92 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="noopener noreferrer" target="_blank">comments powered by Disqus.</a></noscript>
 <!-- DISQUS END -->
-
 </main>
 <nav id="sidenav">
-  <div>
-    <span>Scripts</span>
-    <ul class="accordion" id="Scripts">
-      <li id="computation" class="computation">
-        <a href="#computation">Computation</a>
-        <ul>
-          <li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
-          <li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
-          <li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
-          <li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
-          <li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
-          <li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
-          <li><a href="/script/Computation/Geometry/">Geometry</a></li>
-          <li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
-          <li><a href="/script/Computation/Probability/">Probability</a></li>
-          <li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
-          <li><a href="/script/Computation/Strings/">Strings</a></li>
-        </ul>
-      </li>
-      <li id="data_structures" class="data_structures">
-        <a href="#data_structures" class="active">Data Structures</a>
-        <ul style="max-height: unset;">
-          <li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
-          <li><a href="/script/Data_Structures/Grids/">Grids</a></li>
-          <li><a href="/script/Data_Structures/Lists/">Lists</a></li>
-          <li><a href="/script/Data_Structures/Maps/">Maps</a></li>
-        </ul>
-      </li>
-      <li id="files" class="files">
-        <a href="#files">Files</a>
-        <ul>
-          <li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
-        </ul>
-      </li>
-      <li id="game_play" class="game_play">
-        <a href="#game_play">Game Play</a>
-        <ul>
-          <li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
-          <li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
-          <li><a href="/script/Game_Play/Instances/">Instances</a></li>
-          <li><a href="/script/Game_Play/Movement/">Movement</a></li>
-        </ul>
-      </li>
-      <li id="graphics" class="graphics">
-        <a href="#graphics">Graphics</a>
-        <ul>
-          <li><a href="/script/Graphics/Color/">Color</a></li>
-          <li><a href="/script/Graphics/Drawing/">Drawing</a></li>
-          <li><a href="/script/Graphics/Shaders/">Shaders</a></li>
-          <li><a href="/script/Graphics/Sprites/">Sprites</a></li>
-          <li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
-          <li><a href="/script/Graphics/Text/">Text</a></li>
-        </ul>
-      </li>
-      <li id="interaction" class="interaction">
-        <a href="#interaction">Interaction</a>
-        <ul>
-          <li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
-          <li><a href="/script/Interaction/Mouse/">Mouse</a></li>
-        </ul>
-      </li>
-      <li id="platform" class="platform">
-        <a href="#platform">Platform</a>
-        <ul>
-          <li><a href="/script/Platform/Device/">Device</a></li>
-        </ul>
-      </li>
-      <li id="resources" class="resources">
-        <a href="#resources">Resources</a>
-        <ul>
-          <li><a href="/script/Resources/Management/">Management</a></li>
-          <li><a href="/script/Resources/Sprites/">Sprites</a></li>
-        </ul>
-      </li>
-    </ul>
-    <span></span>
-  </div>
+<div>
+<span>Scripts</span>
+<ul class="accordion" id="Scripts">
+<li class="computation" id="computation">
+<a href="#computation">Computation</a>
+<ul>
+<li><a href="/script/Computation/Base_Conversion/">Base Conversion</a></li>
+<li><a href="/script/Computation/Bitwise/">Bitwise</a></li>
+<li><a href="/script/Computation/Data_Encoding/">Data Encoding</a></li>
+<li><a href="/script/Computation/Data_Encryption/">Data Encryption</a></li>
+<li><a href="/script/Computation/Data_Hashing/">Data Hashing</a></li>
+<li><a href="/script/Computation/Date-Time/">Date-Time</a></li>
+<li><a href="/script/Computation/Geometry/">Geometry</a></li>
+<li><a href="/script/Computation/Parametric_Functions/">Parametric Functions</a></li>
+<li><a href="/script/Computation/Probability/">Probability</a></li>
+<li><a href="/script/Computation/Real_Numbers/">Real Numbers</a></li>
+<li><a href="/script/Computation/Strings/">Strings</a></li>
+</ul>
+</li>
+<li class="data_structures" id="data_structures">
+<a class="active" href="#data_structures">Data Structures</a>
+<ul style="max-height: unset;">
+<li><a href="/script/Data_Structures/Arrays/">Arrays</a></li>
+<li><a href="/script/Data_Structures/Grids/">Grids</a></li>
+<li><a href="/script/Data_Structures/Lists/">Lists</a></li>
+<li><a href="/script/Data_Structures/Maps/">Maps</a></li>
+</ul>
+</li>
+<li class="files" id="files">
+<a href="#files">Files</a>
+<ul>
+<li><a href="/script/Files/Input_and_Output/">Input and Output</a></li>
+</ul>
+</li>
+<li class="game_play" id="game_play">
+<a href="#game_play">Game Play</a>
+<ul>
+<li><a href="/script/Game_Play/Artificial_Intelligence/">Artificial Intelligence</a></li>
+<li><a href="/script/Game_Play/Collisions/">Collisions</a></li>
+<li><a href="/script/Game_Play/Instances/">Instances</a></li>
+<li><a href="/script/Game_Play/Movement/">Movement</a></li>
+</ul>
+</li>
+<li class="graphics" id="graphics">
+<a href="#graphics">Graphics</a>
+<ul>
+<li><a href="/script/Graphics/Color/">Color</a></li>
+<li><a href="/script/Graphics/Drawing/">Drawing</a></li>
+<li><a href="/script/Graphics/Shaders/">Shaders</a></li>
+<li><a href="/script/Graphics/Sprites/">Sprites</a></li>
+<li><a href="/script/Graphics/Surfaces/">Surfaces</a></li>
+<li><a href="/script/Graphics/Text/">Text</a></li>
+</ul>
+</li>
+<li class="interaction" id="interaction">
+<a href="#interaction">Interaction</a>
+<ul>
+<li><a href="/script/Interaction/Gamepad/">Gamepad</a></li>
+<li><a href="/script/Interaction/Mouse/">Mouse</a></li>
+</ul>
+</li>
+<li class="platform" id="platform">
+<a href="#platform">Platform</a>
+<ul>
+<li><a href="/script/Platform/Device/">Device</a></li>
+</ul>
+</li>
+<li class="resources" id="resources">
+<a href="#resources">Resources</a>
+<ul>
+<li><a href="/script/Resources/Management/">Management</a></li>
+<li><a href="/script/Resources/Sprites/">Sprites</a></li>
+</ul>
+</li>
+</ul>
+<span></span>
+</div>
 </nav>
 </div>
 <footer>
   copyright &copy; 2007-2025, xot media multimixing
-  <span><img src="/images/38/x.png" title="web by xot" alt="X" /></span>
+  <span><img alt="X" src="/images/38/x.png" title="web by xot"></span>
 </footer>
 </body>
 </html>
