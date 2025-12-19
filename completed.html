@@ -5,20 +5,6 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="#FC7C13" name="theme-color">
-<meta content="website" name="og:type">
-<meta content="None" name="og:title">
-<meta content="None" name="og:description">
-<meta content="https://gmlscripts.com/script/None" name="og:url">
-<meta content="https://gmlscripts.com/images/G-172x172.jpg" name="og:image">
-<meta content="172" name="og:image:width">
-<meta content="172" name="og:image:height">
-<meta content="G logo" name="og:image:alt">
-<meta content="summary" name="twitter:card">
-<meta content="None" name="twitter:title">
-<meta content="None" name="twitter:description">
-<meta content="https://gmlscripts.com/script/None" name="twitter:url">
-<meta content="https://gmlscripts.com/images/G-172x172.jpg" name="twitter:image">
-<meta content="G logo" name="twitter:image:alt">
 <title>GMLscripts.com :: Donate</title>
 <link href="/gmlscripts38.css" rel="stylesheet" type="text/css">
 <link href="/favicon.png" rel="icon" type="image/png">
@@ -62,25 +48,25 @@ these dire times) will one day be within reach.</p>
 var maxamt = 9999.00;
 var minamt = 1.00;
 function ChkAmt (obj1) {  // check any qty limits on items
-    var amt;
-    amt = obj1.amount.value;
-    if (isNaN (amt)) {
-        alert ("Enter a valid number for amount");
-        ClrAmt ();        // always clear the values!
-        return false;
-    }
+  var amt;
+  amt = obj1.amount.value;
+  if (isNaN (amt)) {
+    alert ("Enter a valid number for amount");
+    ClrAmt ();        // always clear the values!
+    return false;
+  }
 
-    if (amt < minamt) {
-        alert ("You must donate at least $" + minamt.toFixed(2));
-        ClrAmt ();
-        return false;
-    }
+  if (amt < minamt) {
+    alert ("You must donate at least $" + minamt.toFixed(2));
     ClrAmt ();
-    return true;
+    return false;
+  }
+  ClrAmt ();
+  return true;
 }
 function ClrAmt () {   // Clear out the limits
-    maxamt = 9999.00;  // not used unless you want to set some max amount.
-    minamt = 1.00;     // set the minimum amount for a donation
+  maxamt = 9999.00;  // not used unless you want to set some max amount.
+  minamt = 1.00;     // set the minimum amount for a donation
 }
 </script>
 <div id="paypal">
@@ -105,7 +91,9 @@ function ClrAmt () {   // Clear out the limits
 <input align="top" alt="Donate" border="0" name="submit" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
 </p>
 </form>
-<p><small>GMLscripts.com is not a charity. Donations are not tax deductable.</small></p>
+<p>
+<small>GMLscripts.com is not a charity. Donations are not tax deductable.</small>
+</p>
 </div>
 </main>
 <nav id="sidenav">
