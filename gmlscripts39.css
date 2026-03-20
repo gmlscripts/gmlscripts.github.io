@@ -188,6 +188,24 @@ h1:first-child {
     text-align: center;
     margin: 0 0 0.5em 0;
 }
+.newsnav {
+    position: relative;
+}
+.index {
+    background-color: #F80;
+    border: #F80 1px solid;
+    border-top: #FC3 1px solid;
+    border-radius: 16px;
+    color: #000;
+    height: 22px;
+    padding: 2px 16px 2px 16px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.index>a {
+    color: #000;
+}
 .previous {
     background-color: #F80;
     border: #F80 1px solid;
