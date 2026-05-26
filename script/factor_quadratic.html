@@ -21,13 +21,10 @@
 <meta content="G logo" name="twitter:image:alt">
 <title>GMLscripts.com :: factor_quadratic</title>
 <link href="/gmlscripts39.css" rel="stylesheet" type="text/css">
+<link href="/katex.min.css" rel="stylesheet" type="text/css">
 <link href="/favicon.png" rel="icon" type="image/png">
 <link href="https://github.com/gmlscripts/scripts/commits/master.atom" rel="alternate" title="GMLscripts.com :: Script Commit History" type="application/rss+xml">
 <link href="https://fonts.googleapis.com/css?family=Paytone+One%7CABeeZee%7CSource+Code+Pro" rel="stylesheet">
-<script type="text/x-mathjax-config">//<![CDATA[
-MathJax.Hub.Config({extensions:["tex2jax.js"],jax:["input/TeX","output/HTML-CSS"],tex2jax:{inlineMath:[["\\(","\\)"],['[tex]','[/tex]']],displayMath:[['$$','$$'],["\\[","\\]"]],processEscapes:true},"HTML-CSS":{availableFonts:["TeX"]},menuSettings:{zoom:"Click"},MathZoom:{styles:{"#MathJax_Zoom":{"background-color":"#222","box-shadow":"0px 0px 15px #AAAAAA","-webkit-box-shadow":"0px 0px 15px #AAAAAA","-moz-box-shadow":"0px 0px 15px #AAAAAA","-khtml-box-shadow":"0px 0px 15px #AAAAAA",}}}});
-MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <script src="/lunr.js" tpye="text/javascript"></script>
 <script src="/search.js" type="text/javascript"></script>
 <script src="/gml_string.js" type="text/javascript"></script>
@@ -54,7 +51,7 @@ MathJax.Hub.Queue(function () { showMathJax(); } );//]]></script>
 <main>
 <h1>factor_quadratic</h1>
 <p class="note"><span>NOTE:</span> This script function nominated for removal from the site index.</p>
-<p>Returns a string of factors for any quadratic equation (<script type="math/tex">ax^2+bx+c=0</script>),
+<p>Returns a string of factors for any quadratic equation (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ax^2+bx+c=0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>),
 where a = 1 and b and c are integers. If it cannot be factored
 with integer values only, the original quadratic is returned.</p>
 <dl class="script">
