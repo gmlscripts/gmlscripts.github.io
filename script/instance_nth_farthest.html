@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="#FC7C13" name="theme-color">
 <meta content="website" name="og:type">
-<meta content="instance_nth_farthest(x,y,obj,n)" name="og:title">
+<meta content="instance_nth_farthest(x, y, obj, n)" name="og:title">
 <meta content="Returns the id of the nth farthest instance of an object from a given point or noone if none is found." name="og:description">
 <meta content="https://gmlscripts.com/script/instance_nth_farthest" name="og:url">
 <meta content="https://gmlscripts.com/images/G-172x172.jpg" name="og:image">
@@ -14,7 +14,7 @@
 <meta content="172" name="og:image:height">
 <meta content="G logo" name="og:image:alt">
 <meta content="summary" name="twitter:card">
-<meta content="instance_nth_farthest(x,y,obj,n)" name="twitter:title">
+<meta content="instance_nth_farthest(x, y, obj, n)" name="twitter:title">
 <meta content="Returns the id of the nth farthest instance of an object from a given point or noone if none is found." name="twitter:description">
 <meta content="https://gmlscripts.com/script/instance_nth_farthest" name="twitter:url">
 <meta content="https://gmlscripts.com/images/G-172x172.jpg" name="twitter:image">
@@ -53,30 +53,30 @@
 <p class="note"><span>NOTE:</span> This function is obsolete and has been replaced with an updated version with a new name.
 Please see <a href="instance_nth_furthest">instance_nth_furthest()</a>.</p>
 <dl class="script">
-<dt><a href="/script/instance_nth_farthest">instance_nth_farthest(x,y,obj,n)</a></dt>
+<dt><a href="/script/instance_nth_farthest">instance_nth_farthest(x, y, obj, n)</a></dt>
 <dd>Returns the id of the nth farthest instance of an object from a given point or noone if none is found.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a onclick="copyUpdate(this,copyToClipboard('instance_nth_farthest'))" title="Copy to Clipboard">COPY</a></span><code class="lang-gml linenums" id="instance_nth_farthest">/// instance_nth_farthest(x,y,obj,n)
-//
-//  Returns the id of the nth farthest instance of an object
-//  from a given point or noone if none is found.
-//
-//      x,y       point coordinates, real
-//      obj       object index (or all), real
-//      n         proximity, real
-//
-/// GMLscript.com/license
+<pre><span class="copy"><a onclick="copyUpdate(this,copyToClipboard('instance_nth_farthest'))" title="Copy to Clipboard">COPY</a></span><code class="lang-gml linenums" id="instance_nth_farthest">/// @func   instance_nth_farthest(x, y, obj, n)
+///
+/// @desc   Returns the id of the nth farthest instance of an object
+///         from a given point or noone if none is found.
+///
+/// @param  {real}      x           point x-coordinate
+/// @param  {real}      y           point y-coordinate
+/// @param  {object}    obj         object index (or all)
+/// @param  {real}      n           proximity
+///
+/// @return {instance}  object instance id
+///
+/// GMLscripts.com/license
+
+function instance_nth_farthest(x, y, obj, n)
 {
-    var pointx,pointy,object,n,list,farthest;
-    pointx = argument0;
-    pointy = argument1;
-    object = argument2;
-    n = argument3;
-    n = min(max(1,n),instance_number(object));
-    list = ds_priority_create();
-    farthest = noone;
-    with (object) ds_priority_add(list,id,distance_to_point(pointx,pointy));
+    n = min(max(1, n), instance_number(obj));
+    var list = ds_priority_create();
+    var farthest = noone;
+    with (obj) ds_priority_add(list, id, distance_to_point(x, y));
     repeat (n) farthest = ds_priority_delete_max(list);
     ds_priority_destroy(list);
     return farthest;

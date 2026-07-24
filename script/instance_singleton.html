@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="#FC7C13" name="theme-color">
 <meta content="website" name="og:type">
-<meta content="instance_singleton(object)" name="og:title">
+<meta content="instance_singleton(object, layer_id)" name="og:title">
 <meta content="Returns a single instance of the given object, creating one if no instance exists." name="og:description">
 <meta content="https://gmlscripts.com/script/instance_singleton" name="og:url">
 <meta content="https://gmlscripts.com/images/G-172x172.jpg" name="og:image">
@@ -14,7 +14,7 @@
 <meta content="172" name="og:image:height">
 <meta content="G logo" name="og:image:alt">
 <meta content="summary" name="twitter:card">
-<meta content="instance_singleton(object)" name="twitter:title">
+<meta content="instance_singleton(object, layer_id)" name="twitter:title">
 <meta content="Returns a single instance of the given object, creating one if no instance exists." name="twitter:description">
 <meta content="https://gmlscripts.com/script/instance_singleton" name="twitter:url">
 <meta content="https://gmlscripts.com/images/G-172x172.jpg" name="twitter:image">
@@ -52,27 +52,33 @@
 <h1>instance_singleton</h1>
 <p>Returns a single instance of the given object, creating one if no instance exists.</p>
 <div class="codebox example">
-<pre><code class="lang-gml">A = instance_singleton(object);  //  An instance of object is created.
-B = instance_singleton(object);  //  The first instance is returned; A and B are equal.
+<pre><code class="lang-gml">A = instance_singleton(object, "Instances");  //  An instance of object is created.
+B = instance_singleton(object, "Instances");  //  The first instance is returned; A and B are equal.
 </code></pre>
 </div>
 <dl class="script">
-<dt><a href="/script/instance_singleton">instance_singleton(object)</a></dt>
+<dt><a href="/script/instance_singleton">instance_singleton(object, layer_id)</a></dt>
 <dd>Returns a single instance of the given object, creating one if no instance exists.</dd>
 </dl>
 <div class="codebox script">
-<pre><span class="copy"><a onclick="copyUpdate(this,copyToClipboard('instance_singleton'))" title="Copy to Clipboard">COPY</a></span><code class="lang-gml linenums" id="instance_singleton">/// instance_singleton(object)
-//
-//  Returns a single instance of the given object, 
-//  creating one if no instance exists.
-//
-//      object      object to look for, real
-//
+<pre><span class="copy"><a onclick="copyUpdate(this,copyToClipboard('instance_singleton'))" title="Copy to Clipboard">COPY</a></span><code class="lang-gml linenums" id="instance_singleton">/// @func   instance_singleton(object, layer_id)
+///
+/// @desc   Returns a single instance of the given object,
+///         creating one if no instance exists.
+///
+/// @param  {object}    object      object to look for
+/// @param  {layer}     layer_id    layer to create in
+///
+/// @return {instance}  object instance id
+///
 /// GMLscripts.com/license
+
+function instance_singleton(object, layer_id)
 {
-    var obj = argument0;
-    if (instance_number(obj) == 0) return instance_create(0, 0, obj);
-    return instance_find(obj, 0);
+    if (instance_number(object) == 0) {
+        return instance_create_layer(0, 0, layer_id, object);
+    }
+    return instance_find(object, 0);
 }
 </code></pre>
 </div>
